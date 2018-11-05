@@ -11,8 +11,8 @@ class SearchBox extends Component {
     render() {
         return(
             <div className="searchBox">
-                <input className="input__text"></input>
-                <FontAwesomeIcon className="searchIcon" icon="search" />
+                <input className="searchBox__input"></input>
+                <FontAwesomeIcon className="searchBox__Icon" icon="search" />
             </div>
         )
     }

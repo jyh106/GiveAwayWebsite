@@ -6,7 +6,7 @@
     border-radius: 5px;
 }
 
-.input__text {
+.searchBox__input {
     background: none;
     width: 150px;
     height: 30px;
@@ -18,13 +18,13 @@
     font-size: 15px;
 }
 
-.searchIcon{
+.searchBox__Icon{
     display: inline-block;
     font-size: 20px;
     padding-right: 10px;
     color: #5c5b5b;
 }
 
-.searchIcon:hover {
+.searchBox__Icon:hover {
     color: black;
 }
