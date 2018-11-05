@@ -1,0 +1,30 @@
+.searchBox {
+    margin-top: 9px;
+    float: right;
+    margin-right: 20px;
+    background: white;
+    border-radius: 5px;
+}
+
+.input__text {
+    background: none;
+    width: 150px;
+    height: 30px;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border: none;
+    padding-left: 20px;
+    font-size: 15px;
+}
+
+.searchIcon{
+    display: inline-block;
+    font-size: 20px;
+    padding-right: 10px;
+    color: #5c5b5b;
+}
+
+.searchIcon:hover {
+    color: black;
+}
