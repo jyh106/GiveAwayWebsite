@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import * as serviceWorker from './serviceWorker';
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from './saga';
+import rootSaga from './Sagas/saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
