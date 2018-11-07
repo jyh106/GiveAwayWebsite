@@ -3,12 +3,10 @@ import "./Post.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faFeather} from '@fortawesome/free-solid-svg-icons'
-
 library.add(faMapMarkerAlt, faFeather) 
 
 class Post extends Component {
     render(){
-        // TODO consistent with app
         return(
             <div className="post">
                 <div className="post_details post_name">

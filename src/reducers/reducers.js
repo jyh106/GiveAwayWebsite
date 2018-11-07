@@ -1,23 +1,13 @@
-import { Map } from 'immutable';
 import { combineReducers } from 'redux';
-import NavBarReducer from './navBarReducer.js';
-import postBoardReducer from './postBoardReducer.js';
-
-const INITIAL_STATE = Map({
-
-});
-
-// TODO app reducer should be its own file
-function appReducer(state = INITIAL_STATE, action) {
-  return state;
-} 
-
+import NavBarReducer from './NavBarReducer.js';
+import PostBoardReducer from './PostBoardReducer.js';
+import AppReducer from './AppReducer.js';
 
 
 const reducers = combineReducers({
-  appReducer,
+  AppReducer,
   NavBarReducer,
-  postBoardReducer,
+  PostBoardReducer,
 })
 
 export default reducers;

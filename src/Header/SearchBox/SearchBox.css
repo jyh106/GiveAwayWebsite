@@ -10,7 +10,7 @@
     background: white;
 }
 
-.searchBox__input {
+.searchBox_input {
     background: none;
     width: 150px;
     height: 30px;
@@ -22,13 +22,13 @@
     font-size: 15px;
 }
 
-.searchBox__Icon{
+.searchBox_icon{
     display: inline-block;
     font-size: 16px;
     padding-right: 10px;
     color: #5c5b5b;
 }
 
-.searchBox__Icon:hover {
+.searchBox_icon:hover {
     color: black;
 }

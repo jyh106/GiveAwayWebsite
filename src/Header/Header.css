@@ -6,7 +6,7 @@
     height: 45px;
 }
 
-.header__name {
+.header_name {
     font-family: 'Poiret One', cursive;
     float: left;
     padding-left: 20px;
@@ -16,7 +16,7 @@
     padding-top: 6px;
 }
 
-.header:hover {
+.header_name:hover {
     cursor: pointer;
 }
 

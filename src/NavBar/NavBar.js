@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import "./NavBar.css";
-import DisplayStyleMenu from './DisplayStyleMenu/DisplayStyleMenu.js';
+import StyleMenu from './StyleMenu/StyleMenu.js';
 import FilterMenu from './FilterMenu/FilterMenu.js';
 
-// TODO name this navbar
-class FilterBar extends Component {
+class NavBar extends Component {
     render() {
         return(
             <div className="navBar">
-                <DisplayStyleMenu />
+                <StyleMenu />
                 <FilterMenu />
             </div>
         )
     }
 }
 
-export default FilterBar;
+export default NavBar;

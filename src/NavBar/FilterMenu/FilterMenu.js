@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import "./FilterMenu.css";
-import Actions from '../../Actions/actions.js';
 import { connect } from 'react-redux';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,44 +13,50 @@ import {
 library.add(faCaretUp, faCaretDown, faArrowDown, faArrowUp);
 
 class FilterMenu extends Component {
-    // TODO again, consistent type returns
-    displayFilterMenu() {
-        if(this.props.displayFilterMenu){
+    constructor() {
+        super();
+        this.state = {
+            shouldDisplayFilterMenu: false,
+        }
+    }
+    renderDisplayFilterMenu() {
+        if(this.state.shouldDisplayFilterMenu){
             return (
                 <div className="DisplayFilterMenu">
                     <div className="DisplayFilterMenu_item DisplayFilterMenu_priceUp">
-                        Price <FontAwesomeIcon className="Arrow_price" icon="arrow-up" />
+                        Price <FontAwesomeIcon className="arrow_price" icon="arrow-up" />
                     </div>
                     <div className="DisplayFilterMenu_item DisplayFilterMenu_priceDown">
-                        Price <FontAwesomeIcon className="Arrow_price" icon="arrow-down" />
+                        Price <FontAwesomeIcon className="arrow_price" icon="arrow-down" />
                     </div>
                 </div>
             )
         }
+        return null;
     }
 
-    displayArrow(){
-        // TODO "displayX" is an action, you want to name that indicates flag
-        // e.g., "shouldDisplayFilterMenu" (yes or no question)
-        if(this.props.displayFilterMenu){
+    shouldDisplayArrow(){
+        if(this.state.shouldDisplayFilterMenu){
             return <FontAwesomeIcon className="icon_arrows" icon="caret-up" />
         } else {
             return <FontAwesomeIcon className="icon_arrows" icon="caret-down" />
         }
     }
 
+    toggleDisplayFilterMenu(){
+        this.setState({
+            shouldDisplayFilterMenu: !this.state.shouldDisplayFilterMenu
+        })
+    }
+
     render() {
-        // TODO you don't need to pass in argument. toggleFilterMenu can access props
         return (
             <div className="FilterMenu">
                 <div className="FilterMenu_default FilterMenu_newest"
-                    onClick = {
-                        ()=> {this.props.toggleFilterMenu(!this.props.displayFilterMenu)}
-                    }
-                >Newest
-                 {this.displayArrow()}
+                    onClick = {()=> {this.toggleDisplayFilterMenu()}}
+                    >Newest{this.shouldDisplayArrow()}
                 </div>
-                {this.displayFilterMenu()}
+                {this.renderDisplayFilterMenu()}
             </div>
         )
     }
@@ -59,17 +64,12 @@ class FilterMenu extends Component {
 
 function mapStateToProps(state){
     return{
-        displayFilterMenu: state.NavBarReducer.get('displayFilterMenu')
     }
   }
   
   const mapDispatchToProps = dispatch => {
-      // TODO don't need toggle
     return {
-        toggleFilterMenu: (toggle) => {
-            dispatch(Actions.toggleFilterMenu(toggle))
-        },
-    }
+        }
   }
   
   export default connect(
