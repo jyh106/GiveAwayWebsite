@@ -12,7 +12,15 @@ function toggleFilterMenu(toggle) {
     }
 }
 
+function searchBoxClicked(toggle){
+    return {
+        type: 'TOGGLE_SEARCH',
+        data: toggle,
+    }
+}
+
   export default {
       toggleDisplayStylingMenu,
-      toggleFilterMenu
+      toggleFilterMenu,
+      searchBoxClicked
   }
