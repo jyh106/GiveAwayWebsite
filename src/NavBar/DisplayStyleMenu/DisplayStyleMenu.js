@@ -8,7 +8,10 @@ import Actions from '../../Actions/actions.js';
 
 library.add(faCaretUp, faCaretDown, faThLarge, faListUl);
 
+// TODO not a good name
 class DisplayStyleMenu extends Component {
+    // TODO for things that return divs, best to preface with `renderX`
+    // TODO use consistent types. e.g., render null;
     displayStylingMenu() {
         if(this.props.displayStylingMenu){
             return (
@@ -22,6 +25,7 @@ class DisplayStyleMenu extends Component {
     }
 
     displayArrow(){
+        // TODO you don't need the else here
         if(this.props.displayStylingMenu){
             return <FontAwesomeIcon className="icon_arrows" icon="caret-up" />
         } else {
@@ -29,6 +33,7 @@ class DisplayStyleMenu extends Component {
         }
     }
     render() {
+        // TODO use one underscore or two
         return (
             <div className="DisplayStyle_default">
                 <div className="DisplayStyle_default__gallery"
@@ -51,6 +56,7 @@ function mapStateToProps(state){
   }
   
   const mapDispatchToProps = dispatch => {
+    // TODO don't need the value toggle
     return {
         toggleStyleMenu: (toggle) => {
             dispatch(Actions.toggleDisplayStylingMenu(toggle))

@@ -3,6 +3,7 @@ import "./NavBar.css";
 import DisplayStyleMenu from './DisplayStyleMenu/DisplayStyleMenu.js';
 import FilterMenu from './FilterMenu/FilterMenu.js';
 
+// TODO name this navbar
 class FilterBar extends Component {
     render() {
         return(

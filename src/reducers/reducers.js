@@ -7,6 +7,7 @@ const INITIAL_STATE = Map({
 
 });
 
+// TODO app reducer should be its own file
 function appReducer(state = INITIAL_STATE, action) {
   return state;
 } 

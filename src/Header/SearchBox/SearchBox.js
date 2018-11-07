@@ -10,17 +10,21 @@ import Actions from '../../Actions/actions.js';
 library.add(faSearch);
 
 class SearchBox extends Component {
+    // TODO use consistent return types
+    // Right now, it returns undefined sometimes
+    // TODO bad name
     searchBoxClicked(){
-        if(this.props.searchInputClicked){
+        if (this.props.searchInputClicked) {
+            // TODO stick to one underscore or two
             return 'searchBox_focus'
         }
     }
 
     render() {
+        // TODO stick to uppercase or lowercase
         return(
             <div className={"searchBox " + this.searchBoxClicked()}>
                 <input className="searchBox__input"
-
     //TODO need to be fixed
                         onMouseDown={
                             ()=>this.props.searchBoxClicked(!this.props.searchInputClicked)

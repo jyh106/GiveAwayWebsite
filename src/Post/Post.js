@@ -8,6 +8,7 @@ library.add(faMapMarkerAlt, faFeather)
 
 class Post extends Component {
     render(){
+        // TODO consistent with app
         return(
             <div className="post">
                 <div className="post_details post_name">

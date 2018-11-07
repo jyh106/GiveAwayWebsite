@@ -4,12 +4,17 @@ import Actions from '../../Actions/actions.js';
 import { connect } from 'react-redux';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretUp,faCaretDown, faArrowDown, faArrowUp
-            } from '@fortawesome/free-solid-svg-icons'
+import { 
+    faCaretUp,
+    faCaretDown, 
+    faArrowDown, 
+    faArrowUp
+} from '@fortawesome/free-solid-svg-icons'
 
 library.add(faCaretUp, faCaretDown, faArrowDown, faArrowUp);
 
 class FilterMenu extends Component {
+    // TODO again, consistent type returns
     displayFilterMenu() {
         if(this.props.displayFilterMenu){
             return (
@@ -26,6 +31,8 @@ class FilterMenu extends Component {
     }
 
     displayArrow(){
+        // TODO "displayX" is an action, you want to name that indicates flag
+        // e.g., "shouldDisplayFilterMenu" (yes or no question)
         if(this.props.displayFilterMenu){
             return <FontAwesomeIcon className="icon_arrows" icon="caret-up" />
         } else {
@@ -34,6 +41,7 @@ class FilterMenu extends Component {
     }
 
     render() {
+        // TODO you don't need to pass in argument. toggleFilterMenu can access props
         return (
             <div className="FilterMenu">
                 <div className="FilterMenu_default FilterMenu_newest"
@@ -56,6 +64,7 @@ function mapStateToProps(state){
   }
   
   const mapDispatchToProps = dispatch => {
+      // TODO don't need toggle
     return {
         toggleFilterMenu: (toggle) => {
             dispatch(Actions.toggleFilterMenu(toggle))
