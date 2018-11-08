@@ -2,7 +2,6 @@ import { Map } from 'immutable';
 
 const INITIAL_STATE = Map({
     searchInputClicked: false,
-
 });
 
 function NavBarReducer (state = INITIAL_STATE, action) {

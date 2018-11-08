@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+
+.postForm {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    background:white;
+    width: 400px;
+    border-radius: 5px;
+    border: 2px solid rgb(129, 198, 224);
+}
+
+.form_header{
+    background-color: rgb(113, 210, 240);
+    padding: 6px;
+    font-family: 'Poiret One', cursive;
+    font-weight: bolder;
+
+}
+
+.postForm_question{
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 15px;
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.titles {
+    text-align: left;
+    margin: 5px;
+    margin-left: 10px;
+    font-weight: Bold;
+}
+
+input{
+    border-radius: 5px;
+    height: 25px;
+    width: 90%;
+    border: 1px solid gray;
+    float: left;
+    margin-left: 10px;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.input_notes{
+    border-radius: 5px;
+    width: 90%;
+    border: 1px solid gray;
+    float: left;
+    margin-left: 10px;
+    font-size: 15px;
+    padding-left: 10px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.post_date{
+    padding: 10px;
+    font-family: 'Poiret One', cursive;
+    font-weight: bolder;
+}

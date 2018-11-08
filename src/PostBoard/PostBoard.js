@@ -4,6 +4,7 @@ import Post from '../Post/Post.js';
 import { connect } from 'react-redux';
 
 class PostBoard extends Component {
+
     producePostsList(){
         let posts = [];
         for(let post of this.props.posts){
@@ -20,6 +21,7 @@ class PostBoard extends Component {
         return(
             <div className="PostBoard">
                 {this.producePostsList()}
+                {this.props.displayStyle}
             </div>
         )
     }
@@ -27,7 +29,8 @@ class PostBoard extends Component {
 
 function mapStateToProps(state){
     return{
-        posts: state.PostBoardReducer.get('posts')
+        posts: state.PostBoardReducer.get('posts'),
+        displayStyle: state.PostBoardReducer.get('displayStyle')
     }
   }
   

@@ -17,7 +17,8 @@ class Post extends Component {
                     {this.props.date}
                 </div>
                 <div className="post_details post_address">
-                   <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> {this.props.address}
+                   <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
+                   {this.props.address}
                 </div>
                 <div className="post_details post_note">
                     {this.props.description}

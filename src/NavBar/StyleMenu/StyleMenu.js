@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp, faCaretDown, faThLarge, faListUl} from '@fortawesome/free-solid-svg-icons'
+import Actions from '../../Actions/actions.js';
 library.add(faCaretUp, faCaretDown, faThLarge, faListUl);
 
 class StyleMenu extends Component {
@@ -18,7 +19,7 @@ class StyleMenu extends Component {
         if (this.state.shouldDisplayStyleMenu) {
             return (
                 <div>
-                    <div className="style_thumb">
+                    <div className="style_thumb" onClick={()=>this.props.changeDisplayStyle('Thumb')}>
                         <FontAwesomeIcon icon="list-ul"  className="icon_list"/>Thumb
                     </div>
                 </div>
@@ -31,6 +32,7 @@ class StyleMenu extends Component {
         this.setState({
             shouldDisplayStyleMenu: !this.state.shouldDisplayStyleMenu
         })
+        this.props.changeDisplayStyle('Gallery');
     }
 
     displayArrow(){
@@ -60,7 +62,9 @@ function mapStateToProps(state){
   }
   
   const mapDispatchToProps = dispatch => {
-    return {}
+    return {
+        changeDisplayStyle: (style)=> dispatch(Actions.changeDisplayStyle(style))
+    }
   }
   
   export default connect(

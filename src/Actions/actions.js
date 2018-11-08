@@ -5,6 +5,14 @@ function isSearchBoxOnFocus(toggle) {
     }
 }
 
+function changeDisplayStyle(style) {
+    return {
+        type: "CHANGE_DISPLAY_STYLE",
+        data: style,
+    }
+}
+
 export default {
     isSearchBoxOnFocus,
+    changeDisplayStyle,
 }
