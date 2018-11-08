@@ -23,7 +23,7 @@ const INITIAL_STATE = Map({
             'address':'123 Apple street, Free, CA, 91234',
             'note':'none',
         }, {
-            'name': 'Kitchenware',
+            'name': 'Clothes',
             'date':'11/7/2018', 
             'address':'123 Apple street, Free, CA, 91234',
             'note':'none',
