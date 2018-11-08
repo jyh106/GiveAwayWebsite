@@ -24,10 +24,10 @@ class FilterMenu extends Component {
             return (
                 <div className="DisplayFilterMenu">
                     <div className="DisplayFilterMenu_item DisplayFilterMenu_priceUp">
-                        Price <FontAwesomeIcon className="arrow_price" icon="arrow-up" />
+                        Books
                     </div>
                     <div className="DisplayFilterMenu_item DisplayFilterMenu_priceDown">
-                        Price <FontAwesomeIcon className="arrow_price" icon="arrow-down" />
+                        Price
                     </div>
                 </div>
             )
@@ -54,7 +54,7 @@ class FilterMenu extends Component {
             <div className="FilterMenu">
                 <div className="FilterMenu_default FilterMenu_newest"
                     onClick = {()=> {this.toggleDisplayFilterMenu()}}
-                    >Newest{this.shouldDisplayArrow()}
+                    >Category{this.shouldDisplayArrow()}
                 </div>
                 {this.renderDisplayFilterMenu()}
             </div>
