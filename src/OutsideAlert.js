@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Actions from '../../Actions/actions.js';
+import Actions from './Actions/actions.js';
 
 
 class OutsideAlerter extends Component {
