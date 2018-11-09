@@ -17,7 +17,7 @@
     padding-left: 1px;
 }
 
-.style_default:hover, .style_thumb:hover{
+.style_default:hover, .style_thumb:hover,.style_default_gallery{
     cursor: pointer;
 }
 

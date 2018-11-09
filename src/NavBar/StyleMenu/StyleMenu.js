@@ -15,42 +15,67 @@ class StyleMenu extends Component {
         }
     }
 
-    renderStylingMenu() {
-        if (this.state.shouldDisplayStyleMenu) {
-            return (
-                <div>
-                    <div className="style_thumb" onClick={()=>this.props.changeDisplayStyle('Thumb')}>
-                        <FontAwesomeIcon icon="list-ul"  className="icon_list"/>Thumb
-                    </div>
-                </div>
-            )
-        }
-        return null;
+    renderListButton() {
+        return (
+            <div className="style_thumb" 
+                onClick={()=>{this.props.changeDisplayStyle('List'); 
+                                this.toggleDisplayStyleMenu()}}>
+                <FontAwesomeIcon icon="list-ul"  className="icon_list"/>List
+                {this.renderArrow('List')}
+            </div>
+        )
     }
+
+    renderGalleryButton() {
+        return (
+            <div className="style_default_gallery"
+                    onClick = {()=> {this.toggleDisplayStyleMenu(); 
+                                        this.props.changeDisplayStyle('Gallery')}}> 
+                    <FontAwesomeIcon icon='th-large'/> Gallery
+                {this.renderArrow('Gallery')}
+            </div>
+        )
+    }
+
 
     toggleDisplayStyleMenu(){
         this.setState({
             shouldDisplayStyleMenu: !this.state.shouldDisplayStyleMenu
         })
-        this.props.changeDisplayStyle('Gallery');
     }
 
-    displayArrow(){
-        if (this.state.shouldDisplayStyleMenu) {
-            return <FontAwesomeIcon className="icon_arrows" icon="caret-up" />
+
+    renderArrow(style){
+        if (style === this.props.currentStyle) {
+            return <FontAwesomeIcon className="icon_arrows" icon="caret-down" />
         } 
-        return <FontAwesomeIcon className="icon_arrows" icon="caret-down" />
+        return null
     }
+
+    renderMenu(){
+        if(this.props.currentStyle === "Gallery"){
+            return (
+                <div>
+                    {this.renderGalleryButton()}
+                    { (this.state.shouldDisplayStyleMenu) ? this.renderListButton() : null }
+                </div>
+
+            )
+        }
+        return (
+            <div>
+                {this.renderListButton()}
+                {(this.state.shouldDisplayStyleMenu) ? this.renderGalleryButton() : null }
+            </div>
+
+        )
+    }
+
 
     render() {
         return (
             <div className="styleMenu">
-                <div className="style_default_gallery"
-                    onClick = {()=> {this.toggleDisplayStyleMenu()}}> 
-                    <FontAwesomeIcon icon='th-large'/> Gallery
-                    {this.displayArrow()}
-                </div>
-                {this.renderStylingMenu()}
+                {this.renderMenu()}
             </div>
         )
     }
@@ -58,6 +83,7 @@ class StyleMenu extends Component {
 
 function mapStateToProps(state){
     return{
+        currentStyle: state.PostBoardReducer.get('displayStyle')
     }
   }
   
