@@ -5,7 +5,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp, faCaretDown, faThLarge, faListUl} from '@fortawesome/free-solid-svg-icons'
 import Actions from '../../Actions/actions.js';
-import OutsideAlert from '../../OutsideAlert.js';
+import OutsideAlert from '../../OutsideClick';
 library.add(faCaretUp, faCaretDown, faThLarge, faListUl);
 
 class StyleMenu extends Component {
@@ -18,20 +18,23 @@ class StyleMenu extends Component {
 
     renderListButton() {
         return (
-            <div className="style_thumb" 
-                onClick={()=>{this.props.changeDisplayStyle('List'); 
-                                this.toggleDisplayStyleMenu()}}>
+            <div className="style_list" 
+                onClick={()=>{this.onClickStyleButtons('List')}}>
                 <FontAwesomeIcon icon="list-ul"  className="icon_list"/>List
                 {this.renderArrow('List')}
             </div>
         )
     }
 
+    onClickStyleButtons(style){
+        this.toggleDisplayStyleMenu();
+        this.props.changeDisplayStyle(style);
+    }
+
     renderGalleryButton() {
         return (
             <div className="style_default_gallery"
-                    onClick = {()=> {this.toggleDisplayStyleMenu(); 
-                                        this.props.changeDisplayStyle('Gallery')}}> 
+                    onClick = {()=>{this.onClickStyleButtons('Gallery')}}> 
                     <FontAwesomeIcon icon='th-large'/> Gallery
                 {this.renderArrow('Gallery')}
             </div>

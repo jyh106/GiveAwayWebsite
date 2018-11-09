@@ -10,7 +10,7 @@ class PostList extends Component {
         return(
             <div className="postList">
                 <div className="postList_details postList_name">
-                    <FontAwesomeIcon icon="feather" className="post_name_icon"/>
+                    <FontAwesomeIcon icon="feather"/>
                     {this.props.name} 
                     <div className="postList_date">
                         ({this.props.date})

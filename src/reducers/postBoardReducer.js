@@ -6,12 +6,12 @@ const INITIAL_STATE = Map({
             'name': 'Books',
             'date':'11/7/2018', 
             'address':'123 Apple street, Free, CA, 91234',
-            'note':'none',
+            'note':'More than 100,000 consumers have used the researchers’ Wehe smartphone app to test internet connections. Information from those tests are aggregated and analyzed by the researchers to check if data speeds are being slowed, or throttled, for specific mobile services.',
         }, {
             'name': 'Shoes',
             'date':'11/7/2018', 
             'address':'123 Apple street, Free, CA, 91234',
-            'note':'none',
+            'note':'Among leading U.S. carriers, Sprint was the only one to throttle Skype, the study found. The throttling was detected in 34 percent of 1,968 full tests -- defined as those in which a user ran two tests in a row -- conducted between Jan. 18 and Oct. 15. It happened regularly, and was spread geographically across the U.S. Android phone users were more affected than owners of Apple Inc.’s iPhones.',
         }, {
             'name': 'Containers',
             'date':'11/7/2018', 

@@ -5,7 +5,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import React, { Component } from 'react';
 import "./SearchBox.css";
 import Actions from '../../Actions/actions.js';
-import OutsideAlert from '../../OutsideAlert.js';
+import OutsideAlert from '../../OutsideClick';
 library.add(faSearch);
 
 class SearchBox extends Component {

@@ -11,8 +11,6 @@
 
 .post_details {
     display: block;
-    padding-top: 6px;
-    padding-bottom: 6px;
 }
 
 .post_name{
@@ -22,6 +20,18 @@
     font-size:18px;
     width: 100%;
     text-align: left;
+}
+
+.post_note{
+    background: rgb(233, 233, 233);
+    width: 90%;
+    margin: 0 auto;
+    height: 85px;
+    overflow: scroll;
+    text-align: left;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 13px;
 }
 
 .post_name_icon{
@@ -39,6 +49,7 @@
 .post_address{
     font-style: italic;
     font-size: 13px;
+    margin-bottom: 5px;
 }
 
 .post_address_icon{

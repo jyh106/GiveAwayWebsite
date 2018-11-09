@@ -23,11 +23,8 @@ class FilterMenu extends Component {
         if(this.state.shouldDisplayFilterMenu){
             return (
                 <div className="DisplayFilterMenu">
-                    <div className="DisplayFilterMenu_item DisplayFilterMenu_priceUp">
-                        Books
-                    </div>
-                    <div className="DisplayFilterMenu_item DisplayFilterMenu_priceDown">
-                        Price
+                    <div className="DisplayFilterMenu_item">
+                        Nearest to me 
                     </div>
                 </div>
             )
@@ -54,7 +51,7 @@ class FilterMenu extends Component {
             <div className="FilterMenu">
                 <div className="FilterMenu_default FilterMenu_newest"
                     onClick = {()=> {this.toggleDisplayFilterMenu()}}
-                    >Category{this.shouldDisplayArrow()}
+                    >Newest{this.shouldDisplayArrow()}
                 </div>
                 {this.renderDisplayFilterMenu()}
             </div>

@@ -17,16 +17,16 @@
     padding-left: 1px;
 }
 
-.style_default:hover, .style_thumb:hover,.style_default_gallery{
+.style_default:hover, .style_list:hover,.style_default_gallery{
     cursor: pointer;
 }
 
-.style_default_gallery, .style_thumb{
+.style_default_gallery, .style_list{
     padding: 4px;
     border-radius: 3px;
 }
 
-.style_thumb:hover{
+.style_list:hover{
     background-color: gray;
 }
 
