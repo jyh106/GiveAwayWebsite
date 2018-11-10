@@ -19,7 +19,7 @@ class PostForm extends Component {
     render() {
         return(
             <div>
-                <NavLink to="/home" className="homeButton">Home</NavLink>
+                <NavLink to="/home" className="home_button">Home</NavLink>
              <div className="postForm">
                 <div className="form_header">
                     I Want To Give Away: 
@@ -66,7 +66,7 @@ class PostForm extends Component {
                     {this.getDate()}
                 </div>
 
-                <button className="submite">
+                <button className="submit">
                     Submit
                 </button>
 
