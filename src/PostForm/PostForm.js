@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import "./PostForm.css";
+// import "./PostForm.css";
+import { NavLink } from 'react-router-dom';
 
 class PostForm extends Component {
     constructor(){
@@ -18,6 +19,7 @@ class PostForm extends Component {
     render() {
         return(
             <div className="postForm">
+                <NavLink to="/home">home</NavLink>
                 <div className="form_header">
                     I Want To Give Away: 
                 </div>

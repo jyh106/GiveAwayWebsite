@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./NavBar.css";
 import StyleMenu from './StyleMenu/StyleMenu.js';
 import FilterMenu from './FilterMenu/FilterMenu.js';
+import { NavLink } from 'react-router-dom';
 
 class NavBar extends Component {
     render() {
@@ -9,6 +10,7 @@ class NavBar extends Component {
             <div className="navBar">
                 <StyleMenu />
                 <FilterMenu />
+                <NavLink to="/newform"> add new form</NavLink>
             </div>
         )
     }
