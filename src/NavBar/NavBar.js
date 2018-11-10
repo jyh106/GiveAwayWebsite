@@ -10,7 +10,7 @@ class NavBar extends Component {
             <div className="navBar">
                 <StyleMenu />
                 <FilterMenu />
-                <NavLink to="/newform"> add new form</NavLink>
+                <NavLink to="/newform" className="addNewFormButton"> add new form</NavLink>
             </div>
         )
     }

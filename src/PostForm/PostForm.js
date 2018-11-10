@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import "./PostForm.css";
+import "./PostForm.css";
 import { NavLink } from 'react-router-dom';
 
 class PostForm extends Component {
@@ -18,8 +18,9 @@ class PostForm extends Component {
     }
     render() {
         return(
-            <div className="postForm">
-                <NavLink to="/home">home</NavLink>
+            <div>
+                <NavLink to="/home" className="homeButton">Home</NavLink>
+             <div className="postForm">
                 <div className="form_header">
                     I Want To Give Away: 
                 </div>
@@ -65,7 +66,13 @@ class PostForm extends Component {
                     {this.getDate()}
                 </div>
 
+                <button className="submite">
+                    Submit
+                </button>
+
             </div>
+
+        </div>
         )
     }
 }

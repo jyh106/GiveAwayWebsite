@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Poiret+One');
 
+
+.homeButton{
+    width: 100%;
+} 
+
 .postForm {
-    display: none;
+    display: block;
     position: absolute;
     top: 20%;
     left: 30%;
@@ -9,9 +14,11 @@
     width: 400px;
     border-radius: 5px;
     border: 2px solid rgb(129, 198, 224);
+    margin: 0 auto;
 }
 
-.form_header{
+
+ .form_header{
     background-color: rgb(113, 210, 240);
     padding: 6px;
     font-family: 'Poiret One', cursive;
@@ -63,3 +70,4 @@ input{
     font-family: 'Poiret One', cursive;
     font-weight: bolder;
 }
+
