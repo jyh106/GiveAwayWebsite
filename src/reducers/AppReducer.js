@@ -4,7 +4,7 @@ import { Map } from 'immutable';
 
 const INITIAL_STATE = Map({
   'searchBoxOnFocus': false,
-  'isModalShown': true,
+  'isModalShown': false,
 });
 
 function AppReducer(state = INITIAL_STATE, action) {

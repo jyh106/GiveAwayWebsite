@@ -9,7 +9,9 @@ class Modal extends Component {
         if(this.props.isModalShown){
             return (
                 <div className="modal">
-                    Select city
+                    <div className="modal_question">Please enter your zip code: </div>
+                     <input className="input_zipCode" maxLength="5" type="number"></input>
+                    <div className="modal_skipButton">skip</div>
                 </div>
             )
         }
