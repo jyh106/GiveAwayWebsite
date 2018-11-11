@@ -12,7 +12,21 @@ function changeDisplayStyle(style) {
     }
 }
 
+function shouldDisplayModal(){
+    return {
+        type: 'DISPLAY_MODAL',
+    }
+}
+
+function hideModal() {
+    return {
+        type: 'HIDE_MODAL',
+    }
+}
+
 export default {
     isSearchBoxOnFocus,
     changeDisplayStyle,
+    shouldDisplayModal,
+    hideModal
 }

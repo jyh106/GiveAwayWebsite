@@ -4,10 +4,16 @@ import Header from "../Header/Header.js";
 import NavBar from "../NavBar/NavBar.js";
 import PostBoard from '../PostBoard/PostBoard.js';
 import Modal from "../Modal/Modal.js";
+import Actions from "../Actions/actions.js"
 import './Home.css';
 
 
+
 class Home extends Component {
+    componentDidMount(){
+        this.props.displayModal()
+    }
+
     render() {
         return (
             <div className="App">
@@ -29,6 +35,9 @@ function mapStateToProps(state){
   
   const mapDispatchToProps = dispatch => {
     return {
+        displayModal: () => {
+            dispatch(Actions.shouldDisplayModal());
+        }
         }
   }
   
