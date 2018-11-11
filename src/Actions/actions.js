@@ -12,21 +12,15 @@ function changeDisplayStyle(style) {
     }
 }
 
-function shouldDisplayModal(){
+function toggleModal(toggle){
     return {
-        type: 'DISPLAY_MODAL',
-    }
-}
-
-function hideModal() {
-    return {
-        type: 'HIDE_MODAL',
+        type: 'TOGGLE_MODAL',
+        data: toggle,
     }
 }
 
 export default {
     isSearchBoxOnFocus,
     changeDisplayStyle,
-    shouldDisplayModal,
-    hideModal
+    toggleModal
 }

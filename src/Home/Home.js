@@ -10,8 +10,8 @@ import './Home.css';
 
 
 class Home extends Component {
-    componentDidMount(){
-        this.props.displayModal()
+    componentDidMount() {
+        this.props.toggleModal(true)
     }
 
     render() {
@@ -35,8 +35,8 @@ function mapStateToProps(state){
   
   const mapDispatchToProps = dispatch => {
     return {
-        displayModal: () => {
-            dispatch(Actions.shouldDisplayModal());
+        toggleModal: (toggle) => {
+            dispatch(Actions.toggleModal(toggle));
         }
         }
   }
