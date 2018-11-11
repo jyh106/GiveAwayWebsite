@@ -1,0 +1,9 @@
+.modal {
+    z-index: 9;
+    background: red;
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    top: 30%;
+    left: 30%;
+}
