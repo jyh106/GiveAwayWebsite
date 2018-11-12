@@ -6,15 +6,15 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell} from '@fortawesome/free-solid-svg-icons'
-library.add(faBell) 
+import { faBell, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+library.add(faBell, faCheckCircle) 
 
 class NavBar extends Component {
     renderUserLocation(){
         if(this.props.userLocation !== 'none'){
             return (
                 <div className="userLocation location">
-                    <FontAwesomeIcon className="icon_bell" icon="bell" />
+                    <FontAwesomeIcon className="icon_check" icon="check-circle" />
                     Displaying results near: 
                     <div className="zipcode">
                         {this.props.userLocation}

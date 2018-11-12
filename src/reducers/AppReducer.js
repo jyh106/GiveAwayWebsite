@@ -4,7 +4,7 @@ import { Map } from 'immutable';
 
 const INITIAL_STATE = Map({
   'searchBoxOnFocus': false,
-  'isModalShown': false,
+  'isModalShown': true,
   'userLocation': 'none',
 });
 

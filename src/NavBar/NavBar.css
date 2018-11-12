@@ -29,8 +29,13 @@
 
 .icon_bell{
     padding-right: 5px;
-    color: rgb(245, 83, 8);
+    color: rgb(248, 134, 81);
     font-size: 14px;
+}
+
+.icon_check{
+    padding-right: 5px;
+    color: rgb(184, 245, 184);
 }
 
 .zipcode{
