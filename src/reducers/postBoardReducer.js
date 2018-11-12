@@ -31,6 +31,7 @@ const INITIAL_STATE = Map({
     ],
 
     displayStyle: 'Gallery',
+    clickedListPost: {}
 
 })
 
@@ -39,6 +40,8 @@ function postBoardReducer (state = INITIAL_STATE, action) {
     switch(action.type){
         case('CHANGE_DISPLAY_STYLE'):
             return state.set('displayStyle', action.data)
+        case('UPDATE_CLICKED_POST'):
+            return state.set('clickedListPost', action.data)
         default:
             return state
     }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import "./Modal.css";
+import "./Modal_zipcode.css";
 import { connect } from 'react-redux';
-import Actions from "../Actions/actions.js";
+import Actions from "../../Actions/actions";
 
 
-class Modal extends Component {
+class ModalZipCode extends Component {
     submitInput(e) {
         const inputValue = e.target.value;
         const code = (e.key)
@@ -32,14 +32,14 @@ class Modal extends Component {
 
 function mapStateToProps(state) {
     return{
-        isModalShown: state.AppReducer.get('isModalShown'),
+        isModalShown: state.AppReducer.get('isModal_zipcode_shown'),
     }
 }
   
   const mapDispatchToProps = dispatch => {
     return {
         toggleModal: (toggle) => {
-            dispatch( Actions.toggleModal(toggle) )
+            dispatch( Actions.toggleModal_zipcode(toggle) )
         },
         updateUserLocation: (location) => {
             dispatch(Actions.updateUserLocation(location))
@@ -50,4 +50,4 @@ function mapStateToProps(state) {
   export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Modal)
+  )(ModalZipCode)

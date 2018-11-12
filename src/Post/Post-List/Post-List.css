@@ -8,9 +8,13 @@
     align-content: center
 }
 
-.feather{
+.icon_feather{
     padding-right: 6px;
-    font-size: 10px;
+    font-size: 13px;
+}
+
+.postList:hover{
+    cursor: pointer;
 }
 
 .postList_details{
@@ -44,4 +48,11 @@
     width: 90%;
     height: 20px;
     overflow: scroll;
+}
+
+.modal_post_detail{
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    background:red;
 }

@@ -31,6 +31,9 @@ class OutsideAlerter extends Component {
    */
   handleClickOutside(event) {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      if(event.target.className === 'page-mask'){
+        this.props.toggleModalPost(false);
+      }
       this.props.isSearchBoxOnFocus(false);
     }
   }
@@ -48,6 +51,9 @@ function mapDispatchToProps(dispatch){
   return {
     isSearchBoxOnFocus: () => {
       dispatch(Actions.isSearchBoxOnFocus())
+    },
+    toggleModalPost: (toggle) => {
+      dispatch(Actions.toggleModal_post(toggle))
     }
   }
 }

@@ -1,0 +1,39 @@
+.modal_post_detail {
+    background: white;
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    z-index: 10;
+    width: 350px;
+    height: 250px;  
+    border-radius: 5px;
+}
+
+.modal_title{
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: rgb(15, 217, 253);
+    font-family: Arial;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.modal_date{
+    font-size: 13px;
+    text-align: right;
+    width: 98%;
+}
+
+.modal_address {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.modal_note{
+    text-align: left;
+    width: 300px;
+    border: 1px dotted rgb(15, 217, 253);
+    margin: 0 auto;
+    overflow: scroll;
+}

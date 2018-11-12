@@ -12,10 +12,17 @@ function changeDisplayStyle(style) {
     }
 }
 
-function toggleModal(toggle){
+function toggleModal_zipcode(toggle){
     return {
-        type: 'TOGGLE_MODAL',
+        type: 'TOGGLE_MODAL_ZIPCODE',
         data: toggle,
+    }
+}
+
+function toggleModal_post(toggle) {
+    return {
+        type: 'TOGGLE_MODAL_POST',
+        data: toggle
     }
 }
 
@@ -26,9 +33,18 @@ function updateUserLocation(zipcode){
     }
 }
 
+function updateClickedPost(postInfo){
+    return {
+        type: 'UPDATE_CLICKED_POST',
+        data: postInfo,
+    }
+}
+
 export default {
     isSearchBoxOnFocus,
     changeDisplayStyle,
-    toggleModal,
-    updateUserLocation
+    toggleModal_zipcode,
+    toggleModal_post,
+    updateUserLocation,
+    updateClickedPost
 }
