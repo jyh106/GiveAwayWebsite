@@ -10,6 +10,7 @@ class Modal extends Component {
         const code = (e.key)
         if ( (inputValue) && (code === "Enter") )  {
             this.props.toggleModal(false)
+            this.props.updateUserLocation(inputValue);
         }
     }
 
@@ -30,15 +31,18 @@ class Modal extends Component {
 }
 
 function mapStateToProps(state) {
-    return {
+    return{
         isModalShown: state.AppReducer.get('isModalShown'),
     }
-  }
+}
   
   const mapDispatchToProps = dispatch => {
     return {
         toggleModal: (toggle) => {
-            dispatch(Actions.toggleModal(toggle))
+            dispatch( Actions.toggleModal(toggle) )
+        },
+        updateUserLocation: (location) => {
+            dispatch(Actions.updateUserLocation(location))
         }
     }
   }

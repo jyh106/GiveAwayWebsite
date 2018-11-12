@@ -19,8 +19,16 @@ function toggleModal(toggle){
     }
 }
 
+function updateUserLocation(zipcode){
+    return {
+        type: 'UPDATE_USER_LOCATION',
+        data: zipcode,
+    }
+}
+
 export default {
     isSearchBoxOnFocus,
     changeDisplayStyle,
-    toggleModal
+    toggleModal,
+    updateUserLocation
 }

@@ -5,6 +5,7 @@ import { Map } from 'immutable';
 const INITIAL_STATE = Map({
   'searchBoxOnFocus': false,
   'isModalShown': false,
+  'userLocation': 'none',
 });
 
 function AppReducer(state = INITIAL_STATE, action) {
@@ -13,6 +14,8 @@ function AppReducer(state = INITIAL_STATE, action) {
         return state.set('searchBoxOnFocus', action.data)
     case('TOGGLE_MODAL'):
         return state.set('isModalShown', action.data);
+    case('UPDATE_USER_LOCATION'):
+        return state.set('userLocation', action.data)
     default:
         return state
 }
