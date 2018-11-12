@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import Actions from '../Actions/actions.js'
 library.add(faBell, faCheckCircle) 
 
 class NavBar extends Component {
@@ -23,7 +24,7 @@ class NavBar extends Component {
             )
         } 
         return(
-            <div className="request_userLocation location">
+            <div className="request_userLocation location" onClick={()=>this.props.toggleModal(true)}>
                 <FontAwesomeIcon className="icon_bell" icon="bell" />
                 Please update your location to see give aways near you.
             </div>
@@ -49,6 +50,9 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
     return {
+        toggleModal: (toggle) => {
+            dispatch(Actions.toggleModal(toggle));
+        }
     }
   }
   

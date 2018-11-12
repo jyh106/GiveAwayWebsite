@@ -10,10 +10,6 @@ import './Home.css';
 
 
 class Home extends Component {
-    // componentDidMount() {
-    //     this.props.toggleModal(true)
-    // }
-
     render() {
         return (
             <div className="App">
