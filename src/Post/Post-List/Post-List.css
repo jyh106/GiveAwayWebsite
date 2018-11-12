@@ -1,15 +1,17 @@
 .postList{
     width: 99%;
-    height: 40px;
-    background: rgb(181, 219, 241);
+    height: 20px;
+    background: rgba(190, 225, 245, 0.418);
     margin-top: 10px;
     border-radius: 5px;
     padding: 5px;
-    align-content: center
+    align-content: center;
+    overflow: scroll;
 }
 
 .icon_feather{
     padding-right: 6px;
+    padding-left: 13px;
     font-size: 13px;
 }
 
@@ -29,25 +31,27 @@
 
 .postList_date {
     display: inline-block;
-    font-size: 12px;
+    font-size: 11px;
     padding-left: 8px;
     color: rgb(99, 98, 98);
-
 }
 
 .postList_address{
     font-style: italic;
-    font-size: 12px;
+    font-size: 11px;
     padding-left: 15px;
     float: right;
+}
+
+.icon_address{
+    color: green;
+    padding-right: 4px;
 }
 
 .postList_note {
     font-size: 12px;
     padding-left: 15px;
-    width: 90%;
-    height: 20px;
-    overflow: scroll;
+    display: inline-block;
 }
 
 .modal_post_detail{
@@ -55,4 +59,9 @@
     top: 30%;
     left: 30%;
     background:red;
+}
+
+.icon_circle {
+    color: green;
+    font-size: 10px;
 }

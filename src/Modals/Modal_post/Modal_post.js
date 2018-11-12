@@ -9,6 +9,7 @@ import OutsideClick from '../../OutsideClick';
 library.add(faMapMarkerAlt, faFeather) 
 
 class ModalPost extends Component {
+
     render() {
         return(
             <OutsideClick>
@@ -20,7 +21,8 @@ class ModalPost extends Component {
                         {this.props.clickedPostInfo.date}
                     </div>
                     <div className="modal_address">
-                    <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> {this.props.clickedPostInfo.address}
+                        <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
+                        {this.props.clickedPostInfo.address}
                     </div>
                     <div className="modal_note">
                         {this.props.clickedPostInfo.note}

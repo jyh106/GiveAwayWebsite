@@ -3,9 +3,9 @@ import "./Post-List.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt, faFeather} from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt, faFeather, faCircle} from '@fortawesome/free-solid-svg-icons'
 import Actions from '../../Actions/actions.js'
-library.add(faMapMarkerAlt, faFeather) 
+library.add(faMapMarkerAlt, faFeather, faCircle) 
 
 class PostList extends Component {
     renderPostDetailModal(title, date, address, description){
@@ -18,23 +18,38 @@ class PostList extends Component {
         this.props.toggleDisplay(true);
     }
 
+    renderNote(){
+        if(this.props.description === 'none'){
+            return " "
+        }
+        return (
+            <div>
+                <FontAwesomeIcon icon="circle" className="icon_circle" /> note 
+            </div>
+        )
+    }
+
     render(){
         return(
             <div className="postList" 
                 onClick={()=>{this.renderPostDetailModal(this.props.name, this.props.date, this.props.address, this.props.description)}}>
+
                 <div className="postList_details postList_name">
                     <FontAwesomeIcon icon="feather" className="icon_feather" />
                     {this.props.name} 
+
                     <div className="postList_date">
                         ({this.props.date})
                     </div>
-                </div>
-                <div className="postList_details postList_address">
-                   <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
-                   {this.props.address}
-                </div>
-                <div className="postList_details postList_note">
-                    {this.props.description}
+
+                    <div className="postList_note">
+                        {this.renderNote()}
+                    </div>
+
+                    <div className="postList_details postList_address">
+                        <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
+                        {this.props.address.split(',')[1]}
+                    </div>
                 </div>
             </div>
 
