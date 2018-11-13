@@ -36,7 +36,7 @@ class NavBar extends Component {
                 <StyleMenu />
                 <FilterMenu />
                 {this.renderUserLocation()}
-                <NavLink to="/newform" className="addNewFormButton"> +GiveAway </NavLink>
+                <div className="addNewFormButton" onClick={()=> this.props.toggleModal('newForm', true)}> +GiveAway</div>
             </div>
         )
     }
