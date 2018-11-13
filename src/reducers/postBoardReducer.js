@@ -36,7 +36,7 @@ const INITIAL_STATE = Map({
 })
 
 
-function postBoardReducer (state = INITIAL_STATE, action) {
+function PostBoardReducer (state = INITIAL_STATE, action) {
     switch(action.type){
         case('CHANGE_DISPLAY_STYLE'):
             return state.set('displayStyle', action.data)
@@ -47,4 +47,4 @@ function postBoardReducer (state = INITIAL_STATE, action) {
     }
 }
 
-export default postBoardReducer;
+export default PostBoardReducer;

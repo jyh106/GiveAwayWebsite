@@ -38,7 +38,7 @@ class ModalPost extends Component {
 
 function mapStateToProps(state){
     return{
-        modalShown: state.AppReducer.getIn(['modalShown']),
+        modalShown: state.ModalReducer.getIn(['modalShown']),
         clickedPostInfo: state.PostBoardReducer.get('clickedListPost')
     }
   }

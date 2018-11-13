@@ -1,8 +1,7 @@
-import { Map, List } from 'immutable';
+import { Map} from 'immutable';
 
 const INITIAL_STATE = Map({
   'searchBoxOnFocus': false,
-  'modalShown': List(['zipcode']),
   'userLocation': 'none',
   'isPageMaskShown': true,
 });
@@ -12,13 +11,9 @@ function AppReducer(state = INITIAL_STATE, action) {
     case('SEARCH_BOX_FOCUS'): 
         return state.set('searchBoxOnFocus', action.data)
     case('SHOW_MODAL'):
-        return state.update('modalShown', list=>list.push(action.data)).set('isPageMaskShown', true);
+        return state.set('isPageMaskShown', true);
     case('HIDE_MODAL'):
-        if(state.get('modalShown').includes(action.data)){
-            const index = state.get('modalShown').indexOf(action.data);
-            return state.update('modalShown', list => list.splice(index, 1)).set('isPageMaskShown', false);
-        }
-        return state;
+        return state.set('isPageMaskShown', false);
     case('UPDATE_USER_LOCATION'):
         return state.set('userLocation', action.data)
     default:
