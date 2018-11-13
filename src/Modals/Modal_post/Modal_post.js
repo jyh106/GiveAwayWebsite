@@ -11,8 +11,9 @@ library.add(faMapMarkerAlt, faFeather)
 class ModalPost extends Component {
 
     render() {
-        return(
-            <OutsideClick>
+        if(this.props.isModal_post_shown){
+            return (
+                <OutsideClick>
                 <div className="modal_post_detail">
                     <div className="modal_title">
                         {this.props.clickedPostInfo.name}
@@ -28,13 +29,16 @@ class ModalPost extends Component {
                         {this.props.clickedPostInfo.note}
                     </div>
                 </div>
-            </OutsideClick>
-        )
+                </OutsideClick>
+            )
+        }
+        return null;
     }
 }
 
 function mapStateToProps(state){
     return{
+        isModal_post_shown: state.AppReducer.get('isModal_post_shown'),
         clickedPostInfo: state.PostBoardReducer.get('clickedListPost')
     }
   }

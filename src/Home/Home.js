@@ -13,7 +13,7 @@ import './Home.css';
 
 class Home extends Component {
     displayPageMask(){
-        if ((this.props.isModal_zipcode_shown) || (this.props.isModal_post_shown) || (this.props.isModal_signIn_shown)) {
+        if (this.props.isPageMaskShown) {
             return (
                 <div className="page-mask"></div>
             )
@@ -27,9 +27,9 @@ class Home extends Component {
                 <Header />
                 <NavBar />
                 <PostBoard />
-                {(this.props.isModal_zipcode_shown) ? <ModalZipCode /> : null}
-                {(this.props.isModal_post_shown) ? <ModalPost /> : null}
-                {(this.props.isModal_signIn_shown) ? <ModalSignIn /> : null}
+                <ModalZipCode />
+                <ModalPost />
+               <ModalSignIn />
                 {this.displayPageMask()}
              </div>
         )
@@ -38,17 +38,12 @@ class Home extends Component {
 
 function mapStateToProps(state){
     return{
-        isModal_zipcode_shown: state.AppReducer.get('isModal_zipcode_shown'),
-        isModal_post_shown: state.AppReducer.get('isModal_post_shown'),
-        isModal_signIn_shown: state.AppReducer.get('isModal_signIn_shown'),
+        isPageMaskShown: state.AppReducer.get('isPageMaskShown'),
     }
   }
   
   const mapDispatchToProps = dispatch => {
     return {
-        toggleModal: (toggle) => {
-            dispatch(Actions.toggleModal(toggle));
-        }
         }
   }
   

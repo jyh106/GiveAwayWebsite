@@ -47,6 +47,7 @@ function updateClickedPost(postInfo){
     }
 }
 
+
 export default {
     isSearchBoxOnFocus,
     changeDisplayStyle,
@@ -54,5 +55,5 @@ export default {
     toggleModal_post,
     toggleModal_signIn,
     updateUserLocation,
-    updateClickedPost
+    updateClickedPost,
 }
