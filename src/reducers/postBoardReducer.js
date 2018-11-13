@@ -1,7 +1,7 @@
-import { Map } from 'immutable';
+import { Map, List } from 'immutable';
 
 const INITIAL_STATE = Map({
-    posts: [
+    posts: List([
         {
             'name': 'Books',
             'date':'11/7/2018', 
@@ -28,7 +28,7 @@ const INITIAL_STATE = Map({
             'address':'123 Apple street,Freedom,CA,91234',
             'note':'none',
         }
-    ],
+    ]),
 
     displayStyle: 'Gallery',
     clickedListPost: {}
@@ -42,6 +42,8 @@ function PostBoardReducer (state = INITIAL_STATE, action) {
             return state.set('displayStyle', action.data)
         case('UPDATE_CLICKED_POST'):
             return state.set('clickedListPost', action.data)
+        case('ADD_NEW_POST'):
+            return state.updateIn(['posts'], list => list.push(action.data))
         default:
             return state
     }

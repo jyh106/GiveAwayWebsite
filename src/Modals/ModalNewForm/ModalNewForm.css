@@ -73,6 +73,7 @@ input{
     margin-bottom: 8px;
     border-radius: 5px;
     outline: none;
+    background: rgb(225, 242, 248);
 }
 
 .button_cancel:hover, .button_submit:hover {

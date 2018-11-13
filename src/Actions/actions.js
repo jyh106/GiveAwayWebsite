@@ -39,6 +39,13 @@ function updateClickedPost(postInfo){
     }
 }
 
+function addNewPost(postInfo){
+    return {
+        type: "ADD_NEW_POST",
+        data: postInfo
+    }
+}
+
 
 export default {
     isSearchBoxOnFocus,
@@ -46,4 +53,5 @@ export default {
     toggleModal,
     updateUserLocation,
     updateClickedPost,
+    addNewPost
 }
