@@ -14,22 +14,22 @@ function changeDisplayStyle(style) {
 
 function toggleModal_zipcode(toggle){
     return {
-        type: 'TOGGLE_MODAL_ZIPCODE',
-        data: toggle,
+        type: 'TOGGLE_MODAL',
+        data: {'modalType': 'isModal_zipcode_shown', 'isOn': toggle},
     }
 }
 
 function toggleModal_post(toggle) {
     return {
-        type: 'TOGGLE_MODAL_POST',
-        data: toggle
+        type: 'TOGGLE_MODAL',
+        data: {'modalType': 'isModal_post_shown', 'isOn': toggle},
     }
 }
 
 function toggleModal_signIn(toggle) {
     return {
-        type: 'TOGGLE_MODAL_SIGNIN',
-        data: toggle
+        type: 'TOGGLE_MODAL',
+        data: {'modalType': 'isModal_signIn_shown', 'isOn': toggle},
     }
 }
 
