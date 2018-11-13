@@ -12,24 +12,16 @@ function changeDisplayStyle(style) {
     }
 }
 
-function toggleModal_zipcode(toggle){
-    return {
-        type: 'TOGGLE_MODAL',
-        data: {'modalType': 'isModal_zipcode_shown', 'isOn': toggle},
+function toggleModal(type, toggle){
+    if(toggle){
+        return {
+            type:'SHOW_MODAL',
+            data: type
+        }
     }
-}
-
-function toggleModal_post(toggle) {
     return {
-        type: 'TOGGLE_MODAL',
-        data: {'modalType': 'isModal_post_shown', 'isOn': toggle},
-    }
-}
-
-function toggleModal_signIn(toggle) {
-    return {
-        type: 'TOGGLE_MODAL',
-        data: {'modalType': 'isModal_signIn_shown', 'isOn': toggle},
+        type: 'HIDE_MODAL',
+        data: type,
     }
 }
 
@@ -51,9 +43,7 @@ function updateClickedPost(postInfo){
 export default {
     isSearchBoxOnFocus,
     changeDisplayStyle,
-    toggleModal_zipcode,
-    toggleModal_post,
-    toggleModal_signIn,
+    toggleModal,
     updateUserLocation,
     updateClickedPost,
 }

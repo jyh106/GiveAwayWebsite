@@ -24,7 +24,7 @@ class NavBar extends Component {
             )
         } 
         return(
-            <div className="request_userLocation location" onClick={()=>this.props.toggleModal(true)}>
+            <div className="request_userLocation location" onClick={()=>this.props.toggleModal('zipcode', true)}>
                 <FontAwesomeIcon className="icon_bell" icon="bell" />
                 Please update your location to see give aways near you.
             </div>
@@ -50,8 +50,8 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleModal: (toggle) => {
-            dispatch(Actions.toggleModal_zipcode(toggle));
+        toggleModal: (type, toggle) => {
+            dispatch(Actions.toggleModal(type, toggle));
         }
     }
   }

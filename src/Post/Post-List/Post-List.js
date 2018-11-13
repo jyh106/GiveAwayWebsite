@@ -15,7 +15,7 @@ class PostList extends Component {
             'address': address,
             'note': description
         })
-        this.props.toggleDisplay(true);
+        this.props.toggleDisplay('post', true);
     }
 
     renderNote(){
@@ -67,8 +67,8 @@ function mapStateToProps(state){
         updateClickedPost: (postInfo)=> {
             dispatch(Actions.updateClickedPost(postInfo))
         },
-        toggleDisplay: (toggle) => {
-            dispatch(Actions.toggleModal_post(toggle))
+        toggleDisplay: (type, toggle) => {
+            dispatch(Actions.toggleModal(type, toggle))
         }
     }
   }

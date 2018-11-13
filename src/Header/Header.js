@@ -20,7 +20,7 @@ class Header extends Component {
                 <SearchBox />
                 <div className="user">
                     <FontAwesomeIcon icon="user-circle" className="icon_user" /> 
-                    <p className="sign_in" onClick={()=> this.props.toggleModal(true) }>Sign in</p>
+                    <p className="sign_in" onClick={()=> this.props.toggleModal('signIn', true) }>Sign in</p>
                 </div>
             </div>
         )
@@ -34,8 +34,8 @@ function mapStateToProps(state) {
   
   const mapDispatchToProps = dispatch => {
     return {
-        toggleModal: (toggle) => {
-            dispatch( Actions.toggleModal_signIn(toggle) )
+        toggleModal: (type, toggle) => {
+            dispatch( Actions.toggleModal(type, toggle) )
         }
     }
   }

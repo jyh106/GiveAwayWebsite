@@ -10,20 +10,20 @@ class ModalZipCode extends Component {
         const inputValue = e.target.value;
         const code = (e.key)
         if ( (inputValue) && (code === "Enter") )  {
-            this.props.toggleModal(false)
+            this.props.toggleModal('zipcode', false)
             this.props.updateUserLocation(inputValue);
         }
     }
 
 
     render() {
-        if (this.props.isModalShown) {
+        if (this.props.modalShown.includes('zipcode')) {
             return (
             <OutsideClick>
                 <div className="modal">
                     <div className="modal_question">Please enter your zip code: </div>
                      <input className="input_zipCode" type="number" onKeyDown={(e)=>this.submitInput(e)}></input>
-                    <div className="modal_skipButton" onClick={()=>this.props.toggleModal(false)}>skip</div>
+                    <div className="modal_skipButton" onClick={()=>this.props.toggleModal('zipcode', false)}>skip</div>
                 </div>
             </OutsideClick>
             )
@@ -35,14 +35,14 @@ class ModalZipCode extends Component {
 
 function mapStateToProps(state) {
     return{
-        isModalShown: state.AppReducer.get('isModal_zipcode_shown'),
+        modalShown: state.AppReducer.getIn(['modalShown']),
     }
 }
   
   const mapDispatchToProps = dispatch => {
     return {
-        toggleModal: (toggle) => {
-            dispatch( Actions.toggleModal_zipcode(toggle) )
+        toggleModal: (type, toggle) => {
+            dispatch( Actions.toggleModal(type, toggle) )
         },
         updateUserLocation: (location) => {
             dispatch(Actions.updateUserLocation(location))

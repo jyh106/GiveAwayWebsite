@@ -32,9 +32,9 @@ class OutsideAlerter extends Component {
   handleClickOutside(event) {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       if(event.target.className === 'page-mask'){
-        this.props.toggleModalPost(false);
-        this.props.toggleModalSignIn(false);
-        this.props.toggleModalZipCode(false);
+        this.props.toggleModal('signIn',false);
+        this.props.toggleModal('post',false);
+        this.props.toggleModal('zipcode',false);
       }
       this.props.isSearchBoxOnFocus(false);
     }
@@ -54,14 +54,8 @@ function mapDispatchToProps(dispatch){
     isSearchBoxOnFocus: () => {
       dispatch(Actions.isSearchBoxOnFocus())
     },
-    toggleModalPost: (toggle) => {
-      dispatch(Actions.toggleModal_post(toggle))
-    },
-    toggleModalSignIn: (toggle) => {
-      dispatch(Actions.toggleModal_signIn(toggle))
-    },
-    toggleModalZipCode: (toggle) => {
-      dispatch(Actions.toggleModal_zipcode(toggle))
+    toggleModal: (type, toggle) => {
+      dispatch(Actions.toggleModal(type, toggle))
     }
   }
 }

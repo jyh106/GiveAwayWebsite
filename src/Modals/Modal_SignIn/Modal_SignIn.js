@@ -6,7 +6,7 @@ import OutsideClick from '../../OutsideClick';
 
 class ModalSignIn extends Component {
     render(){
-        if(this.props.isModal_signIn_shown){
+        if(this.props.modalShown.includes('signIn')){
             return(
                 <OutsideClick>
                     <div className="form_signIn">
@@ -32,7 +32,7 @@ class ModalSignIn extends Component {
 
 function mapStateToProps(state) {
     return{
-        isModal_signIn_shown: state.AppReducer.get('isModal_signIn_shown'),
+        modalShown: state.AppReducer.getIn(['modalShown']),
     }
 }
   
