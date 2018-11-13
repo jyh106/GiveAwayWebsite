@@ -25,6 +25,7 @@
 
 .addNewFormButton:hover {
     color: blue;
+    cursor: pointer;
 }
 
 .icon_bell{

@@ -35,6 +35,7 @@ class OutsideAlerter extends Component {
         this.props.toggleModal('signIn',false);
         this.props.toggleModal('post',false);
         this.props.toggleModal('zipcode',false);
+        this.props.toggleModal('newForm',false);
       }
       this.props.isSearchBoxOnFocus(false);
     }

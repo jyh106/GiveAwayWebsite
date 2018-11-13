@@ -1,20 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+/* @import url('https://fonts.googleapis.com/css?family=Poiret+One'); */
 
-
-.home_button{
-    width: 100%;
-} 
-
-.postForm {
-    display: block;
-    position: absolute;
-    top: 20%;
-    left: 30%;
+.newPostForm {
+    z-index: 12;
+    position: absolute; 
+    top: 25%;
+    left: 35%;
     background:white;
     width: 400px;
     border-radius: 5px;
     border: 2px solid rgb(129, 198, 224);
-    margin: 0 auto;
 }
 
 
@@ -61,6 +55,7 @@ input{
     margin-left: 10px;
     font-size: 15px;
     padding-left: 10px;
+    padding-top: 5px;
     height: 100px;
     margin-bottom: 20px;
 }
@@ -69,5 +64,30 @@ input{
     padding: 10px;
     font-family: 'Poiret One', cursive;
     font-weight: bolder;
+}
+
+.button_submit, .button_cancel{
+    padding: 3px;
+    font-size: 14px;
+    border: 1px solid gray;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.button_cancel:hover, .button_submit:hover {
+    background-color: rgb(129, 198, 224);
+    cursor: pointer;
+    box-shadow: 0px 2px 15px 0px rgb(129, 198, 224);
+}
+
+.button_submit{
+    float: right;
+    margin-right: 10px;
+}
+
+.button_cancel{
+    float: left;
+    margin-left: 10px;
 }
 

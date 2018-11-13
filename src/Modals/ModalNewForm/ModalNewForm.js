@@ -12,9 +12,9 @@ class PostForm extends Component {
         return month + "/" + day + "/" +  year;
     }
     render() {
-        if(this.props.modalShown.includes('newPost')){
+        if(this.props.modalShown.includes('newForm')){
             return(
-                <div className="postForm">
+                <div className="newPostForm">
                     <div className="form_header">
                         I Want To Give Away: 
                     </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "./NavBar.css";
 import StyleMenu from './StyleMenu/StyleMenu.js';
 import FilterMenu from './FilterMenu/FilterMenu.js';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
