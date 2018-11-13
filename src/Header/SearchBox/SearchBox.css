@@ -1,7 +1,7 @@
 .searchBox {
-    margin-top: 6px;
+    margin-top: 10px;
     float: right;
-    margin-right: 20px;
+    margin-right: 100px;
     background: rgb(118, 233, 253);
     border-radius: 5px;
 }

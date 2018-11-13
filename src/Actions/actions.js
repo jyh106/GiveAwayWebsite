@@ -26,6 +26,13 @@ function toggleModal_post(toggle) {
     }
 }
 
+function toggleModal_signIn(toggle) {
+    return {
+        type: 'TOGGLE_MODAL_SIGNIN',
+        data: toggle
+    }
+}
+
 function updateUserLocation(zipcode){
     return {
         type: 'UPDATE_USER_LOCATION',
@@ -45,6 +52,7 @@ export default {
     changeDisplayStyle,
     toggleModal_zipcode,
     toggleModal_post,
+    toggleModal_signIn,
     updateUserLocation,
     updateClickedPost
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./Modal_zipcode.css";
 import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
+import OutsideClick from '../../OutsideClick';
 
 
 class ModalZipCode extends Component {
@@ -18,11 +19,13 @@ class ModalZipCode extends Component {
     render() {
         if (this.props.isModalShown) {
             return (
+            <OutsideClick>
                 <div className="modal">
                     <div className="modal_question">Please enter your zip code: </div>
                      <input className="input_zipCode" type="number" onKeyDown={(e)=>this.submitInput(e)}></input>
                     <div className="modal_skipButton" onClick={()=>this.props.toggleModal(false)}>skip</div>
                 </div>
+            </OutsideClick>
             )
         }
         return null;

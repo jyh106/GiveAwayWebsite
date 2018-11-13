@@ -51,7 +51,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = dispatch => {
     return {
         toggleModal: (toggle) => {
-            dispatch(Actions.toggleModal(toggle));
+            dispatch(Actions.toggleModal_zipcode(toggle));
         }
     }
   }

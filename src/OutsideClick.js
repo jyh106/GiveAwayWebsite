@@ -33,6 +33,8 @@ class OutsideAlerter extends Component {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       if(event.target.className === 'page-mask'){
         this.props.toggleModalPost(false);
+        this.props.toggleModalSignIn(false);
+        this.props.toggleModalZipCode(false);
       }
       this.props.isSearchBoxOnFocus(false);
     }
@@ -54,6 +56,12 @@ function mapDispatchToProps(dispatch){
     },
     toggleModalPost: (toggle) => {
       dispatch(Actions.toggleModal_post(toggle))
+    },
+    toggleModalSignIn: (toggle) => {
+      dispatch(Actions.toggleModal_signIn(toggle))
+    },
+    toggleModalZipCode: (toggle) => {
+      dispatch(Actions.toggleModal_zipcode(toggle))
     }
   }
 }
