@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "./Modal_SignIn.css";
 import { connect } from 'react-redux';
 import OutsideClick from '../../OutsideClick';
-// import Actions from "../../Actions/actions";
+import Actions from "../../Actions/actions";
 
 class ModalSignIn extends Component {
     render(){
@@ -22,6 +22,10 @@ class ModalSignIn extends Component {
                         <div className="form_signIn_submit">
                             submit
                         </div>
+                        <div className="form_signUp_button" 
+                            onClick={()=>{this.props.toggleModal('signIn', false) ;this.props.toggleModal('signUp', true)}}>
+                            Don't have an account yet? 
+                        </div>
                     </div>
                 </OutsideClick>
                 )
@@ -38,6 +42,9 @@ function mapStateToProps(state) {
   
   const mapDispatchToProps = dispatch => {
     return {
+        toggleModal: (type, toggle)=>{
+            dispatch(Actions.toggleModal(type, toggle))
+        }
     }
   }
 

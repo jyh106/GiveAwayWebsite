@@ -7,7 +7,7 @@ import ModalZipCode from "../Modals/Modal_zipcode/Modal_zipcode.js";
 import ModalPost from '../Modals/Modal_post/Modal_post.js';
 import ModalSignIn from "../Modals/Modal_SignIn/Modal_SignIn.js"
 import ModalNewForm from '../Modals/ModalNewForm/ModalNewForm';
-import Actions from "../Actions/actions.js"
+import ModalSignUp from '../Modals/ModalSignUp/ModalSignUp'
 import './Home.css';
 
 
@@ -32,6 +32,7 @@ class Home extends Component {
                 <ModalPost />
                <ModalSignIn />
                <ModalNewForm />
+               <ModalSignUp />
                 {this.displayPageMask()}
              </div>
         )
@@ -40,7 +41,7 @@ class Home extends Component {
 
 function mapStateToProps(state){
     return{
-        isPageMaskShown: state.AppReducer.get('isPageMaskShown'),
+        isPageMaskShown: state.ModalReducer.get('isPageMaskShown'),
     }
   }
   

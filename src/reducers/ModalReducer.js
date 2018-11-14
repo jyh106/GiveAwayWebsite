@@ -2,6 +2,7 @@ import { Map, List } from 'immutable';
 
 const INITIAL_STATE = Map({
     'modalShown': List(['zipcode']),
+    'isPageMaskShown': true,
 });
 
 function ModalReducer (state = INITIAL_STATE, action) {

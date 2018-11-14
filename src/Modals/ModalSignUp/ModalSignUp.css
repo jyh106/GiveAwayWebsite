@@ -1,30 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
 
-.form_signIn{
+.form_signUp{
     z-index: 11;
     position: absolute;
     top: 35%;
     left: 40%;
     width: 300px;
-    height: 155px;
+    height: 170px;
     background: white;
-    border: 1px solid rgb(159, 226, 247);
+    border: 1px solid rgb(159, 247, 221);
     border-radius: 5px;
 }
 
-.form_signIn_header{
+.form_signUp_header{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-bottom: 15px;
-    background: rgb(159, 226, 247);
+    background: rgb(159, 247, 221);
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.form_username, .form_email{
+
+.signUp_username, .signUp_email{
     width: 100%;
     height: 40px;
+}
+
+.signUp_username{
+    margin-bottom: 10px;
 }
 .input_username, .input_email{
     display: inline-block;
@@ -32,40 +37,37 @@
     
 }
 
-.username, .email{
+.create_username, .create_email{
     float: left;
     font-size: 14px;
     padding-left: 10px;
 }
 
-.email {
+.create_email {
     margin-left: 30px;
 }
 
-.form_signIn_submit{
+.button_submit{
     padding: 3px;
     border: none;
-    background-color: rgb(218, 236, 252);
+    background-color: rgb(159, 247, 221);
     width: 60px;
     border-radius: 5px;
     float: right;
     margin-right: 5px;
 }
-.form_signIn_submit:hover{
+.button_submit:hover{
     cursor: pointer;
-    background-color: rgb(198, 227, 252);
+    background-color: rgb(138, 231, 203);
 }
 
-.form_signUp_button{
-    float: left;
-    font-size: 14px;
-    margin-top: 10px;
+.username_requirement{
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    padding-left: 10px;
-    color: blue;
-}
-
-.form_signUp_button:hover{
-    cursor: pointer;
-    text-decoration: underline;
+    font-size: 12px;
+    position: relative;
+    width: 100px;
+    margin-right: 10px;
+    float: right;
+    padding-top: 2px;
+    color: rgb(119, 61, 22);
 }
