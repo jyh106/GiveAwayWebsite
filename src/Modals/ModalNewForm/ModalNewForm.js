@@ -41,15 +41,16 @@ class PostForm extends Component {
     clearState(){
         this.setState({
             'name': '',
-            'address1': '',
-            'address2': '',
-            'address3': '',
+            'address_street': '',
+            'address_apt': '',
+            'address_city': '',
             'note': '',
             'date': '',
         })
     }
 
     handleSubmit(){
+        console.log("hello")
         let address = `${this.state.address_street} ${this.state.address_apt}, ${this.state.address_city}`
        let postInfo = {
            'date': this.getDate(),
@@ -57,12 +58,20 @@ class PostForm extends Component {
            'address': address,
            'note': this.state.note
        }
-    
+       console.log(this.isSubmitButtonEnable())
        if(this.isSubmitButtonEnable()){
         this.props.addNewPost(postInfo)
         this.props.toggleModal('newForm', false)
         this.clearState();
        }
+       return null;
+    }
+
+    checkInput(value){
+        if(value.length > 0 ){
+            return ""
+        }
+        return "value_invalid"
     }
 
     render() {
@@ -78,30 +87,34 @@ class PostForm extends Component {
 
                 <div className="postForm_question">
                     <div className="titles">
-                        Title:
+                        Item(s):
                     </div>
-                    <input type="form_name" className="input_title" onChange={(e)=>this.onChangeInput('name', e.target.value)} required></input>
+                    <input type="form_name" className={`input_title ${this.checkInput(this.state.name)}`} 
+                            onChange={(e)=>this.onChangeInput('name', e.target.value)}>
+                    </input>
                 </div>
 
                 <div className="postForm_question">
                     <div className="titles">
-                        Address(StreetName):
+                        At(streetName):
                     </div>
-                    <input className="input_streetName" onChange={(e)=>this.onChangeInput('address_street', e.target.value)} required></input>
+                    <input className={`input_streetName ${this.checkInput(this.state.address_street)}`} 
+                            onChange={(e)=>this.onChangeInput('address_street', e.target.value)}>
+                    </input>
                 </div>
 
                 <div className="postForm_question">
                     <div className="titles">
-                        Address(apt): 
+                        At(apt): 
                     </div>
                     <input className="input_apt" onChange={(e)=>this.onChangeInput('address_apt', e.target.value)}></input>
                 </div>
 
                 <div className="postForm_question">
                     <div className="titles">
-                        City: 
+                        In(city): 
                     </div>
-                    <input className="input_city"  onChange={(e)=>this.onChangeInput('address_city', e.target.value)} required></input>
+                    <input className={`input_city ${this.checkInput(this.state.address_city)}`}   onChange={(e)=>this.onChangeInput('address_city', e.target.value)}></input>
                 </div>
                 
 
@@ -116,11 +129,14 @@ class PostForm extends Component {
                     {this.getDate()}
                 </div>
 
-                <button className="newForm_buttons newFormButton_cancel">
+                <button className="newForm_buttons newFormButton_cancel"
+                        onClick={()=> this.props.toggleModal('newForm', false)}>
                     Cancel
                 </button>
 
-                <button className="newForm_buttons newFormButton_submit" onClick={()=> this.handleSubmit()}>
+                <button className={`newForm_buttons newFormButton_submit ${(this.isSubmitButtonEnable()) ? "submit_enable" : "submit_disable"}`} 
+                        onClick={()=> this.handleSubmit()}
+                        disabled={!this.isSubmitButtonEnable()}>
                     Submit
                 </button>
             </div>
