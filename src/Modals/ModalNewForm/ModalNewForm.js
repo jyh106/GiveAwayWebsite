@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import "./ModalNewForm.css";
 import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
+import { FormWithConstraints, FieldFeedbacks, Async, FieldFeedback } from 'react-form-with-constraints';
+import { DisplayFields } from 'react-form-with-constraints-tools';
+
 
 class PostForm extends Component {
     constructor() {
@@ -69,7 +72,13 @@ class PostForm extends Component {
                     <div className="titles">
                         Title:
                     </div>
-                    <input className="input_title" onChange={(e)=>this.onChangeInput('name', e.target.value)} ></input>
+                    <input type="form_name" className="input_title" onChange={(e)=>this.onChangeInput('name', e.target.value)} required></input>
+                    <FieldFeedbacks for="form_name">
+                        <FieldFeedback when="valueMissing" />
+                        <FieldFeedback when="patternMismatch">
+                            Should be at least 5 characters long
+                        </FieldFeedback>
+                    </FieldFeedbacks>
                 </div>
 
                 <div className="postForm_question">
