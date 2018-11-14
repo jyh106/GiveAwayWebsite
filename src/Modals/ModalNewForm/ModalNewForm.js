@@ -3,7 +3,7 @@ import "./ModalNewForm.css";
 import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
 import { FormWithConstraints, FieldFeedbacks, Async, FieldFeedback } from 'react-form-with-constraints';
-import { DisplayFields } from 'react-form-with-constraints-tools';
+// import { DisplayFields } from 'react-form-with-constraints-tools';
 
 
 class PostForm extends Component {
@@ -11,12 +11,16 @@ class PostForm extends Component {
         super();
         this.state = {
             'name': '',
-            'address1': '',
-            'address2': '',
-            'address3': '',
+            'address_street': '',
+            'address_apt': '',
+            'address_city': '',
             'note': '',
             'date': '',
         }
+    }
+
+    isSubmitButtonEnable(){
+        return ((this.state.name.length > 0) && (this.state.address_street.length > 0) && (this.state.address_city.length > 0))
     }
 
     getDate(){
@@ -31,6 +35,7 @@ class PostForm extends Component {
         this.setState({
             [type]: answer,
         })
+
     }
 
     clearState(){
@@ -45,17 +50,19 @@ class PostForm extends Component {
     }
 
     handleSubmit(){
-        let address = `${this.state.address1}, ${this.state.address2}, ${this.state.address3}`
+        let address = `${this.state.address_street} ${this.state.address_apt}, ${this.state.address_city}`
        let postInfo = {
            'date': this.getDate(),
            'name': this.state.name,
            'address': address,
            'note': this.state.note
        }
-
-       this.props.addNewPost(postInfo)
-       this.props.toggleModal('newForm', false)
-       this.clearState();
+    
+       if(this.isSubmitButtonEnable()){
+        this.props.addNewPost(postInfo)
+        this.props.toggleModal('newForm', false)
+        this.clearState();
+       }
     }
 
     render() {
@@ -63,6 +70,7 @@ class PostForm extends Component {
             return null
         }
         return(
+        <form>
             <div className="newPostForm">
                 <div className="form_header">
                     I Want To Give Away: 
@@ -73,33 +81,27 @@ class PostForm extends Component {
                         Title:
                     </div>
                     <input type="form_name" className="input_title" onChange={(e)=>this.onChangeInput('name', e.target.value)} required></input>
-                    <FieldFeedbacks for="form_name">
-                        <FieldFeedback when="valueMissing" />
-                        <FieldFeedback when="patternMismatch">
-                            Should be at least 5 characters long
-                        </FieldFeedback>
-                    </FieldFeedbacks>
                 </div>
 
                 <div className="postForm_question">
                     <div className="titles">
                         Address(StreetName):
                     </div>
-                    <input className="input_streetName" onChange={(e)=>this.onChangeInput('address1', e.target.value)}></input>
+                    <input className="input_streetName" onChange={(e)=>this.onChangeInput('address_street', e.target.value)} required></input>
                 </div>
 
                 <div className="postForm_question">
                     <div className="titles">
                         Address(apt): 
                     </div>
-                    <input className="input_apt" onChange={(e)=>this.onChangeInput('address2', e.target.value)}></input>
+                    <input className="input_apt" onChange={(e)=>this.onChangeInput('address_apt', e.target.value)}></input>
                 </div>
 
                 <div className="postForm_question">
                     <div className="titles">
                         City: 
                     </div>
-                    <input className="input_city"  onChange={(e)=>this.onChangeInput('address3', e.target.value)} ></input>
+                    <input className="input_city"  onChange={(e)=>this.onChangeInput('address_city', e.target.value)} required></input>
                 </div>
                 
 
@@ -121,8 +123,8 @@ class PostForm extends Component {
                 <button className="newForm_buttons newFormButton_submit" onClick={()=> this.handleSubmit()}>
                     Submit
                 </button>
-
             </div>
+        </form>
         )
     }
 }
