@@ -32,7 +32,7 @@ class SearchBox extends Component {
 
 function mapStateToProps(state){
     return{
-        isSearchBoxOnFocus: state.AppReducer.get('searchBoxOnFocus')
+        isSearchBoxOnFocus: state.App.get('searchBoxOnFocus')
     }
   }
   

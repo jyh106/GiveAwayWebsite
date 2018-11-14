@@ -35,7 +35,7 @@ class ModalZipCode extends Component {
 
 function mapStateToProps(state) {
     return{
-        modalShown: state.ModalReducer.getIn(['modalShown']),
+        modalShown: state.Modal.getIn(['modalShown']),
     }
 }
   

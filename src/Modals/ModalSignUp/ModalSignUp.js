@@ -6,34 +6,34 @@ import OutsideClick from '../../OutsideClick';
 
 class ModalSignUp extends Component {
     render(){
-        if(this.props.modalShown.includes('signUp')){
-            return(
-                <OutsideClick>
-                    <div className="form_signUp">
-                        <div className="form_signUp_header">Create an account: </div>
-                        <div className="signUp_username">
-                            <div className="create_username">Username: </div> 
-                            <input className="input_username"></input>
-                            <div className="username_requirement">at least 6 letters long</div>
-                        </div>
-                        <div className="signUp_email">
-                            <div className="create_email">Email: </div> 
-                            <input className="input_email"></input>
-                        </div>
-                        <div className="button_submit">
-                            submit
-                        </div>
-                    </div>
-                </OutsideClick>
-                )
+        if(!this.props.modalShown.includes('signUp')){ 
+            return null
         }
-        return null
+        return(
+            <OutsideClick>
+                <div className="form_signUp">
+                    <div className="form_signUp_header">Create an account: </div>
+                    <div className="signUp_username">
+                        <div className="create_username">Username: </div> 
+                        <input className="input_username"></input>
+                        <div className="username_requirement">at least 6 letters long</div>
+                    </div>
+                    <div className="signUp_email">
+                        <div className="create_email">Email: </div> 
+                        <input className="input_email"></input>
+                    </div>
+                    <div className="button_submit">
+                        submit
+                    </div>
+                </div>
+            </OutsideClick>
+        )
     }
 }
 
 function mapStateToProps(state) {
     return{
-        modalShown: state.ModalReducer.getIn(['modalShown']),
+        modalShown: state.Modal.getIn(['modalShown']),
     }
 }
   

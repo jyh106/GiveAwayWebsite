@@ -41,7 +41,7 @@ class Home extends Component {
 
 function mapStateToProps(state){
     return{
-        isPageMaskShown: state.ModalReducer.get('isPageMaskShown'),
+        isPageMaskShown: state.Modal.get('isPageMaskShown'),
     }
   }
   

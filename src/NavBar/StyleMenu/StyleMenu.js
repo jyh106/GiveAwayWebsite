@@ -89,7 +89,7 @@ class StyleMenu extends Component {
 
 function mapStateToProps(state){
     return{
-        currentStyle: state.PostBoardReducer.get('displayStyle')
+        currentStyle: state.PostBoard.get('displayStyle')
     }
   }
   

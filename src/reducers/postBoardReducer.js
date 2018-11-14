@@ -32,7 +32,6 @@ const INITIAL_STATE = Map({
 
     displayStyle: 'Gallery',
     clickedListPost: {}
-
 })
 
 
@@ -43,7 +42,7 @@ function PostBoardReducer (state = INITIAL_STATE, action) {
         case('UPDATE_CLICKED_POST'):
             return state.set('clickedListPost', action.data)
         case('ADD_NEW_POST'):
-            return state.updateIn(['posts'], list => list.push(action.data))
+            return state.update('posts', list => list.push(action.data));
         default:
             return state
     }

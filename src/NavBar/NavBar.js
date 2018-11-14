@@ -44,7 +44,7 @@ class NavBar extends Component {
 
 function mapStateToProps(state) {
     return {
-        userLocation: state.AppReducer.get('userLocation'),
+        userLocation: state.App.get('userLocation'),
     }
   }
 

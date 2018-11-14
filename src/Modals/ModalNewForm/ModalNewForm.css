@@ -1,4 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css?family=Poiret+One'); */
 
 .newPostForm {
     z-index: 12;
@@ -66,7 +65,7 @@ input{
     font-weight: bolder;
 }
 
-.button_submit, .button_cancel{
+.newForm_buttons{
     padding: 3px;
     font-size: 14px;
     border: 1px solid gray;
@@ -76,18 +75,18 @@ input{
     background: rgb(225, 242, 248);
 }
 
-.button_cancel:hover, .button_submit:hover {
+.newForm_buttons:hover {
     background-color: rgb(129, 198, 224);
     cursor: pointer;
     box-shadow: 0px 2px 15px 0px rgb(129, 198, 224);
 }
 
-.button_submit{
+.newFormButton_submit{
     float: right;
     margin-right: 10px;
 }
 
-.button_cancel{
+.newFormButton_cancel {
     float: left;
     margin-left: 10px;
 }
