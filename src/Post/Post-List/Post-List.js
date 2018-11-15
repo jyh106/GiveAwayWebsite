@@ -8,22 +8,23 @@ import Actions from '../../Actions/actions.js'
 library.add(faMapMarkerAlt, faFeather, faCircle) 
 
 class PostList extends Component {
-    renderPostDetailModal(title, date, address, description){
+    renderPostDetailModal(){
         this.props.updateClickedPost({
-            'name': title,
-            'date': date,
-            'address': address,
-            'note': description
+            'name': this.props.name,
+            'date': this.props.date,
+            'address': this.props.address,
+            'note': this.props.description
         })
         this.props.toggleDisplay('post', true);
     }
 
     renderNote(){
         if(this.props.description === 'none'){
-            return " "
+            return null
         }
         return (
-            <div>
+            <div className="postList_note postElement" 
+                        onClick={()=>{this.renderPostDetailModal()}}>
                 <FontAwesomeIcon icon="circle" className="icon_circle" /> note 
             </div>
         )
@@ -31,26 +32,28 @@ class PostList extends Component {
 
     render(){
         return(
-            <div className="postList" 
-                onClick={()=>{this.renderPostDetailModal(this.props.name, this.props.date, this.props.address, this.props.description)}}>
+            <div className="postList postElement"
+                onClick={()=>{this.renderPostDetailModal()}}>
 
-                <div className="postList_details postList_name">
+                <div className="postList_name postElement" 
+                    onClick={()=>{this.renderPostDetailModal()}}>
                     <FontAwesomeIcon icon="feather" className="icon_feather" />
                     {this.props.name} 
-
-                    <div className="postList_date">
-                        ({this.props.date})
-                    </div>
-
-                    <div className="postList_note">
-                        {this.renderNote()}
-                    </div>
-
-                    <div className="postList_details postList_address">
-                        <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
-                        {this.props.address.split(',')[1]}
-                    </div>
                 </div>
+
+                <div className="postList_date postElement" 
+                    onClick={()=>{this.renderPostDetailModal()}}>
+                    ({this.props.date})
+                </div>
+
+                {this.renderNote()}
+
+                <div className="postList_address postElement"
+                    onClick={()=>{this.renderPostDetailModal()}}>
+                    <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
+                    {this.props.address.split(',')[1]}
+                </div>
+
             </div>
 
         )

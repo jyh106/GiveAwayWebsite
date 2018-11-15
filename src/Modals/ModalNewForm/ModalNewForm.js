@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import "./ModalNewForm.css";
 import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
-import { FormWithConstraints, FieldFeedbacks, Async, FieldFeedback } from 'react-form-with-constraints';
-// import { DisplayFields } from 'react-form-with-constraints-tools';
 
 
 class PostForm extends Component {
@@ -50,15 +48,13 @@ class PostForm extends Component {
     }
 
     handleSubmit(){
-        console.log("hello")
-        let address = `${this.state.address_street} ${this.state.address_apt}, ${this.state.address_city}`
-       let postInfo = {
+        const address = `${this.state.address_street} ${this.state.address_apt}, ${this.state.address_city}`
+        const postInfo = {
            'date': this.getDate(),
            'name': this.state.name,
            'address': address,
            'note': this.state.note
        }
-       console.log(this.isSubmitButtonEnable())
        if(this.isSubmitButtonEnable()){
         this.props.addNewPost(postInfo)
         this.props.toggleModal('newForm', false)

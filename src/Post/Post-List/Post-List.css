@@ -15,13 +15,9 @@
     font-size: 13px;
 }
 
-.postList:hover{
-    cursor: pointer;
-}
-
-.postList_details{
-    float: left;
+.postList{
     text-align: left;
+    margin-left: 5px;
 }
 
 .postList_name{
@@ -40,7 +36,7 @@
     font-style: italic;
     font-size: 11px;
     padding-left: 15px;
-    float: right;
+    display: inline-block;
 }
 
 .icon_address{
@@ -50,18 +46,16 @@
 
 .postList_note {
     font-size: 12px;
-    padding-left: 15px;
     display: inline-block;
+    padding-left: 15px;
 }
 
-.modal_post_detail{
-    position: absolute;
-    top: 30%;
-    left: 30%;
-    background:red;
-}
 
 .icon_circle {
     color: green;
     font-size: 10px;
+}
+
+.postList_name:hover, .postList_date:hover, .postList_address:hover, .postList_note:hover {
+    cursor: pointer;
 }
