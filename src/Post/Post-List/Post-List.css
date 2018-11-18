@@ -56,6 +56,6 @@
     font-size: 10px;
 }
 
-.postList_name:hover, .postList_date:hover, .postList_address:hover, .postList_note:hover {
+.postList_label:hover {
     cursor: pointer;
 }

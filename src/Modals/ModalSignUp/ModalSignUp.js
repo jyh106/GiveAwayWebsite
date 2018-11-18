@@ -13,7 +13,7 @@ class ModalSignUp extends Component {
             <OutsideClick>
                 <div className="form_signUp">
                     <div className="form_signUp_header">Create an account: </div>
-                    <div className="signUp_username">
+                    <div className="username_label">
                         <div className="create_username">Username: </div> 
                         <input className="input_username"></input>
                         <div className="username_requirement">at least 6 letters long</div>

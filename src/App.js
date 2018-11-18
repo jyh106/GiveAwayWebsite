@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Home from './Home/Home'
+import Home from './Home/Home';
+import Actions from './Actions/actions'
+import { connect } from 'react-redux'
 
 
 class App extends Component {
@@ -9,6 +11,25 @@ class App extends Component {
           <Home />
     );
   }
+
+  componentDidMount(){
+    this.props.appMounted();
+  }
+  
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    appMounted: () => dispatch(Actions.appMounted())
+  }
+}
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)

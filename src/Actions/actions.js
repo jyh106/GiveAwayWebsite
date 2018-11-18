@@ -46,6 +46,19 @@ function addNewPost(postInfo){
     }
 }
 
+function appMounted() {
+    return {
+      type: 'APP_MOUNTED'
+    }
+  }
+
+function getPosts(posts) {
+    return {
+        type: 'GET_POSTS',
+        data: posts,
+    }
+}
+
 
 export default {
     isSearchBoxOnFocus,
@@ -53,5 +66,7 @@ export default {
     toggleModal,
     updateUserLocation,
     updateClickedPost,
-    addNewPost
+    addNewPost,
+    appMounted,
+    getPosts
 }

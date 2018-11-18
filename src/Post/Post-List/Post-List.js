@@ -23,7 +23,7 @@ class PostList extends Component {
             return null
         }
         return (
-            <div className="postList_note postElement" 
+            <div className="postList_note postElement postList_label" 
                         onClick={()=>{this.renderPostDetailModal()}}>
                 <FontAwesomeIcon icon="circle" className="icon_circle" /> note 
             </div>
@@ -35,20 +35,20 @@ class PostList extends Component {
             <div className="postList postElement"
                 onClick={()=>{this.renderPostDetailModal()}}>
 
-                <div className="postList_name postElement" 
+                <div className="postList_name postElement postList_label" 
                     onClick={()=>{this.renderPostDetailModal()}}>
                     <FontAwesomeIcon icon="feather" className="icon_feather" />
                     {this.props.name} 
                 </div>
 
-                <div className="postList_date postElement" 
+                <div className="postList_date postElement postList_label" 
                     onClick={()=>{this.renderPostDetailModal()}}>
                     ({this.props.date})
                 </div>
 
                 {this.renderNote()}
 
-                <div className="postList_address postElement"
+                <div className="postList_address postElement postList_label"
                     onClick={()=>{this.renderPostDetailModal()}}>
                     <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
                     {this.props.address.split(',')[1]}

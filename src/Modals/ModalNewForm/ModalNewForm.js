@@ -3,7 +3,6 @@ import "./ModalNewForm.css";
 import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
 
-
 class PostForm extends Component {
     constructor() {
         super();
@@ -55,37 +54,33 @@ class PostForm extends Component {
            'address': address,
            'note': this.state.note
        }
-       if(this.isSubmitButtonEnable()){
         this.props.addNewPost(postInfo)
-        this.props.toggleModal('newForm', false)
         this.clearState();
-       }
-       return null;
     }
 
-    checkInput(value){
+    getErrorMessage(value){
         if(value.length > 0 ){
             return ""
         }
         return "value_invalid"
     }
 
-    render() {
-        if(!this.props.modalShown.includes('newForm')){ 
-            return null
-        }
-        return(
-        <form>
-            <div className="newPostForm">
-                <div className="form_header">
-                    I Want To Give Away: 
-                </div>
+    renderHeader(){
+        return (
+            <div className="form_header">
+                I Want To Give Away: 
+            </div>
+        )
+    }
 
-                <div className="postForm_question">
+    renderQuestions() {
+        return(
+            <div>
+                 <div className="postForm_question">
                     <div className="titles">
                         Item(s):
                     </div>
-                    <input type="form_name" className={`input_title ${this.checkInput(this.state.name)}`} 
+                    <input type="form_name" className={`input_title ${this.getErrorMessage(this.state.name)}`} 
                             onChange={(e)=>this.onChangeInput('name', e.target.value)}>
                     </input>
                 </div>
@@ -94,7 +89,7 @@ class PostForm extends Component {
                     <div className="titles">
                         At(streetName):
                     </div>
-                    <input className={`input_streetName ${this.checkInput(this.state.address_street)}`} 
+                    <input className={`input_streetName ${this.getErrorMessage(this.state.address_street)}`} 
                             onChange={(e)=>this.onChangeInput('address_street', e.target.value)}>
                     </input>
                 </div>
@@ -110,7 +105,7 @@ class PostForm extends Component {
                     <div className="titles">
                         In(city): 
                     </div>
-                    <input className={`input_city ${this.checkInput(this.state.address_city)}`}   onChange={(e)=>this.onChangeInput('address_city', e.target.value)}></input>
+                    <input className={`input_city ${this.getErrorMessage(this.state.address_city)}`}   onChange={(e)=>this.onChangeInput('address_city', e.target.value)}></input>
                 </div>
                 
 
@@ -120,11 +115,13 @@ class PostForm extends Component {
                     </div>
                     <textarea className="input_notes"  onChange={(e)=>this.onChangeInput('note', e.target.value)} ></textarea>
                 </div>
+            </div>
+        )
+    }
 
-                <div className="post_date">
-                    {this.getDate()}
-                </div>
-
+    renderButtons(){
+        return(
+            <div>
                 <button className="newForm_buttons newFormButton_cancel"
                         onClick={()=> this.props.toggleModal('newForm', false)}>
                     Cancel
@@ -136,7 +133,27 @@ class PostForm extends Component {
                     Submit
                 </button>
             </div>
-        </form>
+        )
+    }
+
+    render() {
+        if(!this.props.modalShown.includes('newForm')){ 
+            return null
+        }
+        
+        return(
+            <form>
+                <div className="newPostForm">
+                    {this.renderHeader()}
+                    {this.renderQuestions()}
+
+                    <div className="post_date">
+                        {this.getDate()}
+                    </div>
+
+                    {this.renderButtons()}
+                </div>
+            </form>
         )
     }
 }

@@ -5,9 +5,9 @@ import PostsGallery from '../Post/Post-Gallery.js';
 import { connect } from 'react-redux';
 
 class PostBoard extends Component {
-    producePostsGallery(){
+    renderPostsGallery(){
         let posts = [];
-        for(let post of this.props.postsInfo){
+        for(let post of this.props.posts){
             posts.push(<PostsGallery name={post.name} 
                              address={post.address}
                              date={post.date}
@@ -18,9 +18,9 @@ class PostBoard extends Component {
         return posts;
     }
 
-    producePostsList(){
+    renderPostsList(){
         let posts = [];
-        for(let post of this.props.postsInfo){
+        for(let post of this.props.posts){
             posts.push(<PostsList name={post.name} 
                              address={post.address}
                              date={post.date}
@@ -31,17 +31,17 @@ class PostBoard extends Component {
         return posts;
     }
 
-    producePosts(){
+    renderPosts(){
         if(this.props.displayStyle === 'Gallery'){
-            return this.producePostsGallery()
+            return this.renderPostsGallery()
         } 
-        return this.producePostsList();
+        return this.renderPostsList();
     }
 
     render() {
         return(
             <div className="PostBoard">
-                {this.producePosts()}
+                {this.renderPosts()}
             </div>
         )
     }
@@ -49,7 +49,7 @@ class PostBoard extends Component {
 
 function mapStateToProps(state){
     return{
-        postsInfo: state.PostBoard.get('posts'),
+        posts: state.PostBoard.get('posts'),
         displayStyle: state.PostBoard.get('displayStyle')
     }
   }

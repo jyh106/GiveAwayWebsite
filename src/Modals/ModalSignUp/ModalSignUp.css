@@ -23,12 +23,12 @@
 }
 
 
-.signUp_username, .signUp_email{
+.username_label, .signUp_email{
     width: 100%;
     height: 40px;
 }
 
-.signUp_username{
+.username_label{
     margin-bottom: 10px;
 }
 .input_username, .input_email{
