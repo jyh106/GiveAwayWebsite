@@ -3,11 +3,6 @@ import axios from 'axios';
 import Actions from '../Actions/actions.js';
 // import Constants from './constants.js';
 
-function* uploadPost(action){
-  //add new post info to redux store
-    yield put(Actions.addNewPost(action.data))
-}
-
 function* toggleModal_newForm(){
   yield put(Actions.toggleModal('newForm', false))
 }
@@ -23,11 +18,10 @@ function* sendPostToServer(action){
 
 
 export function* watchSubmitPost() {
-  //add new post info to redux store, and upload to server
+  // and upload to server
   //hide new form modal
   while (true) {
     const action = yield take('ADD_NEW_POST');
-    yield call(uploadPost, action);
     yield call(toggleModal_newForm);
     yield call(sendPostToServer, action);
   }

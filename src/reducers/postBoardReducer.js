@@ -14,6 +14,8 @@ function PostBoardReducer (state = INITIAL_STATE, action) {
             return state.set('displayStyle', action.data)
         case('UPDATE_CLICKED_POST'):
             return state.set('clickedListPost', action.data)
+        case('ADD_NEW_POST'):
+            return state.update('posts', list => list.push(action.data))
         case('GET_POSTS'):
             return state.set('posts', List(action.data));
         default:
