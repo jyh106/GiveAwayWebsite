@@ -1,8 +1,9 @@
-import { all, call, put, takeEvery, select, take } from 'redux-saga/effects'
+import { all, call, put, take } from 'redux-saga/effects'
 import axios from 'axios';
 import Actions from '../Actions/actions.js';
-// import Constants from './constants.js';
 
+
+/*handle new posts*/
 function* toggleModal_newForm(){
   yield put(Actions.toggleModal('newForm', false))
 }
@@ -16,7 +17,6 @@ function* sendPostToServer(action){
   })
 }
 
-
 export function* watchSubmitPost() {
   // and upload to server
   //hide new form modal
@@ -28,6 +28,7 @@ export function* watchSubmitPost() {
 }
 
 
+/*handle sending posts from server to frontehd */
 function* getPosts(){
   const response = yield call(axios.get, 'http://127.0.0.1:5000/posts');
   yield put(Actions.getPosts(response.data))
@@ -40,9 +41,27 @@ export function* watchAppMounted() {
   }
 }
 
+/* handle zipcode and filtering */
+function* sendzipCodeToServer(action) {
+  yield call(axios, {
+    method: 'POST',
+    url: 'http://127.0.0.1:5000/zipcode',
+    data: {"newZipCode": action.data},
+    config: { headers: {'Content-Type':'application/json'}}
+  })
+}
+
+export function* watchZipCode() {
+  while(true) {
+    const action = yield take('UPDATE_USER_LOCATION');
+    yield call(sendzipCodeToServer, action)
+  }
+}
+
 export default function* rootSaga() {
   yield all([
     watchSubmitPost(),
     watchAppMounted(),
+    watchZipCode(),
   ])
 }

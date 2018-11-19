@@ -103,7 +103,7 @@ class PostForm extends Component {
 
                 <div className="postForm_question">
                     <div className="titles">
-                        In(city): 
+                        In(city or zipcode): 
                     </div>
                     <input className={`input_city ${this.getErrorMessage(this.state.address_city)}`}   onChange={(e)=>this.onChangeInput('address_city', e.target.value)}></input>
                 </div>
