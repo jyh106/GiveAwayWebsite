@@ -36,7 +36,7 @@ function* getPosts(){
 
 export function* watchAppMounted() {
   while (true) {
-      const action = yield take('APP_MOUNTED');
+      yield take('APP_MOUNTED');
       yield call(getPosts);
   }
 }
