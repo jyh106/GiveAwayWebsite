@@ -28,7 +28,7 @@ class Home extends Component {
                 <Header />
                 <NavBar />
                 <PostBoard />
-                <ModalZipCode />
+                {/* <ModalZipCode /> */}
                 <ModalPost />
                <ModalSignIn />
                <ModalNewForm />

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./NavBar.css";
 import StyleMenu from './StyleMenu/StyleMenu.js';
 import FilterMenu from './FilterMenu/FilterMenu.js';
+import SelectCity from './SelectCity/SelectCity.js'
 // import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -35,7 +36,7 @@ class NavBar extends Component {
             <div className="navBar">
                 <StyleMenu />
                 <FilterMenu />
-                {this.renderUserLocation()}
+                <SelectCity />
                 <div className="addNewFormButton" onClick={()=> this.props.toggleModal('newForm', true)}> +GiveAway</div>
             </div>
         )
