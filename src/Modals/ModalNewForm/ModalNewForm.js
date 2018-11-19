@@ -29,6 +29,7 @@ class PostForm extends Component {
     }
 
     onChangeInput(type, answer){
+        console.log(answer)
         this.setState({
             [type]: answer,
         })
@@ -103,9 +104,17 @@ class PostForm extends Component {
 
                 <div className="postForm_question">
                     <div className="titles">
-                        In(city or zipcode): 
+                        In:  
+                        <select className={`citySelection ${this.getErrorMessage(this.state.address_city)} `} 
+                                onChange={(e)=>this.onChangeInput('address_city', e.target.value)}>
+                            <option value="">Select city</option>
+                            <option value="San Francisco">San Francisco</option>
+                            <option value="Oakland">Oakland</option>
+                            <option value="Berkeley">Berkeley</option>
+                            <option value="San Bruno">San Bruno</option>
+                            <option value="Burlingame">Burlingame</option>
+                        </select>
                     </div>
-                    <input className={`input_city ${this.getErrorMessage(this.state.address_city)}`}   onChange={(e)=>this.onChangeInput('address_city', e.target.value)}></input>
                 </div>
                 
 

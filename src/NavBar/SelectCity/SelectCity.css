@@ -17,6 +17,7 @@
 
 .displayCity_label{
     display: inline-block;
+    padding-bottom: 3px;
 }
 
 .currentCity {
@@ -28,7 +29,7 @@
 .selectCityOptions{
     margin-top: 5px;
     width: 220px;
-    background: rgb(231, 229, 229);
+    background: rgb(248, 245, 245);
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
 }

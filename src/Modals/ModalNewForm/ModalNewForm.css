@@ -106,3 +106,17 @@ input{
 .value_invalid{
     border-color: red;
 }
+
+.citySelection{
+    appearance: none; 
+    padding: 5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    outline: none;
+    border-radius: 2px;
+}
+
+.required_label{
+    color: red;
+    display: inline-block;
+}
