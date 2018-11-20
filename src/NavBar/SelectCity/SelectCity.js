@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import "./SelectCity.css";
+import { connect } from 'react-redux';
+import Actions from '../../Actions/actions.js';
+
 
 class SelectCity extends Component {
     constructor(){
@@ -17,11 +20,8 @@ class SelectCity extends Component {
     }
 
     handleSelectCity(city){
-        this.setState({
-            currentSelectedCity: city
-        })
-
         this.toggleMenu()
+        this.props.updateLocation(city)
     }
 
     renderSelectCityMenu(){
@@ -43,11 +43,29 @@ class SelectCity extends Component {
     render() {
         return(
             <div className="selectCityMenu" onClick={()=> this.toggleMenu()}>
-                <p className="displayCity_label">Displaying results in: </p> <div className="currentCity" >{this.state.currentSelectedCity}</div>
+                <p className="displayCity_label">Displaying results in: </p> <div className="currentCity" >{this.props.currentSelectedCity}</div>
                 {this.renderSelectCityMenu()}
             </div>
         )
     }
 }
 
-export default SelectCity;
+function mapStateToProps(state) {
+    return {
+        currentSelectedCity: state.NavBar.get('currentSelectedCity')
+    }
+  }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        updateLocation: (city) => {
+            dispatch(Actions.updateCity(city));
+        }
+    }
+  }
+  
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SelectCity)

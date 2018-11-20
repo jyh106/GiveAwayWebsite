@@ -25,10 +25,10 @@ function toggleModal(type, toggle){
     }
 }
 
-function updateUserLocation(zipcode){
+function updateCity(location){
     return {
-        type: 'UPDATE_USER_LOCATION',
-        data: zipcode,
+        type: 'UPDATE_CITY',
+        data: location,
     }
 }
 
@@ -64,7 +64,7 @@ export default {
     isSearchBoxOnFocus,
     changeDisplayStyle,
     toggleModal,
-    updateUserLocation,
+    updateCity,
     updateClickedPost,
     addNewPost,
     appMounted,
