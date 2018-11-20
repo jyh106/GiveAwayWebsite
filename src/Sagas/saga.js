@@ -51,10 +51,16 @@ function* sendSelectedCityToServer(action) {
   })
 }
 
+function* getFilteredPosts(city){
+  const response = yield call(axios.get, `http://127.0.0.1:5000/posts?selectedCity=${city}`)
+  yield put(Actions.getPosts(response.data))
+}
+
 export function* watchSelectCity() {
   while(true) {
     const action = yield take('UPDATE_CITY');
     yield call(sendSelectedCityToServer, action)
+    yield call(getFilteredPosts, action.data)
   }
 }
 
