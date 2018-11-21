@@ -1,13 +1,14 @@
 .styleMenu{
     position: absolute;
-    right: 95%;
+    left: 1%;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
 }
 
 .style_default, .styleMenu{
     margin-left: 7px;
-    background-color: white;
+    background-color: rgb(212, 245, 253);
+    color: darkblue;
     width: 100px;
     border-radius: 3px;
 }
@@ -17,8 +18,9 @@
     padding-left: 1px;
 }
 
-.style_default:hover, .style_list:hover,.style_default_gallery{
+.style_default:hover, .style_list:hover,.style_default_gallery:hover{
     cursor: pointer;
+    background-color: white;
 }
 
 .style_default_gallery, .style_list{
@@ -27,7 +29,7 @@
 }
 
 .style_list:hover{
-    background-color: gray;
+    background-color: white;
 }
 
 .icon_arrows{

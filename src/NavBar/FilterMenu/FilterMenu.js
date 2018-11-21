@@ -53,7 +53,7 @@ class FilterMenu extends Component {
                     onClick = {()=> {this.toggleDisplayFilterMenu()}}
                     >Newest{this.shouldDisplayArrow()}
                 </div>
-                {this.renderDisplayFilterMenu()}
+                {/* {this.renderDisplayFilterMenu()} */}
             </div>
         )
     }

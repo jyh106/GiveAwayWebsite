@@ -30,7 +30,7 @@ export function* watchSubmitPost() {
 
 /*handle sending posts from server to frontehd */
 function* getPosts(){
-  const response = yield call(axios.get, 'http://127.0.0.1:5000/posts');
+  const response = yield call(axios.get, 'http://127.0.0.1:5000/posts?city=All cities');
   yield put(Actions.getPosts(response.data))
 }
 
@@ -41,18 +41,18 @@ export function* watchAppMounted() {
   }
 }
 
-/* handle zipcode and filtering */
+/* handle update city and filtering */
 function* sendSelectedCityToServer(action) {
   yield call(axios, {
     method: 'POST',
-    url: 'http://127.0.0.1:5000/selectCity',
-    data: {"selectCity": action.data},
+    url: 'http://127.0.0.1:5000/city',
+    data: {"city": action.data},
     config: { headers: {'Content-Type':'application/json'}}
   })
 }
 
 function* getFilteredPosts(city){
-  const response = yield call(axios.get, `http://127.0.0.1:5000/posts?selectedCity=${city}`)
+  const response = yield call(axios.get, `http://127.0.0.1:5000/posts?city=${city}`)
   yield put(Actions.getPosts(response.data))
 }
 

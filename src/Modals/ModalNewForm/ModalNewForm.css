@@ -120,3 +120,11 @@ input{
     color: red;
     display: inline-block;
 }
+
+.maxCharacterLabel{
+    font-size: 12px;
+    color: rgb(102, 101, 101);
+    float: right;
+    margin-top: 3px;
+    margin-right: 18px;
+}

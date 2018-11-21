@@ -29,7 +29,6 @@ class PostForm extends Component {
     }
 
     onChangeInput(type, answer){
-        console.log(answer)
         this.setState({
             [type]: answer,
         })
@@ -82,8 +81,10 @@ class PostForm extends Component {
                         Item(s):
                     </div>
                     <input type="form_name" className={`input_title ${this.getErrorMessage(this.state.name)}`} 
-                            onChange={(e)=>this.onChangeInput('name', e.target.value)}>
+                            onChange={(e)=>this.onChangeInput('name', e.target.value)}
+                            maxLength='25'>
                     </input>
+                    <p className="maxCharacterLabel">max characters: {25 - this.state.name.length}</p>
                 </div>
 
                 <div className="postForm_question">

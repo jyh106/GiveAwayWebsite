@@ -22,6 +22,8 @@ class ModalSignUp extends Component {
                         <div className="create_email">Email: </div> 
                         <input className="input_email"></input>
                     </div>
+                    <div className="signUp_password">
+                    </div>
                     <div className="button_submit">
                         submit
                     </div>
