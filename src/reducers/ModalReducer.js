@@ -1,13 +1,14 @@
 import { Map, List } from 'immutable';
 
 const INITIAL_STATE = Map({
-    'modalShown': List(['zipcode']),
+    'modalShown': List([]),
     'isPageMaskShown': false,
 });
 
 function ModalReducer (state = INITIAL_STATE, action) {
     switch(action.type){
         case('SHOW_MODAL'):
+            // when modal and page mask toggle together
             return state.update('modalShown', list=>list.push(action.data)).set('isPageMaskShown', true);
         case('HIDE_MODAL'):
             if(state.get('modalShown').includes(action.data)){

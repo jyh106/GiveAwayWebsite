@@ -1,14 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed');
 
 .selectCityMenu{
-    /* background: white; */
     width: 220px;
     padding-top: 3px;
     position: absolute;
     right: 50%;
     border-radius: 5px;
     font-family: 'Encode Sans Condensed', sans-serif;
-
 }
 
 .selectCityMenu:hover{

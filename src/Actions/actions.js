@@ -52,6 +52,12 @@ function appMounted() {
     }
   }
 
+function appWillMount() {
+    return {
+        type: 'APP_WILL_MOUNT'
+    }
+}
+
 function getPosts(posts) {
     return {
         type: 'GET_POSTS',
@@ -68,5 +74,6 @@ export default {
     updateClickedPost,
     addNewPost,
     appMounted,
-    getPosts
+    getPosts,
+    appWillMount
 }

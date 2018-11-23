@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Actions from './Actions/actions.js';
+import Constants from './constants'
 
 
 class OutsideAlerter extends Component {
@@ -32,11 +33,9 @@ class OutsideAlerter extends Component {
   handleClickOutside(event) {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       if(event.target.className === 'page-mask'){
-        this.props.toggleModal('signIn',false);
-        this.props.toggleModal('post',false);
-        this.props.toggleModal('zipcode',false);
-        this.props.toggleModal('newForm',false);
-        this.props.toggleModal('signUp', false)
+        for (let key in Constants.MODAL_TYPES) {
+          this.props.toggleModal(Constants.MODAL_TYPES[key], false)
+        }
       }
       this.props.isSearchBoxOnFocus(false);
     }

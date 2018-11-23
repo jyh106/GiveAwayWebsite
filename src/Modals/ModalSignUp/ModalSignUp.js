@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import "./ModalSignUp.css";
 import { connect } from 'react-redux';
 import OutsideClick from '../../OutsideClick';
-// import Actions from "../../Actions/actions";
-
+import Utils from '../../utils'
 class ModalSignUp extends Component {
     render(){
         if(!this.props.modalShown.includes('signUp')){ 
@@ -35,7 +34,7 @@ class ModalSignUp extends Component {
 
 function mapStateToProps(state) {
     return{
-        modalShown: state.Modal.getIn(['modalShown']),
+        modalShown: Utils.getShowingModals(state),
     }
 }
   

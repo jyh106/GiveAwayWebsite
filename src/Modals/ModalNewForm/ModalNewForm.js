@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./ModalNewForm.css";
 import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
+import Utils from '../../utils'
 
 class PostForm extends Component {
     constructor() {
@@ -20,13 +21,6 @@ class PostForm extends Component {
         return ((this.state.name.length > 0) && (this.state.address_street.length > 0) && (this.state.address_city.length > 0))
     }
 
-    getDate(){
-        let date = new Date();
-        let month = date.getUTCMonth() + 1;
-        let day = date.getUTCDate();
-        let year = date.getUTCFullYear();
-        return month + "/" + day + "/" +  year;
-    }
 
     onChangeInput(type, answer){
         this.setState({
@@ -49,7 +43,7 @@ class PostForm extends Component {
     handleSubmit(){
         const address = `${this.state.address_street} ${this.state.address_apt}, ${this.state.address_city}`
         const postInfo = {
-           'date': this.getDate(),
+           'date': Utils.getDate(),
            'name': this.state.name,
            'address': address,
            'note': this.state.note
@@ -59,7 +53,7 @@ class PostForm extends Component {
     }
 
     getErrorMessage(value){
-        if(value.length > 0 ){
+        if (value.length > 0) {
             return ""
         }
         return "value_invalid"

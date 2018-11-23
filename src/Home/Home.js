@@ -3,23 +3,20 @@ import { connect } from "react-redux";
 import Header from "../Header/Header.js";
 import NavBar from "../NavBar/NavBar.js";
 import PostBoard from '../PostBoard/PostBoard.js';
-import ModalZipCode from "../Modals/Modal_zipcode/Modal_zipcode.js";
 import ModalPost from '../Modals/Modal_post/Modal_post.js';
 import ModalSignIn from "../Modals/Modal_SignIn/Modal_SignIn.js"
 import ModalNewForm from '../Modals/ModalNewForm/ModalNewForm';
 import ModalSignUp from '../Modals/ModalSignUp/ModalSignUp'
 import './Home.css';
 
-
-
 class Home extends Component {
     displayPageMask(){
-        if (this.props.isPageMaskShown) {
-            return (
-                <div className="page-mask"></div>
-            )
+        if (!this.props.isPageMaskShown) {
+            return null
         }
-        return null
+        return (
+            <div className="page-mask"></div>
+        )
     }
     
     render() {
@@ -28,7 +25,6 @@ class Home extends Component {
                 <Header />
                 <NavBar />
                 <PostBoard />
-                {/* <ModalZipCode /> */}
                 <ModalPost />
                <ModalSignIn />
                <ModalNewForm />
@@ -45,12 +41,7 @@ function mapStateToProps(state){
     }
   }
   
-  const mapDispatchToProps = dispatch => {
-    return {
-        }
-  }
   
   export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
   )(Home)

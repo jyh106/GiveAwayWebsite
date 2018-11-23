@@ -3,7 +3,7 @@ import "./CitySelector.css";
 import { connect } from 'react-redux';
 import Actions from '../../Actions/actions.js';
 import Constants from '../../constants';
-
+import Utils from '../../utils';
 
 class SelectCity extends Component {
     constructor(){
@@ -25,27 +25,23 @@ class SelectCity extends Component {
         this.props.updateLocation(city)
     }
 
-    renderCityMenu(){
-        let cities = []
-        for (let city of Constants.cities) {
-            cities.push(
-                <div className={`cityOption city_${city.className}`} 
-                        onClick={()=> this.handleSelectCity(city.name)}
-                        key={city}>
-                    {city.name}
-                </div>
-            )
-        }
-        return cities
-     }
-
     renderSelectCityMenu(){
         if (!this.state.isMenuShown) {
             return null
         }
+        const cities = []
+        for (let city of Constants.CITIES) {
+            cities.push(
+                <div className={`cityOption city_${city.className}`} 
+                        onClick={()=> this.handleSelectCity(city.name)}
+                        key={city.name}>
+                    {city.name}
+                </div>
+            )
+        }
         return(
-            <div className="selectCityOptions">
-                {this.renderCityMenu()}
+            <div className="selectCityOptions" key="options">
+                {cities}
             </div>
         )
     }
@@ -62,7 +58,7 @@ class SelectCity extends Component {
 
 function mapStateToProps(state) {
     return {
-        currentSelectedCity: state.NavBar.get('currentSelectedCity')
+        currentSelectedCity: Utils.getCurrentCity(state)
     }
   }
 
@@ -70,10 +66,9 @@ const mapDispatchToProps = dispatch => {
     return {
         updateLocation: (city) => {
             dispatch(Actions.updateCity(city));
-        }
+        },
     }
   }
-  
   
   export default connect(
     mapStateToProps,

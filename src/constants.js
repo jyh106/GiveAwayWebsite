@@ -1,4 +1,12 @@
-const cities = [
+const HOSTNAME = "http://127.0.0.1:5000/";
+
+const MODAL_TYPES = {
+    'MODAL_NEWFORM': 'newForm', 
+    'MODAL_SIGNIN':'signIn', 
+    'MODAL_SIGNUP':'signUp', 
+    'MODAL_POST':'post'}
+
+const CITIES = [
     {
     'name':'All cities',
     'className': 'allCities'
@@ -21,5 +29,7 @@ const cities = [
 ]
 
 export default {
-    cities
+    CITIES,
+    HOSTNAME,
+    MODAL_TYPES
 }

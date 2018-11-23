@@ -15,6 +15,10 @@ class App extends Component {
   componentDidMount(){
     this.props.appMounted();
   }
+
+  componentWillMount() {
+    this.props.appWillMount();
+  }
   
 }
 
@@ -24,7 +28,8 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    appMounted: () => dispatch(Actions.appMounted())
+    appMounted: () => dispatch(Actions.appMounted()),
+    appWillMount: () => dispatch(Actions.appWillMount())
   }
 }
 
