@@ -1,6 +1,7 @@
 .styleMenu{
-    position: absolute;
-    left: 1%;
+    position: relative;
+    width: 90px;
+    float: left;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
 }

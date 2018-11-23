@@ -152,7 +152,7 @@ class PostForm extends Component {
                     {this.renderQuestions()}
 
                     <div className="post_date">
-                        {this.getDate()}
+                        {Utils.getDate()}
                     </div>
 
                     {this.renderButtons()}

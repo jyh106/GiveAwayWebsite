@@ -1,4 +1,7 @@
 .PostBoard{
+    position: relative;
+    display: block;
+    margin-top: 35px;
     overflow: scroll;
     height: 100vh;
     background: white;

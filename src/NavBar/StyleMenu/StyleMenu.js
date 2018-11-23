@@ -5,7 +5,6 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp, faCaretDown, faThLarge, faListUl} from '@fortawesome/free-solid-svg-icons'
 import Actions from '../../Actions/actions.js';
-import OutsideAlert from '../../OutsideClick';
 library.add(faCaretUp, faCaretDown, faThLarge, faListUl);
 
 class StyleMenu extends Component {
@@ -78,11 +77,9 @@ class StyleMenu extends Component {
 
     render() {
         return (
-            <OutsideAlert>
                 <div className="styleMenu">
                     {this.renderMenu()}
                 </div>
-            </OutsideAlert>
         )
     }
 }

@@ -1,12 +1,11 @@
 .FilterMenu{
     width: 90px;
-    margin-right: 7px;
+    margin-left: 7px;
     background-color: rgb(212, 245, 253);
     color: darkblue;
     border-radius: 3px;
-    position: absolute;
-    left: 7%;
-    top: 4px;
+    position: relative;
+    float: left;
 }
 
 .FilterMenu_default, .DisplayFilterMenu, .DisplayFilterMenu_item{

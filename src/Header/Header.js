@@ -15,11 +15,11 @@ class Header extends Component {
                 <div className="header_name"> 
                     <FontAwesomeIcon icon="dove" className="dove" /> GiveAway 
                 </div>
-                <SearchBox />
                 <div className="user">
                     <FontAwesomeIcon icon="user-circle" className="icon_user" /> 
                     <p className="sign_in" onClick={()=> this.props.toggleModal('signIn', true) }>Sign in</p>
                 </div>
+                <SearchBox />
             </div>
         )
     }
