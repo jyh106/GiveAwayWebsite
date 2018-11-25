@@ -67,6 +67,7 @@ class PostForm extends Component {
         )
     }
 
+
     renderQuestions() {
         return(
             <div>
@@ -111,8 +112,12 @@ class PostForm extends Component {
                         </select>
                     </div>
                 </div>
-                
 
+                <div className="postForm_question">
+                    <input type="file" accept="image/png, image/jpeg, image/jpg" 
+                        onChange={(e)=>this.onChangeInput('images', e.target.value)}/>
+                </div>
+                
                 <div className="postForm_question">
                     <div className="titles">
                         Note: 

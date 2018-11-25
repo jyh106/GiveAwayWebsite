@@ -12,6 +12,7 @@ class PostBoard extends Component {
                              address={post.address}
                              date={post.date}
                              description={post.note}
+                             editable={post.editable}
                              key={"post " + post.name}
                              />)
         }
@@ -25,6 +26,7 @@ class PostBoard extends Component {
                              address={post.address}
                              date={post.date}
                              description={post.note}
+                             editable={post.editable}
                              key={"post " + post.name}
                              />)
         }

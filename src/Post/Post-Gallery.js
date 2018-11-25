@@ -2,16 +2,24 @@ import React, { Component } from 'react';
 import "./Post-Gallery.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt, faFeather} from '@fortawesome/free-solid-svg-icons'
-library.add(faMapMarkerAlt, faFeather) 
+import { faMapMarkerAlt, faFeather, faPencilAlt} from '@fortawesome/free-solid-svg-icons'
+library.add(faMapMarkerAlt, faFeather, faPencilAlt) 
 
 class PostGallery extends Component {
+    renderEditIcon(){
+        if (!this.props.editable) {
+            return null
+        }
+        return <FontAwesomeIcon icon="pencil-alt" className="edit_icon" />
+    }
     render(){
         return(
             <div className="post">
                 <div className="post_details post_name">
                     <FontAwesomeIcon icon="feather" className="post_name_icon"/>
                     {this.props.name}
+                    {this.renderEditIcon()}
+
                 </div>
                 <div className="post_details post_date">
                     {this.props.date}

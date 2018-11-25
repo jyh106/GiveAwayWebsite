@@ -1,5 +1,5 @@
 .post {
-    display: inline-block;
+    /* display: inline-block; */
     height: 200px;
     width: 300px;
     background: white;
@@ -18,12 +18,12 @@
     padding-left: 20px;
     font-weight: bold;
     font-size:18px;
-    width: 100%;
+    width: 93%;
     text-align: left;
 }
 
 .post_note{
-    background: rgb(233, 233, 233);
+    background: rgba(193, 239, 247, 0.267);
     width: 90%;
     margin: 0 auto;
     height: 85px;
@@ -37,6 +37,17 @@
 .post_name_icon{
     padding-right: 5px;
     font-size: 24px;
+}
+
+.edit_icon{
+    float: right;
+    margin-right: 10px;
+    font-size: 15px;
+    color: rgba(0, 0, 255, 0.692);
+}
+
+.edit_icon:hover{
+    cursor: pointer;
 }
 
 .post_date {
@@ -59,4 +70,8 @@
 .post_address:hover{
     cursor: pointer;
     color: blue;
+}
+
+.post_note:hover, .post_name:hover{
+    cursor: default;
 }

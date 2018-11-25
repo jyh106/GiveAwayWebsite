@@ -6,7 +6,7 @@ import Constants from '../constants'
 
 // handle new posts
 function* toggleModal_newForm(){
-  yield put(Actions.toggleModal(Constants.MODAL_TYPES.get('MODAL_NEWFORM'), false))
+  yield put(Actions.toggleModal(Constants.MODAL_TYPES['MODAL_NEWFORM'], false))
 }
 
 function* sendPostToServer(action){
