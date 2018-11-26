@@ -128,3 +128,8 @@ input{
     margin-top: 3px;
     margin-right: 18px;
 }
+
+.input_images{
+    border: none;
+    padding: 5px;
+}

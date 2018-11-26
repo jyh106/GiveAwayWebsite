@@ -2,6 +2,8 @@ import { all, call, put, take } from 'redux-saga/effects'
 import axios from 'axios';
 import Actions from '../Actions/actions.js';
 import Constants from '../constants'
+import FormData from 'form-data'
+
 
 
 // handle new posts

@@ -26,7 +26,7 @@
     background: rgba(193, 239, 247, 0.267);
     width: 90%;
     margin: 0 auto;
-    height: 85px;
+    height: 20px;
     overflow: scroll;
     text-align: left;
     border-radius: 3px;
@@ -74,4 +74,30 @@
 
 .post_note:hover, .post_name:hover{
     cursor: default;
+}
+
+.postImages{
+    height: 60px;
+    width: 96%;
+    padding-top: 8px;
+    margin: 0 auto;
+}
+
+.icon_angleLeft{
+    float: left;
+    margin-top: 20px;
+    margin-left: 8px;
+}
+
+.icon_angleRight{
+    float: right;
+    margin-top: 20px;
+    margin-right: 8px;
+}
+
+.image{
+    float: left;
+    margin-left: 6px;
+    height: 40px;
+    width: 40px;
 }

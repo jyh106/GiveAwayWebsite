@@ -3,12 +3,22 @@ import "./Modal_post.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt, faFeather} from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt, faFeather , faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons'
 import OutsideClick from '../../OutsideClick';
-library.add(faMapMarkerAlt, faFeather) 
+library.add(faMapMarkerAlt, faFeather, faAngleLeft, faAngleRight) 
 
 class ModalPost extends Component {
     // this modal is for displaying individual post when user click on a post when viewing in list style
+    renderImages(){
+        return (
+            <div className="post_details postImages">
+                <FontAwesomeIcon className="icon_angleLeft" icon="angle-left" />
+                    <img className="image" src='https://www.akc.org/wp-content/themes/akc/component-library/assets//img/welcome.jpg' alt="clothes"></img>
+                <FontAwesomeIcon className="icon_angleRight" icon="angle-right" /> 
+            </div>
+        )
+    }
+
     render() {
         if(!this.props.modalShown.includes('post')) {
             return null
@@ -29,6 +39,7 @@ class ModalPost extends Component {
                 <div className="modal_note">
                     {this.props.clickedPostInfo.note}
                 </div>
+                {this.renderImages()}
             </div>
             </OutsideClick>
         )

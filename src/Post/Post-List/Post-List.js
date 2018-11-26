@@ -30,6 +30,17 @@ class PostList extends Component {
         )
     }
 
+    renderImageMark() {
+        // if(!this.props.images){
+        //     return null
+        // }
+        return (
+            <div className="postList_image postElement postList_label">
+                <FontAwesomeIcon icon="circle" className="icon_circle" /> images
+            </div>
+        )
+    }
+
     render(){
         return(
             <div className="postList postElement"
@@ -54,6 +65,7 @@ class PostList extends Component {
                     {this.props.address.split(',')[1]}
                 </div>
 
+                {this.renderImageMark()}
             </div>
 
         )
