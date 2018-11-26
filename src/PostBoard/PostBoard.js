@@ -13,7 +13,7 @@ class PostBoard extends Component {
                              date={post.date}
                              description={post.note}
                              editable={post.editable}
-                             image ={post.image}
+                             images ={post.images}
                              key={"post " + post.name}
                              />)
         }
@@ -28,6 +28,7 @@ class PostBoard extends Component {
                              date={post.date}
                              description={post.note}
                              editable={post.editable}
+                             images ={post.images}
                              key={"post " + post.name}
                              />)
         }

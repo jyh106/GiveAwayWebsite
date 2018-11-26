@@ -77,25 +77,35 @@
 }
 
 .postImages{
-    height: 60px;
-    width: 96%;
-    padding-top: 8px;
+    width: 92%;
     margin: 0 auto;
+}
+
+.imageWrapper{
+    width: 230px;
+    padding-top: 8px;
+    display: inline-block;  
+    overflow: scroll;
+}
+
+.images {
+    width: 500px;
 }
 
 .icon_angleLeft{
     float: left;
-    margin-top: 20px;
-    margin-left: 8px;
+
 }
 
 .icon_angleRight{
     float: right;
-    margin-top: 20px;
-    margin-right: 8px;
 }
 
-.image{
+.image:hover, .icon_angleLeft:hover, .icon_angleRight:hover{
+    cursor: pointer;
+}
+
+.image, .defaultImage{
     float: left;
     margin-left: 6px;
     height: 40px;
