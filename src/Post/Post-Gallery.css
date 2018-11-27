@@ -72,7 +72,7 @@
     color: blue;
 }
 
-.post_note:hover, .post_name:hover{
+ .post_name:hover{
     cursor: default;
 }
 

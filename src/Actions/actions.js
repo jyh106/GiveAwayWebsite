@@ -65,6 +65,16 @@ function getPosts(posts) {
     }
 }
 
+function handleClickedImage(currentClickedImage, images){
+    return {
+        type: 'POST_IMAGE_CLICKED',
+        data: {
+            currentClickedImage,
+            images
+        }
+    }
+}
+
 
 export default {
     isSearchBoxOnFocus,
@@ -75,5 +85,6 @@ export default {
     addNewPost,
     appMounted,
     getPosts,
-    appWillMount
+    appWillMount, 
+    handleClickedImage
 }

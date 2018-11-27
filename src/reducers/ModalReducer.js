@@ -3,6 +3,8 @@ import { Map, List } from 'immutable';
 const INITIAL_STATE = Map({
     'modalShown': List([]),
     'isPageMaskShown': false,
+    'currentClickedImage': 'none',
+    'images': []
 });
 
 function ModalReducer (state = INITIAL_STATE, action) {
@@ -16,6 +18,8 @@ function ModalReducer (state = INITIAL_STATE, action) {
                 return state.update('modalShown', list => list.splice(index, 1)).set('isPageMaskShown', false);
             }
             return state;
+        case('POST_IMAGE_CLICKED'):
+            return state.set('currentClickedImage', action.data.currentClickedImage).set('images', action.data.images)
         default:
             return state
     }

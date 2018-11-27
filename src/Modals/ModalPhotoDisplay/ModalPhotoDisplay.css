@@ -1,0 +1,47 @@
+.Modal_photos{
+    background-color: white;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    z-index: 12;
+    width: 600px;
+    height: 400px;
+}
+
+.currentClickedImage {
+    width: 400px;
+    height: 400px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.arrowIcons {
+    font-size: 40px;
+    color: gray;
+    display: inline-block;
+    margin-bottom: 200px;
+}
+
+.arrowIcons:hover {
+    cursor: pointer;
+}
+
+.thumbHolder {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    z-index: 12;
+    width: 600px;
+    background-color: blue;
+}
+
+
+.thumbs {
+    width: 50px;
+    height: 50px;
+}
+
+
+.currentClickedImageThumb {
+    border: 2px solid red;
+}
