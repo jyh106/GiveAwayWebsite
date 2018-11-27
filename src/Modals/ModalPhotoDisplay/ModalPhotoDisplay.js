@@ -23,7 +23,11 @@ class ModalPhotoDisplay extends Component {
         let images = [];
         for (let image of this.props.images) {
             images.push(
-                <img src={image} alt="image" key={image} className={`thumbs ${(this.isCurrentClikedImage(image)) ? 'currentClickedImageThumb' : ''}`}></img>
+                <img src={image} 
+                        alt="" key={image} 
+                        className={`thumbs ${(this.isCurrentClikedImage(image)) ? 'currentClickedImageThumb' : ''}`}
+                        onClick={ ()=> this.props.updateCurrentImage(image)}>
+                </img>
             )
         }
         return (
@@ -32,17 +36,42 @@ class ModalPhotoDisplay extends Component {
             </div>
         )
     }
+
+    handleClickedArrow(isLeft){
+        const currentImageIndex = this.props.images.indexOf(this.props.currentClickedImage);
+        let newIndex = -3;
+
+        if(isLeft){
+            newIndex = currentImageIndex - 1;
+            if(newIndex < 0) {
+                return null
+            }
+        } else {
+            newIndex = currentImageIndex + 1;
+            if(newIndex > this.props.images.length-1){
+                return null
+            }
+        }
+        return this.props.updateCurrentImage(this.props.images[newIndex])
+    }   
+
     render() {
         if(!this.props.modalShown.includes('photos')){ 
             return null
         }
         return (
             <div>
+                <div className="thumbParentHolder">
                 {this.renderThumbs()}
+                </div>
                 <div className="Modal_photos">
-                    <FontAwesomeIcon icon="angle-left" className="arrowIcons photoDisplay_iconAngleLeft" />
-                    <img src={this.props.currentClickedImage} alt="image" className="currentClickedImage"/>
-                    <FontAwesomeIcon icon="angle-right" className="arrowIcons photoDisplay_iconAngleRight"/>
+                    <FontAwesomeIcon icon="angle-left" 
+                                    className="arrowIcons photoDisplay_iconAngleLeft" 
+                                    onClick={()=> this.handleClickedArrow(true)}/>
+                    <img src={this.props.currentClickedImage} alt="" className="currentClickedImage"/>
+                    <FontAwesomeIcon icon="angle-right" 
+                                        className="arrowIcons photoDisplay_iconAngleRight"
+                                        onClick={()=> this.handleClickedArrow(false)}/>
                 </div>
             </div>
         )
@@ -61,6 +90,9 @@ const mapDispatchToProps = dispatch => {
     return {
         toggleModal: (type, toggle) => {
             dispatch(Actions.toggleModal(type, toggle));
+        },
+        updateCurrentImage: (image) => {
+            dispatch(Actions.updateClickedImage(image))
         }
     }
   }

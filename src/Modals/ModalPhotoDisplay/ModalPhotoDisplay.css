@@ -26,19 +26,28 @@
     cursor: pointer;
 }
 
-.thumbHolder {
+.thumbParentHolder {
     position: absolute;
-    top: 20%;
+    top: 22.4%;
     left: 30%;
     z-index: 12;
     width: 600px;
-    background-color: blue;
+    overflow: scroll;
+    border-top: 4px solid rgb(203, 179, 247);
+    border-bottom: 4px solid rgb(203, 179, 247);
+
+}
+
+.thumbHolder {
+    width: 650px;
+    background-color: white;
 }
 
 
 .thumbs {
     width: 50px;
     height: 50px;
+    margin-right: 5px;
 }
 
 
