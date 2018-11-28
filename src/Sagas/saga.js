@@ -58,29 +58,10 @@ export function* watchSelectCity() {
   }
 }
 
-
-
-
-function* handleClickedImage(action){
-  // const currentClickedImage = action.data['currentClickedImage'];
-  // const images = action.data['images'];
-  // const currentClickedImageIndex = images.indexOf(currentClickedImage);
-  yield put(Actions.toggleModal(Constants.MODAL_TYPES['MODAL_PHOTODISPLAY'], true))
-}
-
-
-export function* watchPostImageClicked() {
-  while(true) {
-    const action = yield take('POST_IMAGE_CLICKED');
-    yield handleClickedImage(action)
-  }
-}
-
 export default function* rootSaga() {
   yield all([
     watchSubmitPost(),
     watchSelectCity(),
     watchAppMounted(),
-    // watchPostImageClicked()
   ])
 }

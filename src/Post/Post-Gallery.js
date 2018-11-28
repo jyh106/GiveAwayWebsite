@@ -2,19 +2,12 @@ import React, { Component } from 'react';
 import "./Post-Gallery.css";
 import { connect } from 'react-redux';
 import Actions from "../Actions/actions";
-// import { ScrollView } from 'react-native';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faFeather, faPencilAlt, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons'
-import { Action } from 'rxjs/internal/scheduler/Action';
 library.add(faMapMarkerAlt, faFeather, faPencilAlt, faAngleLeft, faAngleRight) 
 
 class PostGallery extends Component {
-    constructor(){
-        super();
-        this.myRef = React.createRef();
-    }
-
     renderEditIcon(){
         if (!this.props.editable) {
             return null
@@ -47,19 +40,13 @@ class PostGallery extends Component {
         return images
     }
 
-    scroll(ref) {
-        ref.current.scrollIntoView({behavior: 'smooth'})
-      }
-
     renderImages(){
         return (
             <div className="post_details postImages">
                 <FontAwesomeIcon className="icon_angleLeft" icon="angle-left" />
                 <div className="imageWrapper">
                     <div className="images" ref={this.myRef} onClick={() => {this.scroll(this.myRef)}}>
-                        {/* <ScrollView> */}
-                            {this.checkImages()}
-                        {/* </ScrollView> */}
+                        {this.checkImages()}
                     </div>
                 </div>
                 <FontAwesomeIcon className="icon_angleRight" icon="angle-right" /> 

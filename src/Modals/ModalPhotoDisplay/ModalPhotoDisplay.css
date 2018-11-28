@@ -2,10 +2,11 @@
     background-color: white;
     position: absolute;
     top: 30%;
-    left: 30%;
+    left: 34%;
     z-index: 12;
     width: 600px;
     height: 400px;
+    border-radius: 5px;
 }
 
 .currentClickedImage {
@@ -29,20 +30,17 @@
 .thumbParentHolder {
     position: absolute;
     top: 22.4%;
-    left: 30%;
+    left: 34%;
     z-index: 12;
     width: 600px;
     overflow: scroll;
-    border-top: 4px solid rgb(203, 179, 247);
-    border-bottom: 4px solid rgb(203, 179, 247);
-
 }
 
 .thumbHolder {
     width: 650px;
-    background-color: white;
+    height: 60px;
+    background-color: rgb(216, 212, 212);
 }
-
 
 .thumbs {
     width: 50px;
@@ -50,7 +48,6 @@
     margin-right: 5px;
 }
 
-
 .currentClickedImageThumb {
-    border: 2px solid red;
+    border: 2px solid rgb(0, 255, 76);
 }

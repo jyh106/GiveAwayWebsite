@@ -8,13 +8,6 @@ import Actions from "../../Actions/actions";
 library.add(faAngleLeft, faAngleRight) 
 
 class ModalPhotoDisplay extends Component {
-    constructor(){
-        super();
-        this.state = {
-            photos: [],
-        }
-    }
-
     isCurrentClikedImage(image) {
         return image === this.props.currentClickedImage
     }
