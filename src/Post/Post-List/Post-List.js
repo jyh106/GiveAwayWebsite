@@ -13,13 +13,14 @@ class PostList extends Component {
             'name': this.props.name,
             'date': this.props.date,
             'address': this.props.address,
-            'note': this.props.description
+            'note': this.props.description,
+            'images': this.props.images
         })
         this.props.toggleDisplay('post', true);
     }
 
     renderNote(){
-        if(this.props.description === 'none'){
+        if(this.props.description === ''){
             return null
         }
         return (
@@ -31,9 +32,9 @@ class PostList extends Component {
     }
 
     renderImageMark() {
-        // if(!this.props.images){
-        //     return null
-        // }
+        if(this.props.images.length === 0){
+            return null
+        }
         return (
             <div className="postList_image postElement postList_label">
                 <FontAwesomeIcon icon="circle" className="icon_circle" /> images

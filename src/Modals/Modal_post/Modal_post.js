@@ -9,11 +9,31 @@ library.add(faMapMarkerAlt, faFeather, faAngleLeft, faAngleRight)
 
 class ModalPost extends Component {
     // this modal is for displaying individual post when user click on a post when viewing in list style
+    renderThumbs() {
+        let images = [];
+        for (let image of this.props.clickedPostInfo.images) {
+            images.push(
+                <img src={image} 
+                        alt="" key={image} 
+                        className={`individualPost_thumbs`}
+                        >
+                </img>
+            )
+        }
+        return (
+            <div className="images">
+                {images}
+            </div>
+        )
+    }
+
     renderImages(){
         return (
             <div className="post_details postImages">
                 <FontAwesomeIcon className="icon_angleLeft" icon="angle-left" />
-                    <img className="image" src='https://www.akc.org/wp-content/themes/akc/component-library/assets//img/welcome.jpg' alt="clothes"></img>
+                   <div className="imageWrapper">
+                        {this.renderThumbs()}
+                    </div>
                 <FontAwesomeIcon className="icon_angleRight" icon="angle-right" /> 
             </div>
         )
@@ -49,7 +69,9 @@ class ModalPost extends Component {
 function mapStateToProps(state){
     return{
         modalShown: state.Modal.getIn(['modalShown']),
-        clickedPostInfo: state.PostBoard.get('clickedListPost')
+        clickedPostInfo: state.PostBoard.get('clickedListPost'),
+        // currentClickedImage: state.Modal.get('currentClickedImage'),
+        // images: state.Modal.get('images')
     }
   }
   

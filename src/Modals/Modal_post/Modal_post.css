@@ -59,9 +59,10 @@
     margin-right: 8px;
 }
 
-.image{
+.individualPost_thumbs {
     float: left;
     margin-left: 6px;
     height: 40px;
     width: 40px;
 }
+

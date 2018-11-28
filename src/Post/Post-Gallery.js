@@ -45,7 +45,7 @@ class PostGallery extends Component {
             <div className="post_details postImages">
                 <FontAwesomeIcon className="icon_angleLeft" icon="angle-left" />
                 <div className="imageWrapper">
-                    <div className="images" ref={this.myRef} onClick={() => {this.scroll(this.myRef)}}>
+                    <div className="images">
                         {this.checkImages()}
                     </div>
                 </div>
