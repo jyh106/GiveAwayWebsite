@@ -7,7 +7,9 @@ import ModalPost from '../Modals/Modal_post/Modal_post.js';
 import ModalSignIn from "../Modals/Modal_SignIn/Modal_SignIn.js";
 import ModalNewForm from '../Modals/ModalNewForm/ModalNewForm';
 import ModalSignUp from '../Modals/ModalSignUp/ModalSignUp';
-import ModalPhotoDisplay from "../Modals/ModalPhotoDisplay/ModalPhotoDisplay"
+import ModalPhotoDisplay from "../Modals/ModalPhotoDisplay/ModalPhotoDisplay";
+import { BrowserRouter, Route } from 'react-router-dom';
+
 import './Home.css';
 
 class Home extends Component {
@@ -22,7 +24,8 @@ class Home extends Component {
     
     render() {
         return (
-            <div className="App">
+        <BrowserRouter>
+             <div className="App">
                 <Header />
                 <NavBar />
                 <PostBoard />
@@ -33,6 +36,7 @@ class Home extends Component {
                <ModalPhotoDisplay />
                 {this.displayPageMask()}
              </div>
+        </BrowserRouter>
         )
     }
 }
