@@ -8,17 +8,17 @@ import Actions from "../../Actions/actions";
 library.add(faAngleLeft, faAngleRight) 
 
 class ModalPhotoDisplay extends Component {
-    isCurrentClikedImage(image) {
+    isCurrentClickedImage(image) {
         return image === this.props.currentClickedImage
     }
 
     renderThumbs() {
-        let images = [];
+        const images = [];
         for (let image of this.props.images) {
             images.push(
                 <img src={image} 
                         alt="" key={image} 
-                        className={`thumbs ${(this.isCurrentClikedImage(image)) ? 'currentClickedImageThumb' : ''}`}
+                        className={`thumbs ${(this.isCurrentClickedImage(image)) ? 'currentClickedImageThumb' : ''}`}
                         onClick={ ()=> this.props.updateCurrentImage(image)}>
                 </img>
             )
@@ -32,9 +32,9 @@ class ModalPhotoDisplay extends Component {
 
     handleClickedArrow(isLeft){
         const currentImageIndex = this.props.images.indexOf(this.props.currentClickedImage);
-        let newIndex = -3;
+        let newIndex = 0;
 
-        if(isLeft){
+        if (isLeft) {
             newIndex = currentImageIndex - 1;
             if(newIndex < 0) {
                 return null
@@ -49,9 +49,6 @@ class ModalPhotoDisplay extends Component {
     }   
 
     render() {
-        if(!this.props.modalShown.includes('photos')){ 
-            return null
-        }
         return (
             <div>
                 <div className="thumbParentHolder">

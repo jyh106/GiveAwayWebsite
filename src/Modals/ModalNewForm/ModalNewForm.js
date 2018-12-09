@@ -24,15 +24,9 @@ class PostForm extends Component {
 
 
     onChangeInput(type, answer){
-        if(type === 'images'){
-            this.setState({
-                image: this.state.images.push(answer)
-            })
-        } else {
-            this.setState({
-                [type]: answer,
-            })
-        }
+        this.setState({
+            [type]: answer,
+        })
     }
 
     clearState(){
@@ -125,7 +119,7 @@ class PostForm extends Component {
                         Images: 
                     </div>
                     <input className="input_images" type="file" accept="image/png, image/jpeg, image/jpg" 
-                        onChange={(e)=>this.onChangeInput('images', e.target.value)}/>
+                        onChange={(e)=>this.onChangeInput('images', this.state.images + e.target.value)}/>
                 </div>
                 
                 <div className="postForm_question">
@@ -156,10 +150,6 @@ class PostForm extends Component {
     }
 
     render() {
-        if(!this.props.modalShown.includes('newForm')){ 
-            return null
-        }
-        
         return(
             <form>
                 <div className="newPostForm">

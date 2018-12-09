@@ -15,12 +15,12 @@ class PostGallery extends Component {
         return <FontAwesomeIcon icon="pencil-alt" className="edit_icon" />
     }
 
-    handleClickedImage(currentClickedImage, images){
+    handleClickedImage(currentViewingImage, postImages){
         this.props.toggleModal('photos', true);
-        this.props.handleClickedImage(currentClickedImage, images);
+        this.props.handleClickedImage({currentViewingImage, postImages});
     }
 
-    checkImages(){
+    handleImages(){
         if(!this.props.images){
             return null
         }
@@ -46,7 +46,7 @@ class PostGallery extends Component {
                 <FontAwesomeIcon className="icon_angleLeft" icon="angle-left" />
                 <div className="imageWrapper">
                     <div className="images">
-                        {this.checkImages()}
+                        {this.handleImages()}
                     </div>
                 </div>
                 <FontAwesomeIcon className="icon_angleRight" icon="angle-right" /> 
@@ -87,8 +87,8 @@ const mapDispatchToProps = dispatch => {
         toggleModal: (type, toggle) => {
             dispatch(Actions.toggleModal(type, toggle));
         },
-        handleClickedImage: (currentClickedImage, images) => {
-            dispatch(Actions.handleClickedImage(currentClickedImage, images))
+        handleClickedImage: ({currentViewingImage, postImages}) => {
+            dispatch(Actions.handleClickedImage({currentViewingImage, postImages}))
         }
     }
   }

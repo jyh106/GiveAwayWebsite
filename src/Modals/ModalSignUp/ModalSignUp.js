@@ -5,9 +5,6 @@ import OutsideClick from '../../OutsideClick';
 import Utils from '../../utils'
 class ModalSignUp extends Component {
     render(){
-        if(!this.props.modalShown.includes('signUp')){ 
-            return null
-        }
         return(
             <OutsideClick>
                 <div className="form_signUp">

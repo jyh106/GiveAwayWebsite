@@ -6,9 +6,6 @@ import Actions from "../../Actions/actions";
 
 class ModalSignIn extends Component {
     render(){
-        if(!this.props.modalShown.includes('signIn')){ 
-            return null
-        }
         return(
             <OutsideClick>
                 <div className="form_signIn">

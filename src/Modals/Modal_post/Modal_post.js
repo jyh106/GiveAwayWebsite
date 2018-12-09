@@ -40,9 +40,6 @@ class ModalPost extends Component {
     }
 
     render() {
-        if(!this.props.modalShown.includes('post')) {
-            return null
-        }
         return (
             <OutsideClick>
             <div className="modal_post_detail">

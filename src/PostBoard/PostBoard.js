@@ -57,13 +57,7 @@ function mapStateToProps(state){
         displayStyle: state.PostBoard.get('displayStyle')
     }
   }
-  
-  const mapDispatchToProps = dispatch => {
-    return {
-        }
-  }
-  
+
   export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
   )(PostBoard)

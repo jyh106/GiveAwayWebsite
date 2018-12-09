@@ -13,7 +13,7 @@ class NavBar extends Component {
                 <StyleMenu />
                 <FilterMenu />
                 <CitySelector />
-                <div className="myPageButton"><a href="/myPage">My Posts</a></div>
+                <div className="myPageButton"><a href="/myPage">Manage my posts</a></div>
                 <div className="addNewFormButton" onClick={()=> this.props.toggleModal('newForm', true)}>
                     +GiveAway
                 </div>

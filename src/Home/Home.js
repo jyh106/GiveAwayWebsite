@@ -3,13 +3,8 @@ import { connect } from "react-redux";
 import Header from "../Header/Header.js";
 import NavBar from "../NavBar/NavBar.js";
 import PostBoard from '../PostBoard/PostBoard.js';
-import ModalPost from '../Modals/Modal_post/Modal_post.js';
-import ModalSignIn from "../Modals/Modal_SignIn/Modal_SignIn.js";
-import ModalNewForm from '../Modals/ModalNewForm/ModalNewForm';
-import ModalSignUp from '../Modals/ModalSignUp/ModalSignUp';
-import ModalPhotoDisplay from "../Modals/ModalPhotoDisplay/ModalPhotoDisplay";
+import ModalContainer from '../Modals/ModalContainer';
 import { BrowserRouter, Route } from 'react-router-dom';
-
 import './Home.css';
 
 class Home extends Component {
@@ -29,11 +24,7 @@ class Home extends Component {
                 <Header />
                 <NavBar />
                 <PostBoard />
-                <ModalPost />
-               <ModalSignIn />
-               <ModalNewForm />
-               <ModalSignUp />
-               <ModalPhotoDisplay />
+                <ModalContainer />
                 {this.displayPageMask()}
              </div>
         </BrowserRouter>

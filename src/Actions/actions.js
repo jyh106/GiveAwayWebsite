@@ -7,7 +7,7 @@ function isSearchBoxOnFocus(toggle) {
 
 function changeDisplayStyle(style) {
     return {
-        type: "CHANGE_DISPLAY_STYLE",
+        type: 'CHANGE_DISPLAY_STYLE',
         data: style,
     }
 }
@@ -65,19 +65,19 @@ function getPosts(posts) {
     }
 }
 
-function updateClickedImage(currentClickedImage){
+function updateClickedImage(currentClickedImage) {
     return {
-        type: "UPDATE_CURRENT_CLICKED_IMAGE",
+        type: 'UPDATE_CURRENT_CLICKED_IMAGE',
         data: currentClickedImage
     }
 }
 
-function handleClickedImage(currentClickedImage, images){
+function handleClickedImage({currentViewingImage, postImages}) {
     return {
         type: 'POST_IMAGE_CLICKED',
         data: {
-            currentClickedImage,
-            images
+            currentViewingImage,
+            postImages
         }
     }
 }
