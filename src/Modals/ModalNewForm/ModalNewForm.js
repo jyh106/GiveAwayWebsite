@@ -14,6 +14,7 @@ class PostForm extends Component {
             'address_city': '',
             'note': '',
             'date': '',
+            'images': []
         }
     }
 
@@ -23,10 +24,15 @@ class PostForm extends Component {
 
 
     onChangeInput(type, answer){
-        this.setState({
-            [type]: answer,
-        })
-
+        if(type === 'images'){
+            this.setState({
+                image: this.state.images.push(answer)
+            })
+        } else {
+            this.setState({
+                [type]: answer,
+            })
+        }
     }
 
     clearState(){
@@ -37,6 +43,7 @@ class PostForm extends Component {
             'address_city': '',
             'note': '',
             'date': '',
+            'image': []
         })
     }
 
@@ -46,7 +53,8 @@ class PostForm extends Component {
            'date': Utils.getDate(),
            'name': this.state.name,
            'address': address,
-           'note': this.state.note
+           'note': this.state.note,
+           'images': this.state.images
        }
         this.props.addNewPost(postInfo)
         this.clearState();
@@ -66,7 +74,6 @@ class PostForm extends Component {
             </div>
         )
     }
-
 
     renderQuestions() {
         return(
@@ -114,7 +121,10 @@ class PostForm extends Component {
                 </div>
 
                 <div className="postForm_question">
-                    <input type="file" accept="image/png, image/jpeg, image/jpg" 
+                    <div className="titles">
+                        Images: 
+                    </div>
+                    <input className="input_images" type="file" accept="image/png, image/jpeg, image/jpg" 
                         onChange={(e)=>this.onChangeInput('images', e.target.value)}/>
                 </div>
                 

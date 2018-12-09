@@ -24,9 +24,9 @@
 
 .post_note{
     background: rgba(193, 239, 247, 0.267);
-    width: 90%;
+    width: 85%;
     margin: 0 auto;
-    height: 85px;
+    height: 20px;
     overflow: scroll;
     text-align: left;
     border-radius: 3px;
@@ -72,6 +72,42 @@
     color: blue;
 }
 
-.post_note:hover, .post_name:hover{
+ .post_name:hover{
     cursor: default;
+}
+
+.postImages{
+    width: 92%;
+    margin: 0 auto;
+}
+
+.imageWrapper{
+    width: 230px;
+    padding-top: 8px;
+    display: inline-block;  
+    overflow: scroll;
+}
+
+.images {
+    width: 500px;
+}
+
+.icon_angleLeft{
+    float: left;
+
+}
+
+.icon_angleRight{
+    float: right;
+}
+
+.image:hover, .icon_angleLeft:hover, .icon_angleRight:hover{
+    cursor: pointer;
+}
+
+.image, .defaultImage{
+    float: left;
+    margin-left: 6px;
+    height: 40px;
+    width: 40px;
 }

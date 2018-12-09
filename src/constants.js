@@ -4,7 +4,9 @@ const MODAL_TYPES = {
     'MODAL_NEWFORM': 'newForm', 
     'MODAL_SIGNIN':'signIn', 
     'MODAL_SIGNUP':'signUp', 
-    'MODAL_POST':'post'}
+    'MODAL_POST':'post',
+    'MODAL_PHOTODISPLAY': 'photos'
+}
 
 const CITIES = [
     {

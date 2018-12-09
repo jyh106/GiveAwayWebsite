@@ -44,14 +44,14 @@
     padding-right: 4px;
 }
 
-.postList_note {
+.postList_note, .postList_image {
     font-size: 12px;
     display: inline-block;
     padding-left: 15px;
 }
 
 
-.icon_circle {
+.icon_circle{
     color: green;
     font-size: 10px;
 }

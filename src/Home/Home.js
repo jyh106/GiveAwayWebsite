@@ -4,9 +4,10 @@ import Header from "../Header/Header.js";
 import NavBar from "../NavBar/NavBar.js";
 import PostBoard from '../PostBoard/PostBoard.js';
 import ModalPost from '../Modals/Modal_post/Modal_post.js';
-import ModalSignIn from "../Modals/Modal_SignIn/Modal_SignIn.js"
+import ModalSignIn from "../Modals/Modal_SignIn/Modal_SignIn.js";
 import ModalNewForm from '../Modals/ModalNewForm/ModalNewForm';
-import ModalSignUp from '../Modals/ModalSignUp/ModalSignUp'
+import ModalSignUp from '../Modals/ModalSignUp/ModalSignUp';
+import ModalPhotoDisplay from "../Modals/ModalPhotoDisplay/ModalPhotoDisplay"
 import './Home.css';
 
 class Home extends Component {
@@ -29,6 +30,7 @@ class Home extends Component {
                <ModalSignIn />
                <ModalNewForm />
                <ModalSignUp />
+               <ModalPhotoDisplay />
                 {this.displayPageMask()}
              </div>
         )

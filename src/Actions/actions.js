@@ -65,6 +65,23 @@ function getPosts(posts) {
     }
 }
 
+function updateClickedImage(currentClickedImage){
+    return {
+        type: "UPDATE_CURRENT_CLICKED_IMAGE",
+        data: currentClickedImage
+    }
+}
+
+function handleClickedImage(currentClickedImage, images){
+    return {
+        type: 'POST_IMAGE_CLICKED',
+        data: {
+            currentClickedImage,
+            images
+        }
+    }
+}
+
 
 export default {
     isSearchBoxOnFocus,
@@ -75,5 +92,7 @@ export default {
     addNewPost,
     appMounted,
     getPosts,
-    appWillMount
+    appWillMount, 
+    handleClickedImage,
+    updateClickedImage
 }
