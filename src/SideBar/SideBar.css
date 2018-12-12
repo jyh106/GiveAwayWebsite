@@ -1,0 +1,98 @@
+.sideBarContainer {
+    background: white;
+    float: left;
+    width: 200px;
+    height: calc(100vh + 35px);
+    border-right: 1px solid rgb(184, 183, 183);
+}
+
+.resetAndUpdate {
+    width: 200px;
+    position: sticky;
+    background: rgb(234, 245, 251);
+}
+
+.resetAndUpdate_button {
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-top:4px;
+    padding-bottom: 4px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border: 1px solid lightblue;
+    border-radius: 3px;
+}
+
+.resetAndUpdate_button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue;
+    background-color: white;
+}
+
+.resetButton {
+    width: 40px;
+}
+
+.updateButton {
+    margin-left: 10px;
+    width: 100px;
+    font-size: 15px;
+}
+
+.milesFromZipContainer {
+    margin-top: 10px;
+    height: 70px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.mileZipInputs{
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.milesInput {
+    width: 25px;
+    padding-left: 2px;
+}
+
+.zipCodeInput {
+    width: 50px;
+}
+
+.newestAndHasImageOptionContainer {
+    margin-bottom: 20px;
+}
+
+.option {
+  width: 140px;
+  padding: 4px;
+  border: 1px solid gray;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.option:hover {
+    cursor: pointer;
+    background: rgb(202, 233, 243);
+}
+
+.categoryLabel {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+
+.selected {
+    border: 1px solid rgb(187, 186, 186);
+    color: blue;
+    background-color: rgb(196, 233, 245);
+}
+
+
+

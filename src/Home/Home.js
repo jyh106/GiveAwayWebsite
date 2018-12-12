@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Header from "../Header/Header.js";
 import NavBar from "../NavBar/NavBar.js";
+import SideBar from '../SideBar/SideBar.js';
 import PostBoard from '../PostBoard/PostBoard.js';
 import ModalContainer from '../Modals/ModalContainer';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './Home.css';
 
 class Home extends Component {
@@ -23,6 +24,7 @@ class Home extends Component {
              <div className="App">
                 <Header />
                 <NavBar />
+                <SideBar />
                 <PostBoard />
                 <ModalContainer />
                 {this.displayPageMask()}
