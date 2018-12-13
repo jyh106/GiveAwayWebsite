@@ -4,7 +4,7 @@
     background: rgb(250, 249, 249);
     float: left;
     width: 200px;
-    height: 100vh;
+    height: 600px;
     overflow: scroll;
     border-bottom-right-radius: 8px;
     border-top-right-radius: 8px;
@@ -15,7 +15,6 @@
 .resetAndUpdate {
     margin-top: 10px;
     width: 200px;
-    position: sticky;
 }
 
 .resetAndUpdate_button {

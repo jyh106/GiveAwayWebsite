@@ -82,6 +82,12 @@ function handleClickedImage({currentViewingImage, postImages}) {
     }
 }
 
+function toggleSideBar(){
+    return {
+        type: 'TOGGLE_SIDE_BAR'
+    }
+}
+
 
 export default {
     isSearchBoxOnFocus,
@@ -94,5 +100,6 @@ export default {
     getPosts,
     appWillMount, 
     handleClickedImage,
-    updateClickedImage
+    updateClickedImage,
+    toggleSideBar
 }

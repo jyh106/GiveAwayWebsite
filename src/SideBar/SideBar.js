@@ -6,6 +6,7 @@ import Utils from '../utils';
 import Actions from '../Actions/actions.js';
 
 
+
 class SideBar extends Component {
     constructor() {
         super();
@@ -29,6 +30,8 @@ class SideBar extends Component {
             </div>
         )
     }
+
+
     renderResetUpdateButtons() {
         return (
             <div className="resetAndUpdate">
@@ -99,8 +102,11 @@ class SideBar extends Component {
     }
 
     render(){
+        if(!this.props.sideBarShown){
+            return null
+        }
         return (
-            <div className="sideBarContainer">
+            <div className="sideBarContainer" onMouseLeave={()=> this.props.toggleSideBar()}>
                 {this.renderResetUpdateButtons()}
                 {this.renderCityOptions()}
                 {this.renderMilesFromZip()}
@@ -114,15 +120,19 @@ class SideBar extends Component {
 
 function mapStateToProps(state) {
     return {
-        currentSelectedCity: Utils.getCurrentCity(state)
+        currentSelectedCity: Utils.getCurrentCity(state),
+        sideBarShown: state.App.get('sideBarShown'),
     }
   }
 
-const mapDispatchToProps = dispatch => {
+function mapDispatchToProps(dispatch) {
     return {
         updateLocation: (city) => {
-            dispatch(Actions.updateCity(city));
+            dispatch(Actions.updateCity(city))
         },
+        toggleSideBar: () => {
+            dispatch(Actions.toggleSideBar());
+        }
     }
   }
   
