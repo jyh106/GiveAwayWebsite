@@ -1,6 +1,7 @@
 .sideBarContainer {
     z-index: 15;
-    position: fixed;
+    position: absolute;
+    top: 10.5%;
     background: rgb(250, 249, 249);
     float: left;
     width: 200px;
@@ -9,7 +10,6 @@
     border-bottom-right-radius: 8px;
     border-top-right-radius: 8px;
     box-shadow: 2px 2px 15px 0px rgba(176,176,176,1);
-    /* border-right: 1px solid rgb(184, 183, 183); */
 }
 
 .resetAndUpdate {

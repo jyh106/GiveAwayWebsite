@@ -25,9 +25,9 @@ class Home extends Component {
              <div className="App">
                 <Header />
                 <NavBar />
+                <PostBoard />
                 <SideBar />
                 <SideBarStatic />
-                <PostBoard />
                 <ModalContainer />
                 {this.displayPageMask()}
              </div>

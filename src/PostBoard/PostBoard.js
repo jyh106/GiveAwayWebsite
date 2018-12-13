@@ -44,9 +44,11 @@ class PostBoard extends Component {
 
     render() {
         return(
+        <div className="postBoardWrapper">
             <div className="PostBoard">
                 {this.renderPosts()}
             </div>
+        </div>
         )
     }
 }

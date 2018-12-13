@@ -1,9 +1,15 @@
 .PostBoard{
     position: relative;
-    display: block;
-    margin-top: 35px;
-    overflow: scroll;
+    display: inline-block;
+    padding-top: 10px;
+    margin: 0 auto;
     height: 100vh;
-    margin-left: 8px;
+    width: 94%;
     background: white;
+}
+
+.postBoardWrapper {
+    overflow: scroll;
+    width: 99%;
+    float: right;
 }
