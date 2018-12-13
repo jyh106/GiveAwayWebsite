@@ -30,8 +30,40 @@ const CITIES = [
     }
 ]
 
+const CATEGORIES = [
+    {
+        'name':'All categories',
+        'className': 'allCategories'
+    },{
+        'name':'kids related',
+        'className': 'kidsRelated'
+    }, {
+        'name':'furniture',
+        'className': 'furniture'
+    }, {
+        'name':'clothes',
+        'className': 'clothes'
+    }, {
+        'name':'kitchenwares',
+        'className': 'kitchenwares'
+    }, {
+        'name':'organizers',
+        'className': 'organizers'
+    }, {
+        'name': 'garden related',
+        'className': 'gardenRelated'
+    }, {
+        'name': 'sports/fitness',
+        'className': 'sportsAndFitness'
+    }, {
+        'name': 'electronics',
+        'className': 'electronics'
+    }
+]
+
 export default {
     CITIES,
     HOSTNAME,
-    MODAL_TYPES
+    MODAL_TYPES,
+    CATEGORIES
 }

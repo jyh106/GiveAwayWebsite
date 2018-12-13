@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import "./NavBar.css";
 import StyleMenu from './StyleMenu/StyleMenu.js';
 // import FilterMenu from './FilterMenu/FilterMenu.js';
-import CitySelector from './CitySelector/CitySelector.js'
 import { connect } from 'react-redux';
 import Actions from '../Actions/actions.js'
 
@@ -12,8 +11,7 @@ class NavBar extends Component {
             <div className="navBar">
                 <StyleMenu />
                 {/* <FilterMenu /> */}
-                <CitySelector />
-                <div className="myPageButton"><a href="/myPage">Manage my posts</a></div>
+                {/* <div className="myPageButton"><a href="/myPage">Manage my posts</a></div> */}
                 <div className="addNewFormButton" onClick={()=> this.props.toggleModal('newForm', true)}>
                     +GiveAway
                 </div>

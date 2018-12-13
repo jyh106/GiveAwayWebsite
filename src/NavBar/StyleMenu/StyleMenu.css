@@ -1,9 +1,10 @@
 .styleMenu{
     position: relative;
     width: 90px;
-    float: left;
+    float: right;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
+    margin-right: 10px;
 }
 
 .style_default, .styleMenu{

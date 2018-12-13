@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import "./Header.css";
-import SearchBox from './SearchBox/SearchBox.js';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDove, faUserCircle } from '@fortawesome/free-solid-svg-icons'
@@ -19,7 +18,6 @@ class Header extends Component {
                     <FontAwesomeIcon icon="user-circle" className="icon_user" /> 
                     <p className="sign_in" onClick={()=> this.props.toggleModal('signIn', true) }>Sign in</p>
                 </div>
-                <SearchBox />
             </div>
         )
     }

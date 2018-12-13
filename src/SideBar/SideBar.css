@@ -1,15 +1,21 @@
 .sideBarContainer {
-    background: white;
+    z-index: 15;
+    position: fixed;
+    background: rgb(250, 249, 249);
     float: left;
     width: 200px;
-    height: calc(100vh + 35px);
-    border-right: 1px solid rgb(184, 183, 183);
+    height: 100vh;
+    overflow: scroll;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: 2px 2px 15px 0px rgba(176,176,176,1);
+    /* border-right: 1px solid rgb(184, 183, 183); */
 }
 
 .resetAndUpdate {
+    margin-top: 10px;
     width: 200px;
     position: sticky;
-    background: rgb(234, 245, 251);
 }
 
 .resetAndUpdate_button {
@@ -21,7 +27,7 @@
     padding-left: 3px;
     padding-right: 3px;
     border: 1px solid lightblue;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
 .resetAndUpdate_button:hover {
@@ -68,11 +74,12 @@
 
 .option {
   width: 140px;
-  padding: 4px;
+  padding: 3px;
   border: 1px solid gray;
   margin: 0 auto;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  font-size: 13px;
 }
 
 .option:hover {
@@ -80,12 +87,16 @@
     background: rgb(202, 233, 243);
 }
 
-.categoryLabel {
+.categoryLabel, .cityOptionsLabel {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: bold;
     text-decoration: underline;
     margin-bottom: 10px;
+}
+
+.cityOptionsLabel {
+    margin-top: 18px;
 }
 
 .selected {

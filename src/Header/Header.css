@@ -8,8 +8,9 @@
 
 .header_name {
     font-family: 'Poiret One', cursive;
-    float: left;
-    padding-left: 20px;
+    text-align: center;
+    width: 200px;
+    margin: 0 auto;
     color: white;
     font-size: 25px;
     font-weight: bolder;
@@ -27,10 +28,12 @@
 }
 
 .user{
-    position: relative;
-    float: right;
-    margin-right: 8px;
-    margin-top: 14px;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 100px;
+    /* margin-right: 8px;
+    margin-top: 14px; */
 }
 
 .sign_in {
