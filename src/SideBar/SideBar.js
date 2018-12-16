@@ -106,6 +106,7 @@ class SideBar extends Component {
             return null
         }
         return (
+        <div className="sideBarWrapper">
             <div className="sideBarContainer" onMouseLeave={()=> this.props.toggleSideBar()}>
                 {this.renderResetUpdateButtons()}
                 {this.renderCityOptions()}
@@ -113,6 +114,7 @@ class SideBar extends Component {
                 {this.renderNewestAndHasImageOptions()}
                 {this.renderCategorizedOptions()}
             </div>
+        </div>
         )
     }
 }
