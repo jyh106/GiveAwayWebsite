@@ -58,6 +58,9 @@ const CATEGORIES = [
     }, {
         'name': 'electronics',
         'className': 'electronics'
+    }, {
+        'name': 'others',
+        'className': 'others'
     }
 ]
 
