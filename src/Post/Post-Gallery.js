@@ -88,15 +88,15 @@ class PostGallery extends Component {
                     <FontAwesomeIcon icon="feather" className="post_name_icon"/>
                     {this.props.name}
                 </div>
-                <div className="post_details post_date">
-                    {this.props.date}
-                </div>
+                {this.renderImages()}
                 <div className="post_details post_address">
                    <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
                    {this.props.address}
                 </div>
                 {this.renderNote()}
-                {this.renderImages()}
+                <div className="post_details post_date">
+                    {this.props.date}
+                </div>
             </div>
         )
     }
