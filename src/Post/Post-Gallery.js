@@ -21,7 +21,7 @@ class PostGallery extends Component {
     }
 
     handleImages(){
-        if(!this.props.images){
+        if (!this.props.images) {
             return null
         }
         const images = [];
@@ -41,17 +41,44 @@ class PostGallery extends Component {
     }
 
     renderImages(){
-        return (
-            <div className="post_details postImages">
-                <FontAwesomeIcon className="icon_angleLeft" icon="angle-left" />
-                <div className="imageWrapper">
-                    <div className="images">
-                        {this.handleImages()}
+        if (this.props.images.length === 0) {
+            return null 
+        }
+        if (this.props.images.length > 5) {
+            return (
+                <div className="post_details postImages">
+                    <FontAwesomeIcon className="icon_angleLeft" icon="angle-left" />
+                    <div className="imageWrapper">
+                        <div className="images">
+                            {this.handleImages()}
+                        </div>
+                    </div>
+                    <FontAwesomeIcon className="icon_angleRight" icon="angle-right" /> 
+                </div>
+            )
+        } else {
+            return (
+                <div className="post_details postImages">
+                    <div className="imageWrapper">
+                        <div className="images">
+                            {this.handleImages()}
+                        </div>
                     </div>
                 </div>
-                <FontAwesomeIcon className="icon_angleRight" icon="angle-right" /> 
-            </div>
-        )
+            )
+        }
+    }
+
+    renderNote() {
+        if (!this.props.description) {
+            return null
+        } else {
+            return (
+                <div className="post_details post_note">
+                    {this.props.description}
+                </div>
+            )
+        }
     }
 
     render(){
@@ -68,9 +95,7 @@ class PostGallery extends Component {
                    <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
                    {this.props.address}
                 </div>
-                <div className="post_details post_note">
-                    {this.props.description}
-                </div>
+                {this.renderNote()}
                 {this.renderImages()}
             </div>
         )

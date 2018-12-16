@@ -46,7 +46,10 @@
     color: rgba(0, 0, 255, 0.692);
 }
 
-.edit_icon:hover{
+.post_note:hover {
+    cursor: default;
+}
+.edit_icon:hover {
     cursor: pointer;
 }
 
