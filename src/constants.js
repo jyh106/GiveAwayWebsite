@@ -61,9 +61,12 @@ const CATEGORIES = [
     }
 ]
 
+const NONE_SCROLLABLE_THUMBS = 5;
+
 export default {
     CITIES,
     HOSTNAME,
     MODAL_TYPES,
-    CATEGORIES
+    CATEGORIES,
+    NONE_SCROLLABLE_THUMBS
 }

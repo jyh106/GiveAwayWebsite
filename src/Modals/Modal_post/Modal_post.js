@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./Modal_post.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
+import Constants from '../../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faFeather , faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons'
 import OutsideClick from '../../OutsideClick';
@@ -28,6 +29,18 @@ class ModalPost extends Component {
     }
 
     renderImages(){
+        if (this.props.clickedPostInfo.images.length === 0) {
+            return null
+        }
+        if (this.props.clickedPostInfo.images.length < Constants.NONE_SCROLLABLE_THUMBS) {
+            return (
+                <div className="post_details postImages">
+                    <div className="imageWrapper">
+                        {this.renderThumbs()}
+                    </div>
+                </div>
+            )
+        }
         return (
             <div className="post_details postImages">
                 <FontAwesomeIcon className="icon_angleLeft" icon="angle-left" />
@@ -37,6 +50,19 @@ class ModalPost extends Component {
                 <FontAwesomeIcon className="icon_angleRight" icon="angle-right" /> 
             </div>
         )
+    }
+
+
+    renderNote() {
+        if (!this.props.clickedPostInfo.note) {
+            return null
+        } else {
+            return (
+                <div className="modal_note">
+                    {this.props.clickedPostInfo.note}
+                </div>
+            )
+        }
     }
 
     render() {
@@ -53,9 +79,7 @@ class ModalPost extends Component {
                     <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
                     {this.props.clickedPostInfo.address}
                 </div>
-                <div className="modal_note">
-                    {this.props.clickedPostInfo.note}
-                </div>
+                {this.renderNote()}
                 {this.renderImages()}
             </div>
             </OutsideClick>

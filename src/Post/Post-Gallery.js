@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import "./Post-Gallery.css";
 import { connect } from 'react-redux';
 import Actions from "../Actions/actions";
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt, faFeather, faPencilAlt, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt, faFeather, faPencilAlt, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
+import Constants from '../constants';
 library.add(faMapMarkerAlt, faFeather, faPencilAlt, faAngleLeft, faAngleRight) 
 
 class PostGallery extends Component {
@@ -44,7 +45,7 @@ class PostGallery extends Component {
         if (this.props.images.length === 0) {
             return null 
         }
-        if (this.props.images.length > 5) {
+        if (this.props.images.length > Constants.NONE_SCROLLABLE_THUMBS) {
             return (
                 <div className="post_details postImages">
                     <FontAwesomeIcon className="icon_angleLeft" icon="angle-left" />
@@ -72,13 +73,12 @@ class PostGallery extends Component {
     renderNote() {
         if (!this.props.description) {
             return null
-        } else {
-            return (
-                <div className="post_details post_note">
-                    {this.props.description}
-                </div>
-            )
         }
+        return (
+            <div className="post_details post_note">
+                {this.props.description}
+            </div>
+        )
     }
 
     render(){
