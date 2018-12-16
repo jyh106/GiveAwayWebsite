@@ -1,5 +1,5 @@
 function getCurrentCity(state) {
-    return state.NavBar.get('currentSelectedCity');
+    return state.SideBar.get('currentSelectedCity');
 }
 
 function getShowingModals(state) {

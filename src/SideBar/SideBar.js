@@ -12,7 +12,6 @@ class SideBar extends Component {
         super();
         this.state = {
             selectedOptions: ['newest'],
-            currentSelectedCity: 'All cities'
         }
     }
     renderMilesFromZip() {
@@ -40,14 +39,6 @@ class SideBar extends Component {
             </div>
         )
     }
-
-    handleSelected(optionLabel){
-        if (this.state.selectedOptions.includes(optionLabel)) {
-            return 'selected'
-        }
-        return ''
-    }
-
 
     renderNewestAndHasImageOptions() {
         return (
@@ -82,13 +73,20 @@ class SideBar extends Component {
         )
     }
 
+    handleSelected(optionLabel){
+        if (this.state.selectedOptions.includes(optionLabel) || this.props.currentSelectedCity.includes(optionLabel)) {
+            return 'selected'
+        }
+        return ''
+    }
+
     renderCityOptions(){
         const cities = [];
         for (let city of Constants.CITIES) {
             cities.push(
-                <div className={`option city_${city.className} ${this.handleSelected(city.className)}`} 
+                <div className={`option city_${city.className} ${this.handleSelected(city.name)}`} 
                         key={city.name}
-                        onClick={()=> this.props.updateLocation(city.name)}>
+                        onClick={()=> this.props.updateCity(city.name)}>
                     {city.name}
                 </div>
             )
@@ -129,7 +127,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        updateLocation: (city) => {
+        updateCity: (city) => {
             dispatch(Actions.updateCity(city))
         },
         toggleSideBar: () => {
