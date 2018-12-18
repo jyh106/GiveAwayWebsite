@@ -31,11 +31,13 @@ class SideBar extends Component {
     }
 
 
-    renderResetUpdateButtons() {
+    renderResetButton() {
         return (
             <div className="resetAndUpdate">
-                <div className="resetAndUpdate_button resetButton">reset</div>
-                <div className="resetAndUpdate_button updateButton">update search</div>
+                <div className="resetAndUpdate_button resetButton"
+                     onClick={ ()=> this.props.resetSideBarSelections()}>
+                    reset
+                </div>
             </div>
         )
     }
@@ -127,7 +129,7 @@ class SideBar extends Component {
         return (
         <div className="sideBarWrapper">
             <div className="sideBarContainer" onMouseLeave={()=> this.props.toggleSideBar()}>
-                {this.renderResetUpdateButtons()}
+                {this.renderResetButton()}
                 {this.renderCityOptions()}
                 {this.renderMilesFromZip()}
                 {this.renderNewestAndHasImageOptions()}
@@ -157,6 +159,9 @@ function mapDispatchToProps(dispatch) {
         },
         updateCategory: (category) => {
             dispatch(Actions.updateCategory(category));
+        },
+        resetSideBarSelections: () => {
+            dispatch(Actions.resetSideBarSelections());
         }
     }
   }

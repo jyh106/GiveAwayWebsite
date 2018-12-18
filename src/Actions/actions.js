@@ -95,6 +95,11 @@ function toggleSideBar(){
     }
 }
 
+function resetSideBarSelections() {
+    return {
+        type: 'RESET_SELECTIONS'
+    }
+}
 
 export default {
     isSearchBoxOnFocus,
@@ -109,5 +114,6 @@ export default {
     updateClickedImage,
     toggleSideBar,
     updateCategory,
-    updateCity
+    updateCity,
+    resetSideBarSelections
 }
