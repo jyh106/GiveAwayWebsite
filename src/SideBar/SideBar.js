@@ -41,24 +41,48 @@ class SideBar extends Component {
     }
 
     renderNewestAndHasImageOptions() {
+        const extraClassName_newest = this.isSelected('newest') ?
+                'selected' :
+                '';
+        const extraClassName_hasImages = this.isSelected('hasImages') ?
+                'selected' :
+                '';
         return (
             <div className="newestAndHasImageOptionContainer">
-                <div className={`option_newest option ${this.handleSelected('newest')}`}>
+                <div className={`option_newest option ${extraClassName_newest}`}>
                     newest
                 </div>
 
-                <div className={`option_hasImages option ${this.handleSelected('hasImages')}`}>
+                <div className={`option_hasImages option ${extraClassName_hasImages}`}>
                     has images
                 </div>
             </div>
         )
     }
 
+    handleSelectedCategory(categories) {
+        if (this.props.currentSelectedCity) {
+            this.props.filterResults({
+                'city': this.props.currentSelectedCity,
+                'categories': categories
+            });
+        }
+        this.props.filterResults({
+            'city': 'All cities',
+            'categories': categories
+        })
+    }
+
     renderCategorizedOptions() {
         const categories = [];
         for (let category of Constants.CATEGORIES) {
+            const extraClassName = this.isSelected(category.name) ?
+                'selected' :
+                '';
             categories.push(
-                <div className={`option ${category.className} ${this.handleSelected(category.className)}`} key={category.className}>
+                <div className= {`option ${category.className} ${extraClassName}`} 
+                    key= {category.className}
+                    onClick= {()=> this.handleSelectedCategory(category.name) }>
                     {category.name}
                 </div>
             )
@@ -73,18 +97,27 @@ class SideBar extends Component {
         )
     }
 
-    handleSelected(optionLabel){
-        if (this.state.selectedOptions.includes(optionLabel) || this.props.currentSelectedCity.includes(optionLabel)) {
-            return 'selected'
+    isSelected(optionLabel){
+        return (this.state.selectedOptions.includes(optionLabel) 
+            || this.props.currentSelectedCity.includes(optionLabel)
+            || this.props.currentSelectedCategories.includes(optionLabel));
+    }
+
+    handleFilterCity(city){
+        if(this.props.currentSelectedCategories === 'All categories') {
+            this.props.filterResults({'city': city, 'category': 'All categories'})
         }
-        return ''
+        this.props.filterResults({'city':city, 'category':this.props.currentSelectedCategories})
     }
 
     renderCityOptions(){
         const cities = [];
         for (let city of Constants.CITIES) {
+            const extraClassName = this.isSelected(city.name) ?
+                'selected' :
+                '';
             cities.push(
-                <div className={`option city_${city.className} ${this.handleSelected(city.name)}`} 
+                <div className={`option city_${city.className} ${extraClassName}`} 
                         key={city.name}
                         onClick={()=> this.props.updateCity(city.name)}>
                     {city.name}
@@ -121,14 +154,15 @@ class SideBar extends Component {
 function mapStateToProps(state) {
     return {
         currentSelectedCity: Utils.getCurrentCity(state),
-        sideBarShown: state.App.get('sideBarShown'),
+        currentSelectedCategories: Utils.getCurrentSelectedCategories(state),
+        sideBarShown: state.SideBar.get('sideBarShown'),
     }
   }
 
 function mapDispatchToProps(dispatch) {
     return {
-        updateCity: (city) => {
-            dispatch(Actions.updateCity(city))
+        filterResults: (cityAndCategory) => {
+            dispatch(Actions.filterResults(cityAndCategory))
         },
         toggleSideBar: () => {
             dispatch(Actions.toggleSideBar());

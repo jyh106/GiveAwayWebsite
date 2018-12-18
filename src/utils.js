@@ -2,6 +2,10 @@ function getCurrentCity(state) {
     return state.SideBar.get('currentSelectedCity');
 }
 
+function getCurrentSelectedCategories(state) {
+    return state.SideBar.get('currentSelectedCategories');
+}
+
 function getShowingModals(state) {
     return state.Modal.get('modalShown');
 }
@@ -17,5 +21,6 @@ function getDate() {
 export default {
     getCurrentCity,
     getShowingModals,
-    getDate
+    getDate,
+    getCurrentSelectedCategories
 }

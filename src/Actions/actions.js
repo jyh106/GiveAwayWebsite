@@ -25,10 +25,11 @@ function toggleModal(type, toggle){
     }
 }
 
-function updateCity(location){
+function filterResults({city, categories}){
+    //city value is a string, categories value is a list
     return {
-        type: 'UPDATE_CITY',
-        data: location,
+        type: 'FILTER_RESULTS',
+        data: {city, categories},
     }
 }
 
@@ -93,7 +94,7 @@ export default {
     isSearchBoxOnFocus,
     changeDisplayStyle,
     toggleModal,
-    updateCity,
+    filterResults,
     updateClickedPost,
     addNewPost,
     appMounted,

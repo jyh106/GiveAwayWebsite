@@ -41,8 +41,8 @@ const CATEGORIES = [
         'name':'furniture',
         'className': 'furniture'
     }, {
-        'name':'clothes',
-        'className': 'clothes'
+        'name':'wearables',
+        'className': 'wearables'
     }, {
         'name':'kitchenwares',
         'className': 'kitchenwares'
