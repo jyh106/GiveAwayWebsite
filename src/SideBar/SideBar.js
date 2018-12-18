@@ -60,18 +60,6 @@ class SideBar extends Component {
         )
     }
 
-    handleSelectedCategory(categories) {
-        if (this.props.currentSelectedCity) {
-            this.props.filterResults({
-                'city': this.props.currentSelectedCity,
-                'categories': categories
-            });
-        }
-        this.props.filterResults({
-            'city': 'All cities',
-            'categories': categories
-        })
-    }
 
     renderCategorizedOptions() {
         const categories = [];
@@ -82,7 +70,7 @@ class SideBar extends Component {
             categories.push(
                 <div className= {`option ${category.className} ${extraClassName}`} 
                     key= {category.className}
-                    onClick= {()=> this.handleSelectedCategory(category.name) }>
+                    onClick= {()=> this.props.updateCategory(category.name) }>
                     {category.name}
                 </div>
             )
@@ -161,11 +149,14 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        filterResults: (cityAndCategory) => {
-            dispatch(Actions.filterResults(cityAndCategory))
+        updateCity: (city) => {
+            dispatch(Actions.updateCity(city))
         },
         toggleSideBar: () => {
             dispatch(Actions.toggleSideBar());
+        },
+        updateCategory: (category) => {
+            dispatch(Actions.updateCategory(category));
         }
     }
   }

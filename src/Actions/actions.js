@@ -25,11 +25,17 @@ function toggleModal(type, toggle){
     }
 }
 
-function filterResults({city, categories}){
-    //city value is a string, categories value is a list
+function updateCity(city){
     return {
-        type: 'FILTER_RESULTS',
-        data: {city, categories},
+        type: 'UPDATE_CITY',
+        data: city,
+    }
+}
+
+function updateCategory(category) {
+    return {
+        type: 'UPDATE_CATEGORY',
+        data: category
     }
 }
 
@@ -94,7 +100,6 @@ export default {
     isSearchBoxOnFocus,
     changeDisplayStyle,
     toggleModal,
-    filterResults,
     updateClickedPost,
     addNewPost,
     appMounted,
@@ -102,5 +107,7 @@ export default {
     appWillMount, 
     handleClickedImage,
     updateClickedImage,
-    toggleSideBar
+    toggleSideBar,
+    updateCategory,
+    updateCity
 }
