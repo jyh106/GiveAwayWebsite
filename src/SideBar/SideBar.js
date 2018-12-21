@@ -12,8 +12,8 @@ class SideBar extends Component {
         super();
         this.state = {
             selectedOptions: ['newest'],
-            currentSelectedCategories: ['All categories'],
-            currentSelectedCity: 'All cities',
+            // currentSelectedCategories: ['All categories'],
+            // currentSelectedCity: 'All cities',
         }
     }
     renderMilesFromZip() {
@@ -64,51 +64,51 @@ class SideBar extends Component {
         )
     }
 
-    updateCategory(category) {
-        //if all is selected again, then no changes to the category list
-        if (category === 'All categories') {
-            this.setState({
-                currentSelectedCategories: ['All categories']
-            })
-            return;
-        }
+    // updateCategory(category) {
+    //     //if all is selected again, then no changes to the category list
+    //     if (category === 'All categories') {
+    //         this.setState({
+    //             currentSelectedCategories: ['All categories']
+    //         })
+    //         return;
+    //     }
     
-        const currentStateCategoryList = this.state.currentSelectedCategories;
+    //     const currentStateCategoryList = this.state.currentSelectedCategories;
     
-        //if at first only 'all categories' in list,  erase 'all categories', then add new category to list 
-        if (currentStateCategoryList[0] === 'All categories' ) {
-            this.setState({
-                currentSelectedCategories: [category]
-            })
-            return;
-        }
+    //     //if at first only 'all categories' in list,  erase 'all categories', then add new category to list 
+    //     if (currentStateCategoryList[0] === 'All categories' ) {
+    //         this.setState({
+    //             currentSelectedCategories: [category]
+    //         })
+    //         return;
+    //     }
     
-        const isCategorySelected = currentStateCategoryList.includes(category);
-        if (isCategorySelected) { 
-            //if that is the only category selected, then auto select 'all categories'
-            if (currentStateCategoryList.length === 1) {
-                this.setState({
-                    currentSelectedCategories: ['All categories']
-                });
-                return;
-            }
-            //unselect
-            const updatedCategories = currentStateCategoryList.filter(
-                item => item !== category);
-            this.setState({
-                currentSelectedCategories: updatedCategories
-            })
-            return;
-        }
+    //     const isCategorySelected = currentStateCategoryList.includes(category);
+    //     if (isCategorySelected) { 
+    //         //if that is the only category selected, then auto select 'all categories'
+    //         if (currentStateCategoryList.length === 1) {
+    //             this.setState({
+    //                 currentSelectedCategories: ['All categories']
+    //             });
+    //             return;
+    //         }
+    //         //unselect
+    //         const updatedCategories = currentStateCategoryList.filter(
+    //             item => item !== category);
+    //         this.setState({
+    //             currentSelectedCategories: updatedCategories
+    //         })
+    //         return;
+    //     }
 
-        //new category clicked
-        this.setState({
-            currentSelectedCategories: this.state.currentSelectedCategories.concat([category])
-        });
+    //     //new category clicked
+    //     this.setState({
+    //         currentSelectedCategories: this.state.currentSelectedCategories.concat([category])
+    //     });
 
-        //give this updated state to the reducer
-        this.props.updateCategory(this.state.currentSelectedCategories);
-    }
+    //     //give this updated state to the reducer
+    //     this.props.updateCategory(this.state.currentSelectedCategories);
+    // }
 
 
     renderCategorizedOptions() {
@@ -120,7 +120,7 @@ class SideBar extends Component {
             categories.push(
                 <div className= {`option ${category.className} ${extraClassName}`} 
                     key= {category.className}
-                    onClick= {()=> this.updateCategory(category.name) }>
+                    onClick= {()=> this.props.updateCategory(category.name) }>
                     {category.name}
                 </div>
             )
@@ -136,11 +136,11 @@ class SideBar extends Component {
     }
 
     isSelectedCity(city) {
-        return this.state.currentSelectedCity === city;
+        return this.props.currentSelectedCity === city;
     }
 
     isSelectedCategory(category) {
-        return this.state.currentSelectedCategories.indexOf(category) > -1;
+        return this.props.currentSelectedCategories.indexOf(category) > -1;
     }
 
     // handleFilterCity(city){
@@ -150,11 +150,11 @@ class SideBar extends Component {
     //     this.props.filterResults({'city':city, 'category':this.props.currentSelectedCategories})
     // }
 
-    updateCity(city){
-        this.setState({
-            currentSelectedCity: city,
-        })
-    }
+    // updateCity(city){
+    //     this.setState({
+    //         currentSelectedCity: city,
+    //     })
+    // }
 
     renderCityOptions(){
         const cities = [];
@@ -165,7 +165,7 @@ class SideBar extends Component {
             cities.push(
                 <div className={`option city_${city.className} ${extraClassName}`} 
                         key={city.name}
-                        onClick={()=> this.updateCity(city.name)}>
+                        onClick={()=> this.props.updateCity(city.name)}>
                     {city.name}
                 </div>
             )
@@ -213,8 +213,8 @@ function mapDispatchToProps(dispatch) {
         toggleSideBar: () => {
             dispatch(Actions.toggleSideBar());
         },
-        updateCategory: (categoryList) => {
-            dispatch(Actions.updateCategory(categoryList));
+        updateCategory: (category) => {
+            dispatch(Actions.updateCategory(category));
         },
         resetSideBarSelections: () => {
             dispatch(Actions.resetSideBarSelections());

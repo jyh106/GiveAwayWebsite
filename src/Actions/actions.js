@@ -32,12 +32,13 @@ function updateCity(city){
     }
 }
 
-function updateCategory(categoryList) {
+function updateCategory (category){
     return {
         type: 'UPDATE_CATEGORY',
-        data: categoryList
+        data: category
     }
 }
+
 
 function updateClickedPost(postInfo){
     return {

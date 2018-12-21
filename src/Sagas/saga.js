@@ -2,6 +2,7 @@ import { all, call, put, take } from 'redux-saga/effects'
 import axios from 'axios';
 import Actions from '../Actions/actions.js';
 import Constants from '../constants'
+// import postcss = require('postcss');
 
 
 // handle new posts
@@ -57,7 +58,6 @@ export function* watchSelectCity() {
     yield call(sendSelectedCityToServer, action)
   }
 }
-
 
 export function* watchSelectCategory() {
   while (true) {
