@@ -32,10 +32,10 @@ function updateCity(city){
     }
 }
 
-function updateCategory(category) {
+function updateCategory(categoryList) {
     return {
         type: 'UPDATE_CATEGORY',
-        data: category
+        data: categoryList
     }
 }
 

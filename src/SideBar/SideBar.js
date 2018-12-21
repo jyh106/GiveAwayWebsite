@@ -12,6 +12,8 @@ class SideBar extends Component {
         super();
         this.state = {
             selectedOptions: ['newest'],
+            currentSelectedCategories: ['All categories'],
+            currentSelectedCity: 'All cities',
         }
     }
     renderMilesFromZip() {
@@ -43,10 +45,10 @@ class SideBar extends Component {
     }
 
     renderNewestAndHasImageOptions() {
-        const extraClassName_newest = this.isSelected('newest') ?
+        const extraClassName_newest = this.state.selectedOptions.includes('newest') ?
                 'selected' :
                 '';
-        const extraClassName_hasImages = this.isSelected('hasImages') ?
+        const extraClassName_hasImages = this.state.selectedOptions.includes('hasImages') ?
                 'selected' :
                 '';
         return (
@@ -62,17 +64,63 @@ class SideBar extends Component {
         )
     }
 
+    updateCategory(category) {
+        //if all is selected again, then no changes to the category list
+        if (category === 'All categories') {
+            this.setState({
+                currentSelectedCategories: ['All categories']
+            })
+            return;
+        }
+    
+        const currentStateCategoryList = this.state.currentSelectedCategories;
+    
+        //if at first only 'all categories' in list,  erase 'all categories', then add new category to list 
+        if (currentStateCategoryList[0] === 'All categories' ) {
+            this.setState({
+                currentSelectedCategories: [category]
+            })
+            return;
+        }
+    
+        const isCategorySelected = currentStateCategoryList.includes(category);
+        if (isCategorySelected) { 
+            //if that is the only category selected, then auto select 'all categories'
+            if (currentStateCategoryList.length === 1) {
+                this.setState({
+                    currentSelectedCategories: ['All categories']
+                });
+                return;
+            }
+            //unselect
+            const updatedCategories = currentStateCategoryList.filter(
+                item => item !== category);
+            this.setState({
+                currentSelectedCategories: updatedCategories
+            })
+            return;
+        }
+
+        //new category clicked
+        this.setState({
+            currentSelectedCategories: this.state.currentSelectedCategories.concat([category])
+        });
+
+        //give this updated state to the reducer
+        this.props.updateCategory(this.state.currentSelectedCategories);
+    }
+
 
     renderCategorizedOptions() {
         const categories = [];
         for (let category of Constants.CATEGORIES) {
-            const extraClassName = this.isSelected(category.name) ?
+            const extraClassName = this.isSelectedCategory(category.name) ?
                 'selected' :
                 '';
             categories.push(
                 <div className= {`option ${category.className} ${extraClassName}`} 
                     key= {category.className}
-                    onClick= {()=> this.props.updateCategory(category.name) }>
+                    onClick= {()=> this.updateCategory(category.name) }>
                     {category.name}
                 </div>
             )
@@ -87,29 +135,37 @@ class SideBar extends Component {
         )
     }
 
-    isSelected(optionLabel){
-        return (this.state.selectedOptions.includes(optionLabel) 
-            || this.props.currentSelectedCity.includes(optionLabel)
-            || this.props.currentSelectedCategories.includes(optionLabel));
+    isSelectedCity(city) {
+        return this.state.currentSelectedCity === city;
     }
 
-    handleFilterCity(city){
-        if(this.props.currentSelectedCategories === 'All categories') {
-            this.props.filterResults({'city': city, 'category': 'All categories'})
-        }
-        this.props.filterResults({'city':city, 'category':this.props.currentSelectedCategories})
+    isSelectedCategory(category) {
+        return this.state.currentSelectedCategories.indexOf(category) > -1;
+    }
+
+    // handleFilterCity(city){
+    //     if(this.props.currentSelectedCategories === 'All categories') {
+    //         this.props.filterResults({'city': city, 'category': 'All categories'})
+    //     }
+    //     this.props.filterResults({'city':city, 'category':this.props.currentSelectedCategories})
+    // }
+
+    updateCity(city){
+        this.setState({
+            currentSelectedCity: city,
+        })
     }
 
     renderCityOptions(){
         const cities = [];
         for (let city of Constants.CITIES) {
-            const extraClassName = this.isSelected(city.name) ?
+            const extraClassName = this.isSelectedCity(city.name) ?
                 'selected' :
                 '';
             cities.push(
                 <div className={`option city_${city.className} ${extraClassName}`} 
                         key={city.name}
-                        onClick={()=> this.props.updateCity(city.name)}>
+                        onClick={()=> this.updateCity(city.name)}>
                     {city.name}
                 </div>
             )
@@ -157,8 +213,8 @@ function mapDispatchToProps(dispatch) {
         toggleSideBar: () => {
             dispatch(Actions.toggleSideBar());
         },
-        updateCategory: (category) => {
-            dispatch(Actions.updateCategory(category));
+        updateCategory: (categoryList) => {
+            dispatch(Actions.updateCategory(categoryList));
         },
         resetSideBarSelections: () => {
             dispatch(Actions.resetSideBarSelections());

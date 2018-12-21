@@ -3,7 +3,7 @@ import { Map, List } from 'immutable';
 const INITIAL_STATE = Map({
     'sideBarShown': true,
     'currentSelectedCity': 'All cities',
-    'currentSelectedCategories': List(['All categories']),
+    'currentSelectedCategories': ['All categories'],
 });
 
 function SideBarReducer (state = INITIAL_STATE, action) {
@@ -13,7 +13,7 @@ function SideBarReducer (state = INITIAL_STATE, action) {
     case('TOGGLE_SIDE_BAR'):
         return state.set('sideBarShown', !state.get('sideBarShown'))
     case('UPDATE_CATEGORY'):
-        return updateCategory(state, action);
+        return state.set('currentSelectedCategories', action.data);
     case('RESET_SELECTIONS'):
         return state.set('currentSelectedCity', 'All cities').set('currentSelectedCategories', List(['All categories']))
     default:

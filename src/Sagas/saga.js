@@ -52,16 +52,23 @@ function* sendSelectedCityToServer(action) {
 }
 
 export function* watchSelectCity() {
-  while(true) {
+  while (true) {
     const action = yield take('UPDATE_CITY');
     yield call(sendSelectedCityToServer, action)
   }
 }
 
+
+export function* watchSelectCategory() {
+  while (true) {
+    const action = yield take('UPDATE_CATEGORY');
+  }
+}
 export default function* rootSaga() {
   yield all([
     watchSubmitPost(),
     watchSelectCity(),
     watchAppMounted(),
+    watchSelectCategory(),
   ])
 }
