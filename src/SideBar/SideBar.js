@@ -64,53 +64,6 @@ class SideBar extends Component {
         )
     }
 
-    // updateCategory(category) {
-    //     //if all is selected again, then no changes to the category list
-    //     if (category === 'All categories') {
-    //         this.setState({
-    //             currentSelectedCategories: ['All categories']
-    //         })
-    //         return;
-    //     }
-    
-    //     const currentStateCategoryList = this.state.currentSelectedCategories;
-    
-    //     //if at first only 'all categories' in list,  erase 'all categories', then add new category to list 
-    //     if (currentStateCategoryList[0] === 'All categories' ) {
-    //         this.setState({
-    //             currentSelectedCategories: [category]
-    //         })
-    //         return;
-    //     }
-    
-    //     const isCategorySelected = currentStateCategoryList.includes(category);
-    //     if (isCategorySelected) { 
-    //         //if that is the only category selected, then auto select 'all categories'
-    //         if (currentStateCategoryList.length === 1) {
-    //             this.setState({
-    //                 currentSelectedCategories: ['All categories']
-    //             });
-    //             return;
-    //         }
-    //         //unselect
-    //         const updatedCategories = currentStateCategoryList.filter(
-    //             item => item !== category);
-    //         this.setState({
-    //             currentSelectedCategories: updatedCategories
-    //         })
-    //         return;
-    //     }
-
-    //     //new category clicked
-    //     this.setState({
-    //         currentSelectedCategories: this.state.currentSelectedCategories.concat([category])
-    //     });
-
-    //     //give this updated state to the reducer
-    //     this.props.updateCategory(this.state.currentSelectedCategories);
-    // }
-
-
     renderCategorizedOptions() {
         const categories = [];
         for (let category of Constants.CATEGORIES) {
@@ -142,19 +95,6 @@ class SideBar extends Component {
     isSelectedCategory(category) {
         return this.props.currentSelectedCategories.indexOf(category) > -1;
     }
-
-    // handleFilterCity(city){
-    //     if(this.props.currentSelectedCategories === 'All categories') {
-    //         this.props.filterResults({'city': city, 'category': 'All categories'})
-    //     }
-    //     this.props.filterResults({'city':city, 'category':this.props.currentSelectedCategories})
-    // }
-
-    // updateCity(city){
-    //     this.setState({
-    //         currentSelectedCity: city,
-    //     })
-    // }
 
     renderCityOptions(){
         const cities = [];

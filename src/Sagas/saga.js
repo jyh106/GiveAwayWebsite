@@ -1,4 +1,4 @@
-import { all, call, put, take } from 'redux-saga/effects'
+import { all, call, put, take, select } from 'redux-saga/effects'
 import axios from 'axios';
 import Actions from '../Actions/actions.js';
 import Constants from '../constants'
@@ -59,9 +59,29 @@ export function* watchSelectCity() {
   }
 }
 
+function* filterPosts(selections) {
+  console.log('at filtered posts', selections);
+}
+
+export function getSelectedCity(state){
+  return state.SideBar.get('currentSelectedCity');
+} 
+
+export function getCategories(state) {
+  return state.SideBar.get('currentSelectedCategories').toJS();
+}
+
 export function* watchSelectCategory() {
   while (true) {
     const action = yield take('UPDATE_CATEGORY');
+    let selectedCity = yield select(getSelectedCity);
+    let selectedCategories = yield select(getCategories);
+    let req = {
+      'city': selectedCity,
+      'categories': selectedCategories,
+    }
+
+    yield call(filterPosts, req);
   }
 }
 export default function* rootSaga() {

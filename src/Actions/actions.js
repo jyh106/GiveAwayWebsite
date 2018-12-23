@@ -39,7 +39,6 @@ function updateCategory (category){
     }
 }
 
-
 function updateClickedPost(postInfo){
     return {
         type: 'UPDATE_CLICKED_POST',
@@ -116,5 +115,5 @@ export default {
     toggleSideBar,
     updateCategory,
     updateCity,
-    resetSideBarSelections
+    resetSideBarSelections,
 }

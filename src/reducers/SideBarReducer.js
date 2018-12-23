@@ -15,7 +15,7 @@ function SideBarReducer (state = INITIAL_STATE, action) {
     case('UPDATE_CATEGORY'):
         return updateCategory(state, action);
     case('RESET_SELECTIONS'):
-        return state.set('currentSelectedCity', 'All cities').set('currentSelectedCategories', List(['All categories']))
+        return state.set('currentSelectedCity', 'All cities').set('currentSelectedCategories', List(['All categories']));
     default:
         return state
     }
@@ -45,6 +45,7 @@ function updateCategory(state, action) {
             category => category !== action.data);
         return state.set('currentSelectedCategories', updatedCategories)    
     }
+    //else is just adding a new category into the list
     return state.update('currentSelectedCategories', list => list.push(action.data));
 }
 
