@@ -59,8 +59,14 @@ export function* watchSelectCity() {
   }
 }
 
-function* filterPosts(selections) {
-  console.log('at filtered posts', selections);
+function* filterPosts(requirements) {
+   const response = yield call(axios, {
+    method: 'POST',
+    url: `${Constants.HOSTNAME}filterPosts`,
+    data: requirements,
+    config: { headers: {'Content-Type':'application/json'}}
+   })
+   yield put(Actions.getPosts(response.data));
 }
 
 export function getSelectedCity(state){
@@ -73,14 +79,13 @@ export function getCategories(state) {
 
 export function* watchSelectCategory() {
   while (true) {
-    const action = yield take('UPDATE_CATEGORY');
+    yield take('UPDATE_CATEGORY');
     let selectedCity = yield select(getSelectedCity);
     let selectedCategories = yield select(getCategories);
     let req = {
       'city': selectedCity,
       'categories': selectedCategories,
     }
-
     yield call(filterPosts, req);
   }
 }
