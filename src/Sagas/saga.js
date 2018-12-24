@@ -69,22 +69,25 @@ function* filterPosts(requirements) {
    yield put(Actions.getPosts(response.data));
 }
 
-export function getSelectedCity(state){
-  return state.SideBar.get('currentSelectedCity');
-} 
-
-export function getCategories(state) {
-  return state.SideBar.get('currentSelectedCategories').toJS();
+export function getSideBarItems(state, selectionLabel) {
+  if(selectionLabel === 'currentSelectedCategories'){
+    return state.SideBar.get('currentSelectedCategories').toJS()
+  }
+    return state.SideBar.get(selectionLabel)
 }
 
-export function* watchSelectCategory() {
+export function* watchSelectCategoryAndImages() {
   while (true) {
-    yield take('UPDATE_CATEGORY');
-    let selectedCity = yield select(getSelectedCity);
-    let selectedCategories = yield select(getCategories);
+    yield take(['UPDATE_CATEGORY', 'TOGGLE_HAS_IMAGES']);
+    let selectedCity = yield select(getSideBarItems, 'currentSelectedCity');
+    let selectedCategories = yield select(getSideBarItems, 'currentSelectedCategories');
+    let newestPreference = yield select(getSideBarItems, 'newest');
+    let ImagePreference = yield select(getSideBarItems, 'hasImages');
     let req = {
       'city': selectedCity,
       'categories': selectedCategories,
+      'newest': newestPreference,
+      'Images': ImagePreference
     }
     yield call(filterPosts, req);
   }
@@ -94,6 +97,6 @@ export default function* rootSaga() {
     watchSubmitPost(),
     watchSelectCity(),
     watchAppMounted(),
-    watchSelectCategory(),
+    watchSelectCategoryAndImages(),
   ])
 }

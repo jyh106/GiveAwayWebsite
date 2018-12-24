@@ -95,6 +95,18 @@ function toggleSideBar(){
     }
 }
 
+function toggleNewest() {
+    return {
+        type: 'TOGGLE_NEWEST'
+    }
+}
+
+function toggleHasImages() {
+    return {
+        type: 'TOGGLE_HAS_IMAGES'
+    }
+}
+
 function resetSideBarSelections() {
     return {
         type: 'RESET_SELECTIONS'
@@ -116,4 +128,6 @@ export default {
     updateCategory,
     updateCity,
     resetSideBarSelections,
+    toggleNewest,
+    toggleHasImages
 }

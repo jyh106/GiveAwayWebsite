@@ -8,14 +8,6 @@ import Actions from '../Actions/actions.js';
 
 
 class SideBar extends Component {
-    constructor() {
-        super();
-        this.state = {
-            selectedOptions: ['newest'],
-            // currentSelectedCategories: ['All categories'],
-            // currentSelectedCity: 'All cities',
-        }
-    }
     renderMilesFromZip() {
         return (
             <div className="milesFromZipContainer">
@@ -45,19 +37,21 @@ class SideBar extends Component {
     }
 
     renderNewestAndHasImageOptions() {
-        const extraClassName_newest = this.state.selectedOptions.includes('newest') ?
+        const extraClassName_newest = this.props.isNewestSelected ?
                 'selected' :
                 '';
-        const extraClassName_hasImages = this.state.selectedOptions.includes('hasImages') ?
+        const extraClassName_hasImages = this.props.isImagesSelected ?
                 'selected' :
                 '';
         return (
             <div className="newestAndHasImageOptionContainer">
-                <div className={`option_newest option ${extraClassName_newest}`}>
+                <div className={`option_newest option ${extraClassName_newest}`}
+                    onClick = {()=> this.props.toggleNewest()}>
                     newest
                 </div>
 
-                <div className={`option_hasImages option ${extraClassName_hasImages}`}>
+                <div className={`option_hasImages option ${extraClassName_hasImages}`}
+                    onClick = {() => this.props.toggleHasImages()}>
                     has images
                 </div>
             </div>
@@ -139,6 +133,8 @@ class SideBar extends Component {
 
 function mapStateToProps(state) {
     return {
+        isNewestSelected: state.SideBar.get('newest'),
+        isImagesSelected: state.SideBar.get('hasImages'),
         currentSelectedCity: Utils.getCurrentCity(state),
         currentSelectedCategories: Utils.getCurrentSelectedCategories(state),
         sideBarShown: state.SideBar.get('sideBarShown'),
@@ -155,6 +151,12 @@ function mapDispatchToProps(dispatch) {
         },
         updateCategory: (category) => {
             dispatch(Actions.updateCategory(category));
+        },
+        toggleHasImages: () => {
+            dispatch(Actions.toggleHasImages());
+        },
+        toggleNewest: () => {
+            dispatch(Actions.toggleNewest())
         },
         resetSideBarSelections: () => {
             dispatch(Actions.resetSideBarSelections());

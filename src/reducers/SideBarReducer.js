@@ -4,16 +4,22 @@ const INITIAL_STATE = Map({
     'sideBarShown': true,
     'currentSelectedCity': 'All cities',
     'currentSelectedCategories': List(['All categories']),
+    'hasImages': false,
+    'newest': false
 });
 
 function SideBarReducer (state = INITIAL_STATE, action) {
     switch(action.type){
-    case('UPDATE_CITY'):
-        return state.set('currentSelectedCity', action.data)
     case('TOGGLE_SIDE_BAR'):
         return state.set('sideBarShown', !state.get('sideBarShown'))
     case('UPDATE_CATEGORY'):
         return updateCategory(state, action);
+    case('UPDATE_CITY'):
+        return state.set('currentSelectedCity', action.data)
+    case('TOGGLE_HAS_IMAGES'):
+        return state.set('hasImages', !state.get('hasImages'))
+    case('TOGGLE_NEWEST'):
+        return state.set('newest', !state.get('newest'))
     case('RESET_SELECTIONS'):
         return state.set('currentSelectedCity', 'All cities').set('currentSelectedCategories', List(['All categories']));
     default:
