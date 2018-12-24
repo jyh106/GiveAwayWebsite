@@ -12,7 +12,7 @@ function changeDisplayStyle(style) {
     }
 }
 
-function toggleModal(type, toggle){
+function toggleModal(type, toggle) {
     if(toggle){
         return {
             type:'SHOW_MODAL',
@@ -25,28 +25,28 @@ function toggleModal(type, toggle){
     }
 }
 
-function updateCity(city){
+function updateCity(city) {
     return {
         type: 'UPDATE_CITY',
         data: city,
     }
 }
 
-function updateCategory (category){
+function updateCategory(category) {
     return {
         type: 'UPDATE_CATEGORY',
         data: category
     }
 }
 
-function updateClickedPost(postInfo){
+function updateClickedPost(postInfo) {
     return {
         type: 'UPDATE_CLICKED_POST',
         data: postInfo,
     }
 }
 
-function addNewPost(postInfo){
+function addNewPost(postInfo) {
     return {
         type: "ADD_NEW_POST",
         data: postInfo
@@ -89,7 +89,7 @@ function handleClickedImage({currentViewingImage, postImages}) {
     }
 }
 
-function toggleSideBar(){
+function toggleSideBar() {
     return {
         type: 'TOGGLE_SIDE_BAR'
     }

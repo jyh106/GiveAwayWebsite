@@ -87,7 +87,7 @@ class SideBar extends Component {
     }
 
     isSelectedCategory(category) {
-        return this.props.currentSelectedCategories.indexOf(category) > -1;
+        return this.props.currentSelectedCategories.includes(category);
     }
 
     renderCityOptions(){

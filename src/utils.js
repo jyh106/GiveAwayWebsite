@@ -18,9 +18,17 @@ function getDate() {
     return month + "/" + day + "/" +  year;
 }
 
+function getSideBarItems(state, selectionLabel) {
+    if(selectionLabel === 'currentSelectedCategories'){
+      return state.SideBar.get('currentSelectedCategories').toJS()
+    }
+      return state.SideBar.get(selectionLabel)
+  }
+
 export default {
     getCurrentCity,
     getShowingModals,
     getDate,
-    getCurrentSelectedCategories
+    getCurrentSelectedCategories,
+    getSideBarItems
 }

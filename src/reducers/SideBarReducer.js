@@ -1,9 +1,10 @@
 import { Map, List } from 'immutable';
+import Constants from '../constants'
 
 const INITIAL_STATE = Map({
     'sideBarShown': true,
-    'currentSelectedCity': 'All cities',
-    'currentSelectedCategories': List(['All categories']),
+    'currentSelectedCity': Constants.CITY_ALL.name,
+    'currentSelectedCategories': List([Constants.CATEGORY_ALL.name]),
     'hasImages': false,
     'newest': false
 });
@@ -21,30 +22,34 @@ function SideBarReducer (state = INITIAL_STATE, action) {
     case('TOGGLE_NEWEST'):
         return state.set('newest', !state.get('newest'))
     case('RESET_SELECTIONS'):
-        return state.set('currentSelectedCity', 'All cities').set('currentSelectedCategories', List(['All categories']));
+        return state.set('currentSelectedCity', Constants.CITY_ALL.name).set('currentSelectedCategories', List([Constants.CATEGORY_ALL.name]));
     default:
         return state
     }
 }
 
+function resetSelectionToAllCategories() {
+    return state.set('currentSelectedCategories', List([Constants.CATEGORY_ALL.name]));
+}
+
 function updateCategory(state, action) {
     //if all is selected again, then no changes to the category list
-    if (action.data === 'All categories') {
-        return state.set('currentSelectedCategories', List(['All categories']));
+    if (action.data === Constants.CATEGORY_ALL.name) {
+        return resetSelectionToAllCategories;
     }
 
     const currentStateCategoryList = state.get('currentSelectedCategories');
 
     //if at first only 'all categories' in list,  erase 'all categories', then add new category to list 
-    if (currentStateCategoryList.get(0) === 'All categories' ) {
+    if (currentStateCategoryList.get(0) === Constants.CATEGORY_ALL.name ) {
         return state.set('currentSelectedCategories', List([action.data]))
     }
 
     const isCategorySelected = currentStateCategoryList.includes(action.data);
     if (isCategorySelected) { 
         //if that is the only category selected, then auto select 'all categories'
-        if (currentStateCategoryList.length === 1) {
-            return state.set('currentSelectedCategories', List(['All categories']));
+        if (currentStateCategoryList.size === 1) {
+            return resetSelectionToAllCategories;
         }
         //unselect
         const updatedCategories = currentStateCategoryList.filter(

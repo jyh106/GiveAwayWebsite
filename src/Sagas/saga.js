@@ -1,7 +1,8 @@
 import { all, call, put, take, select } from 'redux-saga/effects'
 import axios from 'axios';
 import Actions from '../Actions/actions.js';
-import Constants from '../constants'
+import Constants from '../constants';
+import Utils from '../utils';
 // import postcss = require('postcss');
 
 
@@ -69,25 +70,19 @@ function* filterPosts(requirements) {
    yield put(Actions.getPosts(response.data));
 }
 
-export function getSideBarItems(state, selectionLabel) {
-  if(selectionLabel === 'currentSelectedCategories'){
-    return state.SideBar.get('currentSelectedCategories').toJS()
-  }
-    return state.SideBar.get(selectionLabel)
-}
 
 export function* watchSelectCategoryAndImages() {
   while (true) {
     yield take(['UPDATE_CATEGORY', 'TOGGLE_HAS_IMAGES']);
-    let selectedCity = yield select(getSideBarItems, 'currentSelectedCity');
-    let selectedCategories = yield select(getSideBarItems, 'currentSelectedCategories');
-    let newestPreference = yield select(getSideBarItems, 'newest');
-    let ImagePreference = yield select(getSideBarItems, 'hasImages');
-    let req = {
+    const selectedCity = yield select(Utils.getSideBarItems, 'currentSelectedCity');
+    const selectedCategories = yield select(Utils.getSideBarItems, 'currentSelectedCategories');
+    const newestPreference = yield select(Utils.getSideBarItems, 'newest');
+    const imagePreference = yield select(Utils.getSideBarItems, 'hasImages');
+    const req = {
       'city': selectedCity,
       'categories': selectedCategories,
       'newest': newestPreference,
-      'Images': ImagePreference
+      'images': imagePreference
     }
     yield call(filterPosts, req);
   }
