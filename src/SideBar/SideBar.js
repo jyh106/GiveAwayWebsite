@@ -87,7 +87,13 @@ class SideBar extends Component {
     }
 
     isSelectedCategory(category) {
-        return this.props.currentSelectedCategories.includes(category);
+        if (category === Constants.CATEGORY_ALL.name) {
+            return this.props.currentSelectedCategories.size === Constants.CATEGORY_LIST_LENGTH;
+        }
+        if (this.props.currentSelectedCategories.size < Constants.CATEGORY_LIST_LENGTH) {
+            return this.props.currentSelectedCategories.includes(category)
+        }
+        return false
     }
 
     renderCityOptions(){
@@ -106,7 +112,7 @@ class SideBar extends Component {
         }
         return(
             <div className="selectCityOptions" key="options">
-                <div className="cityOptionsLabel">Select cities: </div>
+                <div className="cityOptionsLabel" key="optionlabels">Select cities: </div>
                 {cities}
             </div>
         )
@@ -117,8 +123,8 @@ class SideBar extends Component {
             return null
         }
         return (
-        <div className="sideBarWrapper">
-            <div className="sideBarContainer" onMouseLeave={()=> this.props.toggleSideBar()}>
+        <div className="sideBarWrapper" key="wrapper">
+            <div className="sideBarContainer" key="container" onMouseLeave={()=> this.props.toggleSideBar()}>
                 {this.renderResetButton()}
                 {this.renderCityOptions()}
                 {this.renderMilesFromZip()}

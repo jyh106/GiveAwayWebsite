@@ -29,8 +29,8 @@ const CITY_OAKLAND = {
 };
 
 const CITY_SANBRUNO = {
-    'name':'Oakland',
-    'className': 'oakland'
+    'name':'San Bruno',
+    'className': 'sanBruno'
 };
 
 const CITY_BURLINGAME = {
@@ -108,7 +108,11 @@ const CATEGORIES = [
     CATEGORY_SPORTS, 
     CATEGORY_ELECTRONICS, 
     CATEGORY_OTHERS
-]
+];
+
+const CATEGORY_LIST = (CATEGORIES.slice(1,CATEGORIES.length)).map((category) => category.name);
+
+const CATEGORY_LIST_LENGTH = CATEGORY_LIST.length;
 
 const NONE_SCROLLABLE_THUMBS = 5;
 
@@ -133,5 +137,7 @@ export default {
     CITY_BERKELEY, 
     CITY_OAKLAND, 
     CITY_SANBRUNO, 
-    CITY_BURLINGAME
+    CITY_BURLINGAME,
+    CATEGORY_LIST_LENGTH,
+    CATEGORY_LIST,
 }

@@ -4,7 +4,7 @@ import Constants from '../constants'
 const INITIAL_STATE = Map({
     'sideBarShown': true,
     'currentSelectedCity': Constants.CITY_ALL.name,
-    'currentSelectedCategories': List([Constants.CATEGORY_ALL.name]),
+    'currentSelectedCategories': List(Constants.CATEGORY_LIST),
     'hasImages': false,
     'newest': false
 });
@@ -28,20 +28,20 @@ function SideBarReducer (state = INITIAL_STATE, action) {
     }
 }
 
-function resetSelectionToAllCategories() {
-    return state.set('currentSelectedCategories', List([Constants.CATEGORY_ALL.name]));
+function resetSelectionToAllCategories(state) {
+    return state.set('currentSelectedCategories', List(Constants.CATEGORY_LIST));
 }
 
 function updateCategory(state, action) {
     //if all is selected again, then no changes to the category list
     if (action.data === Constants.CATEGORY_ALL.name) {
-        return resetSelectionToAllCategories;
+        return resetSelectionToAllCategories(state);
     }
 
     const currentStateCategoryList = state.get('currentSelectedCategories');
 
     //if at first only 'all categories' in list,  erase 'all categories', then add new category to list 
-    if (currentStateCategoryList.get(0) === Constants.CATEGORY_ALL.name ) {
+    if (currentStateCategoryList.size === Constants.CATEGORY_LIST_LENGTH) {
         return state.set('currentSelectedCategories', List([action.data]))
     }
 
@@ -49,7 +49,7 @@ function updateCategory(state, action) {
     if (isCategorySelected) { 
         //if that is the only category selected, then auto select 'all categories'
         if (currentStateCategoryList.size === 1) {
-            return resetSelectionToAllCategories;
+            return resetSelectionToAllCategories(state);
         }
         //unselect
         const updatedCategories = currentStateCategoryList.filter(
