@@ -12,7 +12,7 @@ function changeDisplayStyle(style) {
     }
 }
 
-function toggleModal(type, toggle){
+function toggleModal(type, toggle) {
     if(toggle){
         return {
             type:'SHOW_MODAL',
@@ -25,21 +25,28 @@ function toggleModal(type, toggle){
     }
 }
 
-function updateCity(location){
+function updateCity(city) {
     return {
         type: 'UPDATE_CITY',
-        data: location,
+        data: city,
     }
 }
 
-function updateClickedPost(postInfo){
+function updateCategory(category) {
+    return {
+        type: 'UPDATE_CATEGORY',
+        data: category
+    }
+}
+
+function updateClickedPost(postInfo) {
     return {
         type: 'UPDATE_CLICKED_POST',
         data: postInfo,
     }
 }
 
-function addNewPost(postInfo){
+function addNewPost(postInfo) {
     return {
         type: "ADD_NEW_POST",
         data: postInfo
@@ -82,18 +89,34 @@ function handleClickedImage({currentViewingImage, postImages}) {
     }
 }
 
-function toggleSideBar(){
+function toggleSideBar() {
     return {
         type: 'TOGGLE_SIDE_BAR'
     }
 }
 
+function toggleNewest() {
+    return {
+        type: 'TOGGLE_NEWEST'
+    }
+}
+
+function toggleHasImages() {
+    return {
+        type: 'TOGGLE_HAS_IMAGES'
+    }
+}
+
+function resetSideBarSelections() {
+    return {
+        type: 'RESET_SELECTIONS'
+    }
+}
 
 export default {
     isSearchBoxOnFocus,
     changeDisplayStyle,
     toggleModal,
-    updateCity,
     updateClickedPost,
     addNewPost,
     appMounted,
@@ -101,5 +124,10 @@ export default {
     appWillMount, 
     handleClickedImage,
     updateClickedImage,
-    toggleSideBar
+    toggleSideBar,
+    updateCategory,
+    updateCity,
+    resetSideBarSelections,
+    toggleNewest,
+    toggleHasImages
 }

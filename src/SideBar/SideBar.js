@@ -8,12 +8,6 @@ import Actions from '../Actions/actions.js';
 
 
 class SideBar extends Component {
-    constructor() {
-        super();
-        this.state = {
-            selectedOptions: ['newest'],
-        }
-    }
     renderMilesFromZip() {
         return (
             <div className="milesFromZipContainer">
@@ -31,23 +25,33 @@ class SideBar extends Component {
     }
 
 
-    renderResetUpdateButtons() {
+    renderResetButton() {
         return (
             <div className="resetAndUpdate">
-                <div className="resetAndUpdate_button resetButton">reset</div>
-                <div className="resetAndUpdate_button updateButton">update search</div>
+                <div className="resetAndUpdate_button resetButton"
+                     onClick={ ()=> this.props.resetSideBarSelections()}>
+                    reset
+                </div>
             </div>
         )
     }
 
     renderNewestAndHasImageOptions() {
+        const extraClassName_newest = this.props.isNewestSelected ?
+                'selected' :
+                '';
+        const extraClassName_hasImages = this.props.isImagesSelected ?
+                'selected' :
+                '';
         return (
             <div className="newestAndHasImageOptionContainer">
-                <div className={`option_newest option ${this.handleSelected('newest')}`}>
+                <div className={`option_newest option ${extraClassName_newest}`}
+                    onClick = {()=> this.props.toggleNewest()}>
                     newest
                 </div>
 
-                <div className={`option_hasImages option ${this.handleSelected('hasImages')}`}>
+                <div className={`option_hasImages option ${extraClassName_hasImages}`}
+                    onClick = {() => this.props.toggleHasImages()}>
                     has images
                 </div>
             </div>
@@ -57,8 +61,13 @@ class SideBar extends Component {
     renderCategorizedOptions() {
         const categories = [];
         for (let category of Constants.CATEGORIES) {
+            const extraClassName = this.isSelectedCategory(category.name) ?
+                'selected' :
+                '';
             categories.push(
-                <div className={`option ${category.className} ${this.handleSelected(category.className)}`} key={category.className}>
+                <div className= {`option ${category.className} ${extraClassName}`} 
+                    key= {category.className}
+                    onClick= {()=> this.props.updateCategory(category.name) }>
                     {category.name}
                 </div>
             )
@@ -73,18 +82,28 @@ class SideBar extends Component {
         )
     }
 
-    handleSelected(optionLabel){
-        if (this.state.selectedOptions.includes(optionLabel) || this.props.currentSelectedCity.includes(optionLabel)) {
-            return 'selected'
+    isSelectedCity(city) {
+        return this.props.currentSelectedCity === city;
+    }
+
+    isSelectedCategory(category) {
+        if (category === Constants.CATEGORY_ALL.name) {
+            return this.props.currentSelectedCategories.size === Constants.CATEGORY_LIST_LENGTH;
         }
-        return ''
+        if (this.props.currentSelectedCategories.size < Constants.CATEGORY_LIST_LENGTH) {
+            return this.props.currentSelectedCategories.includes(category)
+        }
+        return false
     }
 
     renderCityOptions(){
         const cities = [];
         for (let city of Constants.CITIES) {
+            const extraClassName = this.isSelectedCity(city.name) ?
+                'selected' :
+                '';
             cities.push(
-                <div className={`option city_${city.className} ${this.handleSelected(city.name)}`} 
+                <div className={`option city_${city.className} ${extraClassName}`} 
                         key={city.name}
                         onClick={()=> this.props.updateCity(city.name)}>
                     {city.name}
@@ -93,7 +112,7 @@ class SideBar extends Component {
         }
         return(
             <div className="selectCityOptions" key="options">
-                <div className="cityOptionsLabel">Select cities: </div>
+                <div className="cityOptionsLabel" key="optionlabels">Select cities: </div>
                 {cities}
             </div>
         )
@@ -104,9 +123,9 @@ class SideBar extends Component {
             return null
         }
         return (
-        <div className="sideBarWrapper">
-            <div className="sideBarContainer" onMouseLeave={()=> this.props.toggleSideBar()}>
-                {this.renderResetUpdateButtons()}
+        <div className="sideBarWrapper" key="wrapper">
+            <div className="sideBarContainer" key="container" onMouseLeave={()=> this.props.toggleSideBar()}>
+                {this.renderResetButton()}
                 {this.renderCityOptions()}
                 {this.renderMilesFromZip()}
                 {this.renderNewestAndHasImageOptions()}
@@ -120,8 +139,11 @@ class SideBar extends Component {
 
 function mapStateToProps(state) {
     return {
+        isNewestSelected: state.SideBar.get('newest'),
+        isImagesSelected: state.SideBar.get('hasImages'),
         currentSelectedCity: Utils.getCurrentCity(state),
-        sideBarShown: state.App.get('sideBarShown'),
+        currentSelectedCategories: Utils.getCurrentSelectedCategories(state),
+        sideBarShown: state.SideBar.get('sideBarShown'),
     }
   }
 
@@ -132,6 +154,18 @@ function mapDispatchToProps(dispatch) {
         },
         toggleSideBar: () => {
             dispatch(Actions.toggleSideBar());
+        },
+        updateCategory: (category) => {
+            dispatch(Actions.updateCategory(category));
+        },
+        toggleHasImages: () => {
+            dispatch(Actions.toggleHasImages());
+        },
+        toggleNewest: () => {
+            dispatch(Actions.toggleNewest())
+        },
+        resetSideBarSelections: () => {
+            dispatch(Actions.resetSideBarSelections());
         }
     }
   }

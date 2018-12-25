@@ -1,7 +1,9 @@
-import { all, call, put, take } from 'redux-saga/effects'
+import { all, call, put, take, select } from 'redux-saga/effects'
 import axios from 'axios';
 import Actions from '../Actions/actions.js';
-import Constants from '../constants'
+import Constants from '../constants';
+import Utils from '../utils';
+// import postcss = require('postcss');
 
 
 // handle new posts
@@ -52,16 +54,44 @@ function* sendSelectedCityToServer(action) {
 }
 
 export function* watchSelectCity() {
-  while(true) {
+  while (true) {
     const action = yield take('UPDATE_CITY');
     yield call(sendSelectedCityToServer, action)
   }
 }
 
+function* filterPosts(requirements) {
+   const response = yield call(axios, {
+    method: 'POST',
+    url: `${Constants.HOSTNAME}filterPosts`,
+    data: requirements,
+    config: { headers: {'Content-Type':'application/json'}}
+   })
+   yield put(Actions.getPosts(response.data));
+}
+
+
+export function* watchSelectCategoryAndImages() {
+  while (true) {
+    yield take(['UPDATE_CATEGORY', 'TOGGLE_HAS_IMAGES']);
+    const selectedCity = yield select(Utils.getSideBarItems, 'currentSelectedCity');
+    const selectedCategories = yield select(Utils.getSideBarItems, 'currentSelectedCategories');
+    const newestPreference = yield select(Utils.getSideBarItems, 'newest');
+    const imagePreference = yield select(Utils.getSideBarItems, 'hasImages');
+    const req = {
+      'city': selectedCity,
+      'categories': selectedCategories,
+      'newest': newestPreference,
+      'images': imagePreference
+    }
+    yield call(filterPosts, req);
+  }
+}
 export default function* rootSaga() {
   yield all([
     watchSubmitPost(),
     watchSelectCity(),
     watchAppMounted(),
+    watchSelectCategoryAndImages(),
   ])
 }
