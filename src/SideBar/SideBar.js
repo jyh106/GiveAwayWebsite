@@ -5,8 +5,6 @@ import Constants from '../constants';
 import Utils from '../utils';
 import Actions from '../Actions/actions.js';
 
-
-
 class SideBar extends Component {
     renderMilesFromZip() {
         return (
@@ -23,7 +21,6 @@ class SideBar extends Component {
             </div>
         )
     }
-
 
     renderResetButton() {
         return (

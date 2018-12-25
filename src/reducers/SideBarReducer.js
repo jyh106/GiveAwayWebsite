@@ -22,7 +22,7 @@ function SideBarReducer (state = INITIAL_STATE, action) {
     case('TOGGLE_NEWEST'):
         return state.set('newest', !state.get('newest'))
     case('RESET_SELECTIONS'):
-        return state.set('currentSelectedCity', Constants.CITY_ALL.name).set('currentSelectedCategories', List([Constants.CATEGORY_ALL.name]));
+        return state.set('currentSelectedCity', Constants.CITY_ALL.name).set('currentSelectedCategories', List(Constants.CATEGORY_LIST));
     default:
         return state
     }

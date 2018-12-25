@@ -73,7 +73,7 @@ function* filterPosts(requirements) {
 
 export function* watchSelectCategoryAndImages() {
   while (true) {
-    yield take(['UPDATE_CATEGORY', 'TOGGLE_HAS_IMAGES']);
+    yield take(['UPDATE_CATEGORY', 'TOGGLE_HAS_IMAGES','RESET_SELECTIONS']);
     const selectedCity = yield select(Utils.getSideBarItems, 'currentSelectedCity');
     const selectedCategories = yield select(Utils.getSideBarItems, 'currentSelectedCategories');
     const newestPreference = yield select(Utils.getSideBarItems, 'newest');
@@ -87,6 +87,7 @@ export function* watchSelectCategoryAndImages() {
     yield call(filterPosts, req);
   }
 }
+
 export default function* rootSaga() {
   yield all([
     watchSubmitPost(),
