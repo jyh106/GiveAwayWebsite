@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import "./ModalNewForm.css";
+// import "./NewForm.css";
 import { connect } from 'react-redux';
-import Actions from "../../Actions/actions";
-import Utils from '../../utils'
+import Actions from "../Actions/actions";
+import { BrowserRouter } from 'react-router-dom';
+import Utils from '../utils';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+library.add(faArrowLeft)
 
 class PostForm extends Component {
     constructor() {
@@ -63,7 +68,7 @@ class PostForm extends Component {
 
     renderHeader(){
         return (
-            <div className="form_header">
+            <div className="newFormHeader">
                 I Want To Give Away: 
             </div>
         )
@@ -71,9 +76,9 @@ class PostForm extends Component {
 
     renderQuestions() {
         return(
-            <div>
-                 <div className="postForm_question">
-                    <div className="titles">
+            <div className="newForm_questionContainer">
+                 <div className="newForm_question">
+                    <div className="questionLabel">
                         Item(s):
                     </div>
                     <input type="form_name" className={`input_title ${this.getErrorMessage(this.state.name)}`} 
@@ -83,8 +88,8 @@ class PostForm extends Component {
                     <p className="maxCharacterLabel">max characters: {25 - this.state.name.length}</p>
                 </div>
 
-                <div className="postForm_question">
-                    <div className="titles">
+                <div className="newForm_question">
+                    <div className="questionLabel">
                         At(streetName):
                     </div>
                     <input className={`input_streetName ${this.getErrorMessage(this.state.address_street)}`} 
@@ -92,15 +97,15 @@ class PostForm extends Component {
                     </input>
                 </div>
 
-                <div className="postForm_question">
-                    <div className="titles">
+                <div className="newForm_question">
+                    <div className="questionLabel">
                         At(apt): 
                     </div>
                     <input className="input_apt" onChange={(e)=>this.onChangeInput('address_apt', e.target.value)}></input>
                 </div>
 
-                <div className="postForm_question">
-                    <div className="titles">
+                <div className="newForm_question">
+                    <div className="questionLabel">
                         In:  
                         <select className={`citySelection ${this.getErrorMessage(this.state.address_city)} `} 
                                 onChange={(e)=>this.onChangeInput('address_city', e.target.value)}>
@@ -115,7 +120,7 @@ class PostForm extends Component {
                 </div>
 
                 <div className="postForm_question">
-                    <div className="titles">
+                    <div className="questionLabel">
                         Images: 
                     </div>
                     <input className="input_images" type="file" accept="image/png, image/jpeg, image/jpg" 
@@ -123,7 +128,7 @@ class PostForm extends Component {
                 </div>
                 
                 <div className="postForm_question">
-                    <div className="titles">
+                    <div className="questionLabel">
                         Note: 
                     </div>
                     <textarea className="input_notes"  onChange={(e)=>this.onChangeInput('note', e.target.value)} ></textarea>
@@ -151,33 +156,36 @@ class PostForm extends Component {
 
     render() {
         return(
-            <form>
-                <div className="newPostForm">
-                    {this.renderHeader()}
-                    {this.renderQuestions()}
+        <BrowserRouter>
+        <div className="newForm_PageContainer">
+            <div className="backButton">
+                <a href="/">
+                    <FontAwesomeIcon icon="arrow-left" className="icon_leftArrow" />
+                    Home
+                </a>
+            </div>
+            <div className="newPost_FormContainer">
+                {this.renderHeader()}
+                {this.renderQuestions()}
 
-                    <div className="post_date">
-                        {Utils.getDate()}
-                    </div>
-
-                    {this.renderButtons()}
+                <div className="post_date">
+                    {Utils.getDate()}
                 </div>
-            </form>
+
+                {this.renderButtons()}
+            </div>
+        </div>
+        </BrowserRouter>
         )
     }
 }
 
 function mapStateToProps(state) {
-    return {
-        modalShown: state.Modal.get('modalShown'),
-    }
+    return state
   }
 
-const mapDispatchToProps = dispatch => {
+function mapDispatchToProps(dispatch) {
     return {
-        toggleModal: (type, toggle) => {
-            dispatch(Actions.toggleModal(type, toggle));
-        },
         addNewPost: (postInfo) => {
             dispatch(Actions.addNewPost(postInfo));
         }

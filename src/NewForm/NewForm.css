@@ -1,22 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Signika');
 
-.newPostForm {
-    z-index: 12;
-    position: absolute; 
-    top: 25%;
-    left: 35%;
-    background:white;
-    width: 400px;
-    border-radius: 5px;
-    border: 2px solid rgb(129, 198, 224);
+.newForm_PageContainer {
+    display: block;
+    margin-top: 200px;
 }
 
+.backButton{
+    margin-top: 15px;
+    margin-left: 10px;
+    font-family: 'Signika', sans-serif;
+    font-size: 17px;
+}
 
- .form_header{
+.icon_leftArrow {
+    padding-right: 8px;
+    font-size: 16px;
+}
+
+.newPost_FormContainer {
+    background:red;
+    margin-top: 35px;
+    width: 500px;
+    border-radius: 5px;
+    border: 2px solid rgb(129, 198, 224); 
+}
+
+/* 
+ .newFormHeader{
     background-color: rgb(113, 210, 240);
     padding: 6px;
     font-family: 'Poiret One', cursive;
     font-weight: bolder;
-
 }
 
 .postForm_question{
@@ -132,4 +146,4 @@ input{
 .input_images{
     border: none;
     padding: 5px;
-}
+} */

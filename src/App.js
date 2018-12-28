@@ -5,6 +5,7 @@ import Actions from './Actions/actions'
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import UserPage from './UserPage/UserPage';
+import NewGiveAway from './NewForm/NewForm'
 
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
           <div>
             <Route exact path="/" component={Home}></Route>
             <Route exact path="/myPage" component={UserPage}></Route>
+            <Route exact path="/newGiveAway" component={NewGiveAway}></Route>
           </div>
         </BrowserRouter>
     );

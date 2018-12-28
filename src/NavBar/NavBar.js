@@ -11,8 +11,8 @@ class NavBar extends Component {
             <div className="navBar">
                 <StyleMenu />
                 {/* <div className="myPageButton"><a href="/myPage">Manage my posts</a></div> */}
-                <div className="addNewFormButton" onClick={()=> this.props.toggleModal('newForm', true)}>
-                    +GiveAway
+                <div className="addNewFormButton">
+                    <a href="/newGiveAway">+GiveAway</a>
                 </div>
                 <SearchBox />
             </div>

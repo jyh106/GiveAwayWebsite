@@ -2,7 +2,7 @@ import { Map, List } from 'immutable';
 import Constants from '../constants'
 
 const INITIAL_STATE = Map({
-    'sideBarShown': true,
+    'sideBarShown': false,
     'currentSelectedCity': Constants.CITY_ALL.name,
     'currentSelectedCategories': List(Constants.CATEGORY_LIST),
     'hasImages': false,
