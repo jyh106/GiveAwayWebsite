@@ -1,15 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Signika');
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+@import url('https://fonts.googleapis.com/css?family=Hind');
 
-.newForm_PageContainer {
-    display: block;
-    margin-top: 200px;
+.newFormHeader_label {
+    text-align: center;
+    background-color: rgb(15, 217, 253);
+    padding: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Poiret One', cursive;
+    color: white;
 }
 
-.backButton{
-    margin-top: 15px;
-    margin-left: 10px;
+.button_home{
     font-family: 'Signika', sans-serif;
     font-size: 17px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
 }
 
 .icon_leftArrow {
@@ -18,132 +26,75 @@
 }
 
 .newPost_FormContainer {
-    background:red;
-    margin-top: 35px;
-    width: 500px;
-    border-radius: 5px;
-    border: 2px solid rgb(129, 198, 224); 
-}
-
-/* 
- .newFormHeader{
-    background-color: rgb(113, 210, 240);
-    padding: 6px;
-    font-family: 'Poiret One', cursive;
-    font-weight: bolder;
-}
-
-.postForm_question{
     width: 100%;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    font-size: 15px;
-    float: left;
-    font-family: Arial, Helvetica, sans-serif;
+    display: block;
 }
 
-.titles {
+.newForm_questionContainer {
+    width: 90%;
+    margin: 0 auto;
+    height: 800px;
+    border-radius: 5px;
+    overflow: scroll;
+    box-shadow: -1px 0px 34px -6px rgb(47, 146, 221);
+    padding-bottom: 30px;
+
+}
+
+.newForm_questionWrapper {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.newForm_question {
     text-align: left;
-    margin: 5px;
-    margin-left: 10px;
-    font-weight: Bold;
+    padding-left: 15px;
+    height: 90px;
 }
 
-input{
-    border-radius: 5px;
-    height: 25px;
-    width: 90%;
-    border: 1px solid gray;
-    float: left;
-    margin-left: 10px;
-    font-size: 15px;
-    padding-left: 10px;
-    outline: none;
+.questionLabel {
+    padding-top: 10px;
+    font-family: 'Hind', sans-serif;
 }
 
-.input_notes{
-    border-radius: 5px;
-    width: 90%;
-    border: 1px solid gray;
-    float: left;
-    margin-left: 10px;
-    font-size: 15px;
-    padding-left: 10px;
-    padding-top: 5px;
-    height: 100px;
-    margin-bottom: 20px;
+.newFormInput, .citySelection{
+    border: 2px solid rgb(167, 167, 167);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-.post_date{
-    padding: 10px;
-    font-family: 'Poiret One', cursive;
-    font-weight: bolder;
+.value_invalid {
+    border: 2px solid rgb(243, 135, 135);
 }
 
-.newForm_buttons{
-    padding: 3px;
-    font-size: 14px;
-    border: 1px solid gray;
-    margin-bottom: 8px;
-    border-radius: 5px;
-    outline: none;
+.maxCharacterLabel {
+    margin-top: 0;
+    margin-right: 50px;
 }
 
-.submit_disable:hover {
-    cursor: default;
+.input_title {
+    margin-bottom: 2px;
 }
 
-.newFormButton_submit{
-    float: right;
-    margin-right: 10px;
+.question_city {
+    height: 80px;
 }
 
-.submit_enable {
-    background: rgb(225, 242, 248);
-}
-.submit_enable:hover {
-    background-color: rgb(8, 175, 236);
-    box-shadow: 0px 2px 15px 0px rgb(129, 198, 224);
-    cursor: pointer;
+.question_images {
+    height: 80px;
 }
 
-.newFormButton_cancel {
-    float: left;
-    margin-left: 10px;
-    background: rgb(225, 242, 248);
+.input_images {
+    border: none;
 }
 
-.newFormButton_cancel:hover{
-    cursor: pointer;
-}
-
-.value_invalid{
-    border-color: red;
+.question_note {
+    height: 200px;
 }
 
 .citySelection{
-    appearance: none; 
     padding: 5px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    outline: none;
-    border-radius: 2px;
+    font-size: 15px;
 }
-
-.required_label{
-    color: red;
-    display: inline-block;
-}
-
-.maxCharacterLabel{
-    font-size: 12px;
-    color: rgb(102, 101, 101);
-    float: right;
-    margin-top: 3px;
-    margin-right: 18px;
-}
-
-.input_images{
-    border: none;
-    padding: 5px;
-} */

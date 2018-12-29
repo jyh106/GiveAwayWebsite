@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import "./NewForm.css";
+import "./NewForm.css";
 import { connect } from 'react-redux';
 import Actions from "../Actions/actions";
 import { BrowserRouter } from 'react-router-dom';
@@ -68,8 +68,91 @@ class PostForm extends Component {
 
     renderHeader(){
         return (
-            <div className="newFormHeader">
+            <div className="newFormHeader_label">
                 I Want To Give Away: 
+            </div>
+        )
+    }
+
+    renderQuestion_name() {
+        return (
+            <div className="newForm_question question_name">
+                <div className="questionLabel">
+                    Item(s):
+                </div>
+                <input type="form_name" className={`input_title newFormInput ${this.getErrorMessage(this.state.name)}`} 
+                        onChange={(e)=>this.onChangeInput('name', e.target.value)}
+                        maxLength='25'>
+                </input>
+                <p className="maxCharacterLabel">max characters: {25 - this.state.name.length}</p>
+            </div>
+        )
+    }
+
+    renderQuestion_street() {
+        return (
+            <div className="newForm_question question_street">
+                <div className="questionLabel">
+                    At (street):
+                </div>
+                <input className={`input_streetName newFormInput ${this.getErrorMessage(this.state.address_street)}`} 
+                        onChange={(e)=>this.onChangeInput('address_street', e.target.value)}>
+                </input>
+            </div>
+        )
+    }
+
+    renderQuestion_apt() {
+        return (
+            <div className="newForm_question question_apt">
+                <div className="questionLabel">
+                    At (apt): 
+                </div>
+                <input className="input_apt newFormInput" onChange={(e)=>this.onChangeInput('address_apt', e.target.value)}></input>
+            </div>
+        )
+    }
+
+    renderQuestion_city() {
+        return (
+            <div className="newForm_question question_city">
+                <div className="questionLabel">
+                    In:  
+                </div>
+                <select className={`citySelection ${this.getErrorMessage(this.state.address_city)} `} 
+                        onChange={(e)=>this.onChangeInput('address_city', e.target.value)}>
+                    <option value="">Select city</option>
+                    <option value="San Francisco">San Francisco</option>
+                    <option value="Oakland">Oakland</option>
+                    <option value="Berkeley">Berkeley</option>
+                    <option value="San Bruno">San Bruno</option>
+                    <option value="Burlingame">Burlingame</option>
+                </select>
+            </div>
+        )
+    }
+
+    renderQuestion_images() {
+        return (
+            <div className="newForm_question question_images">
+                <div className="questionLabel">
+                    Images: 
+                </div>
+                <input className="input_images newFormInput" 
+                        type="file" 
+                        accept="image/png, image/jpeg, image/jpg" 
+                        onChange={(e)=>this.onChangeInput('images', this.state.images + e.target.value)}/>
+            </div>
+        )
+    }
+
+    renderQuestion_note() {
+        return (
+            <div className="newForm_question question_note">
+                <div className="questionLabel">
+                    Note: 
+                </div>
+                <textarea className="input_notes newFormInput"  onChange={(e)=>this.onChangeInput('note', e.target.value)} ></textarea>
             </div>
         )
     }
@@ -77,61 +160,13 @@ class PostForm extends Component {
     renderQuestions() {
         return(
             <div className="newForm_questionContainer">
-                 <div className="newForm_question">
-                    <div className="questionLabel">
-                        Item(s):
-                    </div>
-                    <input type="form_name" className={`input_title ${this.getErrorMessage(this.state.name)}`} 
-                            onChange={(e)=>this.onChangeInput('name', e.target.value)}
-                            maxLength='25'>
-                    </input>
-                    <p className="maxCharacterLabel">max characters: {25 - this.state.name.length}</p>
-                </div>
-
-                <div className="newForm_question">
-                    <div className="questionLabel">
-                        At(streetName):
-                    </div>
-                    <input className={`input_streetName ${this.getErrorMessage(this.state.address_street)}`} 
-                            onChange={(e)=>this.onChangeInput('address_street', e.target.value)}>
-                    </input>
-                </div>
-
-                <div className="newForm_question">
-                    <div className="questionLabel">
-                        At(apt): 
-                    </div>
-                    <input className="input_apt" onChange={(e)=>this.onChangeInput('address_apt', e.target.value)}></input>
-                </div>
-
-                <div className="newForm_question">
-                    <div className="questionLabel">
-                        In:  
-                        <select className={`citySelection ${this.getErrorMessage(this.state.address_city)} `} 
-                                onChange={(e)=>this.onChangeInput('address_city', e.target.value)}>
-                            <option value="">Select city</option>
-                            <option value="San Francisco">San Francisco</option>
-                            <option value="Oakland">Oakland</option>
-                            <option value="Berkeley">Berkeley</option>
-                            <option value="San Bruno">San Bruno</option>
-                            <option value="Burlingame">Burlingame</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div className="postForm_question">
-                    <div className="questionLabel">
-                        Images: 
-                    </div>
-                    <input className="input_images" type="file" accept="image/png, image/jpeg, image/jpg" 
-                        onChange={(e)=>this.onChangeInput('images', this.state.images + e.target.value)}/>
-                </div>
-                
-                <div className="postForm_question">
-                    <div className="questionLabel">
-                        Note: 
-                    </div>
-                    <textarea className="input_notes"  onChange={(e)=>this.onChangeInput('note', e.target.value)} ></textarea>
+                <div className="newForm_questionWrapper">
+                    {this.renderQuestion_name()}
+                    {this.renderQuestion_street()}
+                    {this.renderQuestion_apt()}
+                    {this.renderQuestion_city()}
+                    {this.renderQuestion_images()}
+                    {this.renderQuestion_note()}
                 </div>
             </div>
         )
@@ -158,22 +193,25 @@ class PostForm extends Component {
         return(
         <BrowserRouter>
         <div className="newForm_PageContainer">
-            <div className="backButton">
-                <a href="/">
-                    <FontAwesomeIcon icon="arrow-left" className="icon_leftArrow" />
-                    Home
-                </a>
-            </div>
-            <div className="newPost_FormContainer">
-                {this.renderHeader()}
-                {this.renderQuestions()}
 
+            <div className="newForm_header">
+                {this.renderHeader()}
+                <div className="button_home">
+                    <a href="/">
+                        <FontAwesomeIcon icon="arrow-left" className="icon_leftArrow" />
+                        Home
+                    </a>
+                </div>
+            </div>
+
+            <div className="newPost_FormContainer">
+                {this.renderQuestions()}
                 <div className="post_date">
                     {Utils.getDate()}
                 </div>
-
                 {this.renderButtons()}
             </div>
+
         </div>
         </BrowserRouter>
         )
