@@ -135,10 +135,13 @@ class PostForm extends Component {
     renderQuestion_images() {
         return (
             <div className="newForm_question question_images">
-                <div className="questionLabel">
+                <div className="questionLabel question_images_label">
                     Images: 
                 </div>
-                <input className="input_images newFormInput" 
+                <label for="post-images-upload" className="questionLabel select_button_label">
+                    Select images
+                </label>
+                <input id="post-images-upload" 
                         type="file" 
                         accept="image/png, image/jpeg, image/jpg" 
                         onChange={(e)=>this.onChangeInput('images', this.state.images + e.target.value)}/>

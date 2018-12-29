@@ -52,12 +52,12 @@
     height: 90px;
 }
 
-.questionLabel {
+.questionLabel, .post_date {
     padding-top: 10px;
     font-family: 'Hind', sans-serif;
 }
 
-.newFormInput, .citySelection{
+.newFormInput, .citySelection, .select_button_label{
     border: 2px solid rgb(167, 167, 167);
     padding-top: 2px;
     padding-bottom: 2px;
@@ -79,15 +79,11 @@
 }
 
 .question_city {
-    height: 80px;
+    height: 90px;
 }
 
 .question_images {
     height: 80px;
-}
-
-.input_images {
-    border: none;
 }
 
 .question_note {
@@ -96,5 +92,27 @@
 
 .citySelection{
     padding: 5px;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.select_button_label {
+    border-radius: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 10px;
+}
+
+.question_images_label {
+    margin-bottom: 8px;
+}
+
+.post_date {
     font-size: 15px;
 }
