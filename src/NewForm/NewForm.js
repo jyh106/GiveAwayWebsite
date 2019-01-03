@@ -7,6 +7,7 @@ import Utils from '../utils';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import Constants from '../constants';
 library.add(faArrowLeft)
 
 class PostForm extends Component {
@@ -89,6 +90,25 @@ class PostForm extends Component {
         )
     }
 
+    renderQuestion_category() {
+        const categories = [];
+        for (let category of Constants.CATEGORY_LIST) {
+            categories.push(
+                <option value={category}>{category}</option>
+            )
+        }
+        return (
+            <div className="newForm_question question_name">
+                <div className="questionLabel">
+                    Item category:
+                </div>
+                <select>
+                    {categories}
+                </select>
+            </div>
+        )
+    }
+
     renderQuestion_street() {
         return (
             <div className="newForm_question question_street">
@@ -133,6 +153,7 @@ class PostForm extends Component {
     }
 
     renderQuestion_images() {
+        // TODO find out how to display selected files
         return (
             <div className="newForm_question question_images">
                 <div className="questionLabel question_images_label">
@@ -148,6 +169,7 @@ class PostForm extends Component {
             </div>
         )
     }
+
 
     renderQuestion_note() {
         return (
@@ -165,6 +187,7 @@ class PostForm extends Component {
             <div className="newForm_questionContainer">
                 <div className="newForm_questionWrapper">
                     {this.renderQuestion_name()}
+                    {this.renderQuestion_category()}
                     {this.renderQuestion_street()}
                     {this.renderQuestion_apt()}
                     {this.renderQuestion_city()}
