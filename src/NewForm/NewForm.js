@@ -216,7 +216,9 @@ class PostForm extends Component {
                 <div className="questionLabel">
                     Note: 
                 </div>
-                <textarea className="input_notes newFormInput"  onChange={(e)=>this.onChangeInput('note', e.target.value)} ></textarea>
+                <textarea className="input_notes newFormInput" 
+                            onChange={(e)=>this.onChangeInput('note', e.target.value)} >
+                </textarea>
             </div>
         )
     }
@@ -232,6 +234,9 @@ class PostForm extends Component {
                     {this.renderQuestion_city()}
                     {this.renderQuestion_images()}
                     {this.renderQuestion_note()}
+                    <div className="post_date">
+                        {Utils.getDate()}
+                    </div>
                 </div>
             </div>
         )
@@ -272,9 +277,6 @@ class PostForm extends Component {
 
             <div className="newPost_FormContainer">
                 {this.renderQuestions()}
-                <div className="post_date">
-                    {Utils.getDate()}
-                </div>
                 {this.renderButtons()}
             </div>
 
