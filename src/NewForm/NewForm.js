@@ -13,6 +13,7 @@ library.add(faArrowLeft)
 class PostForm extends Component {
     constructor() {
         super();
+        this.homeRef = React.createRef();
         this.state = {
             'name': '',
             'address_street': '',
@@ -59,7 +60,8 @@ class PostForm extends Component {
            'images': this.state.images,
            'category': this.state.category
        }
-        this.props.addNewPost(postInfo)
+        this.props.addNewPost(postInfo);
+        this.homeRef.current.click();
         this.clearState();
     }
 
@@ -252,6 +254,7 @@ class PostForm extends Component {
         )
     }
 
+
     render() {
         return(
         <BrowserRouter>
@@ -259,8 +262,8 @@ class PostForm extends Component {
 
             <div className="newForm_header">
                 {this.renderHeader()}
-                <div className="button_home">
-                    <a href="/">
+                <div className="button_home" ref={div => this.homeReference = div}>
+                    <a href="/" ref={this.homeRef}>
                         <FontAwesomeIcon icon="arrow-left" className="icon_leftArrow" />
                         Home
                     </a>
