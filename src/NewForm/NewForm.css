@@ -83,7 +83,7 @@
 }
 
 .question_images {
-    height: 80px;
+    height: 140px;
 }
 
 .question_note {
@@ -114,12 +114,22 @@ input[type="file"] {
 }
 
 .displayFileNameWrapper{
-    display: inline-block;
-    background-color: red;
-    width: 50px;
-    height: 10px;
+    display: block;
+    background-color: rgba(240, 240, 240, 0.795);
+    margin-top: 15px;
+    margin-left: 10px;
+    width: 600px;
+    height: 45px;
+    overflow: scroll;
+    border-radius: 4px;
 }
 
 .post_date {
     font-size: 15px;
+}
+
+.displayFileName {
+    padding-left: 10px;
+    color: rgb(37, 37, 37);
+    display: inline-block;
 }

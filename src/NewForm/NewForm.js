@@ -30,7 +30,6 @@ class PostForm extends Component {
 
 
     onChangeInput(type, answer){
-        console.log('type', type, 'answer', answer)
         this.setState({
             [type]: answer,
         })
@@ -162,10 +161,12 @@ class PostForm extends Component {
 
     handleDisplayFileNames() {
         const fileNameList = [];
+        let index = 0;
         for (let fileName of this.state.images) {
             fileNameList.push(
-                <div className="displayFileName" key={fileName}> {fileName} </div>
+                <div className="displayFileName" key={fileName + index}>{fileName}</div>
             )
+            index++;
         }
         return (
             <div className="displayFileNameWrapper">
@@ -174,12 +175,11 @@ class PostForm extends Component {
         )
     }
 
-    addNewImageName(fileName) {
-        return this.state.images.slice(0).concat(fileName)
+    createNewImagesList(e) {
+        return this.state.images.slice(0).concat(this.getFileName(e))
     }
 
     renderQuestion_images() {
-        // TODO find out how to display selected files
         return (
             <div className="newForm_question question_images">
                 <div className="questionLabel question_images_label">
@@ -191,7 +191,7 @@ class PostForm extends Component {
                 <input id="post-images-upload" 
                         type="file" 
                         accept="image/png, image/jpeg, image/jpg" 
-                        onChange={(e)=>this.onChangeInput('images', this.addNewImageName(this.getFileName(e).toString()))}/>
+                        onChange={(e)=>this.onChangeInput('images', this.createNewImagesList(e))}/>
                 {this.handleDisplayFileNames()}
             </div>
         )
