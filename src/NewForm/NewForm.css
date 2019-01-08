@@ -113,6 +113,13 @@ input[type="file"] {
     margin-bottom: 8px;
 }
 
+.displayFileNameWrapper{
+    display: inline-block;
+    background-color: red;
+    width: 50px;
+    height: 10px;
+}
+
 .post_date {
     font-size: 15px;
 }

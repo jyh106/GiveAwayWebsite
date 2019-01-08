@@ -30,6 +30,7 @@ class PostForm extends Component {
 
 
     onChangeInput(type, answer){
+        console.log('type', type, 'answer', answer)
         this.setState({
             [type]: answer,
         })
@@ -43,7 +44,7 @@ class PostForm extends Component {
             'address_city': '',
             'note': '',
             'date': '',
-            'image': []
+            'images': []
         })
     }
 
@@ -94,7 +95,7 @@ class PostForm extends Component {
         const categories = [];
         for (let category of Constants.CATEGORY_LIST) {
             categories.push(
-                <option value={category}>{category}</option>
+                <option value={category} key={category}>{category}</option>
             )
         }
         return (
@@ -152,6 +153,31 @@ class PostForm extends Component {
         )
     }
 
+    getFileName(e) {
+        const regex = /[a-z.]+$/;
+        const found = e.target.value.match(regex);
+        const filename = found[0];
+        return filename.toString()
+    }
+
+    handleDisplayFileNames() {
+        const fileNameList = [];
+        for (let fileName of this.state.images) {
+            fileNameList.push(
+                <div className="displayFileName" key={fileName}> {fileName} </div>
+            )
+        }
+        return (
+            <div className="displayFileNameWrapper">
+                {fileNameList}
+            </div>
+        )
+    }
+
+    addNewImageName(fileName) {
+        return this.state.images.slice(0).concat(fileName)
+    }
+
     renderQuestion_images() {
         // TODO find out how to display selected files
         return (
@@ -159,17 +185,17 @@ class PostForm extends Component {
                 <div className="questionLabel question_images_label">
                     Images: 
                 </div>
-                <label for="post-images-upload" className="questionLabel select_button_label">
+                <label htmlFor="post-images-upload" className="questionLabel select_button_label">
                     Select images
                 </label>
                 <input id="post-images-upload" 
                         type="file" 
                         accept="image/png, image/jpeg, image/jpg" 
-                        onChange={(e)=>this.onChangeInput('images', this.state.images + e.target.value)}/>
+                        onChange={(e)=>this.onChangeInput('images', this.addNewImageName(this.getFileName(e).toString()))}/>
+                {this.handleDisplayFileNames()}
             </div>
         )
     }
-
 
     renderQuestion_note() {
         return (
