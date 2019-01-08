@@ -241,7 +241,7 @@ class PostForm extends Component {
         return(
             <div>
                 <button className="newForm_buttons newFormButton_cancel"
-                        onClick={()=> this.props.toggleModal('newForm', false)}>
+                        onClick={()=> this.homeRef.current.click()}>
                     Cancel
                 </button>
 
