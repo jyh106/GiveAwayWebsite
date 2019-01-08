@@ -20,7 +20,8 @@ class PostForm extends Component {
             'address_city': '',
             'note': '',
             'date': '',
-            'images': []
+            'images': [],
+            'category': ''
         }
     }
 
@@ -43,7 +44,8 @@ class PostForm extends Component {
             'address_city': '',
             'note': '',
             'date': '',
-            'images': []
+            'images': [],
+            'category': ''
         })
     }
 
@@ -54,7 +56,8 @@ class PostForm extends Component {
            'name': this.state.name,
            'address': address,
            'note': this.state.note,
-           'images': this.state.images
+           'images': this.state.images,
+           'category': this.state.category
        }
         this.props.addNewPost(postInfo)
         this.clearState();
@@ -92,6 +95,9 @@ class PostForm extends Component {
 
     renderQuestion_category() {
         const categories = [];
+        categories.push(
+            <option value="" key="default value">Select category</option>
+        )
         for (let category of Constants.CATEGORY_LIST) {
             categories.push(
                 <option value={category} key={category}>{category}</option>
@@ -102,7 +108,8 @@ class PostForm extends Component {
                 <div className="questionLabel">
                     Item category:
                 </div>
-                <select>
+                <select className={`categorySelection ${this.getErrorMessage(this.state.category)} `} 
+                        onChange={(e)=>this.onChangeInput('category', e.target.value)}>
                     {categories}
                 </select>
             </div>
@@ -134,6 +141,15 @@ class PostForm extends Component {
     }
 
     renderQuestion_city() {
+        const cityOptions = [];
+        cityOptions.push(<option value="" key="defaultlabel">Select city</option>);
+        const cityList = Constants.CITIES.slice(1, Constants.CITIES.length); //took out 'all cities'
+        for (let city of cityList) {
+            cityOptions.push(
+                <option value={city.name} key={city.name}>{city.name}</option>
+            )
+        }
+
         return (
             <div className="newForm_question question_city">
                 <div className="questionLabel">
@@ -141,12 +157,7 @@ class PostForm extends Component {
                 </div>
                 <select className={`citySelection ${this.getErrorMessage(this.state.address_city)} `} 
                         onChange={(e)=>this.onChangeInput('address_city', e.target.value)}>
-                    <option value="">Select city</option>
-                    <option value="San Francisco">San Francisco</option>
-                    <option value="Oakland">Oakland</option>
-                    <option value="Berkeley">Berkeley</option>
-                    <option value="San Bruno">San Bruno</option>
-                    <option value="Burlingame">Burlingame</option>
+                    {cityOptions}
                 </select>
             </div>
         )
