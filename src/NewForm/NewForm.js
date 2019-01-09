@@ -10,7 +10,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Constants from '../constants';
 library.add(faArrowLeft)
 
-class PostForm extends Component {
+class NewForm extends Component {
     constructor() {
         super();
         this.homeRef = React.createRef();
@@ -31,7 +31,7 @@ class PostForm extends Component {
     }
 
 
-    onChangeInput(type, answer){
+    onInputChange(type, answer){
         this.setState({
             [type]: answer,
         })
@@ -87,7 +87,7 @@ class PostForm extends Component {
                     Item(s):
                 </div>
                 <input type="form_name" className={`input_title newFormInput ${this.getErrorMessage(this.state.name)}`} 
-                        onChange={(e)=>this.onChangeInput('name', e.target.value)}
+                        onChange={(e)=>this.onInputChange('name', e.target.value)}
                         maxLength='25'>
                 </input>
                 <p className="maxCharacterLabel">max characters: {25 - this.state.name.length}</p>
@@ -111,7 +111,7 @@ class PostForm extends Component {
                     Item category:
                 </div>
                 <select className={`categorySelection ${this.getErrorMessage(this.state.category)} `} 
-                        onChange={(e)=>this.onChangeInput('category', e.target.value)}>
+                        onChange={(e)=>this.onInputChange('category', e.target.value)}>
                     {categories}
                 </select>
             </div>
@@ -125,7 +125,7 @@ class PostForm extends Component {
                     At (street):
                 </div>
                 <input className={`input_streetName newFormInput ${this.getErrorMessage(this.state.address_street)}`} 
-                        onChange={(e)=>this.onChangeInput('address_street', e.target.value)}>
+                        onChange={(e)=>this.onInputChange('address_street', e.target.value)}>
                 </input>
             </div>
         )
@@ -137,7 +137,7 @@ class PostForm extends Component {
                 <div className="questionLabel">
                     At (apt): 
                 </div>
-                <input className="input_apt newFormInput" onChange={(e)=>this.onChangeInput('address_apt', e.target.value)}></input>
+                <input className="input_apt newFormInput" onChange={(e)=>this.onInputChange('address_apt', e.target.value)}></input>
             </div>
         )
     }
@@ -158,7 +158,7 @@ class PostForm extends Component {
                     In:  
                 </div>
                 <select className={`citySelection ${this.getErrorMessage(this.state.address_city)} `} 
-                        onChange={(e)=>this.onChangeInput('address_city', e.target.value)}>
+                        onChange={(e)=>this.onInputChange('address_city', e.target.value)}>
                     {cityOptions}
                 </select>
             </div>
@@ -174,12 +174,13 @@ class PostForm extends Component {
 
     handleDisplayFileNames() {
         const fileNameList = [];
-        let index = 0;
-        for (let fileName of this.state.images) {
+        for (let i = 0; i < this.state.images.length; i++) {
+            const fileName = this.state.images[i];
             fileNameList.push(
-                <div className="displayFileName" key={fileName + index}>{fileName}</div>
+                <div className="displayFileName" key={i}>
+                    {fileName}
+                </div>
             )
-            index++;
         }
         return (
             <div className="displayFileNameWrapper">
@@ -189,6 +190,7 @@ class PostForm extends Component {
     }
 
     createNewImagesList(e) {
+        // adding new image filename into the current image file list
         return this.state.images.slice(0).concat(this.getFileName(e))
     }
 
@@ -204,7 +206,7 @@ class PostForm extends Component {
                 <input id="post-images-upload" 
                         type="file" 
                         accept="image/png, image/jpeg, image/jpg" 
-                        onChange={(e)=>this.onChangeInput('images', this.createNewImagesList(e))}/>
+                        onChange={(e)=>this.onInputChange('images', this.createNewImagesList(e))}/>
                 {this.handleDisplayFileNames()}
             </div>
         )
@@ -217,7 +219,7 @@ class PostForm extends Component {
                     Note: 
                 </div>
                 <textarea className="input_notes newFormInput" 
-                            onChange={(e)=>this.onChangeInput('note', e.target.value)} >
+                            onChange={(e)=>this.onInputChange('note', e.target.value)} >
                 </textarea>
             </div>
         )
@@ -242,7 +244,10 @@ class PostForm extends Component {
         )
     }
 
+
     renderButtons(){
+        const submitButtonClassName = `newForm_buttons newFormButton_submit 
+                                    ${(this.isSubmitButtonEnable()) ? "submit_enable" : "submit_disable"}`;
         return(
             <div>
                 <button className="newForm_buttons newFormButton_cancel"
@@ -250,7 +255,7 @@ class PostForm extends Component {
                     Cancel
                 </button>
 
-                <button className={`newForm_buttons newFormButton_submit ${(this.isSubmitButtonEnable()) ? "submit_enable" : "submit_disable"}`} 
+                <button className= {submitButtonClassName}
                         onClick={()=> this.handleSubmit()}
                         disabled={!this.isSubmitButtonEnable()}>
                     Submit
@@ -302,6 +307,6 @@ function mapDispatchToProps(dispatch) {
   export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(PostForm)
+  )(NewForm)
 
 
