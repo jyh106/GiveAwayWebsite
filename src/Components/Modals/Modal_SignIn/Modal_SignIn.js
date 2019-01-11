@@ -3,6 +3,7 @@ import "./Modal_SignIn.css";
 import { connect } from 'react-redux';
 import OutsideClick from '../../OutsideClick';
 import Actions from "../../Actions/actions";
+import Utils from '../../../utils'
 
 class ModalSignIn extends Component {
     render(){
@@ -33,7 +34,7 @@ class ModalSignIn extends Component {
 
 function mapStateToProps(state) {
     return{
-        modalShown: state.Modal.getIn(['modalShown']),
+        modalShown: Utils.getShowingModals(state),
     }
 }
   

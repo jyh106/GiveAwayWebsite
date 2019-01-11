@@ -3,6 +3,7 @@ import ModalPost from '../Modals/Modal_post/Modal_post.js';
 import ModalSignIn from "../Modals/Modal_SignIn/Modal_SignIn.js";
 import ModalSignUp from '../Modals/ModalSignUp/ModalSignUp';
 import ModalPhotoDisplay from "../Modals/ModalPhotoDisplay/ModalPhotoDisplay";
+import Utils from "../../utils"
 import { connect } from 'react-redux';
 
 
@@ -24,7 +25,7 @@ class ModalContainer extends Component {
 
 function mapStateToProps(state) {
     return {
-        modalShown: state.Modal.get('modalShown'),
+        modalShown: Utils.getShowingModals(state),
     }
   }
 

@@ -10,6 +10,42 @@ function getShowingModals(state) {
     return state.Modal.get('modalShown');
 }
 
+function getPageMaskShown(state) {
+    return state.Modal.get('isPageMaskShown');
+}
+
+function getClickedPostInfo(state) {
+    return state.PostBoard.get('clickedListPost');
+}
+
+function getCurrentClickedImages(state) {
+    return state.Modal.get('currentClickedImage');
+}
+
+function getImages(state) {
+    return state.Modal.get('images');
+}
+
+function getDisplayStyle(state) {
+    return state.PostBoard.get('displayStyle');
+}
+
+function getPosts(state) {
+    return  state.PostBoard.get('posts');
+}
+
+function getIsNewestSelected(state) {
+    return state.SideBar.get('newest');
+}
+
+function getIsImageSelected(state) {
+    return state.SideBar.get('hasImages');
+}
+
+function getIsSideBarShown(state) {
+    return state.SideBar.get('sideBarShown');
+}
+
 function getDate() {
     let date = new Date();
     let month = date.getUTCMonth() + 1;
@@ -25,10 +61,20 @@ function getSideBarItems(state, selectionLabel) {
       return state.SideBar.get(selectionLabel)
   }
 
+
 export default {
     getCurrentCity,
     getShowingModals,
     getDate,
     getCurrentSelectedCategories,
-    getSideBarItems
+    getSideBarItems,
+    getPageMaskShown,
+    getClickedPostInfo,
+    getCurrentClickedImages,
+    getImages,
+    getDisplayStyle,
+    getPosts,
+    getIsNewestSelected,
+    getIsImageSelected,
+    getIsSideBarShown
 }

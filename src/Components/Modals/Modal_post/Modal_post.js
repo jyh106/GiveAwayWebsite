@@ -6,6 +6,7 @@ import Constants from '../../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faFeather , faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons'
 import OutsideClick from '../../OutsideClick';
+import Utils from '../../../utils';
 library.add(faMapMarkerAlt, faFeather, faAngleLeft, faAngleRight) 
 
 class ModalPost extends Component {
@@ -89,10 +90,8 @@ class ModalPost extends Component {
 
 function mapStateToProps(state){
     return{
-        modalShown: state.Modal.getIn(['modalShown']),
-        clickedPostInfo: state.PostBoard.get('clickedListPost'),
-        // currentClickedImage: state.Modal.get('currentClickedImage'),
-        // images: state.Modal.get('images')
+        modalShown: Utils.getShowingModals(state),
+        clickedPostInfo: Utils.getClickedPostInfo(state)
     }
   }
   

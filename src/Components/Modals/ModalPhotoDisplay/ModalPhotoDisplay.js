@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
+import { Utils } from '../../../utils';
 library.add(faAngleLeft, faAngleRight) 
 
 class ModalPhotoDisplay extends Component {
@@ -70,9 +71,9 @@ class ModalPhotoDisplay extends Component {
 
 function mapStateToProps(state) {
     return {
-        modalShown: state.Modal.get('modalShown'),
-        currentClickedImage: state.Modal.get('currentClickedImage'),
-        images: state.Modal.get('images')
+        modalShown: Utils.getShowingModals(state),
+        currentClickedImage: Utils.getCurrentClickedImages(state),
+        images: Utils.getImages(state)
     }
   }
 

@@ -141,11 +141,11 @@ class SideBar extends Component {
 
 function mapStateToProps(state) {
     return {
-        isNewestSelected: state.SideBar.get('newest'),
-        isImagesSelected: state.SideBar.get('hasImages'),
+        isNewestSelected: Utils.getIsNewestSelected(state),
+        isImagesSelected: Utils.getIsImageSelected(state),
         currentSelectedCity: Utils.getCurrentCity(state),
         currentSelectedCategories: Utils.getCurrentSelectedCategories(state),
-        sideBarShown: state.SideBar.get('sideBarShown'),
+        sideBarShown: Utils.getIsSideBarShown(state)
     }
   }
 

@@ -3,6 +3,7 @@ import "./PostBoard.css";
 import PostsList from '../Post/Post-List/Post-List.js';
 import PostsGallery from '../Post/Post-Gallery.js';
 import { connect } from 'react-redux';
+import { Utils } from '../../utils';
 
 class PostBoard extends Component {
     renderPostsGallery(){
@@ -55,8 +56,8 @@ class PostBoard extends Component {
 
 function mapStateToProps(state){
     return{
-        posts: state.PostBoard.get('posts'),
-        displayStyle: state.PostBoard.get('displayStyle')
+        posts: Utils.getPosts(state);
+        displayStyle: Utils.getDisplayStyle(state);
     }
   }
 
