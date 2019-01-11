@@ -19,7 +19,7 @@ class PostList extends Component {
         this.props.toggleDisplay('post', true);
     }
 
-    renderNote(){
+    renderNote() {
         if(this.props.description === ''){
             return null
         }

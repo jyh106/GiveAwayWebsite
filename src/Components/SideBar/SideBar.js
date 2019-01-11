@@ -37,19 +37,12 @@ class SideBar extends Component {
         const extraClassName_newest = this.props.isNewestSelected ?
                 'selected' :
                 '';
-        const extraClassName_hasImages = this.props.isImagesSelected ?
-                'selected' :
-                '';
         return (
             <div className="newestAndHasImageOptionContainer">
+                <div className="filterLabel">Sort by: </div>
                 <div className={`option_newest option ${extraClassName_newest}`}
                     onClick = {()=> this.props.toggleNewest()}>
                     newest
-                </div>
-
-                <div className={`option_hasImages option ${extraClassName_hasImages}`}
-                    onClick = {() => this.props.toggleHasImages()}>
-                    has images
                 </div>
             </div>
         )
@@ -69,6 +62,18 @@ class SideBar extends Component {
                 </div>
             )
         }
+
+        const extraClassName_hasImages = this.props.isImagesSelected ?
+        'selected' :
+        '';
+        categories.push(
+            <div className={`option_hasImages option ${extraClassName_hasImages}`}
+                onClick = {() => this.props.toggleHasImages()}
+                key="hasImages">
+                has images
+            </div>
+        )
+
         return (
             <div className="categorizedOptionsContainer">
                 <div className="categoryLabel">
@@ -124,7 +129,7 @@ class SideBar extends Component {
             <div className="sideBarContainer" key="container" onMouseLeave={()=> this.props.toggleSideBar()}>
                 {this.renderResetButton()}
                 {this.renderCityOptions()}
-                {this.renderMilesFromZip()}
+                {/* {this.renderMilesFromZip()} */}
                 {this.renderNewestAndHasImageOptions()}
                 {this.renderCategorizedOptions()}
             </div>

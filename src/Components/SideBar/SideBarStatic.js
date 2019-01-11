@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons'
 library.add(faAngleDoubleRight) 
 
+// SideBarStatic represents the component when it's hidden (not hovered over making selections)
 class SideBarStatic extends Component {
     render() {
         if (this.props.sideBarShown) {
