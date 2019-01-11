@@ -20,7 +20,6 @@ class NewForm extends Component {
             'address_apt': '',
             'address_city': '',
             'note': '',
-            'date': '',
             'images': [],
             'category': ''
         }
@@ -44,7 +43,6 @@ class NewForm extends Component {
             'address_apt': '',
             'address_city': '',
             'note': '',
-            'date': '',
             'images': [],
             'category': ''
         })
@@ -53,7 +51,6 @@ class NewForm extends Component {
     handleSubmit(){
         const address = `${this.state.address_street} ${this.state.address_apt}, ${this.state.address_city}`
         const postInfo = {
-           'date': Utils.getDate(),
            'name': this.state.name,
            'address': address,
            'note': this.state.note,
@@ -236,9 +233,6 @@ class NewForm extends Component {
                     {this.renderQuestion_city()}
                     {this.renderQuestion_images()}
                     {this.renderQuestion_note()}
-                    <div className="post_date">
-                        {Utils.getDate()}
-                    </div>
                 </div>
             </div>
         )
