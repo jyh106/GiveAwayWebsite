@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './SideBarStatic.css';
+import './SideBarHidden.css';
 import { connect } from 'react-redux';
 import Actions from '../Actions/actions.js';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -8,14 +8,14 @@ import { faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons',
 import Utils from '../../utils'
 library.add(faAngleDoubleRight) 
 
-// SideBarStatic represents the component when it's hidden (not hovered over making selections)
-class SideBarStatic extends Component {
+// SideBarHiddenrepresents the component when it's hidden (not hovered over making selections)
+class SideBarHidden extends Component {
     render() {
         if (this.props.sideBarShown) {
             return null;
         }
         return (
-            <div className="sideBarStatic" onMouseOver={()=>this.props.toggleSideBar()}>
+            <div className="sideBarHidden" onMouseOver={()=>this.props.toggleSideBar()}>
                 <FontAwesomeIcon className="icon_doubleArrow" icon="angle-double-right" />
             </div>
         )
@@ -39,4 +39,4 @@ const mapDispatchToProps = dispatch => {
   export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(SideBarStatic)
+  )(SideBarHidden)

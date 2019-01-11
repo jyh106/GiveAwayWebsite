@@ -1,4 +1,4 @@
-.sideBarStatic {
+.sideBarHidden {
     z-index: 15;
     position: sticky;
     float: left;
@@ -10,7 +10,7 @@
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 255, 0.527);
 }
 
-.sideBarStatic:hover {
+.sideBarHidden:hover {
     cursor: pointer;
 }
 
