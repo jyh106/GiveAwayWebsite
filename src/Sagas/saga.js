@@ -12,6 +12,7 @@ function* toggleModal_newForm(){
 }
 
 function* sendPostToServer(action){
+  console.log('sending post to server, data: ', action.data)
   yield call(axios, {
     method: 'POST',
     url: `${Constants.HOSTNAME}posts`,
@@ -20,11 +21,11 @@ function* sendPostToServer(action){
   })
 }
 
+
 export function* watchSubmitPost() {
   // upload post to server and hide new form modal
   while (true) {
     const action = yield take('ADD_NEW_POST');
-    yield call(toggleModal_newForm);
     yield call(sendPostToServer, action);
   }
 }
@@ -73,7 +74,7 @@ function* filterPosts(requirements) {
 
 export function* watchSelectCategoryAndImages() {
   while (true) {
-    yield take(['UPDATE_CATEGORY', 'TOGGLE_HAS_IMAGES','RESET_SELECTIONS']);
+    yield take(['UPDATE_CATEGORY', 'TOGGLE_HAS_IMAGES','RESET_SELECTIONS', 'TOGGLE_NEWEST']);
     const selectedCity = yield select(Utils.getSideBarItems, 'currentSelectedCity');
     const selectedCategories = yield select(Utils.getSideBarItems, 'currentSelectedCategories');
     const newestPreference = yield select(Utils.getSideBarItems, 'newest');

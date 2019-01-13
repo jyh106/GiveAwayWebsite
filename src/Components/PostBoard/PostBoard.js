@@ -15,7 +15,7 @@ class PostBoard extends Component {
                              description={post.note}
                              editable={post.editable}
                              images ={post.images}
-                             key={"post " + post.name}
+                             key={post.name}
                              />)
         }
         return posts;
@@ -30,7 +30,7 @@ class PostBoard extends Component {
                              description={post.note}
                              editable={post.editable}
                              images ={post.images}
-                             key={"post " + post.name}
+                             key={post.name}
                              />)
         }
         return posts;
@@ -45,8 +45,8 @@ class PostBoard extends Component {
 
     render() {
         return(
-        <div className="postBoardWrapper">
-            <div className="PostBoard">
+        <div className="postBoardWrapper" key="postBoardWrapper">
+            <div className="PostBoard" key="postBoard">
                 {this.renderPosts()}
             </div>
         </div>
@@ -56,8 +56,8 @@ class PostBoard extends Component {
 
 function mapStateToProps(state){
     return{
-        posts: Utils.getPosts(state);
-        displayStyle: Utils.getDisplayStyle(state);
+        posts: Utils.getPosts(state),
+        displayStyle: Utils.getDisplayStyle(state),
     }
   }
 

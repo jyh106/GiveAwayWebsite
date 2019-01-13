@@ -58,8 +58,8 @@ class NewForm extends Component {
            'category': this.state.category
        }
         this.props.addNewPost(postInfo);
-        this.homeRef.current.click();
         this.clearState();
+        this.homeRef.current.click();
     }
 
     getErrorMessage(value){
