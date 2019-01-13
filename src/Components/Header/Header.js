@@ -4,7 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDove, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
-import Actions from "../Actions/actions";
+import Actions from "../../Actions/actions";
 library.add(faDove, faUserCircle) 
 
 class Header extends Component {

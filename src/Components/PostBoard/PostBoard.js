@@ -3,7 +3,7 @@ import "./PostBoard.css";
 import PostsList from '../Post/Post-List/Post-List.js';
 import PostsGallery from '../Post/Post-Gallery.js';
 import { connect } from 'react-redux';
-import { Utils } from '../../utils';
+import Utils from '../../utils.js';
 
 class PostBoard extends Component {
     renderPostsGallery(){

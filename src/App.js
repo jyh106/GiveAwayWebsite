@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import Home from './Home/Home';
-import Actions from './Actions/actions'
+import Home from './Components/Home/Home';
+import Actions from './Actions/actions.js'
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import UserPage from './UserPage/UserPage';
-import NewGiveAway from './NewForm/NewForm'
+import NewGiveAway from './Components/NewForm/NewForm.js'
 
 
 class App extends Component {

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import "./Post-Gallery.css";
 import { connect } from 'react-redux';
-import Actions from "../Actions/actions";
+import Actions from "../../Actions/actions";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faFeather, faPencilAlt, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
-import Constants from '../constants';
+import Constants from '../../constants';
 library.add(faMapMarkerAlt, faFeather, faPencilAlt, faAngleLeft, faAngleRight) 
 
 class PostGallery extends Component {

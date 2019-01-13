@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './SideBarHidden.css';
 import { connect } from 'react-redux';
-import Actions from '../Actions/actions.js';
+import Actions from '../../Actions/actions.js';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons',
+import { faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons';
 import Utils from '../../utils'
 library.add(faAngleDoubleRight) 
 

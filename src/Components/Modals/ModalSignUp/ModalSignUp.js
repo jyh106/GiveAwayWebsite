@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import "./ModalSignUp.css";
 import { connect } from 'react-redux';
-import OutsideClick from '../../OutsideClick';
-import Utils from '../../utils'
+import OutsideClick from '../../../OutsideClick';
+import Utils from '../../../utils.js'
 class ModalSignUp extends Component {
     render(){
         return(

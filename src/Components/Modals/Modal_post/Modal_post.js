@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import "./Modal_post.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
-import Constants from '../../constants';
+import Constants from '../../../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faFeather , faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons'
-import OutsideClick from '../../OutsideClick';
+import OutsideClick from '../../../OutsideClick';
 import Utils from '../../../utils';
 library.add(faMapMarkerAlt, faFeather, faAngleLeft, faAngleRight) 
 

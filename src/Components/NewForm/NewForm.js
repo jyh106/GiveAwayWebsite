@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import "./NewForm.css";
 import { connect } from 'react-redux';
-import Actions from "../Actions/actions";
+import Actions from "../../Actions/actions";
 import { BrowserRouter } from 'react-router-dom';
-import Utils from '../utils';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import Constants from '../constants';
+import Constants from '../../constants';
 library.add(faArrowLeft)
 
 class NewForm extends Component {

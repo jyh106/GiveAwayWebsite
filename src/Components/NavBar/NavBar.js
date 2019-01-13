@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "./NavBar.css";
 import StyleMenu from './StyleMenu/StyleMenu.js';
 import { connect } from 'react-redux';
-import Actions from '../Actions/actions.js';
+import Actions from '../../Actions/actions.js';
 import SearchBox from './SearchBox/SearchBox.js';
 
 class NavBar extends Component {

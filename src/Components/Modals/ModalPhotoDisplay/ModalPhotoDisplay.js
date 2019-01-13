@@ -4,8 +4,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
-import Actions from "../../Actions/actions";
-import { Utils } from '../../../utils';
+import Actions from "../../../Actions/actions";
+import Utils from '../../../utils.js';
 library.add(faAngleLeft, faAngleRight) 
 
 class ModalPhotoDisplay extends Component {

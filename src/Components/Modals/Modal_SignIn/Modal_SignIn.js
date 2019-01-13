@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import "./Modal_SignIn.css";
 import { connect } from 'react-redux';
-import OutsideClick from '../../OutsideClick';
-import Actions from "../../Actions/actions";
+import OutsideClick from '../../../OutsideClick';
+import Actions from "../../../Actions/actions";
 import Utils from '../../../utils'
 
 class ModalSignIn extends Component {

@@ -8,7 +8,7 @@ import PostBoard from '../PostBoard/PostBoard.js';
 import ModalContainer from '../Modals/ModalContainer';
 import { BrowserRouter } from 'react-router-dom';
 import './Home.css';
-import { Utils } from '../../utils';
+import Utils from '../../utils.js';
 
 class Home extends Component {
     displayPageMask(){
