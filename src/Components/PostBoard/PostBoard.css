@@ -9,6 +9,7 @@
 }
 
 .postBoardWrapper {
+    margin-top: 20px;
     overflow: scroll;
     width: 99%;
     float: right;

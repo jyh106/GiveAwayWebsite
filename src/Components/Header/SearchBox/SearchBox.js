@@ -4,7 +4,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import React, { Component } from 'react';
 import "./SearchBox.css";
-import Actions from '../../../Actions/actions.js';
 import OutsideAlert from '../../../OutsideClick';
 library.add(faSearch);
 
