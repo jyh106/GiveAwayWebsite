@@ -1,53 +1,50 @@
-@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+@import url('https://fonts.googleapis.com/css?family=Alegreya');
 
 .header {
-    background-color: rgb(15, 217, 253);
     width: 100%;
-    height: 40px;
+    height: 60px;
 }
 
 .header_name {
-    font-family: 'Poiret One', cursive;
-    text-align: center;
-    width: 200px;
-    margin: 0 auto;
-    color: white;
-    font-size: 20px;
+    font-family: 'Alegreya', serif;
+    width: 190px;
+    color: #F4A460;
+    font-size: 28px;
     font-weight: bolder;
-    padding-top: 6px;
+    padding-top: 15px;
 }
 
 .header_name:hover {
     cursor: pointer;
 }
 
-.dove{
-    color: white;
-    font-size: 20px;
-    padding-bottom: 6px;
-}
-
 .user{
     position: absolute;
-    top: 1%;
-    right: 10px;
-    width: 100px;
+    top: 10px;
+    right: 5px;
+    width: 150px;
 }
 
-.sign_in {
+.accountDropDownMenu{
     display: inline-block;
-    padding-left: 5px;
 }
 
-.sign_in:hover{
+.icon_angleDown {
+    padding-left: 18px;
+    padding-bottom: 3px;
+    font-size: 20px;
+    color: gray;
+}
+
+.icon_angleDown:hover{
     cursor: pointer;
-    text-decoration: underline;
     color: blue;
 }
 
 .icon_user{
-    margin-top: 2px;
-    font-size: 23px;
+    margin-top: 9px;
+    color: gray;
+    font-size: 30px;
 }
 
 .icon_user:hover {

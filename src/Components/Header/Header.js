@@ -2,21 +2,25 @@ import React, { Component } from 'react';
 import "./Header.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDove, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
-library.add(faDove, faUserCircle) 
+import SearchBox from './SearchBox/SearchBox.js';
+library.add(faAngleDown, faUserCircle) 
 
 class Header extends Component {
     render() {
         return(
             <div className="header">
                 <div className="header_name"> 
-                    <FontAwesomeIcon icon="dove" className="dove" /> GiveAway 
+                   GiveAway 
                 </div>
                 <div className="user">
+                    <SearchBox />
                     <FontAwesomeIcon icon="user-circle" className="icon_user" /> 
-                    <p className="sign_in" onClick={()=> this.props.toggleModal('signIn', true) }>Sign in</p>
+                    <div className="accountDropDownMenu">
+                        <FontAwesomeIcon icon="angle-down" className="icon_angleDown" />
+                    </div>
                 </div>
             </div>
         )

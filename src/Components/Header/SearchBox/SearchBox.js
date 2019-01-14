@@ -9,20 +9,11 @@ import OutsideAlert from '../../../OutsideClick';
 library.add(faSearch);
 
 class SearchBox extends Component {
-    searchBoxOnFocus(){
-        if (this.props.isSearchBoxOnFocus) {
-            return 'searchBox_focus'
-        }
-        return ''
-    }
-
     render() {
         return(
             <OutsideAlert>
-                <div className={"searchBox " + this.searchBoxOnFocus()}>
-                    <input className="searchBox_input"
-                            onClick={()=>this.props.SearchBoxOnFocus(true)}
-                    ></input>
+                <div className={"searchBox"}>
+                    <input className="searchBox_input"></input>
                     <FontAwesomeIcon className="searchBox_icon" icon="search" />
                 </div>
             </OutsideAlert>
@@ -32,15 +23,12 @@ class SearchBox extends Component {
 
 function mapStateToProps(state){
     return{
-        isSearchBoxOnFocus: state.App.get('searchBoxOnFocus')
+       state
     }
   }
   
 function mapDispatchToProps(dispatch){
     return {
-        SearchBoxOnFocus: (toggle) => {
-            dispatch(Actions.isSearchBoxOnFocus(toggle))
-        }
     }
   }
   

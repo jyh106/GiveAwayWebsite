@@ -3,13 +3,6 @@ import axios from 'axios';
 import Actions from '../Actions/actions.js';
 import Constants from '../constants';
 import Utils from '../utils';
-// import postcss = require('postcss');
-
-
-// handle new posts
-function* toggleModal_newForm(){
-  yield put(Actions.toggleModal(Constants.MODAL_TYPES['MODAL_NEWFORM'], false))
-}
 
 function* sendPostToServer(action){
   console.log('sending post to server, data: ', action.data)
