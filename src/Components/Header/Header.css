@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Alegreya');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Charmonman');
+
 
 .header {
     width: 100%;
@@ -20,23 +23,23 @@
 
 .user{
     position: absolute;
-    top: 10px;
-    right: 5px;
-    width: 150px;
+    top: 8px;
+    right: 0px;
+    width: 110px;
 }
 
-.accountDropDownMenu{
+.accountDropDownMenu_button{
     display: inline-block;
 }
 
-.icon_angleDown {
+.accountMenuButton {
     padding-left: 18px;
     padding-bottom: 3px;
     font-size: 20px;
     color: gray;
 }
 
-.icon_angleDown:hover{
+.accountMenuButton:hover{
     cursor: pointer;
     color: blue;
 }
@@ -44,10 +47,58 @@
 .icon_user{
     margin-top: 9px;
     color: gray;
-    font-size: 30px;
+    font-size: 33px;
+    border-radius: 50px;
 }
 
 .icon_user:hover {
     cursor: pointer;
+    box-shadow:  0px 0px 22px -3px gray;
+}
+
+.signedInMenu{
+    height: 131px;
+    width: 170px;
+}
+
+.notSignedInMenu {
+    height: 100px;
+    width: 170px;
+}
+
+.accountDropDownMenu {
+    position: absolute;
+    z-index: 20;
+    top: 50px;
+    right: 35px;
+    background-color: white;
+    box-shadow: 0px 7px 17px 0px rgb(147, 147, 147);
+    border-radius: 5px;
+}
+
+.accountMenuItem {
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 17px;
+    color: rgb(96, 95, 95);
+    text-align: left;
+}
+
+.accountMenuItem:hover {
+    background-color: rgba(255, 160, 122, 0.694);
+    cursor: pointer;
+}
+
+.account_header {
+    padding-top: 3px;
+    font-family: 'Charmonman', cursive;
+    font-size: 18px;
+    color: rgb(201, 71, 19);
+    font-weight: bolder;
+}
+
+.account_header:hover {
+    cursor: default;
 }
 
