@@ -6,43 +6,27 @@ import Utils from '../../utils';
 import Actions from '../../Actions/actions.js';
 
 class SideBar extends Component {
-    renderMilesFromZip() {
-        return (
-            <div className="milesFromZipContainer">
-                <div className="milesFromZipLabel">
-                    miles from zipcode
-                </div>
-                <div className="mileZipInputs">
-                    <input className="milesInput" />
-                </div>
-                <div className="mileZipInputs">
-                    <input className="zipCodeInput"/>
-                </div>
-            </div>
-        )
-    }
-
     renderResetButton() {
         return (
-            <div className="resetAndUpdate">
-                <div className="resetAndUpdate_button resetButton"
+                <div className="resetButton"
                      onClick={ ()=> this.props.resetSideBarSelections()}>
                     reset
                 </div>
-            </div>
         )
     }
 
-    renderNewestAndHasImageOptions() {
+    renderSortByMenu() {
         const extraClassName_newest = this.props.isNewestSelected ?
                 'selected' :
                 '';
         return (
-            <div className="newestAndHasImageOptionContainer">
-                <div className="filterLabel">Sort by: </div>
-                <div className={`option_newest option ${extraClassName_newest}`}
-                    onClick = {()=> this.props.toggleNewest()}>
-                    newest
+            <div className="sortByMenuContainer">
+                <div className="sortByLabel">Sort by </div>
+                <div className="optionWrapper optionWrapper_sort">
+                    <div className={`option_newest option ${extraClassName_newest}`}
+                        onClick = {()=> this.props.toggleNewest()}>
+                        newest
+                    </div>
                 </div>
             </div>
         )
@@ -77,9 +61,11 @@ class SideBar extends Component {
         return (
             <div className="categorizedOptionsContainer">
                 <div className="categoryLabel">
-                    Filter by categories: 
+                    Filter by categories
                 </div>
-                {categories}
+                <div className="optionWrapper optionWrapper_categories">
+                    {categories}
+                </div>
             </div>
         )
     }
@@ -114,26 +100,26 @@ class SideBar extends Component {
         }
         return(
             <div className="selectCityOptions" key="options">
-                <div className="cityOptionsLabel" key="optionlabels">Select cities: </div>
-                {cities}
+                <div className="cityOptionsLabel" key="optionlabels">
+                    Select cities
+                </div>
+                <div className="optionWrapper optionWrapper_cities">
+                    {cities}
+                </div>
             </div>
         )
     }
 
     render(){
-        if(!this.props.sideBarShown){
-            return null
-        }
         return (
-        <div className="sideBarWrapper" key="wrapper">
-            <div className="sideBarContainer" key="container" onMouseLeave={()=> this.props.toggleSideBar()}>
-                {this.renderResetButton()}
-                {this.renderCityOptions()}
-                {/* {this.renderMilesFromZip()} */}
-                {this.renderNewestAndHasImageOptions()}
-                {this.renderCategorizedOptions()}
+            <div className="sideBarWrapper" key="wrapper">
+                <div className="sideBarContainer" key="container" onMouseLeave={()=> this.props.toggleSideBar()}>
+                    {this.renderResetButton()}
+                    {this.renderCityOptions()}
+                    {this.renderSortByMenu()}
+                    {this.renderCategorizedOptions()}
+                </div>
             </div>
-        </div>
         )
     }
 }
