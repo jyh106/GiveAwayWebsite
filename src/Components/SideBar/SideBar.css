@@ -36,12 +36,12 @@
     padding-right: 5px;
     border-radius: 5px;
     font-weight: bolder;
-    color: darkblue;
+    color: rgb(43, 43, 159);
+    box-shadow: 0px 1px 10px 0px rgb(174, 174, 247);
 }
 
 .resetButton:hover {
     cursor: pointer;
-    box-shadow: 0px 1px 19px 0px  lightgray;
 }
 
 
@@ -61,7 +61,7 @@
     color: blue;
 }
 
-.categoryLabel, .cityOptionsLabel, .sortByLabel {
+.categoryLabel, .cityOptionsLabel, .sortByLabel, .moreFilterLabel {
     font-size: 17px;
     margin-bottom: 10px;
     float: left;
@@ -87,7 +87,7 @@
 }
 
 .sortByMenuContainer {
-    height: 80px;
+    height: 70px;
 }
 
 .optionWrapper_sort {
@@ -100,7 +100,7 @@
 
 
 .categorizedOptionsContainer {
-    height: 400px;
+    height: 350px;
 }
 
 .optionWrapper_categories {

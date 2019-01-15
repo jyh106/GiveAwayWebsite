@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Constants from '../../constants';
 import Utils from '../../utils';
 import Actions from '../../Actions/actions.js';
+import { timingSafeEqual } from 'crypto';
 
 class SideBar extends Component {
     renderResetButton() {
@@ -46,17 +47,6 @@ class SideBar extends Component {
                 </div>
             )
         }
-
-        const extraClassName_hasImages = this.props.isImagesSelected ?
-        'selected' :
-        '';
-        categories.push(
-            <div className={`option_hasImages option ${extraClassName_hasImages}`}
-                onClick = {() => this.props.toggleHasImages()}
-                key="hasImages">
-                has images
-            </div>
-        )
 
         return (
             <div className="categorizedOptionsContainer">
@@ -101,10 +91,31 @@ class SideBar extends Component {
         return(
             <div className="selectCityOptions" key="options">
                 <div className="cityOptionsLabel" key="optionlabels">
-                    Select cities
+                    Select city
                 </div>
                 <div className="optionWrapper optionWrapper_cities">
                     {cities}
+                </div>
+            </div>
+        )
+    }
+
+    renderMoreFilterMenu() {
+        const extraClassName_hasImages = this.props.isImagesSelected ?
+            'selected' :
+            '';
+        
+        return (
+            <div className="moreFilterContainer">
+                <div className="moreFilterLabel" >
+                    More filters
+                </div>
+                <div className="optionWrapper optionWrapper_moreFilters">
+                    <div className={`option_hasImages option ${extraClassName_hasImages}`}
+                        onClick = {() => this.props.toggleHasImages()}
+                        key="hasImages">
+                        has images
+                    </div>
                 </div>
             </div>
         )
@@ -115,9 +126,10 @@ class SideBar extends Component {
             <div className="sideBarWrapper" key="wrapper">
                 <div className="sideBarContainer" key="container" onMouseLeave={()=> this.props.toggleSideBar()}>
                     {this.renderResetButton()}
-                    {this.renderCityOptions()}
                     {this.renderSortByMenu()}
+                    {this.renderCityOptions()}
                     {this.renderCategorizedOptions()}
+                    {this.renderMoreFilterMenu()}
                 </div>
             </div>
         )
