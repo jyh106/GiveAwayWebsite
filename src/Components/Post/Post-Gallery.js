@@ -4,17 +4,11 @@ import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faFeather, faPencilAlt, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import Constants from '../../constants';
-library.add(faMapMarkerAlt, faFeather, faPencilAlt, faAngleLeft, faAngleRight) 
+library.add(faMapMarkerAlt, faAngleLeft, faAngleRight) 
 
 class PostGallery extends Component {
-    renderEditIcon(){
-        if (!this.props.editable) {
-            return null
-        }
-        return <FontAwesomeIcon icon="pencil-alt" className="edit_icon" />
-    }
 
     handleClickedImage(currentViewingImage, postImages){
         this.props.toggleModal('photos', true);
@@ -42,32 +36,14 @@ class PostGallery extends Component {
     }
 
     renderImages(){
-        if (this.props.images.length === 0) {
-            return null 
-        }
-        if (this.props.images.length > Constants.NONE_SCROLLABLE_THUMBS) {
             return (
                 <div className="post_details postImages">
-                    <FontAwesomeIcon className="icon_angleLeft" icon="angle-left" />
-                    <div className="imageWrapper">
-                        <div className="images">
-                            {this.handleImages()}
-                        </div>
-                    </div>
-                    <FontAwesomeIcon className="icon_angleRight" icon="angle-right" /> 
+                    <img className="image" 
+                        src={Constants.POST_GALLERY_DEFAULT_IMAGE} 
+                        alt=" ">
+                    </img>
                 </div>
             )
-        } else {
-            return (
-                <div className="post_details postImages">
-                    <div className="imageWrapper">
-                        <div className="images">
-                            {this.handleImages()}
-                        </div>
-                    </div>
-                </div>
-            )
-        }
     }
 
     renderNote() {
@@ -81,22 +57,34 @@ class PostGallery extends Component {
         )
     }
 
+    getCity() {
+        return this.props.address.split(',')[1];
+    }
+
+    renderComment() {
+        return (
+            <div className="post_comment">
+                Comments
+            </div>
+        )
+    }
+
     render(){
         return(
             <div className="post">
+                {this.renderImages()}
                 <div className="post_details post_name">
-                    <FontAwesomeIcon icon="feather" className="post_name_icon"/>
                     {this.props.name}
                 </div>
-                {this.renderImages()}
                 <div className="post_details post_address">
                    <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
-                   {this.props.address}
+                   {this.getCity()}
                 </div>
-                {this.renderNote()}
-                <div className="post_details post_date">
+                <div className="post_details post_date_gallery">
                     {this.props.date}
                 </div>
+                <div className="divider"></div>
+                {this.renderComment()}
             </div>
         )
     }

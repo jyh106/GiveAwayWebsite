@@ -115,6 +115,8 @@ const CATEGORY_LIST_LENGTH = CATEGORY_LIST.length;
 
 const NONE_SCROLLABLE_THUMBS = 5;
 
+const POST_GALLERY_DEFAULT_IMAGE = "https://eduaid.net/site/img//default.png";
+
 export default {
     CITIES,
     HOSTNAME,
@@ -139,4 +141,5 @@ export default {
     CITY_BURLINGAME,
     CATEGORY_LIST_LENGTH,
     CATEGORY_LIST,
+    POST_GALLERY_DEFAULT_IMAGE
 }

@@ -1,12 +1,12 @@
 .post {
     display: block;
     float: left;
-    height: 200px;
-    width: 280px;
+    height: 300px;
+    width: 204px;
     background: white;
     border-radius: 5px;
     box-shadow: 0px -1px 16px 0px rgb(197, 197, 197);
-    margin: 8px;
+    margin: 9px;
 }
 
 .post_details {
@@ -14,12 +14,11 @@
 }
 
 .post_name{
-    padding-top: 10px;
+    padding-top: 80px;
     padding-bottom: 8px;
     padding-left: 20px;
     font-weight: bold;
     font-size:18px;
-    width: 93%;
     text-align: left;
 }
 
@@ -54,21 +53,28 @@
     cursor: pointer;
 }
 
-.post_date {
-    font-size: 12px;
+.post_date_gallery {
+    font-size: 11px;
+    margin-top: 10px;
+    padding-right: 15px;
+    float: right;
     text-align: right;
-    margin-right: 15px;
-    font-weight: bold;
 }
 
 .post_address{
     font-style: italic;
     font-size: 13px;
-    margin-bottom: 8px;
+    text-align: right;
+    margin-right: 15px;
+    /* width: 100%; */
+    padding-top: 5px;
+    height: 25px;
 }
 
 .post_address_icon{
     font-size: 15px;
+    color: darkgray;
+    padding-right: 7px;
 }
 
 .post_address:hover{
@@ -78,21 +84,6 @@
 
  .post_name:hover{
     cursor: default;
-}
-
-.postImages{
-    width: 92%;
-    margin: 0 auto;
-}
-
-.imageWrapper{
-    width: 230px;
-    display: inline-block;  
-    overflow: scroll;
-}
-
-.images {
-    width: 500px;
 }
 
 .icon_angleLeft{
@@ -107,9 +98,33 @@
     cursor: pointer;
 }
 
+.postImages {
+    height: 60px;
+    width: 204px; 
+}
+
 .image, .defaultImage{
-    float: left;
-    margin-left: 6px;
-    height: 40px;
-    width: 40px;
+    height: 130px;
+    width: 100%;
+}
+
+.divider {
+    height: 50px;
+    width: 170px;
+    margin: 0 auto;
+    border-bottom: 1px solid lightgray;
+}
+
+.post_comment {
+    float: right;
+    font-size: 12px;
+    height: 25px;
+    margin-top: 10px;
+    margin-right: 17px;
+    color: rgb(79, 79, 79);
+}
+
+.post_comment:hover {
+    color: rgb(0, 136, 255);
+    cursor: pointer;
 }

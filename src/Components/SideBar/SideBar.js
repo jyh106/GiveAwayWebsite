@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Constants from '../../constants';
 import Utils from '../../utils';
 import Actions from '../../Actions/actions.js';
-import { timingSafeEqual } from 'crypto';
 
 class SideBar extends Component {
     renderResetButton() {
