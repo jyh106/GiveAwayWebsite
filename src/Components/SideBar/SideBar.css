@@ -1,118 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya');
+@import url('https://fonts.googleapis.com/css?family=Jaldi');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+
+
 .sideBarWrapper {
-    height: 640px;
-    background: rgb(250, 249, 249);
+    height: 100vh;
     position: absolute;
-    top: 74px;
+    top: 128px;
     float: left;
-    width: 200px;
+    width: 230px;
     border-bottom-right-radius: 8px;
     border-top-right-radius: 8px;
-    box-shadow: 2px 2px 15px 0px rgba(176,176,176,1);
 }
 
 .sideBarContainer {
-    margin-top: 10px;
     z-index: 15;
     position: relative;
-    background: rgb(250, 249, 249);
+    background: white;
     float: left;
-    width: 200px;
-    height: 600px;
+    width: 240px;
+    height: 90%;
     overflow: scroll;
 }
 
-.resetAndUpdate {
-    margin-top: 10px;
-    width: 200px;
-}
-
-.resetAndUpdate_button {
-    display: inline-block;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    padding-top:4px;
-    padding-bottom: 4px;
-    padding-left: 3px;
-    padding-right: 3px;
-    border: 1px solid lightblue;
-    border-radius: 5px;
-}
-
-.resetAndUpdate_button:hover {
-    text-decoration: underline;
-    cursor: pointer;
-    color: blue;
-    background-color: white;
-}
-
 .resetButton {
-    width: 40px;
-}
-
-.updateButton {
-    margin-left: 10px;
-    width: 100px;
-    font-size: 15px;
-}
-
-.milesFromZipContainer {
-    margin-top: 10px;
-    height: 70px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-}
-
-.mileZipInputs{
-    margin-top: 5px;
     display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 3px;
+    margin-left: 100px;
+    width: 40px;
+    font-family: 'Jaldi', sans-serif;
+    font-size: 19px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    font-weight: bolder;
+    color: darkblue;
 }
 
-.milesInput {
-    width: 25px;
-    padding-left: 2px;
+.resetButton:hover {
+    cursor: pointer;
+    box-shadow: 0px 1px 19px 0px  lightgray;
 }
 
-.zipCodeInput {
-    width: 50px;
-}
-
-.newestAndHasImageOptionContainer {
-    margin-bottom: 10px;
-    height: 60px;
-}
 
 .option {
-  width: 140px;
-  padding: 3px;
-  border: 1px solid gray;
-  margin: 0 auto;
-  border-radius: 5px;
-  margin-bottom: 5px;
-  font-size: 13px;
+    float: left;
+    width: 140px;
+    margin-left: 17px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    height: 30px;
+
 }
 
 .option:hover {
     cursor: pointer;
-    background: rgb(202, 233, 243);
+    color: blue;
 }
 
-.categoryLabel, .cityOptionsLabel, .filterLabel {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: underline;
+.categoryLabel, .cityOptionsLabel, .sortByLabel {
+    font-size: 17px;
     margin-bottom: 10px;
+    float: left;
+    margin-left: 35px;
+    font-family: 'Jaldi', sans-serif;
+    font-weight: bolder;
+    color: rgb(63, 63, 63);
 }
 
-.cityOptionsLabel, .filterLabel {
-    margin-top: 18px;
+.selectCityOptions{
+    height: 220px;
+}
+
+.optionWrapper {
+    text-align: left;
+    margin: 0 auto;
+    width: 160px;
+    padding-left: 10px;
+}
+
+.optionWrapper_cities {
+    padding-top: 30px;
+}
+
+.sortByMenuContainer {
+    height: 80px;
+}
+
+.optionWrapper_sort {
+    padding-top: 30px;
 }
 
 .selected {
-    border: 1px solid rgb(187, 186, 186);
     color: blue;
-    background-color: rgb(196, 233, 245);
 }
+
+
+.categorizedOptionsContainer {
+    height: 400px;
+}
+
+.optionWrapper_categories {
+    padding-top: 30px;
+}
+
 
 
 
