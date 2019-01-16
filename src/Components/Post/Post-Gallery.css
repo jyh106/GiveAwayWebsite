@@ -5,60 +5,53 @@
     width: 204px;
     background: white;
     border-radius: 5px;
-    box-shadow: 0px -1px 16px 0px rgb(197, 197, 197);
+    box-shadow: 0px -1px 8px 0px rgb(197, 197, 197);
     margin: 9px;
 }
 
-.post_details {
-    display: block;
+img{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.thumbnailContainer {
+    height: 180px;
+}
+
+.thumbnailNagivationButtons {
+    position: relative;
+    top: -100px;
+    width: 100%;
+    height: 40px;
+    font-size: 40px;
+    color: rgb(175, 175, 175);
+}
+
+.thumbnailNavigationButton_left {
+   padding-right: 150px;
+}
+
+img:hover {
+    cursor: pointer;
+}
+
+.thumbnailNavigationButton_right:hover {
+    cursor: pointer;
+}
+
+.thumbnailNavigationButton_left:hover {
+    cursor: pointer;
 }
 
 .post_name{
-    padding-top: 80px;
-    padding-bottom: 8px;
     padding-left: 20px;
     font-weight: bold;
     font-size:18px;
     text-align: left;
 }
 
-.post_note{
-    background: rgba(193, 239, 247, 0.267);
-    width: 85%;
-    margin: 0 auto;
-    height: 20px;
-    overflow: scroll;
-    text-align: left;
-    border-radius: 3px;
-    padding: 10px;
-    font-size: 13px;
-}
-
-.post_name_icon{
-    padding-right: 5px;
-    font-size: 24px;
-}
-
-.edit_icon{
-    float: right;
-    margin-right: 10px;
-    font-size: 15px;
-    color: rgba(0, 0, 255, 0.692);
-}
-
-.post_note:hover {
+.post_name:hover{
     cursor: default;
-}
-.edit_icon:hover {
-    cursor: pointer;
-}
-
-.post_date_gallery {
-    font-size: 11px;
-    margin-top: 10px;
-    padding-right: 15px;
-    float: right;
-    text-align: right;
 }
 
 .post_address{
@@ -66,7 +59,6 @@
     font-size: 13px;
     text-align: right;
     margin-right: 15px;
-    /* width: 100%; */
     padding-top: 5px;
     height: 25px;
 }
@@ -74,7 +66,7 @@
 .post_address_icon{
     font-size: 15px;
     color: darkgray;
-    padding-right: 7px;
+    padding-right: 5px;
 }
 
 .post_address:hover{
@@ -82,34 +74,16 @@
     color: blue;
 }
 
- .post_name:hover{
-    cursor: default;
-}
-
-.icon_angleLeft{
-    float: left;
-}
-
-.icon_angleRight{
+.post_date_gallery {
+    font-size: 11px;
+    height: 16px;
+    padding-right: 15px;
     float: right;
-}
-
-.image:hover, .icon_angleLeft:hover, .icon_angleRight:hover{
-    cursor: pointer;
-}
-
-.postImages {
-    height: 60px;
-    width: 204px; 
-}
-
-.image, .defaultImage{
-    height: 130px;
-    width: 100%;
+    text-align: right;
 }
 
 .divider {
-    height: 50px;
+    height: 30px;
     width: 170px;
     margin: 0 auto;
     border-bottom: 1px solid lightgray;

@@ -9,50 +9,61 @@ import Constants from '../../constants';
 library.add(faMapMarkerAlt, faAngleLeft, faAngleRight) 
 
 class PostGallery extends Component {
+    constructor() {
+        super();
+        this.state = {
+            showImageNavigationButtons: false,
+        }
+    }
 
     handleClickedImage(currentViewingImage, postImages){
         this.props.toggleModal('photos', true);
         this.props.handleClickedImage({currentViewingImage, postImages});
     }
 
-    handleImages(){
-        if (!this.props.images) {
+
+    renderThumbnailNagivationButtons() {
+        if ((!this.state.showImageNavigationButtons)
+            || (this.props.images.length <= 1)) {
             return null
         }
-        const images = [];
-        let index = 1;
-        for (let image of this.props.images) {
-                images.push(
-                    <img className="image" 
-                            src={image} 
-                            alt=" " 
-                            key={image + this.props.name + index}
-                            onClick={ ()=> this.handleClickedImage(image, this.props.images) }>
-                    </img>
-                )
-                index++;
-        }
-        return images
+        return(
+            <div className="thumbnailNagivationButtons" 
+                onMouseOver={()=> this.toggleImageNavigationButtons(true)}
+                onMouseLeave={()=> this.toggleImageNavigationButtons(true)}>
+                <FontAwesomeIcon icon="angle-left" className="thumbnailNavigationButton_left" />
+                <FontAwesomeIcon icon="angle-right" className="thumbnailNavigationButton_right" />    
+            </div>
+        )
     }
 
-    renderImages(){
-            return (
-                <div className="post_details postImages">
-                    <img className="image" 
-                        src={Constants.POST_GALLERY_DEFAULT_IMAGE} 
-                        alt=" ">
-                    </img>
-                </div>
-            )
-    }
-
-    renderNote() {
-        if (!this.props.description) {
-            return null
+    renderFirstThumbnail() {
+        let imgSrc = Constants.POST_GALLERY_DEFAULT_IMAGE;
+        if (this.props.images.length > 0) {
+            imgSrc = this.props.images[0];
         }
         return (
-            <div className="post_details post_note">
-                {this.props.description}
+            <img className="image" 
+                src={imgSrc} 
+                height="170" width="203"
+                alt=" ">
+            </img>
+        )
+    }
+
+    toggleImageNavigationButtons(toggle) {
+        this.setState({
+            showImageNavigationButtons: toggle,
+        })
+    }
+
+    renderImages() {
+        return (
+            <div className="thumbnailContainer"
+                onMouseOver={()=> this.toggleImageNavigationButtons(true)}
+                onMouseLeave={()=> this.toggleImageNavigationButtons(false)}>
+                {this.renderFirstThumbnail()}
+                {this.renderThumbnailNagivationButtons()}
             </div>
         )
     }
