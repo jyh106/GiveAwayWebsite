@@ -31,8 +31,12 @@ class PostGallery extends Component {
             <div className="thumbnailNagivationButtons" 
                 onMouseOver={()=> this.toggleImageNavigationButtons(true)}
                 onMouseLeave={()=> this.toggleImageNavigationButtons(true)}>
-                <FontAwesomeIcon icon="angle-left" className="thumbnailNavigationButton_left" />
-                <FontAwesomeIcon icon="angle-right" className="thumbnailNavigationButton_right" />    
+                <div className="thumbnailNavigationButton thumbnailNavigationButton_left">
+                    <FontAwesomeIcon icon="angle-left" />
+                </div>
+                <div className="thumbnailNavigationButton thumbnailNavigationButton_right" >
+                    <FontAwesomeIcon icon="angle-right"/>   
+                </div>
             </div>
         )
     }
@@ -46,7 +50,8 @@ class PostGallery extends Component {
             <img className="image" 
                 src={imgSrc} 
                 height="170" width="203"
-                alt=" ">
+                alt=" "
+                onClick={(e)=> this.handleClickedImage(e.target.src, this.props.images)}>
             </img>
         )
     }
@@ -82,12 +87,12 @@ class PostGallery extends Component {
 
     render(){
         return(
-            <div className="post">
+            <div className="post_gallery">
                 {this.renderImages()}
-                <div className="post_details post_name">
+                <div className="post_details post_name_gallery">
                     {this.props.name}
                 </div>
-                <div className="post_details post_address">
+                <div className="post_details post_address_gallery">
                    <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
                    {this.getCity()}
                 </div>

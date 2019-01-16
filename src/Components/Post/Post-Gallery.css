@@ -1,4 +1,4 @@
-.post {
+.post_gallery {
     display: block;
     float: left;
     height: 300px;
@@ -16,19 +16,38 @@ img{
 
 .thumbnailContainer {
     height: 180px;
+    position: relative;
 }
 
 .thumbnailNagivationButtons {
-    position: relative;
-    top: -100px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     width: 100%;
-    height: 40px;
     font-size: 40px;
-    color: rgb(175, 175, 175);
+    z-index: 20;
+    color: gray;
+}
+
+.thumbnailNavigationButton {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.735);
+    box-shadow: 0px 0px 35px 0px rgb(255, 255, 255);
 }
 
 .thumbnailNavigationButton_left {
-   padding-right: 150px;
+    float: left;
+    margin-left: 15px;
+    padding-right: 5px;
+}
+
+.thumbnailNavigationButton_right {
+    float: right; 
+    padding-left: 5px;
+    margin-right: 15px;
 }
 
 img:hover {
@@ -43,7 +62,7 @@ img:hover {
     cursor: pointer;
 }
 
-.post_name{
+.post_name_gallery{
     padding-left: 20px;
     font-weight: bold;
     font-size:18px;
@@ -54,7 +73,7 @@ img:hover {
     cursor: default;
 }
 
-.post_address{
+.post_address_gallery{
     font-style: italic;
     font-size: 13px;
     text-align: right;
