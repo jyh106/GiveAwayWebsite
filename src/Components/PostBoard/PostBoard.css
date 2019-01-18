@@ -1,16 +1,19 @@
 .PostBoard{
-    position: relative;
-    padding-top: 10px;
-    margin: 0 auto;
-    height: 100vh;
-    width: 95%;
+    position: absolute;
+    top: 0;
+    left: 110px;
+    width: 90%;
     float: right;
     background: white;
 }
 
 .postBoardWrapper {
+    position: relative;
+    top: 60px;
+    left: 10px;
     overflow: scroll;
-    width: 92%;
+    width: 90%;
+    height: 100vh;
     margin-right: 15px;
     float: right;
     background: white;

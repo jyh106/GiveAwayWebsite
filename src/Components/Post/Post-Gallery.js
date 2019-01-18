@@ -9,10 +9,19 @@ import Constants from '../../constants';
 library.add(faMapMarkerAlt, faAngleLeft, faAngleRight) 
 
 class PostGallery extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             showImageNavigationButtons: false,
+            currentDisplayImageSrc: this.setInitialDisplayImageState(),
+        }
+    }
+
+    setInitialDisplayImageState() {
+        if (this.props.images.length === 0) {
+            return Constants.POST_GALLERY_DEFAULT_IMAGE
+        } else {
+            return this.props.images[0]
         }
     }
 
@@ -21,6 +30,23 @@ class PostGallery extends Component {
         this.props.handleClickedImage({currentViewingImage, postImages});
     }
 
+    onThumbnailButtonsClicked(isLeft) {
+        const currentIndex = this.props.images.indexOf(this.state.currentDisplayImageSrc);
+        let nextIndex = currentIndex - 1;
+        if (isLeft) {
+            if (nextIndex < 0) {
+                return
+            }
+        } else {
+            nextIndex = currentIndex + 1;
+            if (nextIndex > this.props.images.length) {
+                return
+            }
+        }
+        this.setState({
+            currentDisplayImageSrc: this.props.images[nextIndex]
+        })
+    }
 
     renderThumbnailNagivationButtons() {
         if ((!this.state.showImageNavigationButtons)
@@ -31,10 +57,12 @@ class PostGallery extends Component {
             <div className="thumbnailNagivationButtons" 
                 onMouseOver={()=> this.toggleImageNavigationButtons(true)}
                 onMouseLeave={()=> this.toggleImageNavigationButtons(true)}>
-                <div className="thumbnailNavigationButton thumbnailNavigationButton_left">
+                <div className="thumbnailNavigationButton thumbnailNavigationButton_left"
+                    onClick={()=> this.onThumbnailButtonsClicked(true)}>
                     <FontAwesomeIcon icon="angle-left" />
                 </div>
-                <div className="thumbnailNavigationButton thumbnailNavigationButton_right" >
+                <div className="thumbnailNavigationButton thumbnailNavigationButton_right" 
+                    onClick={()=> this.onThumbnailButtonsClicked(false)}>
                     <FontAwesomeIcon icon="angle-right"/>   
                 </div>
             </div>
@@ -42,13 +70,9 @@ class PostGallery extends Component {
     }
 
     renderFirstThumbnail() {
-        let imgSrc = Constants.POST_GALLERY_DEFAULT_IMAGE;
-        if (this.props.images.length > 0) {
-            imgSrc = this.props.images[0];
-        }
         return (
             <img className="image" 
-                src={imgSrc} 
+                src={this.state.currentDisplayImageSrc} 
                 height="170" width="203"
                 alt=" "
                 onClick={(e)=> this.handleClickedImage(e.target.src, this.props.images)}>
