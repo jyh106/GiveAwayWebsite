@@ -15,7 +15,6 @@
 }
 
 .sideBarContainer {
-    z-index: 15;
     position: relative;
     background: white;
     float: left;

@@ -51,18 +51,20 @@ class ModalPhotoDisplay extends Component {
 
     render() {
         return (
-            <div>
+            <div className="modalPhotoHolder">
                 <div className="thumbParentHolder">
-                {this.renderThumbs()}
-                </div>
-                <div className="Modal_photos">
-                    <FontAwesomeIcon icon="angle-left" 
-                                    className="arrowIcons photoDisplay_iconAngleLeft" 
+                    {this.renderThumbs()}
+                </div> 
+                <div className="modal_photos">
+                    <div className="arrowIcons photoDisplay_iconAngleLeft">
+                        <FontAwesomeIcon icon="angle-left" 
                                     onClick={()=> this.handleClickedArrow(true)}/>
+                    </div>
                     <img src={this.props.currentClickedImage} alt="" className="currentClickedImage"/>
-                    <FontAwesomeIcon icon="angle-right" 
-                                        className="arrowIcons photoDisplay_iconAngleRight"
-                                        onClick={()=> this.handleClickedArrow(false)}/>
+                    <div className="arrowIcons photoDisplay_iconAngleRight">
+                        <FontAwesomeIcon icon="angle-right" 
+                                    onClick={()=> this.handleClickedArrow(false)}/>
+                    </div>
                 </div>
             </div>
         )
