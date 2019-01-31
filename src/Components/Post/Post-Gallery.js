@@ -39,13 +39,16 @@ class PostGallery extends Component {
             }
         } else {
             nextIndex = currentIndex + 1;
-            if (nextIndex > this.props.images.length) {
+            if (nextIndex >= this.props.images.length) {
                 return
             }
         }
         this.setState({
             currentDisplayImageSrc: this.props.images[nextIndex]
         })
+        console.log(this.props.images.length);
+        console.log(nextIndex);
+        // console.log("here", this.state.currentDisplayImageSrc)
     }
 
     renderThumbnailNagivationButtons() {
@@ -70,9 +73,11 @@ class PostGallery extends Component {
     }
 
     renderFirstThumbnail() {
+        console.log(this.state.currentDisplayImageSrc);
+        const imagePath = `${Constants.UPLOADS_HOSTNAME}${this.state.currentDisplayImageSrc}`;
         return (
             <img className="image" 
-                src={this.state.currentDisplayImageSrc} 
+                src={imagePath}
                 height="170" width="203"
                 alt=" "
                 onClick={(e)=> this.handleClickedImage(e.target.src, this.props.images)}>

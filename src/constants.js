@@ -1,4 +1,5 @@
 const HOSTNAME = "http://127.0.0.1:5000/";
+const UPLOADS_HOSTNAME = "http://127.0.0.1:5000/uploads/";
 
 const MODAL_TYPES = {
     'MODAL_SIGNIN':'signIn', 
@@ -115,11 +116,12 @@ const CATEGORY_LIST_LENGTH = CATEGORY_LIST.length;
 
 const NONE_SCROLLABLE_THUMBS = 5;
 
-const POST_GALLERY_DEFAULT_IMAGE = "https://eduaid.net/site/img//default.png";
+const POST_GALLERY_DEFAULT_IMAGE = "default.png";
 
 export default {
     CITIES,
     HOSTNAME,
+    UPLOADS_HOSTNAME,
     MODAL_TYPES,
     CATEGORIES,
     NONE_SCROLLABLE_THUMBS,
@@ -143,3 +145,4 @@ export default {
     CATEGORY_LIST,
     POST_GALLERY_DEFAULT_IMAGE
 }
+
