@@ -47,8 +47,9 @@ class NewForm extends Component {
         })
     }
 
-    handleSubmit(){
-        const address = `${this.state.address_street} ${this.state.address_apt}, ${this.state.address_city}`
+    handleSubmit(e){
+        e.stopPropagation();
+        const address = `${this.state.address_street}${this.state.address_apt},${this.state.address_city}`
         const postInfo = {
            'name': this.state.name,
            'address': address,
@@ -162,9 +163,8 @@ class NewForm extends Component {
     }
 
     getFileName(e) {
-        const regex = /[a-z.]+$/;
-        const found = e.target.value.match(regex);
-        const filename = found[0];
+        const filepath = e.target.value.split('\\');
+        const filename = filepath[filepath.length-1];
         return filename.toString()
     }
 
@@ -249,7 +249,7 @@ class NewForm extends Component {
                 </button>
 
                 <button className= {submitButtonClassName}
-                        onClick={()=> this.handleSubmit()}
+                        onClick={(e)=> this.handleSubmit(e)}
                         disabled={!this.isSubmitButtonEnable()}>
                     Submit
                 </button>

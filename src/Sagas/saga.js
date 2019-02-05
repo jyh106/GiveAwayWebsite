@@ -5,7 +5,6 @@ import Constants from '../constants';
 import Utils from '../utils';
 
 function* sendPostToServer(action){
-  console.log('sending post to server, data: ', action.data)
   yield call(axios, {
     method: 'POST',
     url: `${Constants.HOSTNAME}posts`,
