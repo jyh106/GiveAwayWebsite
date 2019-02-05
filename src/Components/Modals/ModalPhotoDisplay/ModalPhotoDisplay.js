@@ -6,6 +6,7 @@ import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import Actions from "../../../Actions/actions";
 import Utils from '../../../utils.js';
+import constants from '../../../constants';
 library.add(faAngleLeft, faAngleRight) 
 
 class ModalPhotoDisplay extends Component {
@@ -32,7 +33,8 @@ class ModalPhotoDisplay extends Component {
     }
 
     handleClickedArrow(isLeft){
-        const currentImageIndex = this.props.images.indexOf(this.props.currentClickedImage);
+        const currentImageSrc = this.props.currentClickedImage.split("/")[4];
+        const currentImageIndex = this.props.images.indexOf(currentImageSrc);
         let newIndex = 0;
 
         if (isLeft) {
@@ -46,7 +48,9 @@ class ModalPhotoDisplay extends Component {
                 return null
             }
         }
-        return this.props.updateCurrentImage(this.props.images[newIndex])
+
+        const nextImageSrc = constants.UPLOADS_HOSTNAME + this.props.images[newIndex]
+        return this.props.updateCurrentImage(nextImageSrc)
     }   
 
     render() {

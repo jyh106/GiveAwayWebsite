@@ -1,6 +1,8 @@
 const HOSTNAME = "http://127.0.0.1:5000/";
 const UPLOADS_HOSTNAME = "http://127.0.0.1:5000/uploads/";
 
+const DEFAULT_IMG_SRC = 'default.png';
+
 const MODAL_TYPES = {
     'MODAL_SIGNIN':'signIn', 
     'MODAL_SIGNUP':'signUp', 
@@ -143,6 +145,7 @@ export default {
     CITY_BURLINGAME,
     CATEGORY_LIST_LENGTH,
     CATEGORY_LIST,
-    POST_GALLERY_DEFAULT_IMAGE
+    POST_GALLERY_DEFAULT_IMAGE,
+    DEFAULT_IMG_SRC
 }
 

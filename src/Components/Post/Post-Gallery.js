@@ -26,9 +26,12 @@ class PostGallery extends Component {
     }
 
     handleClickedImage(currentViewingImage, postImages){
+        if (currentViewingImage === (Constants.UPLOADS_HOSTNAME + Constants.DEFAULT_IMG_SRC)) {
+             return null
+        }
         this.props.toggleModal('photos', true);
         this.props.handleClickedImage({currentViewingImage, postImages});
-    }
+}
 
     onThumbnailButtonsClicked(isLeft) {
         const currentIndex = this.props.images.indexOf(this.state.currentDisplayImageSrc);
@@ -46,9 +49,6 @@ class PostGallery extends Component {
         this.setState({
             currentDisplayImageSrc: this.props.images[nextIndex]
         })
-        console.log(this.props.images.length);
-        console.log(nextIndex);
-        // console.log("here", this.state.currentDisplayImageSrc)
     }
 
     renderThumbnailNagivationButtons() {
@@ -73,7 +73,6 @@ class PostGallery extends Component {
     }
 
     renderFirstThumbnail() {
-        console.log(this.state.currentDisplayImageSrc);
         const imagePath = `${Constants.UPLOADS_HOSTNAME}${this.state.currentDisplayImageSrc}`;
         return (
             <img className="image" 
