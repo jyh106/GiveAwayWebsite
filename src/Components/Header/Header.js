@@ -77,11 +77,11 @@ class Header extends Component {
         return(
             <BrowserRouter>
             <div className="header">
-                <a href="/about">
-                    <div className="header_name"> 
-                        GiveAway 
-                    </div>
-                </a>
+                <div className="header_name"> 
+                    <a href="/about" className="header_label">
+                        GiveAway
+                    </a>
+                </div>
                 <div className="user">
                     <SearchBox />
                     <FontAwesomeIcon icon="user-circle" 

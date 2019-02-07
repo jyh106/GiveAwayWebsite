@@ -1,14 +1,16 @@
 .modalPhotoHolder {
     position: relative;
-    top: 15%;
-    left: 20%;
-    width: 800px;
-    height: 400px;
-
+    top: 50%;
+    left: 25%;
+    width: 900px;
+    height: 800px;
+    z-index: 13;
 }
 
 .thumbParentHolder {
     position: absolute;
+    top: 10%;
+    left: 12%;
     z-index: 12;
     width: 650px;
     overflow: scroll;
@@ -33,19 +35,31 @@
 
 .modal_photos{
     z-index: 12;
-    position: absolute;
-    top: 70px;
+    position: relative;
+    top: 20%;
+    left: 0%;
     border-radius: 5px;
+    width: 900px;
+    height: 700px;
 }
 
+.imageHolder {
+    position: absolute;
+    top: 50px;
+    left: 130px;
+    width: 600px;
+    height: 500px;
+    z-index: 15;
+}
 .currentClickedImage {
-    max-height: 85%;
-    max-width: 85%;
+    max-height: 500px;
+    max-width: 600px;
     margin: 0 auto;
     border-radius: 10px;
 }
 
 .arrowIcons {
+    position: absolute;
     font-size: 40px;
     color: rgb(87, 87, 87);
     margin-top: 200px;
@@ -61,13 +75,14 @@
 }
 
 .photoDisplay_iconAngleLeft {
-    float: left;
+    left: 20px;
+    top: 50px;
     padding-right: 6px;
-
 }
 
 .photoDisplay_iconAngleRight {
-    float: right;
+    right: 20px;
+    top: 50px;
     padding-left: 6px;
 }
 

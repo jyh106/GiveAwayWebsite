@@ -17,7 +17,11 @@
     padding-top: 15px;
 }
 
-.header_name:hover {
+.header_label{
+    color: #F4A460;
+}
+
+.header_label:hover {
     cursor: pointer;
 }
 

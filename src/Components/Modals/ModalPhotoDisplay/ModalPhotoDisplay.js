@@ -17,11 +17,12 @@ class ModalPhotoDisplay extends Component {
     renderThumbs() {
         const images = [];
         for (let image of this.props.images) {
+            const imgFullSrc = Constants.UPLOADS_HOSTNAME + image ;
             images.push(
-                <img src={image} 
+                <img src={imgFullSrc} 
                         alt="" key={image} 
-                        className={`thumbs ${(this.isCurrentClickedImage(image)) ? 'currentClickedImageThumb' : ''}`}
-                        onClick={ ()=> this.props.updateCurrentImage(image)}>
+                        className={`thumbs ${(this.isCurrentClickedImage(imgFullSrc)) ? 'currentClickedImageThumb' : ''}`}
+                        onClick={ ()=> this.props.updateCurrentImage(imgFullSrc)}>
                 </img>
             )
         }
@@ -43,20 +44,27 @@ class ModalPhotoDisplay extends Component {
     render() {
         return (
             <div className="modalPhotoHolder">
+
                 <div className="thumbParentHolder">
                     {this.renderThumbs()}
                 </div> 
+
                 <div className="modal_photos">
                     <div className="arrowIcons photoDisplay_iconAngleLeft">
                         <FontAwesomeIcon icon="angle-left" 
                                     onClick={()=> this.handleClickedArrow(true)}/>
                     </div>
-                    <img src={this.props.currentClickedImage} alt="" className="currentClickedImage"/>
+
+                    <div className="imageHolder">
+                        <img src={this.props.currentClickedImage} alt="" className="currentClickedImage"/>
+                    </div>
+
                     <div className="arrowIcons photoDisplay_iconAngleRight">
                         <FontAwesomeIcon icon="angle-right" 
                                     onClick={()=> this.handleClickedArrow(false)}/>
                     </div>
                 </div>
+
             </div>
         )
     }
