@@ -6,7 +6,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import Constants from '../../constants';
-import { timingSafeEqual } from 'crypto';
 library.add(faMapMarkerAlt, faAngleLeft, faAngleRight) 
 
 class PostGallery extends Component {

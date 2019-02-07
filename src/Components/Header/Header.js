@@ -6,6 +6,8 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
 import SearchBox from './SearchBox/SearchBox.js';
+import { BrowserRouter } from 'react-router-dom';
+
 library.add(faUserCircle) 
 
 class Header extends Component {
@@ -73,10 +75,13 @@ class Header extends Component {
 
     render() {
         return(
+            <BrowserRouter>
             <div className="header">
-                <div className="header_name"> 
-                   GiveAway 
-                </div>
+                <a href="/about">
+                    <div className="header_name"> 
+                        GiveAway 
+                    </div>
+                </a>
                 <div className="user">
                     <SearchBox />
                     <FontAwesomeIcon icon="user-circle" 
@@ -85,6 +90,7 @@ class Header extends Component {
                 </div>
                 {this.renderAccountDropdownMenu()}
             </div>
+            </BrowserRouter>
         )
     }
 }
