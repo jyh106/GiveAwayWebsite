@@ -6,13 +6,14 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import Constants from '../../constants';
+import { timingSafeEqual } from 'crypto';
 library.add(faMapMarkerAlt, faAngleLeft, faAngleRight) 
 
 class PostGallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showImageNavigationButtons: false,
+            isShowingImageNavButtons: false,
             currentDisplayImageSrc: this.setInitialDisplayImageState(),
         }
     }
@@ -35,31 +36,21 @@ class PostGallery extends Component {
 
     onThumbnailButtonsClicked(isLeft) {
         const currentIndex = this.props.images.indexOf(this.state.currentDisplayImageSrc);
-        let nextIndex = currentIndex - 1;
-        if (isLeft) {
-            if (nextIndex < 0) {
-                return
-            }
-        } else {
-            nextIndex = currentIndex + 1;
-            if (nextIndex >= this.props.images.length) {
-                return
-            }
-        }
+        let nextIndex = (currentIndex + 1) % this.props.images.length;
         this.setState({
             currentDisplayImageSrc: this.props.images[nextIndex]
         })
     }
 
     renderThumbnailNagivationButtons() {
-        if ((!this.state.showImageNavigationButtons)
+        if ((!this.state.isShowingImageNavButtons)
             || (this.props.images.length <= 1)) {
             return null
         }
         return(
             <div className="thumbnailNagivationButtons" 
-                onMouseOver={()=> this.toggleImageNavigationButtons(true)}
-                onMouseLeave={()=> this.toggleImageNavigationButtons(true)}>
+                onMouseOver={()=> this.showImageNavigationButtons(true)}
+                onMouseLeave={()=> this.showImageNavigationButtons(true)}>
                 <div className="thumbnailNavigationButton thumbnailNavigationButton_left"
                     onClick={()=> this.onThumbnailButtonsClicked(true)}>
                     <FontAwesomeIcon icon="angle-left" />
@@ -84,28 +75,24 @@ class PostGallery extends Component {
         )
     }
 
-    toggleImageNavigationButtons(toggle) {
+    showImageNavigationButtons(toggle) {
         this.setState({
-            showImageNavigationButtons: toggle,
+            isShowingImageNavButtons: toggle,
         })
     }
 
     renderImages() {
         return (
             <div className="thumbnailContainer"
-                onMouseOver={()=> this.toggleImageNavigationButtons(true)}
-                onMouseLeave={()=> this.toggleImageNavigationButtons(false)}>
+                onMouseOver={()=> this.showImageNavigationButtons(true)}
+                onMouseLeave={()=> this.showImageNavigationButtons(false)}>
                 {this.renderFirstThumbnail()}
                 {this.renderThumbnailNagivationButtons()}
             </div>
         )
     }
 
-    getCity() {
-        return this.props.address.split(',')[1];
-    }
-
-    renderComment() {
+    renderCommentSection() {
         return (
             <div className="post_comment">
                 Comments
@@ -122,13 +109,13 @@ class PostGallery extends Component {
                 </div>
                 <div className="post_details post_address_gallery">
                    <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
-                   {this.getCity()}
+                   {this.props.address.city}
                 </div>
                 <div className="post_details post_date_gallery">
                     {this.props.date}
                 </div>
                 <div className="divider"></div>
-                {this.renderComment()}
+                {this.renderCommentSection()}
             </div>
         )
     }

@@ -78,7 +78,7 @@ class ModalPost extends Component {
                 </div>
                 <div className="modal_address">
                     <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
-                    {this.props.clickedPostInfo.address}
+                    {`${this.props.clickedPostInfo.address.street}, ${this.props.clickedPostInfo.address.city}`}
                 </div>
                 {this.renderNote()}
                 {this.renderImages()}

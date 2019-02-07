@@ -63,7 +63,7 @@ class PostList extends Component {
                 <div className="postList_address postElement postList_label"
                     onClick={()=>{this.renderPostDetailModal()}}>
                     <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
-                    {this.props.address.split(',')[1]}
+                    {this.props.address.city}
                 </div>
 
                 {this.renderImageMark()}

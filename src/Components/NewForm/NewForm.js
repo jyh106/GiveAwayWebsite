@@ -47,19 +47,20 @@ class NewForm extends Component {
         })
     }
 
+    formatAddress() {
+        return `${this.state.address_street} ${this.state.address_apt},${this.state.address_city}`
+    }
+
     handleSubmit(e){
         e.stopPropagation();
-        const address = `${this.state.address_street}${this.state.address_apt},${this.state.address_city}`
         const postInfo = {
            'name': this.state.name,
-           'address': address,
+           'address': this.formatAddress(),
            'note': this.state.note,
            'images': this.state.images,
            'category': this.state.category
        }
         this.props.addNewPost(postInfo);
-        this.clearState();
-        this.homeRef.current.click();
     }
 
     getErrorMessage(value){
@@ -165,7 +166,7 @@ class NewForm extends Component {
     getFileName(e) {
         const filepath = e.target.value.split('\\');
         const filename = filepath[filepath.length-1];
-        return filename.toString()
+        return filename
     }
 
     handleDisplayFileNames() {

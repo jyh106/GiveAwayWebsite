@@ -9,8 +9,12 @@ class PostBoard extends Component {
     renderPostsGallery(){
         let posts = [];
         for(let post of this.props.posts){
+            const postAddress = {
+                'street': post.address.split(",")[0],
+                'city': post.address.split(",")[1],
+            }
             posts.push(<PostsGallery name={post.name} 
-                             address={post.address}
+                             address={postAddress}
                              date={post.date}
                              description={post.note}
                              editable={post.editable}
@@ -24,8 +28,12 @@ class PostBoard extends Component {
     renderPostsList(){
         let posts = [];
         for(let post of this.props.posts){
+            const postAddress = {
+                'street': post.address.split(",")[0],
+                'city': post.address.split(",")[1],
+            }
             posts.push(<PostsList name={post.name} 
-                             address={post.address}
+                             address={postAddress}
                              date={post.date}
                              description={post.note}
                              editable={post.editable}
