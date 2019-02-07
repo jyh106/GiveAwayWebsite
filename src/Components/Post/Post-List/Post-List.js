@@ -3,9 +3,9 @@ import "./Post-List.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt, faFeather, faCircle} from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt, faComment, faImages} from '@fortawesome/free-solid-svg-icons'
 import Actions from '../../../Actions/actions.js'
-library.add(faMapMarkerAlt, faFeather, faCircle) 
+library.add(faMapMarkerAlt, faComment, faImages) 
 
 class PostList extends Component {
     renderPostDetailModal(){
@@ -24,9 +24,9 @@ class PostList extends Component {
             return null
         }
         return (
-            <div className="postList_note postElement postList_label" 
+            <div className="postList_note postList_label" 
                         onClick={()=>{this.renderPostDetailModal()}}>
-                <FontAwesomeIcon icon="circle" className="icon_circle" /> note 
+                <FontAwesomeIcon icon="comment" className="postList_note"></FontAwesomeIcon> 
             </div>
         )
     }
@@ -36,8 +36,8 @@ class PostList extends Component {
             return null
         }
         return (
-            <div className="postList_image postElement postList_label">
-                <FontAwesomeIcon icon="circle" className="icon_circle" /> images
+            <div className="postList_image postList_label">
+                <FontAwesomeIcon icon="images" className="postList_image"></FontAwesomeIcon>
             </div>
         )
     }
@@ -47,24 +47,20 @@ class PostList extends Component {
             <div className="postList postElement"
                 onClick={()=>{this.renderPostDetailModal()}}>
 
-                <div className="postList_name postElement postList_label" 
-                    onClick={()=>{this.renderPostDetailModal()}}>
-                    <FontAwesomeIcon icon="feather" className="icon_feather" />
+                <div className="postList_name postList_label">
                     {this.props.name} 
                 </div>
 
-                <div className="postList_date postElement postList_label" 
-                    onClick={()=>{this.renderPostDetailModal()}}>
+                <div className="postList_date postList_label">
                     ({this.props.date})
                 </div>
 
-                {this.renderNote()}
-
-                <div className="postList_address postElement postList_label"
-                    onClick={()=>{this.renderPostDetailModal()}}>
+                <div className="postList_address postList_label">
                     <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
                     {this.props.address.city}
                 </div>
+
+                {this.renderNote()}
 
                 {this.renderImageMark()}
             </div>
