@@ -122,7 +122,7 @@ const POST_GALLERY_DEFAULT_IMAGE = "default.png";
 
 const INDEX_FILE_SRC_AFTER_ROUTE_SPLIT = 4;
 
-const SINGULAR_POST_PAGE_ROUTE = "singularPost/";
+const SINGULAR_POST_PAGE_ROUTE = "post/";
 
 export default {
     CITIES,

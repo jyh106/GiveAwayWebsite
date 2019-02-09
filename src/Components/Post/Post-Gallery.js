@@ -110,10 +110,6 @@ class PostGallery extends Component {
         )
     }
 
-    handleClickedPostName() {
-       
-    }
-
     render(){
         return(
         <BrowserRouter>

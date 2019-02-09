@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./SingularPostPage.css";
+import "./PostPage.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
 import Constants from '../../constants';
@@ -12,18 +12,17 @@ import { faMapMarkerAlt,faAngleLeft, faAngleRight,
 library.add(faMapMarkerAlt, faAngleLeft, faAngleRight, 
             faCalendarAlt, faStickyNote) 
 
-class SingularPostPage extends Component {
-
+class PostPage extends Component {
     componentDidMount() {
-        const singularPostID = this.props.match.params.postID;
-        this.props.getClickedPostInfo(singularPostID)
+        const postID = this.props.match.params.postID;
+        this.props.getClickedPostInfo(postID)
     }
 
     render() {
 
         return (
         <BrowserRouter>
-            <div className="singularPostPageWrapper">
+            <div className="postPageWrapper">
                 <div className="homeButton">
                     <a href="/">
                         Main
@@ -71,4 +70,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(SingularPostPage);
+)(PostPage);
