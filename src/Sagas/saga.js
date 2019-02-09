@@ -87,7 +87,6 @@ function* fetchCurrentPostData(postID) {
       url: `${Constants.HOSTNAME}post/${postID}`,
       config: { headers: {'Content-Type':'application/json'}}
     })
-    console.log('font end got the post data,', response.data)
     yield put(Actions.updateClickedPost(response.data));
 }
 

@@ -7,14 +7,13 @@ import Utils from '../../utils';
 import Actions from '../../Actions/actions.js'
 import { BrowserRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt, faFeather,
-         faAngleLeft, faAngleRight,
+import { faMapMarkerAlt,faAngleLeft, faAngleRight,
          faCalendarAlt, faStickyNote } from '@fortawesome/free-solid-svg-icons'
-library.add(faMapMarkerAlt, faFeather, 
-            faAngleLeft, faAngleRight, 
+library.add(faMapMarkerAlt, faAngleLeft, faAngleRight, 
             faCalendarAlt, faStickyNote) 
 
 class SingularPostPage extends Component {
+
     componentDidMount() {
         const singularPostID = this.props.match.params.postID;
         this.props.getClickedPostInfo(singularPostID)
@@ -32,7 +31,22 @@ class SingularPostPage extends Component {
                 </div>
                 
                 <div className="postName">  
-                    {this.props.postInfo.name}
+                    {this.props.post.name}
+                </div>
+
+                <div className="postDate">
+                    <FontAwesomeIcon icon="calendar-alt" />
+                    {this.props.post.date}
+                </div>
+
+                <div className="postAddress">
+                    <FontAwesomeIcon icon="map-marker-alt" />
+                    {this.props.post.address}
+                </div>
+
+                <div className="postNote">
+                    <FontAwesomeIcon icon="sticky-note" />
+                    {this.props.post.note}
                 </div>
             </div>
         </BrowserRouter>
@@ -42,7 +56,7 @@ class SingularPostPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        postInfo: Utils.getClickedPostInfo(state),
+        post: Utils.getClickedPostInfo(state),
     }
 }
 
