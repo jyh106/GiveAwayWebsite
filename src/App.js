@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import UserPage from './UserPage/UserPage';
 import NewGiveAway from './Components/NewForm/NewForm.js';
+import SingularPostPage from './Components/SingularPostPage/SingularPostPage.js';
 import AboutPage from "./Components/About/About.js";
-
 
 class App extends Component {
   render() {
@@ -18,6 +18,7 @@ class App extends Component {
             <Route exact path="/about" component={AboutPage}></Route>
             <Route exact path="/myPage" component={UserPage}></Route>
             <Route exact path="/newGiveAway" component={NewGiveAway}></Route>
+            <Route path="/singularPost/:postID" component={SingularPostPage}></Route>
           </div>
         </BrowserRouter>
     );

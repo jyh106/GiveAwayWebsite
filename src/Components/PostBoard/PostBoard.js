@@ -20,6 +20,7 @@ class PostBoard extends Component {
                              editable={post.editable}
                              images ={post.images}
                              key={post.name}
+                             id={post.id}
                              />)
         }
         return posts;
@@ -39,6 +40,7 @@ class PostBoard extends Component {
                              editable={post.editable}
                              images ={post.images}
                              key={post.name}
+                             id={post.id}
                              />)
         }
         return posts;

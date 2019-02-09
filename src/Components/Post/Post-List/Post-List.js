@@ -14,7 +14,8 @@ class PostList extends Component {
             'date': this.props.date,
             'address': this.props.address,
             'note': this.props.description,
-            'images': this.props.images
+            'images': this.props.images,
+            'id': this.props.id
         })
         this.props.toggleDisplay('post', true);
     }

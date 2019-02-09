@@ -18,7 +18,6 @@ export function* watchSubmitPost() {
   // upload post to server and hide new form modal
   while (true) {
     const action = yield take('ADD_NEW_POST');
-    console.log('got action new post');
     yield call(sendPostToServer, action);
   }
 }
@@ -82,11 +81,29 @@ export function* watchSelectCategoryAndImages() {
   }
 }
 
+function* fetchCurrentPostData(postID) {
+    const response = yield call(axios, {
+      method: 'GET',
+      url: `${Constants.HOSTNAME}post/${postID}`,
+      config: { headers: {'Content-Type':'application/json'}}
+    })
+    console.log('font end got the post data,', response.data)
+    yield put(Actions.updateClickedPost(response.data));
+}
+
+export function* watchFetchCurrentPostData() {
+  while (true) {
+    const action = yield take('FETCH_CURRENT_POST_DATA');
+    yield call(fetchCurrentPostData, action.data)
+  }
+}
+
 export default function* rootSaga() {
   yield all([
     watchSubmitPost(),
     watchSelectCity(),
     watchAppMounted(),
     watchSelectCategoryAndImages(),
+    watchFetchCurrentPostData(),
   ])
 }

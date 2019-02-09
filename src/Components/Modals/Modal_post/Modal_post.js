@@ -4,13 +4,17 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
 import Constants from '../../../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt, faFeather , faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt, faFeather,
+         faAngleLeft, faAngleRight,
+         faCalendarAlt, faStickyNote } from '@fortawesome/free-solid-svg-icons'
 import OutsideClick from '../../../OutsideClick';
 import Utils from '../../../utils';
-library.add(faMapMarkerAlt, faFeather, faAngleLeft, faAngleRight) 
+library.add(faMapMarkerAlt, faFeather, 
+            faAngleLeft, faAngleRight, 
+            faCalendarAlt, faStickyNote) 
 
 class ModalPost extends Component {
-    // this modal is for displaying individual post when user click on a post when viewing in list style
+    // this modal is for displaying individual post when user click on a post while viewing in list style
     renderThumbs() {
         let images = [];
         for (let image of this.props.clickedPostInfo.images) {
@@ -35,7 +39,7 @@ class ModalPost extends Component {
         }
         if (this.props.clickedPostInfo.images.length < Constants.NONE_SCROLLABLE_THUMBS) {
             return (
-                <div className="post_details postImages">
+                <div className="post_details postImages modal_detail">
                     <div className="imageWrapper">
                         {this.renderThumbs()}
                     </div>
@@ -43,7 +47,7 @@ class ModalPost extends Component {
             )
         }
         return (
-            <div className="post_details postImages">
+            <div className="post_details postImages modal_detail">
                 <FontAwesomeIcon className="icon_angleLeft" icon="angle-left" />
                    <div className="imageWrapper">
                         {this.renderThumbs()}
@@ -59,8 +63,12 @@ class ModalPost extends Component {
             return null
         } else {
             return (
-                <div className="modal_note">
-                    {this.props.clickedPostInfo.note}
+                <div className="modal_note modal_detail">
+                    <FontAwesomeIcon icon="sticky-note" 
+                                    className="icon_sticky_note modal_post_icons" />
+                    <div className="modal_note_text">
+                        {this.props.clickedPostInfo.note}
+                    </div>
                 </div>
             )
         }
@@ -69,15 +77,16 @@ class ModalPost extends Component {
     render() {
         return (
             <OutsideClick>
-            <div className="modal_post_detail">
-                <div className="modal_title">
+            <div className="modal_post">
+                <div className="modal_title modal_detail">
                     {this.props.clickedPostInfo.name}
                 </div>
-                <div className="modal_date">
+                <div className="modal_date modal_detail">
+                    <FontAwesomeIcon icon="calendar-alt" className="icon_date modal_post_icons"></FontAwesomeIcon>
                     {this.props.clickedPostInfo.date}
                 </div>
-                <div className="modal_address">
-                    <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
+                <div className="modal_address modal_detail">
+                    <FontAwesomeIcon icon="map-marker-alt" className="icon_address modal_post_icons" /> 
                     {`${this.props.clickedPostInfo.address.street}, ${this.props.clickedPostInfo.address.city}`}
                 </div>
                 {this.renderNote()}
@@ -96,6 +105,6 @@ function mapStateToProps(state){
   }
   
   
-  export default connect(
+export default connect(
     mapStateToProps,
   )(ModalPost)

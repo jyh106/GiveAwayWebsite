@@ -1,43 +1,82 @@
-.modal_post_detail {
+@import url('https://fonts.googleapis.com/css?family=Jaldi');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+
+.modal_post {
     background: white;
     position: absolute;
     top: 30%;
     left: 40%;
     z-index: 10;
-    width: 350px;
-    height: 250px;  
+    width: 400px;
+    height: 300px;  
     border-radius: 5px;
 }
 
 .modal_title{
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    background: rgb(15, 217, 253);
-    font-family: Arial;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-left: 5px;
+    padding-top: 4px;
+    border-bottom: 2px solid rgb(165, 165, 165);
+    font-family: 'Jaldi', sans-serif;
+    text-align: left;
+    font-size: 22px;
+    color: rgb(66, 66, 66);
 }
 
 .modal_date{
     font-size: 13px;
-    text-align: right;
-    width: 98%;
+    width: 89%;
+    height: 20px;
+    text-align: left;
+    margin: 0 auto;
+    color: rgb(54, 54, 54);
+    padding-top: 8px;
 }
+
+.modal_post_icons {
+    color: rgb(167, 187, 204);
+    padding-right: 8px;
+    font-size: 14px;
+}
+
+.modal_detail {
+    width: 89%;
+    margin: 0 auto;
+}
+
 
 .modal_address {
     font-size: 13px;
     margin-bottom: 10px;
+    height: 20px;
+    text-align: left;
+    padding-top: 5px;
 }
 
 .modal_note{
+    height: 90px;
+}
+
+.icon_sticky_note {
+    float: left;
+    padding: 0;
+}
+
+.modal_note_text {
     text-align: left;
     width: 300px;
     height: 80px;
-    padding-left: 5px;
-    border: 1px dotted rgb(15, 217, 253);
+    padding: 8px;
+    border: 2px dotted rgba(244, 165, 96, 0.5);;
     margin: 0 auto;
     overflow: scroll;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    border-radius: 5px;
 }
 
 .postImages{

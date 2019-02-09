@@ -69,6 +69,11 @@ img:hover {
     text-align: left;
 }
 
+.post_name_gallery:hover {
+    cursor: pointer;
+    color: rgb(77, 3, 77);
+}
+
 .post_name:hover{
     cursor: default;
 }

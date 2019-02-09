@@ -2,7 +2,6 @@ import { Map, List } from 'immutable';
 
 const INITIAL_STATE = Map({
     posts: List([]),
-
     displayStyle: 'Gallery',
     clickedListPost: {}
 })

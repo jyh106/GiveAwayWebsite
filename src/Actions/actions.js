@@ -113,6 +113,13 @@ function resetSideBarSelections() {
     }
 }
 
+function fetchCurrentPostData(postID) {
+    return {
+        type: 'FETCH_CURRENT_POST_DATA',
+        data: postID
+    }
+}
+
 export default {
     isSearchBoxOnFocus,
     changeDisplayStyle,
@@ -129,5 +136,6 @@ export default {
     updateCity,
     resetSideBarSelections,
     toggleNewest,
-    toggleHasImages
+    toggleHasImages,
+    fetchCurrentPostData
 }
