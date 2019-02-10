@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Jaldi');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+
+.postPageNavigation {
+    height: 30px;
+    background-color: rgb(243, 243, 243);
+    width: 100%;
+    text-align: left;
+    padding-left: 20px;
+    font-size: 18px;
+    font-family: 'Jaldi', sans-serif;
+    font-weight: bolder;
+    color: gray;
+}
+
+.postPageBackButton {
+    padding-right: 5px;
+    font-size: 14px;
+}
+
+.postPageBackButton:hover, .postPageBackButtonLabel:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.postName {
+    height: 45px;
+    font-family: 'Jaldi', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 auto;
+    padding-top: 20px;
+    border-bottom: 3px solid rgb(245, 168, 101);
+}
+
+.postDetail {
+    width: 80%;
+    margin: 0 auto;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    font-family: 'Lato', sans-serif;
+}
+
+.postDate {
+    height: 30px;
+    padding-top: 10px;
+}
+
+.icons {
+    padding-right: 10px;
+    color: rgb(167, 187, 204);
+}
+
+.postAddress {
+    height: 30px;
+    padding-top: 10px;
+}
+
+.postNote {
+    height: 150px;
+}
+
+.postNoteText {
+    text-align: left;
+    width: 80%;
+    height: 80px;
+    padding: 8px;
+    border: 2px dotted rgba(244, 165, 96, 0.5);;
+    margin-left: 28px;
+    overflow: scroll;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    border-radius: 5px;
+}
+
+.imageSectionContainer {
+    position: relative;
+}
+
+.imageSlider {
+    width: 71%;
+    background-color: rgb(243, 243, 243);
+    margin: 0 auto;
+    height: 180px;
+    border-radius: 10px;
+    overflow: scroll;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.imageInnerSlider{
+    width: 1000px;
+}
+
+.postImage {
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.postPageArrow {
+    position: absolute;
+    font-size: 60px;
+    color: gray;
+    border-radius: 50%;
+}
+
+.postPageArrow:hover {
+    cursor: pointer;
+    background-color: rgba(255, 239, 224, 0.692);
+    box-shadow: 0px 0px 10px 0px rgb(255, 239, 224);
+}
+
+.postPageLeftArrow {
+    left: 90px;
+    top: 60px;
+    padding-left: 9px;
+    padding-right: 13px;
+}
+
+.postPageRightArrow {
+    right: 90px;
+    top: 60px;
+    padding-right: 9px;
+    padding-left: 13px;
+}
+
