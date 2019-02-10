@@ -33,7 +33,7 @@ class ModalPhotoDisplay extends Component {
         )
     }
 
-    handleClickedArrow(isLeft){
+    handleClickedArrow(){
         const currentImageSrc = this.props.currentClickedImage.split("/")[Constants.INDEX_FILE_SRC_AFTER_ROUTE_SPLIT];
         const currentImageIndex = this.props.images.indexOf(currentImageSrc);
         const newIndex = (currentImageIndex + 1) % this.props.images.length;
@@ -50,14 +50,14 @@ class ModalPhotoDisplay extends Component {
                 <div className="modal_photos">
                     <div className="arrowIcons photoDisplay_iconAngleLeft">
                         <FontAwesomeIcon icon="angle-left" 
-                                    onClick={()=> this.handleClickedArrow(true)}/>
+                                    onClick={()=> this.handleClickedArrow()}/>
                     </div>
                     <div className="imageHolder">
                         <img src={this.props.currentClickedImage} alt="" className="currentClickedImage"/>
                     </div>
                     <div className="arrowIcons photoDisplay_iconAngleRight">
                         <FontAwesomeIcon icon="angle-right" 
-                                    onClick={()=> this.handleClickedArrow(false)}/>
+                                    onClick={()=> this.handleClickedArrow()}/>
                     </div>
                 </div>
             </div>

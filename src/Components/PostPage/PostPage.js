@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Utils from '../../utils';
 import Actions from '../../Actions/actions.js';
 import Constants from '../../constants.js';
+import ModalContainer from "../../Components/Modals/ModalContainer";
 import { BrowserRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt,faAngleLeft, faAngleRight,
@@ -18,6 +19,11 @@ class PostPage extends Component {
         this.props.getClickedPostInfo(postID)
     }
 
+    handleClickedImage(currentViewingImage, postImages){
+        this.props.toggleModal('photos', true);
+        this.props.handleClickedImage({currentViewingImage, postImages});
+    } 
+
     renderImageSection() {
         if (!this.props.post.images) {
             return null
@@ -27,7 +33,8 @@ class PostPage extends Component {
                 images.push(
                     <img src={Constants.UPLOADS_HOSTNAME + image} 
                         className="postImage" key={image}
-                        height="150" width="150" alt="">
+                        height="150" width="150" alt=""
+                        onClick={(e)=> this.handleClickedImage(e.target.src, this.props.post.images)}>
                     </img>
                 )
             }
@@ -45,10 +52,19 @@ class PostPage extends Component {
         }
     }
 
-    render() {
+    displayPageMask(){
+        if (!this.props.isPageMaskShown) {
+            return null
+        }
+        return (
+            <div className="page-mask"></div>
+        )
+    }
 
+    render() {
         return (
         <BrowserRouter>
+        <div>
             <div className="postPageWrapper">
                 <div className="postPageNavigation">
                     <a href="/" className="postPageBackButtonLabel">    
@@ -56,7 +72,7 @@ class PostPage extends Component {
                         Main
                     </a>
                 </div>
-                
+                <ModalContainer />
                 <div className="postName postDetail">  
                     {this.props.post.name}
                 </div>
@@ -77,9 +93,11 @@ class PostPage extends Component {
                         {this.props.post.note}  
                     </div>
                 </div>
-
                 {this.renderImageSection()}
+                {this.displayPageMask()}
+
             </div>
+        </div>
         </BrowserRouter>
         )
     }
@@ -88,6 +106,7 @@ class PostPage extends Component {
 function mapStateToProps(state) {
     return {
         post: Utils.getClickedPostInfo(state),
+        isPageMaskShown: Utils.getPageMaskShown(state),
     }
 }
 
@@ -95,6 +114,12 @@ function mapDispatchToProps(dispatch) {
     return {
         getClickedPostInfo: (postID) => {
             dispatch(Actions.fetchCurrentPostData(postID))
+        },
+        toggleModal: (type, toggle) => {
+            dispatch(Actions.toggleModal(type, toggle));
+        },
+        handleClickedImage: ({currentViewingImage, postImages}) => {
+            dispatch(Actions.handleClickedImage({currentViewingImage, postImages}))
         }
     }
 }
