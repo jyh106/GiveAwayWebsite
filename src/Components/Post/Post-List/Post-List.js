@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import "./Post-List.css";
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt, faComment, faImages} from '@fortawesome/free-solid-svg-icons'
-import Actions from '../../../Actions/actions.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt, faComment, faImages} from '@fortawesome/free-solid-svg-icons';
+import Actions from '../../../Actions/actions.js';
+import Constants from '../../../constants.js';
 library.add(faMapMarkerAlt, faComment, faImages) 
 
 class PostList extends Component {
-    renderPostDetailModal(){
+    handlePostClcicked(){
         this.props.updateClickedPost({
             'name': this.props.name,
             'date': this.props.date,
@@ -45,27 +46,22 @@ class PostList extends Component {
 
     render(){
         return(
-            <div className="postList postElement"
-                onClick={()=>{this.renderPostDetailModal()}}>
-
+        <a href={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
+            <div className="postList postElement">
                 <div className="postList_name postList_label">
                     {this.props.name} 
                 </div>
-
                 <div className="postList_date postList_label">
                     ({this.props.date})
                 </div>
-
                 <div className="postList_address postList_label">
                     <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
                     {this.props.address.city}
                 </div>
-
                 {this.renderNote()}
-
                 {this.renderImageMark()}
             </div>
-
+        </a>
         )
     }
 }
