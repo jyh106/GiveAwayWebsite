@@ -1,3 +1,5 @@
+import React from 'react';
+
 function getCurrentCity(state) {
     return state.SideBar.get('currentSelectedCity');
 }
@@ -61,6 +63,14 @@ function getSideBarItems(state, selectionLabel) {
       return state.SideBar.get(selectionLabel)
   }
 
+function renderPageMask(pageMaskShown) {
+    if (!pageMaskShown) {
+        return null
+    }
+    return (
+        <div className="page-mask"></div>
+    )
+}
 
 export default {
     getCurrentCity,
@@ -76,5 +86,6 @@ export default {
     getPosts,
     getIsNewestSelected,
     getIsImageSelected,
-    getIsSideBarShown
+    getIsSideBarShown,
+    renderPageMask
 }

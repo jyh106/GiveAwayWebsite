@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import "./ModalPhotoDisplay.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft, faAngleRight, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import Actions from "../../../Actions/actions";
 import Utils from '../../../utils.js';
 import Constants from '../../../constants';
-library.add(faAngleLeft, faAngleRight) 
+library.add(faAngleLeft, faAngleRight, faTimesCircle) 
 
 class ModalPhotoDisplay extends Component {
     isCurrentClickedImage(image) {
@@ -41,23 +41,30 @@ class ModalPhotoDisplay extends Component {
         return this.props.updateCurrentImage(nextImageSrc)
     }   
 
+
     render() {
         return (
-            <div className="modalPhotoHolder">
-                <div className="thumbParentHolder">
+            <div className={`modalPhotoHolder ${this.props.modalStyle}`}>
+                <div className="photoModalDeleteButton"
+                    onClick={()=>this.props.toggleModal('photos', false)}>
+                    x
+                </div>
+                <div className={`thumbParentHolder ${this.props.modalStyle}-thumbParentHolder`}>
                     {this.renderThumbs()}
                 </div> 
-                <div className="modal_photos">
-                    <div className="arrowIcons photoDisplay_iconAngleLeft">
-                        <FontAwesomeIcon icon="angle-left" 
-                                    onClick={()=> this.handleClickedArrow()}/>
-                    </div>
-                    <div className="imageHolder">
-                        <img src={this.props.currentClickedImage} alt="" className="currentClickedImage"/>
-                    </div>
-                    <div className="arrowIcons photoDisplay_iconAngleRight">
-                        <FontAwesomeIcon icon="angle-right" 
-                                    onClick={()=> this.handleClickedArrow()}/>
+                <div className={`${this.props.modalStyle}-photoSection`}>
+                    <div className={`modalPhotos ${this.props.modalStyle}-modalPhotos`}>
+                        <div className={`arrowIcons photoDisplay_iconAngleLeft ${this.props.modalStyle}-photoDisplay_iconAngleLeft`}>
+                            <FontAwesomeIcon icon="angle-left" 
+                                        onClick={()=> this.handleClickedArrow()}/>
+                        </div>
+                        <div className="imageHolder">
+                            <img src={this.props.currentClickedImage} alt="" className="currentClickedImage"/>
+                        </div>
+                        <div className={`arrowIcons photoDisplay_iconAngleRight ${this.props.modalStyle}-photoDisplay_iconAngleRight`}>
+                            <FontAwesomeIcon icon="angle-right" 
+                                        onClick={()=> this.handleClickedArrow()}/>
+                        </div>
                     </div>
                 </div>
             </div>

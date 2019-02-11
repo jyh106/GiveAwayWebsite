@@ -14,7 +14,7 @@ class ModalContainer extends Component {
         } else if (this.props.modalShown.includes('signIn')) {
             return <ModalSignIn />
         } else if (this.props.modalShown.includes('photos')) {
-            return <ModalPhotoDisplay />
+            return <ModalPhotoDisplay modalStyle={this.props.modalStyle}/>
         } else if (this.props.modalShown.includes('signUp')) {
             return <ModalSignUp />
         } else {

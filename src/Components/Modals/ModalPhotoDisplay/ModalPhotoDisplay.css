@@ -1,20 +1,40 @@
-.modalPhotoHolder {
+@import url('https://fonts.googleapis.com/css?family=Jaldi');
+
+.postPageStyle {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    padding-top: 100px;
+}
+
+.galleryStyle {
+    height: 100vh;
     position: relative;
-    top: 50%;
-    left: 25%;
-    width: 900px;
-    height: 800px;
+
+}
+
+.modalPhotoHolder {
     z-index: 13;
+    height: 100vh;
+    width: 100%;
 }
 
 .thumbParentHolder {
-    position: absolute;
-    top: 10%;
-    left: 12%;
     z-index: 12;
-    width: 650px;
+    width: 100%;
     overflow: scroll;
 }
+
+.postPageStyle-thumbParentHolder {
+    margin: 0 auto;
+}
+
+.galleryStyle-thumbParentHolder {
+    position: absolute;
+    top: 9%;
+    left: 0%;
+}
+
 
 .thumbHolder {
     width: 650px;
@@ -25,7 +45,7 @@
 .thumbs {
     width: 50px;
     height: 50px;
-    margin-right: 5px;
+    margin-left: 10px;
     border-radius: 10px;
 }
 
@@ -33,41 +53,52 @@
     border: 2px solid #F4A460;
 }
 
-.modal_photos{
-    z-index: 12;
-    position: relative;
+.postPageStyle-photoSection {
+    width: 100%;
+}
+
+.galleryStyle-photoSection {
+    width: 100%;
+    position: absolute;
     top: 20%;
     left: 0%;
-    border-radius: 5px;
-    width: 900px;
+}
+
+.modalPhotos{
+    z-index: 12;
     height: 700px;
+    width: 70%;
+}
+
+.postPageStyle-modalPhotos {
+    margin: 0 auto;
+}
+
+.galleryStyle-modalPhotos {
+    margin: 0 auto;
 }
 
 .imageHolder {
-    position: absolute;
-    top: 50px;
-    left: 130px;
-    width: 600px;
+    margin: 0 auto;
+    width: 70%;
     height: 500px;
     z-index: 15;
 }
+
 .currentClickedImage {
+    padding-top: 10px;
     max-height: 500px;
     max-width: 600px;
     margin: 0 auto;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .arrowIcons {
     position: absolute;
     font-size: 40px;
     color: rgb(87, 87, 87);
-    margin-top: 200px;
     background: rgba(255, 255, 255, 0.746);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    padding-bottom: 6px;
 }
 
 .arrowIcons:hover {
@@ -75,14 +106,64 @@
 }
 
 .photoDisplay_iconAngleLeft {
+    margin-left: 150px;
+}
+
+.postPageStyle-photoDisplay_iconAngleLeft {
+    padding-left: 10px;
+    width: 35px;
+    margin-top: 280px;
+}
+
+.galleryStyle-photoDisplay_iconAngleLeft {
+    width: 30px;
+    padding-right: 10px;
+    padding-left: 5px;
+    margin-top: 190px;
+}
+
+.postPageStyle-photoDisplay_iconAngleRight {
+    margin-right: 180px;
+    padding-left: 14px;
+    width: 32px;
+    margin-top: 280px;
+}
+
+.galleryStyle-photoDisplay_iconAngleRight {
+    width: 30px;
+    padding-left: 10px;
+    padding-right: 5px;
+    margin-top: 190px;
+    margin-right: 150px;
+}
+
+.photoDisplay_iconAngleLeft {
     left: 20px;
     top: 50px;
-    padding-right: 6px;
 }
 
 .photoDisplay_iconAngleRight {
     right: 20px;
     top: 50px;
-    padding-left: 6px;
+}
+
+.photoModalDeleteButton {
+    color: red;
+    float: right;
+    font-weight: bolder;
+    font-family: 'Jaldi', sans-serif;
+    font-size: 40px;
+    margin-right: 150px;
+    width: 32px;
+    background-color: white;
+    line-height: 28px;
+    text-align: center;
+    padding-bottom: 4px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px 0px white;
+}
+
+.photoModalDeleteButton:hover {
+    cursor: pointer;
 }
 

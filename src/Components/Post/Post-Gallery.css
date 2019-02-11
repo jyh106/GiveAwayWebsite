@@ -9,7 +9,7 @@
     margin: 9px;
 }
 
-img{
+.postGallery-image{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -50,7 +50,7 @@ img{
     margin-right: 15px;
 }
 
-img:hover {
+.postGallery-image:hover {
     cursor: pointer;
 }
 

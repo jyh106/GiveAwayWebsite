@@ -124,6 +124,18 @@ const INDEX_FILE_SRC_AFTER_ROUTE_SPLIT = 4;
 
 const SINGULAR_POST_PAGE_ROUTE = "post/";
 
+const PHOTO_MODAL_POST_PAGE_STYLE = {
+    'position': 'absolute',
+    'top': 0,
+    'left': 0
+}
+
+const PHOTO_MODAL_POST_GALLERY_STYLE = {
+    'position': 'relative',
+    'top': '50%',
+    'left': '25%'
+}
+
 export default {
     CITIES,
     HOSTNAME,
@@ -152,6 +164,8 @@ export default {
     POST_GALLERY_DEFAULT_IMAGE,
     DEFAULT_IMG_SRC,
     INDEX_FILE_SRC_AFTER_ROUTE_SPLIT,
-    SINGULAR_POST_PAGE_ROUTE
+    SINGULAR_POST_PAGE_ROUTE,
+    PHOTO_MODAL_POST_PAGE_STYLE,
+    PHOTO_MODAL_POST_GALLERY_STYLE
 }
 

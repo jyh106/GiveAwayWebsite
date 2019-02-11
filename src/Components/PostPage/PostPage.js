@@ -6,6 +6,7 @@ import Utils from '../../utils';
 import Actions from '../../Actions/actions.js';
 import Constants from '../../constants.js';
 import ModalContainer from "../../Components/Modals/ModalContainer";
+import OutsideClick from "../../OutsideClick.js";
 import { BrowserRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt,faAngleLeft, faAngleRight,
@@ -52,15 +53,6 @@ class PostPage extends Component {
         }
     }
 
-    displayPageMask(){
-        if (!this.props.isPageMaskShown) {
-            return null
-        }
-        return (
-            <div className="page-mask"></div>
-        )
-    }
-
     render() {
         return (
         <BrowserRouter>
@@ -72,7 +64,7 @@ class PostPage extends Component {
                         Main
                     </a>
                 </div>
-                <ModalContainer />
+
                 <div className="postName postDetail">  
                     {this.props.post.name}
                 </div>
@@ -94,8 +86,12 @@ class PostPage extends Component {
                     </div>
                 </div>
                 {this.renderImageSection()}
-                {this.displayPageMask()}
-
+                {Utils.renderPageMask(this.props.isPageMaskShown)}
+                <div className="photoModal">
+                    <OutsideClick>
+                        <ModalContainer modalStyle='postPageStyle' />
+                    </OutsideClick>
+                </div>
             </div>
         </div>
         </BrowserRouter>
