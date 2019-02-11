@@ -88,7 +88,7 @@ class NewForm extends Component {
                         onChange={(e)=>this.onInputChange('name', e.target.value)}
                         maxLength='25'>
                 </input>
-                <p className="maxCharacterLabel">max characters: {25 - this.state.name.length}</p>
+                <p className="maxCharacterLabel">max characters: {13 - this.state.name.length}</p>
             </div>
         )
     }

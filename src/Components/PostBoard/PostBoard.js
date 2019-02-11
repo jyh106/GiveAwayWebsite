@@ -49,8 +49,10 @@ class PostBoard extends Component {
     renderPosts(){
         if(this.props.displayStyle === 'Gallery'){
             return this.renderPostsGallery()
-        } 
-        return this.renderPostsList();
+        } else if (this.props.displayStyle === 'List') {
+            return this.renderPostsList();
+        }
+        return null;
     }
 
     render() {

@@ -13,7 +13,6 @@ function changeDisplayStyle(style) {
 }
 
 function toggleModal(type, toggle) {
-    console.log('action fired');
     if(toggle){
         return {
             type:'SHOW_MODAL',

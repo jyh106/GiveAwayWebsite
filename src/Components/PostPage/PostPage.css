@@ -109,6 +109,10 @@
     border-radius: 50%;
 }
 
+.postImage:hover {
+    cursor: pointer;
+}
+
 .postPageArrow {
     position: absolute;
     font-size: 60px;
