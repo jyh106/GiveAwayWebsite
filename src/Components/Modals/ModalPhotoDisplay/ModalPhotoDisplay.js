@@ -45,7 +45,7 @@ class ModalPhotoDisplay extends Component {
     render() {
         return (
             <div className={`modalPhotoHolder ${this.props.modalStyle}`}>
-                <div className="photoModalDeleteButton"
+                <div className={`${this.props.modalStyle}-photoModalCloseButton photoModalCloseButton`}
                     onClick={()=>this.props.toggleModal('photos', false)}>
                     x
                 </div>

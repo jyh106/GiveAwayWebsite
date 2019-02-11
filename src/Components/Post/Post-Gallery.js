@@ -66,12 +66,12 @@ class PostGallery extends Component {
     renderFirstThumbnail() {
         const imagePath = `${Constants.UPLOADS_HOSTNAME}${this.state.currentDisplayImageSrc}`;
         return (
-            <img className="postGallery-image" 
-                src={imagePath}
-                height="170" width="203"
-                alt=" "
-                onClick={(e)=> this.handleClickedImage(e.target.src, this.props.images)}>
-            </img>
+                <img className="postGallery-image" 
+                    src={imagePath}
+                    height="170" width="203"
+                    alt=" "
+                    onClick={(e)=> this.handleClickedImage(e.target.src, this.props.images)}>
+                </img>        
         )
     }
 
