@@ -9,7 +9,7 @@
     margin: 9px;
 }
 
-.postGallery-image{
+.postGallery-thumb{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -50,7 +50,7 @@
     margin-right: 15px;
 }
 
-.postGallery-image:hover {
+.postGallery-thumb:hover {
     cursor: pointer;
 }
 

@@ -10,7 +10,7 @@ class SideBar extends Component {
         return (
                 <div className="resetButton"
                      onClick={ ()=> this.props.resetSideBarSelections()}>
-                    reset
+                    reset filters
                 </div>
         )
     }

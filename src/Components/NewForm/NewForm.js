@@ -267,9 +267,9 @@ class NewForm extends Component {
             <div className="newForm_header">
                 {this.renderHeader()}
                 <div className="button_home" ref={div => this.homeReference = div}>
-                    <a href="/" ref={this.homeRef}>
+                    <a href="/" ref={this.homeRef} className="button_home_label">
                         <FontAwesomeIcon icon="arrow-left" className="icon_leftArrow" />
-                        Home
+                        Dashboard
                     </a>
                 </div>
             </div>

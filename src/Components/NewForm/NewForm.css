@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Signika');
-@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+@import url('https://fonts.googleapis.com/css?family=Alegreya');
 @import url('https://fonts.googleapis.com/css?family=Hind');
 
 .newFormHeader_label {
     text-align: center;
-    background-color: rgb(15, 217, 253);
+    background-color: rgba(244, 165, 96, 0.911);
     padding: 10px;
     font-size: 25px;
     font-weight: bold;
-    font-family: 'Poiret One', cursive;
+    font-family: 'Alegreya', serif;
     color: white;
 }
 
@@ -20,9 +20,14 @@
     left: 15px;
 }
 
+.button_home_label {
+    color: rgb(66, 66, 66);
+}
+
 .icon_leftArrow {
     padding-right: 8px;
-    font-size: 16px;
+    font-size: 15px;
+    color: rgb(66, 66, 66);
 }
 
 .newPost_FormContainer {
@@ -34,8 +39,9 @@
     width: 90%;
     margin: 0 auto;
     height: 900px;
-    border-radius: 5px;
-    box-shadow: -1px 0px 34px -6px rgb(47, 146, 221);
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0px 2px 5px 0px gray;
     padding-bottom: 30px;
 
 }
@@ -174,7 +180,7 @@ select {
 
   .newForm_buttons {
       padding: 8px;
-      box-shadow: -1px 3px 21px -4px rgba(77,210,227,1);
+      box-shadow: 0px 0px 3px 0px gray;
       margin-top: 30px;
       margin-bottom: 100px;
       border-radius: 5px;
@@ -183,6 +189,7 @@ select {
 
   .newFormButton_submit:hover, .newFormButton_cancel:hover {
       cursor: pointer;
+      box-shadow: 0px 0px 6px 0px gray;
   }
 
   .newFormInput {
