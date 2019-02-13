@@ -1,71 +1,81 @@
 @import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
 
-.form_signIn{
+.signInModal{
     z-index: 11;
     position: absolute;
-    top: 35%;
-    left: 40%;
-    width: 300px;
-    height: 155px;
+    top: 22%;
+    left: 33%;
+    width: 400px;
+    height: 400px;
     background: white;
-    border: 1px solid rgb(159, 226, 247);
     border-radius: 5px;
 }
 
-.form_signIn_header{
+.signInForm-header{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    width: 90%;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    margin: 0 auto;
     margin-bottom: 15px;
-    background: rgb(159, 226, 247);
-    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: rgb(68, 68, 68);
+    border-bottom: 1px solid rgb(185, 185, 185);
 }
 
-.form_username, .form_email{
+.signInForm-elementContainer {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 10px;
+    height: 70%;
+}
+
+.signInForm-element {
+    height: 90px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.form_label{
+    text-align: left;
     width: 100%;
-    height: 40px;
-}
-.input_username, .input_email{
-    display: inline-block;
-    width: 180px;
-    
+    font-size: 15px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color:rgb(90, 90, 90);
 }
 
-.username, .email{
-    float: left;
-    font-size: 14px;
-    padding-left: 10px;
+.signInInput {
+    padding: 10px 5px;
+    width: 94%;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid rgb(197, 197, 197);
+    font-size: 15px;
+    padding-left: 8px;
 }
 
-.email {
-    margin-left: 30px;
-}
-
-.form_signIn_submit{
-    padding: 3px;
-    border: none;
-    background-color: rgb(218, 236, 252);
-    width: 60px;
+.signInForm-submitLabel{
+    width: 100%;
+    background-color: green;
+    height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-radius: 5px;
-    float: right;
-    margin-right: 5px;
-}
-.form_signIn_submit:hover{
-    cursor: pointer;
-    background-color: rgb(198, 227, 252);
+    color: white;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
-.form_signUp_button{
-    float: left;
-    font-size: 14px;
-    margin-top: 10px;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    padding-left: 10px;
-    color: blue;
+.signInForm-signUpButton {
+    width: 100%;
+    color: gray;
+    font-size: 12px;
+    margin: 0 auto;
 }
 
-.form_signUp_button:hover{
-    cursor: pointer;
+.signInForm-signUpButton:hover {
     text-decoration: underline;
 }
+

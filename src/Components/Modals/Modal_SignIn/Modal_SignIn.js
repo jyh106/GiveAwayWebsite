@@ -6,25 +6,41 @@ import Actions from "../../../Actions/actions";
 import Utils from '../../../utils'
 
 class ModalSignIn extends Component {
+    renderForm() {
+        return (
+            <div className="signInForm-elementContainer">
+                <div className="signInForm-element signInForm-username">
+                    <div className="form_label">
+                        Username:
+                    </div> 
+                    <input className="signInInput signInFormInput-username" placeHolder="email or phone number" />
+                </div>
+                <div className="signInForm-element signInForm-password">
+                    <div className="form_label">
+                        Password:
+                    </div> 
+                    <input className="signInInput signInFormInput-password"/>
+                </div>
+                <div className="signInForm-submit signInForm-element">
+                    <div className="signInForm-submitLabel">
+                        Log in
+                    </div>
+                </div>
+            </div>
+        )
+    }
     render(){
         return(
             <OutsideClick>
-                <div className="form_signIn">
-                    <div className="form_signIn_header">Sign In </div>
-                    <div className="form_username">
-                        <div className="username">Username: </div> 
-                        <input className="input_username"></input>
+                <div className="signInModal">
+                    <div className="signInForm-header">
+                        Log in
                     </div>
-                    <div className="form_email">
-                        <div className="email">Email: </div> 
-                        <input className="input_email"></input>
-                    </div>
-                    <div className="form_signIn_submit">
-                        submit
-                    </div>
-                    <div className="form_signUp_button" 
-                        onClick={()=>{this.props.toggleModal('signIn', false) ;this.props.toggleModal('signUp', true)}}>
-                        Don't have an account yet? 
+                    {this.renderForm()}
+                    <div >
+                        <a href="/signUp" className="signInForm-signUpButton" >
+                            Don't have an account yet? 
+                        </a>
                     </div>
                 </div>
             </OutsideClick>

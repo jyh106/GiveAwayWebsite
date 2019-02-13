@@ -72,6 +72,10 @@ function renderPageMask(pageMaskShown) {
     )
 }
 
+function getUserInfo(state) {
+    return state.App.get('user');
+}
+
 export default {
     getCurrentCity,
     getShowingModals,
@@ -87,5 +91,6 @@ export default {
     getIsNewestSelected,
     getIsImageSelected,
     getIsSideBarShown,
-    renderPageMask
+    renderPageMask,
+    getUserInfo
 }

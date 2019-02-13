@@ -2,6 +2,10 @@ import { Map} from 'immutable';
 
 const INITIAL_STATE = Map({
   'searchBoxOnFocus': false,
+  'user': {
+      'isSignedIn': false,
+      'username': ""
+    },
 });
 
 function AppReducer(state = INITIAL_STATE, action) {

@@ -8,6 +8,7 @@ import UserPage from './UserPage/UserPage';
 import NewGiveAway from './Components/NewForm/NewForm.js';
 import PostPage from './Components/PostPage/PostPage.js';
 import AboutPage from "./Components/About/About.js";
+import SignUp from './Components/SignUp/SignUp.js';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route exact path="/myPage" component={UserPage}></Route>
             <Route exact path="/newGiveAway" component={NewGiveAway}></Route>
             <Route path="/post/:postID" component={PostPage}></Route>
+            <Route exact path="/signUp" component={SignUp}></Route>
           </div>
         </BrowserRouter>
     );
