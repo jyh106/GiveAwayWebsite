@@ -25,6 +25,20 @@ function toggleModal(type, toggle) {
     }
 }
 
+function onSignUpClick(data) {
+    return {
+        type: 'ON_SIGNUP_CLICK',
+        data
+    };
+}
+
+function signIn(data) {
+    return {
+        type: 'SIGNIN',
+        data
+    }
+}
+
 function updateCity(city) {
     return {
         type: 'UPDATE_CITY',
@@ -122,8 +136,10 @@ function fetchCurrentPostData(postID) {
 
 export default {
     isSearchBoxOnFocus,
+    signIn,
     changeDisplayStyle,
     toggleModal,
+    onSignUpClick,
     updateClickedPost,
     addNewPost,
     appMounted,

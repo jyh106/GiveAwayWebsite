@@ -53,6 +53,30 @@ export function* watchSelectCity() {
   }
 }
 
+function* watchOnSignUpClick() {
+  while (true) {
+    const action = yield take('ON_SIGNUP_CLICK');
+    yield call(onSignUpClick, action)
+  }
+}
+
+function* onSignUpClick(action) {
+  try {
+    const response = yield call(axios, {
+      method: 'POST',
+      url: `${Constants.HOSTNAME}signup`,
+      data: action.data,
+      config: { headers: {'Content-Type':'application/json'}}
+    });
+    yield put(Actions.signIn({
+      username: action.data.username
+    }));
+  } catch (err) {
+    // TODO better error handling
+    alert(err.response.data.error);
+  }
+}
+
 function* filterPosts(requirements) {
    const response = yield call(axios, {
     method: 'POST',
@@ -100,6 +124,7 @@ export function* watchFetchCurrentPostData() {
 export default function* rootSaga() {
   yield all([
     watchSubmitPost(),
+    watchOnSignUpClick(),
     watchSelectCity(),
     watchAppMounted(),
     watchSelectCategoryAndImages(),
