@@ -77,6 +77,30 @@ function* onSignUpClick(action) {
   }
 }
 
+function* onSignInClick(action) {
+  try {
+    const response = yield call(axios, {
+      method: 'POST',
+      url: `${Constants.HOSTNAME}signin`,
+      data: action.data,
+      config: { headers: {'Content-Type':'application/json'}}
+    });
+    yield put(Actions.signIn({
+      username: action.data.username
+    }));
+  } catch (err) {
+    // TODO better error handling
+    alert(err.response.data.error);
+  }
+}
+
+function* watchOnSignInClick() {
+  while(true) {
+    const action = yield take('ON_SIGNIN_CLICK');
+    yield call(onSignInClick, action)
+  }
+}
+
 function* filterPosts(requirements) {
    const response = yield call(axios, {
     method: 'POST',
@@ -129,5 +153,6 @@ export default function* rootSaga() {
     watchAppMounted(),
     watchSelectCategoryAndImages(),
     watchFetchCurrentPostData(),
+    watchOnSignInClick(),
   ])
 }

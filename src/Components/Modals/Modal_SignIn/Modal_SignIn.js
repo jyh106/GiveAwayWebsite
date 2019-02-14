@@ -6,6 +6,19 @@ import Actions from "../../../Actions/actions";
 import Utils from '../../../utils'
 
 class ModalSignIn extends Component {
+    constructor() {
+        super();
+        this.state = {
+            username: "",
+            password: "",
+        }
+    }
+
+    onSignInClicked() {
+        this.props.onSignInClicked(this.state);
+        this.props.toggleModal('signIn', false)
+    }
+
     renderForm() {
         return (
             <div className="signInForm-elementContainer">
@@ -13,16 +26,20 @@ class ModalSignIn extends Component {
                     <div className="form_label">
                         Username:
                     </div> 
-                    <input className="signInInput signInFormInput-username" placeholder="email or phone number" />
+                    <input className="signInInput signInFormInput-username" 
+                        placeholder="email or phone number" 
+                        onChange={(e)=> this.setState({username: e.target.value})}/>
                 </div>
                 <div className="signInForm-element signInForm-password">
                     <div className="form_label">
                         Password:
                     </div> 
-                    <input className="signInInput signInFormInput-password"/>
+                    <input className="signInInput signInFormInput-password" type="password" 
+                        onChange={(e)=> this.setState({password: e.target.value})}/>
                 </div>
                 <div className="signInForm-submit signInForm-element">
-                    <div className="signInForm-submitLabel">
+                    <div className="signInForm-submitLabel"
+                        onClick={()=> this.onSignInClicked()}>
                         Log in
                     </div>
                 </div>
@@ -63,6 +80,9 @@ function mapStateToProps(state) {
     return {
         toggleModal: (type, toggle)=>{
             dispatch(Actions.toggleModal(type, toggle))
+        },
+        onSignInClicked: (data)=> {
+            dispatch(Actions.onSignInClick(data))
         }
     }
   }

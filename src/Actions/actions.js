@@ -32,12 +32,20 @@ function onSignUpClick(data) {
     };
 }
 
+function onSignInClick(data) {
+    return {
+        type: 'ON_SIGNIN_CLICK',
+        data
+    };
+}
+
 function signIn(data) {
     return {
         type: 'SIGNIN',
         data
     }
 }
+
 
 function updateCity(city) {
     return {
@@ -135,6 +143,7 @@ function fetchCurrentPostData(postID) {
 }
 
 export default {
+    onSignInClick,
     isSearchBoxOnFocus,
     signIn,
     changeDisplayStyle,
