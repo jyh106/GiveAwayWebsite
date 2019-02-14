@@ -17,6 +17,11 @@ class User extends Component {
         }
     }
 
+    onSignOutClick() {
+        localStorage.removeItem("username");
+        window.location.reload();
+    }
+
     renderSignedInAccountMenu() {
         return (
             <div className="accountDropDownMenu signedInMenu">
@@ -31,7 +36,8 @@ class User extends Component {
                         Settings
                     </a>
                 </div>
-                <div className="account_signOut accountMenuItem">
+                <div className="account_signOut accountMenuItem"
+                    onClick={() => this.onSignOutClick()}>
                     Sign out
                 </div>
             </div>
