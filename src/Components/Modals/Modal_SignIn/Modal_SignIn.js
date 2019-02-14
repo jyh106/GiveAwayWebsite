@@ -13,7 +13,7 @@ class ModalSignIn extends Component {
                     <div className="form_label">
                         Username:
                     </div> 
-                    <input className="signInInput signInFormInput-username" placeHolder="email or phone number" />
+                    <input className="signInInput signInFormInput-username" placeholder="email or phone number" />
                 </div>
                 <div className="signInForm-element signInForm-password">
                     <div className="form_label">
@@ -29,6 +29,12 @@ class ModalSignIn extends Component {
             </div>
         )
     }
+
+    handleSignUpClick() {
+        this.props.toggleModal('signIn', false);
+        this.props.toggleModal('signUp', true);
+    }
+    
     render(){
         return(
             <OutsideClick>
@@ -37,10 +43,9 @@ class ModalSignIn extends Component {
                         Log in
                     </div>
                     {this.renderForm()}
-                    <div >
-                        <a href="/signUp" className="signInForm-signUpButton" >
-                            Don't have an account yet? 
-                        </a>
+                    <div className="signInForm-signUpButton" 
+                        onClick={()=>this.handleSignUpClick()}>
+                        Don't have an account yet? 
                     </div>
                 </div>
             </OutsideClick>

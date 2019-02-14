@@ -3,6 +3,7 @@ import "./ModalSignUp.css";
 import { connect } from 'react-redux';
 import OutsideClick from '../../../OutsideClick';
 import Utils from '../../../utils.js';
+import Actions from '../../../Actions/actions.js';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle, faLock } from '@fortawesome/free-solid-svg-icons'
@@ -33,6 +34,12 @@ class ModalSignUp extends Component {
         </div>
         )
     }
+
+    handleSignInClick() {
+        this.props.toggleModal('signUp', false);
+        this.props.toggleModal('signIn', true);
+    }
+
     render(){
         return(
             <OutsideClick>
@@ -45,6 +52,10 @@ class ModalSignUp extends Component {
                         <div className="signUpForm-signUpButton">
                             Sign up
                         </div>
+                    </div>
+                    <div className="signUpForm-alreadyHaveAccount"
+                        onClick={()=> this.handleSignInClick()}>
+                        Already have an account?
                     </div>
                 </div>
             </OutsideClick>
@@ -60,6 +71,9 @@ function mapStateToProps(state) {
   
 function mapDispatchToProps(dispatch) {
     return {
+        toggleModal: (modalType, toggle) => {
+            dispatch(Actions.toggleModal(modalType, toggle))
+        }
     }
 }
 

@@ -77,5 +77,6 @@
 
 .signInForm-signUpButton:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 

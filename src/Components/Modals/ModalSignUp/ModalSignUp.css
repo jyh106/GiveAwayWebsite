@@ -28,7 +28,7 @@
 
 .signUpForm-elementContainer {
     margin-top: 20px;
-    height: 65%;
+    height: 60%;
 }
 
 .signUpForm-element {
@@ -70,5 +70,15 @@
 .signUpForm-signUpButton:hover {
     box-shadow: 0px 0px 8px 0px gray;
     cursor: pointer;
+}
+
+.signUpForm-alreadyHaveAccount {
+    padding-top: 25px;
+    font-size: 12px;
+    color: gray;
+}
+.signUpForm-alreadyHaveAccount:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
