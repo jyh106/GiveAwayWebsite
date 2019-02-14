@@ -3,8 +3,8 @@ import { Map} from 'immutable';
 const INITIAL_STATE = Map({
   'searchBoxOnFocus': false,
   'user': {
-      'isSignedIn': false,
-      'username': ""
+      'isSignedIn': true,
+      'username': "hera"
     },
 });
 

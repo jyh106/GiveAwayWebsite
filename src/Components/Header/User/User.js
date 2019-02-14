@@ -27,7 +27,9 @@ class User extends Component {
                     Profile
                 </div>
                 <div className="account_settings accountMenuItem">
-                    Settings
+                    <a href="/settings">
+                        Settings
+                    </a>
                 </div>
                 <div className="account_signOut accountMenuItem">
                     Sign out
