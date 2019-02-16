@@ -6,6 +6,7 @@ const INITIAL_STATE = Map({
     'currentClickedImage': 'none',
     'images': [],
     'isSignUpUsernameValid': true,
+    'isSignInSuccessful': true,
 });
 
 function ModalReducer (state = INITIAL_STATE, action) {
@@ -16,7 +17,7 @@ function ModalReducer (state = INITIAL_STATE, action) {
         case('HIDE_MODAL'):
             if(state.get('modalShown').includes(action.data)){
                 const index = state.get('modalShown').indexOf(action.data);
-                return state.update('modalShown', list => list.splice(index, 1)).set('isPageMaskShown', false);
+                return state.update('modalShown', list => list.splice(index, 1)).set('isPageMaskShown', false).set('isSignInSuccessful', true).set('isSignUpUsernameValid', true);
             }
             return state;
         case('POST_IMAGE_CLICKED'):
@@ -25,6 +26,8 @@ function ModalReducer (state = INITIAL_STATE, action) {
             return state.set('currentClickedImage', action.data)
         case('VALIDATE_USERNAME_FRONTEND'):
             return state.set('isSignUpUsernameValid', action.data)
+        case('SIGN_IN_VALIDATION'):
+            return state.set('isSignInSuccessful', action.data)
         default:
             return state
     }

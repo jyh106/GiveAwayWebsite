@@ -108,10 +108,12 @@ function* onSignInClick(action) {
     yield put(Actions.signIn({
       username: action.data.username
     }));
+    yield put(Actions.isSignInSuccessful(true))
+    yield put(Actions.toggleModal('signIn', false))
   } catch (err) {
-    // TODO better error handling
-    alert(err.response.data.error);
+    yield put(Actions.isSignInSuccessful(false))
   }
+
 }
 
 function* watchOnSignInClick() {

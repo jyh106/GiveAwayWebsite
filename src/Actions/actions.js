@@ -156,7 +156,15 @@ function validateUsernameFrontEnd(isValid) {
     }
 }
 
+function isSignInSuccessful(isSuccessful) {
+    return {
+        type: 'SIGN_IN_VALIDATION',
+        data: isSuccessful
+    }
+}
+
 export default {
+    isSignInSuccessful,
     validateUsernameBackend,
     validateUsernameFrontEnd,
     onSignInClick,

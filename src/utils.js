@@ -80,7 +80,12 @@ function getUsernameValidation(state) {
     return state.Modal.get('isSignUpUsernameValid');
 }
 
+function isSignInSuccessful(state) {
+    return state.Modal.get('isSignInSuccessful');
+}
+
 export default {
+    isSignInSuccessful,
     getUsernameValidation,
     getCurrentCity,
     getShowingModals,

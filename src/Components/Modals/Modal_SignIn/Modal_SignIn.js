@@ -3,7 +3,11 @@ import "./Modal_SignIn.css";
 import { connect } from 'react-redux';
 import OutsideClick from '../../../OutsideClick';
 import Actions from "../../../Actions/actions";
-import Utils from '../../../utils'
+import Utils from '../../../utils';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+library.add(faExclamationCircle)
 
 class ModalSignIn extends Component {
     constructor() {
@@ -16,7 +20,23 @@ class ModalSignIn extends Component {
 
     onSignInClicked() {
         this.props.onSignInClicked(this.state);
-        this.props.toggleModal('signIn', false)
+    }
+
+    handleSignUpClick() {
+        this.props.toggleModal('signIn', false);
+        this.props.toggleModal('signUp', true);
+    }
+
+    renderSignInErrorMsg() {
+        if (this.props.isSignInSuccessful) {
+           return null
+        }
+        return (
+            <div className="signInErrorMsg">
+                <FontAwesomeIcon icon="exclamation-circle" className="icon-exlamation" />
+                The username or password you entered is incorrect
+            </div>
+        )
     }
 
     renderForm() {
@@ -27,7 +47,7 @@ class ModalSignIn extends Component {
                         Username:
                     </div> 
                     <input className="signInInput signInFormInput-username" 
-                        placeholder="email or phone number" 
+                        placeholder="user ID" 
                         onChange={(e)=> this.setState({username: e.target.value})}/>
                 </div>
                 <div className="signInForm-element signInForm-password">
@@ -37,20 +57,18 @@ class ModalSignIn extends Component {
                     <input className="signInInput signInFormInput-password" type="password" 
                         onChange={(e)=> this.setState({password: e.target.value})}/>
                 </div>
+                {this.renderSignInErrorMsg()}
                 <div className="signInForm-submit signInForm-element">
-                    <div className="signInForm-submitLabel"
-                        onClick={()=> this.onSignInClicked()}>
+                    <button className= "signInForm-submitLabel"
+                        onClick={()=> this.onSignInClicked()}
+                        disable={!this.props.isSignInSuccessful}>
                         Log in
-                    </div>
+                    </button>
                 </div>
             </div>
         )
     }
 
-    handleSignUpClick() {
-        this.props.toggleModal('signIn', false);
-        this.props.toggleModal('signUp', true);
-    }
     
     render(){
         return(
@@ -73,6 +91,7 @@ class ModalSignIn extends Component {
 function mapStateToProps(state) {
     return{
         modalShown: Utils.getShowingModals(state),
+        isSignInSuccessful: Utils.isSignInSuccessful(state),
     }
 }
   

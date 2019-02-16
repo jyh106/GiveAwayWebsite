@@ -89,7 +89,7 @@ class ModalSignUp extends Component {
                 <div className="signUpForm-element signUpForm-username">
                     <FontAwesomeIcon className="signUpForm-icon" icon="user-circle" />
                     <input className="signUpForm-input signUpForm-username-input"
-                            placeholder="email or mobile phone"
+                            placeholder="user ID"
                             onChange={(e) => this.setState({'username': e.target.value})}
                             onBlur = {(e) => this.props.validateUsernameBackend(e.target.value)}>
                     </input>

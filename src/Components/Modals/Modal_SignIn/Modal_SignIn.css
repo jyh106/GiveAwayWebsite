@@ -59,14 +59,16 @@
 .signInForm-submitLabel{
     width: 100%;
     background-color: green;
-    height: 20px;
+    height: 40px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 5px;
     color: white;
     font-weight: bold;
     margin-top: 20px;
+    outline: none;
 }
+
 
 .signInForm-signUpButton {
     width: 100%;
@@ -78,5 +80,14 @@
 .signInForm-signUpButton:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.signInErrorMsg {
+    color: red;
+    font-size: 12px;
+}
+
+.icon-exlamation {
+    padding-right: 5px;
 }
 

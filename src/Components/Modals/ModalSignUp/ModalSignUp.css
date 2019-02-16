@@ -59,7 +59,7 @@
 }
 
 .signUpForm-signUpButton {
-    width: 70px;
+    width: 300px;
     background-color: lightgray;
     margin: 0 auto;
     padding: 10px 8px;
@@ -73,8 +73,9 @@
     background-color: green;
 }
 
+
 .signUpForm-signUpButton:hover {
-    box-shadow: 0px 0px 8px 0px gray;
+    box-shadow: 0px 0px 8px 0px lightgray;
     cursor: pointer;
 }
 
@@ -85,6 +86,7 @@
 }
 .signUpForm-alreadyHaveAccount:hover {
     cursor: pointer;
+    color: blue;
     text-decoration: underline;
 }
 
