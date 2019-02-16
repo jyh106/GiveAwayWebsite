@@ -29,6 +29,7 @@
 .signUpForm-elementContainer {
     margin-top: 20px;
     height: 60%;
+    position: relative;
 }
 
 .signUpForm-element {
@@ -59,12 +60,17 @@
 
 .signUpForm-signUpButton {
     width: 70px;
-    background-color: green;
+    background-color: lightgray;
     margin: 0 auto;
     padding: 10px 8px;
     border-radius: 10px;
     color: white;
     font-weight: bold;
+    outline: none;
+}
+
+.signUpForm-signUpButtonActive {
+    background-color: green;
 }
 
 .signUpForm-signUpButton:hover {
@@ -82,3 +88,27 @@
     text-decoration: underline;
 }
 
+
+.signUpErrorMsg {
+    position: absolute;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 80%;
+    font-size: 12px;
+    margin: 0 auto;
+    text-align: right;
+    padding-top: 2px;
+    left:35px;
+}
+
+.usernameErrorMsg {
+    top: 65px;
+}
+
+.passwordErrorMsg {
+    top: 129px;
+}
+
+.unmatchPasswordErrorMsg {
+   bottom: 30px;
+}

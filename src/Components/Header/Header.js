@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import "./Header.css";
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
 import SearchBox from './SearchBox/SearchBox.js';
 import { BrowserRouter } from 'react-router-dom';

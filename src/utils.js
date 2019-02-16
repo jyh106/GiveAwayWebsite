@@ -76,7 +76,12 @@ function getUserInfo(state) {
     return state.App.get('user');
 }
 
+function getUsernameValidation(state) {
+    return state.Modal.get('isSignUpUsernameValid');
+}
+
 export default {
+    getUsernameValidation,
     getCurrentCity,
     getShowingModals,
     getDate,

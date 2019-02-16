@@ -19,6 +19,70 @@ class ModalSignUp extends Component {
         }
     }
 
+    renderUsernameErrorMessage() {
+        if (!this.props.isUsernameValid) {
+            return (
+                <div className="usernameErrorMsg signUpErrorMsg">
+                    username already taken, please choose another
+                </div>
+            )
+        } else if (!this.state.username) {
+            return (
+                <div className="usernameErrorMsg signUpErrorMsg">
+                    must fill out username
+                </div>
+            )
+        }
+    }
+
+    renderPasswordErrorMessage() {
+        if (!this.state.password) {
+            return (
+                <div className="passwordErrorMsg signUpErrorMsg">
+                    must fill out password
+                </div>
+            )
+        }
+    }
+
+    renderUnmatchPasswordErrorMessage() {
+        if (!this.state.confirmPassword) {
+            return (
+                <div className="unmatchPasswordErrorMsg signUpErrorMsg">
+                   must confirm password
+                </div>
+            )
+        } else if (this.state.password !== this.state.confirmPassword) {
+            return (
+                <div className="unmatchPasswordErrorMsg signUpErrorMsg">
+                    password does not match
+                </div>
+            )
+        }
+    }
+
+    handleSignInClick() {
+        this.props.toggleModal('signUp', false);
+        this.props.toggleModal('signIn', true);
+    }
+
+
+    handleSignUpClick() {
+        this.props.onSignUpClick({
+            username: this.state.username,
+            password: this.state.password,
+        });
+        this.props.toggleModal('signUp', false)
+    }
+
+    isSubmitButtonEnable() {
+        //need to check whether they are empty or not in addition to checking their values
+        return ((this.props.isUsernameValid && this.state.username)
+                && (this.state.password === this.state.confirmPassword)
+                && (this.state.password && this.state.confirmPassword))
+    }
+
+
     renderSignUpForm() {
         return (
             <div className="signUpForm-elementContainer">
@@ -26,9 +90,11 @@ class ModalSignUp extends Component {
                     <FontAwesomeIcon className="signUpForm-icon" icon="user-circle" />
                     <input className="signUpForm-input signUpForm-username-input"
                             placeholder="email or mobile phone"
-                            onChange={(e) => this.setState({'username': e.target.value})}>
+                            onChange={(e) => this.setState({'username': e.target.value})}
+                            onBlur = {(e) => this.props.validateUsernameBackend(e.target.value)}>
                     </input>
                 </div>
+                {this.renderUsernameErrorMessage()}
                 <div className="signUpForm-element signUpForm-password">
                     <FontAwesomeIcon className="signUpForm-icon" icon="lock" />
                     <input className='signUpForm-input signUpForm-password-input'
@@ -37,6 +103,7 @@ class ModalSignUp extends Component {
                         placeholder="password">
                     </input>
                 </div>
+                {this.renderPasswordErrorMessage()}
                 <div className="signUpForm-element signUpForm-password-confirm">
                     <FontAwesomeIcon className="signUpForm-icon" icon="lock" />
                     <input className="signUpForm-input signUpForm-password-confirm-input"
@@ -45,26 +112,11 @@ class ModalSignUp extends Component {
                         placeholder="confirm password">
                     </input>
                 </div>
+                {this.renderUnmatchPasswordErrorMessage()}
         </div>
         )
     }
 
-    handleSignInClick() {
-        this.props.toggleModal('signUp', false);
-        this.props.toggleModal('signIn', true);
-    }
-
-    handleSignUpClick() {
-        if (this.state.password !== this.state.confirmPassword) {
-            // TODO have better error handling
-            alert("you fucked up");
-        } else {
-            this.props.onSignUpClick({
-                username: this.state.username,
-                password: this.state.password,
-            });
-        }
-    }
 
     render(){
         return(
@@ -75,10 +127,11 @@ class ModalSignUp extends Component {
                     </div>
                     {this.renderSignUpForm()}
                     <div className="signUpForm-signUpSubmit">
-                        <div className="signUpForm-signUpButton"
-                            onClick={() => this.handleSignUpClick()}>
+                        <button className={`${this.isSubmitButtonEnable() ? 'signUpForm-signUpButtonActive' : ""} signUpForm-signUpButton`}
+                            onClick={() => this.handleSignUpClick()}
+                            disabled={!this.isSubmitButtonEnable()}>
                             Sign up
-                        </div>
+                        </button>
                     </div>
                     <div className="signUpForm-alreadyHaveAccount"
                         onClick={()=> this.handleSignInClick()}>
@@ -93,6 +146,7 @@ class ModalSignUp extends Component {
 function mapStateToProps(state) {
     return{
         modalShown: Utils.getShowingModals(state),
+        isUsernameValid: Utils.getUsernameValidation(state),
     }
 }
   
@@ -103,6 +157,9 @@ function mapDispatchToProps(dispatch) {
         },
         onSignUpClick: (data) => {
             dispatch(Actions.onSignUpClick(data))
+        },
+        validateUsernameBackend: (username) => {
+            dispatch(Actions.validateUsernameBackend(username))
         }
     }
 }

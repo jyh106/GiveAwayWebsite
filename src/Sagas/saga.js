@@ -62,7 +62,7 @@ function* watchOnSignUpClick() {
 
 function* onSignUpClick(action) {
   try {
-    const response = yield call(axios, {
+     yield call(axios, {
       method: 'POST',
       url: `${Constants.HOSTNAME}signup`,
       data: action.data,
@@ -72,8 +72,28 @@ function* onSignUpClick(action) {
       username: action.data.username
     }));
   } catch (err) {
-    // TODO better error handling
-    alert(err.response.data.error);
+    console.log('sign up unsuccessful')
+  }
+}
+
+function* watchValidateUsername() {
+  while (true) {
+    const action = yield take('VALIDATE_USERNAME_BACKEND');
+    yield call(validateUsername, action)
+  }
+}
+
+function* validateUsername(action) {
+  try {
+    yield call(axios, {
+      method: 'POST',
+      url: `${Constants.HOSTNAME}username`,
+      data: action.data,
+      config: { headers: {'Content-Type':'application/json'}}
+    });
+    yield put(Actions.validateUsernameFrontEnd(true))
+  } catch(err) {
+    yield put(Actions.validateUsernameFrontEnd(false))
   }
 }
 
@@ -154,5 +174,6 @@ export default function* rootSaga() {
     watchSelectCategoryAndImages(),
     watchFetchCurrentPostData(),
     watchOnSignInClick(),
+    watchValidateUsername(),
   ])
 }

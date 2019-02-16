@@ -142,7 +142,23 @@ function fetchCurrentPostData(postID) {
     }
 }
 
+function validateUsernameBackend(username) {
+    return {
+        type: 'VALIDATE_USERNAME_BACKEND',
+        data: {username}
+    }
+}
+
+function validateUsernameFrontEnd(isValid) {
+    return {
+        type: 'VALIDATE_USERNAME_FRONTEND',
+        data: isValid
+    }
+}
+
 export default {
+    validateUsernameBackend,
+    validateUsernameFrontEnd,
     onSignInClick,
     isSearchBoxOnFocus,
     signIn,
