@@ -87,6 +87,12 @@ class ModalSignUp extends Component {
                 && (this.state.password && this.state.confirmPassword))
     }
 
+    handleEnterKeyPressed(e) {
+        if (e.key === 'Enter') {
+            this.handleSignUpClick()
+        }
+    }
+
 
     renderSignUpForm() {
         return (
@@ -114,6 +120,7 @@ class ModalSignUp extends Component {
                     <input className="signUpForm-input signUpForm-password-confirm-input"
                         type="password"
                         onChange={(e) => this.setState({'confirmPassword': e.target.value})}
+                        onKeyPress={(e) => this.handleEnterKeyPressed(e)}
                         placeholder="confirm password">
                     </input>
                 </div>
