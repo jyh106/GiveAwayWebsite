@@ -74,6 +74,7 @@
 }
 
 
+
 .signUpForm-signUpButton:hover {
     box-shadow: 0px 0px 8px 0px lightgray;
     cursor: pointer;
@@ -113,4 +114,8 @@
 
 .unmatchPasswordErrorMsg {
    bottom: 30px;
+}
+
+.signUp-exclamation-icon {
+    padding-right: 5px;
 }

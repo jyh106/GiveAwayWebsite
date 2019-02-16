@@ -6,8 +6,8 @@ import Utils from '../../../utils.js';
 import Actions from '../../../Actions/actions.js';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCircle, faLock } from '@fortawesome/free-solid-svg-icons'
-library.add(faUserCircle, faLock)
+import { faUserCircle, faLock , faExclamationCircle} from '@fortawesome/free-solid-svg-icons'
+library.add(faUserCircle, faLock, faExclamationCircle)
 
 class ModalSignUp extends Component {
     constructor(props) {
@@ -23,12 +23,14 @@ class ModalSignUp extends Component {
         if (!this.props.isUsernameValid) {
             return (
                 <div className="usernameErrorMsg signUpErrorMsg">
+                    <FontAwesomeIcon icon="exclamation-circle" className="signUp-exclamation-icon"/>
                     username already taken, please choose another
                 </div>
             )
         } else if (!this.state.username) {
             return (
                 <div className="usernameErrorMsg signUpErrorMsg">
+                    <FontAwesomeIcon icon="exclamation-circle" className="signUp-exclamation-icon"/>
                     must fill out username
                 </div>
             )
@@ -39,6 +41,7 @@ class ModalSignUp extends Component {
         if (!this.state.password) {
             return (
                 <div className="passwordErrorMsg signUpErrorMsg">
+                    <FontAwesomeIcon icon="exclamation-circle" className="signUp-exclamation-icon"/>
                     must fill out password
                 </div>
             )
@@ -49,12 +52,14 @@ class ModalSignUp extends Component {
         if (!this.state.confirmPassword) {
             return (
                 <div className="unmatchPasswordErrorMsg signUpErrorMsg">
+                    <FontAwesomeIcon icon="exclamation-circle" className="signUp-exclamation-icon"/>
                    must confirm password
                 </div>
             )
         } else if (this.state.password !== this.state.confirmPassword) {
             return (
                 <div className="unmatchPasswordErrorMsg signUpErrorMsg">
+                    <FontAwesomeIcon icon="exclamation-circle" className="signUp-exclamation-icon"/>
                     password does not match
                 </div>
             )

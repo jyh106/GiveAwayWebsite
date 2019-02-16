@@ -24,7 +24,8 @@ class User extends Component {
 
     renderSignedInAccountMenu() {
         return (
-            <div className="accountDropDownMenu signedInMenu">
+            <div className="accountDropDownMenu signedInMenu"
+            onMouseLeave={()=>this.hideModal()}>
                 <div className="account_header">
                     {this.props.userInfo['username']}
                 </div>
@@ -44,16 +45,21 @@ class User extends Component {
         )
     }
 
-    handleClick(modalName) {
+    hideModal() {
         this.setState({
             accountDropDownMenuShown: false,
         })
+    }
+
+    handleClick(modalName) {
+        this.hideModal();
         this.props.toggleModal(modalName, true);
     }
 
     renderNotSignedInAccountMenu() {
         return (
-            <div className="accountDropDownMenu notSignedInMenu">
+            <div className="accountDropDownMenu notSignedInMenu"
+                onMouseLeave={()=>this.hideModal()}>
                 <div className="account_header">
                     Welcome!
                 </div>
