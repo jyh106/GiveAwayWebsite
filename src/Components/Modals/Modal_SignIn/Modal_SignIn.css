@@ -69,6 +69,10 @@
     outline: none;
 }
 
+.signInForm-submitLabel:hover {
+    cursor: pointer;
+}
+
 
 .signInForm-signUpButton {
     width: 100%;

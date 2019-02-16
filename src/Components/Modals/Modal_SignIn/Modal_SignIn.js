@@ -39,6 +39,14 @@ class ModalSignIn extends Component {
         )
     }
 
+
+    handlePassword(e) {
+        //handle Enter key pressed after finishing typing password
+        if (e.key === 'Enter') {
+            this.onSignInClicked();
+        }
+    }
+
     renderForm() {
         return (
             <div className="signInForm-elementContainer">
@@ -55,7 +63,8 @@ class ModalSignIn extends Component {
                         Password:
                     </div> 
                     <input className="signInInput signInFormInput-password" type="password" 
-                        onChange={(e)=> this.setState({password: e.target.value})}/>
+                        onChange = {(e)=> this.setState({password : e.target.value})}
+                        onKeyPress={(e)=>this.handlePassword(e)}/>
                 </div>
                 {this.renderSignInErrorMsg()}
                 <div className="signInForm-submit signInForm-element">
