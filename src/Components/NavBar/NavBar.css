@@ -23,7 +23,7 @@
     border-radius: 3px;
     color: darkblue;
     border: 2px dashed rgb(225, 130, 130);
-    box-shadow: 0px 0px 11px 0px lightcoral;
+    box-shadow: 0px 0px 5px 0px lightcoral;
 }
 
 a {
@@ -35,7 +35,7 @@ a {
 }
 
 .addNewFormButton:hover {
-    box-shadow: 0px -1px 14px 0px lightcoral;
+    box-shadow: 0px 0px 12px 0px lightcoral;
     background-color: white;
     color: rgb(255, 17, 0);
     cursor: pointer;

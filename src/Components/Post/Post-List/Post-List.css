@@ -1,5 +1,5 @@
 .postList{
-    width: 99%;
+    width: 93%;
     height: 20px;
     background: white;
     margin-bottom: 13px;
@@ -8,6 +8,7 @@
     padding: 5px;
     align-content: center;
     overflow: scroll;
+    float: left;
     box-shadow: 0px 0px 7px 0px rgba(176,176,176,1);
     position: relative;
 }

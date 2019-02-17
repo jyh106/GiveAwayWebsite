@@ -1,8 +1,8 @@
 .PostBoard{
     position: absolute;
     top: 0;
-    left: 110px;
-    width: 90%;
+    left: 10px;
+    width: 100%;
     float: right;
     background: white;
 }
@@ -12,7 +12,7 @@
     top: 60px;
     left: 10px;
     overflow: scroll;
-    width: 90%;
+    width: 81.5%;
     height: 100vh;
     margin-right: 15px;
     float: right;
