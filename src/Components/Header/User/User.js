@@ -19,6 +19,7 @@ class User extends Component {
 
     onSignOutClick() {
         localStorage.removeItem("username");
+        this.props.userSignedOut();
         window.location.reload();
     }
 
@@ -99,8 +100,8 @@ class User extends Component {
             <div>
                 <div className="user">
                     <FontAwesomeIcon icon="user-circle" 
-                    className="icon_user" 
-                    onClick={ ()=> this.toggleAccountMenu()} /> 
+                        className={`${this.props.isSignInSuccessful ? "icon_userActive" : ""} icon_user`} 
+                        onClick={ ()=> this.toggleAccountMenu()} /> 
                 </div>
                 {this.renderAccountDropdownMenu()}
             </div>
@@ -112,6 +113,7 @@ class User extends Component {
 function mapStateToProps(state) {
     return{
         userInfo: Utils.getUserInfo(state),
+        isSignInSuccessful: Utils.isSignInSuccessful(state)
     }
 }
   
@@ -119,6 +121,9 @@ function mapStateToProps(state) {
     return {
         toggleModal: (type, toggle) => {
             dispatch( Actions.toggleModal(type, toggle) )
+        },
+        userSignedOut: () => {
+            dispatch( Actions.userSignedOut());
         }
     }
   }

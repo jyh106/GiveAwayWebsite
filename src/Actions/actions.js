@@ -163,7 +163,14 @@ function isSignInSuccessful(isSuccessful) {
     }
 }
 
+function userSignedOut() {
+    return {
+        type: 'SIGN_OUT'
+    }
+}
+
 export default {
+    userSignedOut,
     isSignInSuccessful,
     validateUsernameBackend,
     validateUsername,
