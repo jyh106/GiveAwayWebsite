@@ -70,7 +70,7 @@ class ModalSignIn extends Component {
                 <div className="signInForm-submit signInForm-element">
                     <button className= "signInForm-submitLabel"
                         onClick={()=> this.onSignInClicked()}
-                        disable={!this.props.isSignInSuccessful}>
+                        disable={this.props.isSignInSuccessful ? 'false' : 'true'}>
                         Log in
                     </button>
                 </div>

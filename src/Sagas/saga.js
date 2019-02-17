@@ -91,9 +91,9 @@ function* validateUsername(action) {
       data: action.data,
       config: { headers: {'Content-Type':'application/json'}}
     });
-    yield put(Actions.validateUsernameFrontEnd(true))
+    yield put(Actions.validateUsername(true))
   } catch(err) {
-    yield put(Actions.validateUsernameFrontEnd(false))
+    yield put(Actions.validateUsername(false))
   }
 }
 

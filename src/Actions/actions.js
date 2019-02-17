@@ -149,9 +149,9 @@ function validateUsernameBackend(username) {
     }
 }
 
-function validateUsernameFrontEnd(isValid) {
+function validateUsername(isValid) {
     return {
-        type: 'VALIDATE_USERNAME_FRONTEND',
+        type: 'VALIDATE_USERNAME',
         data: isValid
     }
 }
@@ -166,7 +166,7 @@ function isSignInSuccessful(isSuccessful) {
 export default {
     isSignInSuccessful,
     validateUsernameBackend,
-    validateUsernameFrontEnd,
+    validateUsername,
     onSignInClick,
     isSearchBoxOnFocus,
     signIn,

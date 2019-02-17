@@ -24,7 +24,7 @@ function ModalReducer (state = INITIAL_STATE, action) {
             return state.set('currentClickedImage', action.data.currentViewingImage).set('images', action.data.postImages);
         case('UPDATE_CURRENT_CLICKED_IMAGE'):
             return state.set('currentClickedImage', action.data)
-        case('VALIDATE_USERNAME_FRONTEND'):
+        case('VALIDATE_USERNAME'):
             return state.set('isSignUpUsernameValid', action.data)
         case('SIGN_IN_VALIDATION'):
             return state.set('isSignInSuccessful', action.data)
