@@ -1,7 +1,7 @@
 import { Map, List } from 'immutable';
 
 const INITIAL_STATE = Map({
-    'modalShown': List([]),
+    'modalShown': "",
     'isPageMaskShown': false,
     'currentClickedImage': 'none',
     'images': [],
@@ -12,14 +12,9 @@ const INITIAL_STATE = Map({
 function ModalReducer (state = INITIAL_STATE, action) {
     switch(action.type){
         case('SHOW_MODAL'):
-            // when modal and page mask toggle together
-            return state.update('modalShown', list=>list.push(action.data)).set('isPageMaskShown', true);
+            return state.set('modalShown', action.data).set('isPageMaskShown', true);
         case('HIDE_MODAL'):
-            if(state.get('modalShown').includes(action.data)){
-                const index = state.get('modalShown').indexOf(action.data);
-                return state.update('modalShown', list => list.splice(index, 1)).set('isPageMaskShown', false).set('isSignInSuccessful', true).set('isSignUpUsernameValid', true);
-            }
-            return state;
+            return state.set('modalShown', "").set('isPageMaskShown', false);
         case('POST_IMAGE_CLICKED'):
             return state.set('currentClickedImage', action.data.currentViewingImage).set('images', action.data.postImages);
         case('UPDATE_CURRENT_CLICKED_IMAGE'):

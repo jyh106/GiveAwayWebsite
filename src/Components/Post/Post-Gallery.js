@@ -68,7 +68,7 @@ class PostGallery extends Component {
         return (
                 <img className="postGallery-thumb" 
                     src={imagePath}
-                    height="170" width="203"
+                    height="180" width="230"
                     alt=" "
                     onClick={(e)=> this.handleClickedImage(e.target.src, this.props.images)}>
                 </img>        
