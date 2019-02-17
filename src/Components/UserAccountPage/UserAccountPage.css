@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Jaldi');
+
+
+.userAccountWrapper {
+    position: relative;
+}
+
+.userAccount-navigation{
+    height: 30px;
+    background-color: rgb(243, 243, 243);
+    text-align: left;
+    padding-left: 20px;
+    font-size: 18px;
+    font-family: 'Jaldi', sans-serif;
+    font-weight: bolder;
+    color: rgb(66, 66, 66);
+}
+
+.userAccount-homeButton{
+    color: rgb(66, 66, 66);
+}
+
+
+.accountSideBar {
+    background-color: white;
+    height: 100vh;
+    width: 230px;
+    display: inline-block;
+}
+
+.userNameWrapper{
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(245, 178, 120, 0.637);
+    font-size: 40px;
+    color: rgb(61, 61, 61);
+    font-family: 'Jaldi', sans-serif;
+    border-radius: 5px; 
+}
+
+.account-userIcon{
+    padding-left: 30px;
+    font-size: 40px;
+    padding-right: 20px;
+}
+
+.accountSideBarElement {
+    font-size: 22px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    font-family: 'Lato', sans-serif;
+}
+
+.accountSideBarElement:hover {
+    background-color: rgb(224, 224, 224);
+    cursor: pointer;
+}
+
+.accountSideBar-icon{
+    padding-right: 15px;
+}
+
+.accountPostNavBar {
+    background-color: white;
+    display: inline-block;
+    position: absolute;
+    top: 30px;
+    width: calc(100% - 230px);
+    height: 89px;
+    border-bottom: 3px solid rgb(212, 212, 212);
+}
+
+.accountPostNavBar-styleMenu{
+    float: right;
+    width: 150px;
+    font-size: 25px;
+    padding-top: 47px;
+    color: gray;
+}
+
+.accountPostNavbar-list, .accountPostBar-gallery{
+    width: 35px;
+    display: inline-block;
+    margin-right: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+
+.accountPostNavbar-list:hover, .accountPostBar-gallery:hover{
+    cursor: pointer;
+    color: #F4A460;
+    border: 2px solid #F4A460;
+}
+
+.account-iconList, .account-iconGallery{
+    display: inline-block;
+    width: 40px;
+}
+
+.accountPostNavBar-selectButton{
+    font-size: 20px;
+    width: 20px;
+    padding-top: 55px;
+    padding-left: 25px;
+    display: inline-block; 
+}
+
+.accountPostNavBar-selectButton:hover {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}

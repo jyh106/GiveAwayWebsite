@@ -9,7 +9,7 @@ import NewGiveAway from './Components/NewForm/NewForm.js';
 import PostPage from './Components/PostPage/PostPage.js';
 import AboutPage from "./Components/About/About.js";
 import Settings from "./Components/Settings/Settings.js";
-
+import UserAccount from './Components/UserAccountPage/UserAccountPage.js';
 
 class App extends Component {
   render() {
@@ -22,6 +22,7 @@ class App extends Component {
             <Route exact path="/newGiveAway" component={NewGiveAway}></Route>
             <Route path="/post/:postID" component={PostPage}></Route>
             <Route path="/settings" component={Settings}></Route>
+            <Route exact path="/account" component={UserAccount}></Route>
           </div>
         </BrowserRouter>
     );

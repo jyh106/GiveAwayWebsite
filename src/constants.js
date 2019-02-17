@@ -124,6 +124,8 @@ const INDEX_FILE_SRC_AFTER_ROUTE_SPLIT = 4;
 
 const SINGULAR_POST_PAGE_ROUTE = "post/";
 
+const ACCOUNT_PAGE_ROUTE = 'account/';
+
 const PHOTO_MODAL_POST_PAGE_STYLE = {
     'position': 'absolute',
     'top': 0,
@@ -137,6 +139,7 @@ const PHOTO_MODAL_POST_GALLERY_STYLE = {
 }
 
 export default {
+    ACCOUNT_PAGE_ROUTE,
     CITIES,
     HOSTNAME,
     UPLOADS_HOSTNAME,

@@ -30,14 +30,16 @@ class User extends Component {
                 <div className="account_header">
                     {this.props.userInfo['username']}
                 </div>
-                <div className="account_profile accountMenuItem">
-                    Profile
-                </div>
-                <div className="account_settings accountMenuItem">
-                    <a href="/settings">
-                        Settings
-                    </a>
-                </div>
+                <a href="/account">
+                    <div className="account_profile accountMenuItem">
+                            Profile
+                    </div>
+                </a>
+                <a href="/settings">
+                    <div className="account_settings accountMenuItem">
+                            Settings
+                    </div>
+                </a>
                 <div className="account_signOut accountMenuItem"
                     onClick={() => this.onSignOutClick()}>
                     Sign out
