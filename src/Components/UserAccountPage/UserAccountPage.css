@@ -4,90 +4,136 @@
 
 .userAccountWrapper {
     position: relative;
+    height: 100vh;
+    width: 100%;
 }
 
-.userAccount-navigation{
-    height: 30px;
-    background-color: rgb(243, 243, 243);
-    text-align: left;
+.accountPageNav{
+    width: 97%;
+    height: 55px;
+    border-bottom: 3px solid rgba(244, 165, 96, 0.459);
+    margin: 0 auto;
+}
+
+.userAccount-homeButton{
+    width: 50px;
+    margin: 0;
+    display: inline-block;
+}
+
+.account-home {
+    width: 70px;
+    padding-top: 22px;
     padding-left: 20px;
     font-size: 18px;
     font-family: 'Jaldi', sans-serif;
     font-weight: bolder;
-    color: rgb(66, 66, 66);
+    color: gray;
 }
 
-.userAccount-homeButton{
-    color: rgb(66, 66, 66);
+.icon_leftArrow{
+    color: gray;
+    font-size: 20px;
+}
+
+.accountIcon-home{
+    color: gray;
+    font-size: 25px;
 }
 
 
-.accountSideBar {
-    background-color: white;
-    height: 100vh;
-    width: 230px;
+.accountPageNav-user{
+    float: right;
     display: inline-block;
+    padding-top: 15px;
+    width: 100px;
 }
 
-.userNameWrapper{
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: rgba(245, 178, 120, 0.637);
-    font-size: 40px;
-    color: rgb(61, 61, 61);
-    font-family: 'Jaldi', sans-serif;
-    border-radius: 5px; 
+.accountPageIcon-userCircle{
+    font-size: 30px;
+    color: gray;
+    padding-right: 10px;
+    display: inline-block;
+    padding-top: 3px;
 }
 
-.account-userIcon{
-    padding-left: 30px;
-    font-size: 40px;
-    padding-right: 20px;
+.accountPageNav-username{
+    display: inline-block;
+    font-size: 20px;
+    color: rgb(66,66,66);
 }
 
-.accountSideBarElement {
-    font-size: 22px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 30px;
-    font-family: 'Lato', sans-serif;
+.accountPageNav-SearchBox{
+    width: 300px;
+    height: 35px;
+    position: relative;
+    float: right;
+    padding-top: 14px;
 }
 
-.accountSideBarElement:hover {
-    background-color: rgb(224, 224, 224);
-    cursor: pointer;
+.postSearchBox {
+    border-radius: 20px;
+    font-size: 15px;
+    padding: 6px 10px;
+    width: 220px;
+    outline: none;
+    border: 2px solid rgb(226, 226, 226);
+    padding-right: 30px;
 }
 
-.accountSideBar-icon{
-    padding-right: 15px;
+.accountPageIcon-search {
+    position: absolute;
+    top: 22px;
+    right: 45px;
+    font-size: 18px;
+    color: gray;
 }
+
+
+
+
 
 .accountPostNavBar {
-    background-color: white;
-    display: inline-block;
-    position: absolute;
-    top: 30px;
-    width: calc(100% - 230px);
-    height: 89px;
-    border-bottom: 3px solid rgb(212, 212, 212);
+    height: 50px;
+    width: 97%;
+    margin: 0 auto;
+}
+
+.accountPageNav-Header{
+    font-size: 25px;
+    font-family: 'Jaldi', sans-serif;
+    float: left;
+    margin-left: 50px;
+    padding-top: 14px;
+    font-weight: bold;
+    color: rgb(66,66,66);
 }
 
 .accountPostNavBar-styleMenu{
     float: right;
-    width: 150px;
-    font-size: 25px;
-    padding-top: 47px;
-    color: gray;
+    width: 120px;
+    font-size: 20px;
+    color: rgb(66,66,66);
+    margin-top: 22px;
+    display: inline-block;
+    padding-left: 30px;
 }
 
 .accountPostNavbar-list, .accountPostBar-gallery{
-    width: 35px;
+    width: 24px;
     display: inline-block;
     margin-right: 20px;
     text-align: center;
     border-radius: 5px;
-    border: 2px solid gray;
+    border: 2px solid rgb(66,66,66);
+    padding-bottom: 2px;
+    line-height: 18px;
+}
+
+.account-iconList, .account-iconGallery{
+    display: inline-block;
+    width: 40px;
+    font-size: 15px;
 }
 
 .accountPostNavbar-list:hover, .accountPostBar-gallery:hover{
@@ -96,21 +142,42 @@
     border: 2px solid #F4A460;
 }
 
-.account-iconList, .account-iconGallery{
-    display: inline-block;
-    width: 40px;
-}
-
-.accountPostNavBar-selectButton{
-    font-size: 20px;
-    width: 20px;
-    padding-top: 55px;
-    padding-left: 25px;
-    display: inline-block; 
-}
-
-.accountPostNavBar-selectButton:hover {
-    text-decoration: underline;
-    color: blue;
+.accountIcon-editIcon:hover 
+,.accountPostNavBar-editButton:hover, .accountIcon-trashIcon:hover {
+    color: #F4A460;
     cursor: pointer;
+}
+
+.accountPostNavBar-managePostMenu{
+    width: 120px;
+    float: right;
+    display: inline-block;
+    margin-top: 20px;
+    border-right: 2px solid rgba(211, 211, 211, 0.726);
+}
+
+.accountPostNavBar-deleteButton {
+    width: 20px;
+    display: inline-block;
+    line-height: 10px;
+}
+
+.accountPostNavBar-editButton{
+    width: 50px;
+    display: inline-block; 
+    font-family: 'Lato', sans-serif;
+    color: rgb(66,66,66);
+    line-height: 10px;
+    margin-right: 15px;
+    margin-top: 5px;
+    line-height: 10px;
+}
+
+.accountIcon-trashIcon {
+    font-size: 20px;
+}
+
+.accountIcon-editIcon{
+    font-size: 21px;
+    color: rgb(66,66,66);
 }

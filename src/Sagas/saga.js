@@ -99,7 +99,7 @@ function* validateUsername(action) {
 
 function* onSignInClick(action) {
   try {
-    const response = yield call(axios, {
+    yield call(axios, {
       method: 'POST',
       url: `${Constants.HOSTNAME}signin`,
       data: action.data,
