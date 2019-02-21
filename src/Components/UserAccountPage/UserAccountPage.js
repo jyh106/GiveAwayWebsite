@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Utils from '../../utils';
 import Actions from '../../Actions/actions.js';
 import { BrowserRouter } from 'react-router-dom';
+import PostsGallery from "../Post/Post-Gallery.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faUserCircle, faCopy 
         , faCog, faComment, faHeart
@@ -65,8 +66,26 @@ class UserAccountPage extends Component {
     }
 
     renderPostBoard() {
+        const posts = JSON.parse(this.props.userInfo['userPosts']);
+        let userPosts = [];
+        for(let post of posts){
+            const postAddress = {
+                'street': post.address.split(",")[0],
+                'city': post.address.split(",")[1],
+            }
+            userPosts.push(<PostsGallery name={post.name} 
+                             address={postAddress}
+                             date={post.date}
+                             description={post.note}
+                             editable={post.editable}
+                             images ={post.images}
+                             key={post.name}
+                             id={post.id}
+                             />)
+        }
         return(
             <div className="accountPage-postBoardWrapper">
+                {userPosts}
             </div>
         )
     }
@@ -77,6 +96,7 @@ class UserAccountPage extends Component {
             <div className="userAccountWrapper">
                 {this.renderAccountPageNav()}
                 {this.renderPostNavigationBar()}
+                {this.renderPostBoard()}
             </div>
             </BrowserRouter>
         )
@@ -91,7 +111,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-
+    
     }
 }
 

@@ -181,3 +181,12 @@
     font-size: 21px;
     color: rgb(66,66,66);
 }
+
+
+.accountPage-postBoardWrapper{
+    width: 97%;
+    height: 100vh;
+    margin: 0 auto;
+    margin-top: 10px;
+    background-color: lightcyan;
+}

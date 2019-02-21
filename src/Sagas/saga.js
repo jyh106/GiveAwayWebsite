@@ -99,14 +99,16 @@ function* validateUsername(action) {
 
 function* onSignInClick(action) {
   try {
-    yield call(axios, {
+    const response = yield call(axios, {
       method: 'POST',
       url: `${Constants.HOSTNAME}signin`,
       data: action.data,
       config: { headers: {'Content-Type':'application/json'}}
     });
     yield put(Actions.signIn({
-      username: action.data.username
+      username: action.data.username,
+      userID: response.data.userID,
+      userPosts: response.data.userPosts
     }));
     yield put(Actions.isSignInSuccessful(true))
     yield put(Actions.toggleModal('signIn', false))
