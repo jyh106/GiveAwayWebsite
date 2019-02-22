@@ -14,7 +14,11 @@ function ModalReducer (state = INITIAL_STATE, action) {
         case('SHOW_MODAL'):
             return state.set('modalShown', action.data).set('isPageMaskShown', true);
         case('HIDE_MODAL'):
-            return state.set('modalShown', "").set('isPageMaskShown', false);
+            if (!state.get("isSignInSuccessful")) {
+                return state.set('isSignInSuccessful', true).set('modalShown', "").set('isPageMaskShown', false);
+            } else {
+                return state.set('modalShown', "").set('isPageMaskShown', false);
+            }
         case('POST_IMAGE_CLICKED'):
             return state.set('currentClickedImage', action.data.currentViewingImage).set('images', action.data.postImages);
         case('UPDATE_CURRENT_CLICKED_IMAGE'):

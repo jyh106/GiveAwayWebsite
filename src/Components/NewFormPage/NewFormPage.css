@@ -12,7 +12,7 @@
     color: white;
 }
 
-.button_home{
+.newFormButton_home{
     font-family: 'Signika', sans-serif;
     font-size: 17px;
     position: absolute;
@@ -21,11 +21,11 @@
     color: rgb(66, 66, 66);
 }
 
-.button_home_label {
+.newFormButton_home_label {
     color: rgb(66, 66, 66);
 }
 
-.icon_leftArrow {
+.newForm_icon_leftArrow {
     padding-right: 8px;
     font-size: 15px;
     color: rgb(66, 66, 66);
@@ -37,7 +37,7 @@
 }
 
 .newForm_questionContainer {
-    width: 90%;
+    width: 70%;
     margin: 0 auto;
     height: 900px;
     border-bottom-right-radius: 5px;
@@ -170,12 +170,12 @@ select {
   }
 
   .newFormButton_cancel {
-      margin-left: 80px;
+      margin-left: 330px;
       background: white;
   }
 
   .newFormButton_submit {
-      margin-right: 80px;
+      margin-right: 330px;
       float: right;
   }
 
