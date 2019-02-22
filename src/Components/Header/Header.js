@@ -11,7 +11,7 @@ class Header extends Component {
             <BrowserRouter>
             <div className="header">
                 <div className="header_name"> 
-                    <a href="/about" className="header_label">
+                    <a href="/" className="header_label">
                         GiveAway
                     </a>
                 </div>

@@ -3,6 +3,7 @@ import "./UserAccountPage.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
 import Utils from '../../utils';
+import Header from "../Header/Header.js";
 import Actions from '../../Actions/actions.js';
 import { BrowserRouter } from 'react-router-dom';
 import PostsGallery from "../Post/Post-Gallery.js";
@@ -85,7 +86,9 @@ class UserAccountPage extends Component {
         }
         return(
             <div className="accountPage-postBoardWrapper">
-                {userPosts}
+                <div className="accountPage-postBoardScrollableWrapper">
+                    {userPosts}
+                </div>
             </div>
         )
     }
@@ -94,7 +97,9 @@ class UserAccountPage extends Component {
         return (
             <BrowserRouter>
             <div className="userAccountWrapper">
-                {this.renderAccountPageNav()}
+                <div className="userAccountPage-headerWrapper">
+                    <Header />
+                </div>
                 {this.renderPostNavigationBar()}
                 {this.renderPostBoard()}
             </div>
