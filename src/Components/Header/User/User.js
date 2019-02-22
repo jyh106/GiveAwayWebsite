@@ -35,8 +35,7 @@ class User extends Component {
         return (
             <div className="user">
                 <FontAwesomeIcon icon="user-circle" 
-                    className="icon_user" 
-                    onClick={ ()=> this.toggleAccountMenu()} /> 
+                    className="icon_user" /> 
             </div>
         )
     }
