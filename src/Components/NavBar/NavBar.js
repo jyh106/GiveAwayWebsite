@@ -53,12 +53,11 @@ class NavBar extends Component {
             return null
         }
         return( 
-        <a href="/account">
-            <div className="userPostsButton">
+            <div className={` ${(this.props.shouldShowUserPosts) ? 'userPostsButtonActive' : "userPostsButton"}`}
+                onClick={()=>this.props.showUserPosts(!this.props.shouldShowUserPosts)}>
                 <FontAwesomeIcon icon="book" className="icon_userPosts"/>
                 My posts
             </div>
-        </a>
         )
     }
 
@@ -96,7 +95,8 @@ class NavBar extends Component {
 function mapStateToProps(state) {
     return{
         currentStyle: Utils.getDisplayStyle(state),
-        isUserSignedIn: Utils.getUserInfo(state)['isSignedIn']
+        isUserSignedIn: Utils.getUserInfo(state)['isSignedIn'],
+        shouldShowUserPosts: Utils.shouldShowUserPosts(state)
 
     }
   }
@@ -106,7 +106,10 @@ const mapDispatchToProps = dispatch => {
         toggleModal: (type, toggle) => {
             dispatch(Actions.toggleModal(type, toggle));
         },
-        changeDisplayStyle: (style)=> dispatch(Actions.changeDisplayStyle(style))
+        changeDisplayStyle: (style)=> dispatch(Actions.changeDisplayStyle(style)),
+        showUserPosts: (toggle) => {
+            dispatch(Actions.shouldShowUserPosts(toggle));
+        }
     }
   }
   

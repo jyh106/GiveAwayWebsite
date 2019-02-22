@@ -13,15 +13,22 @@ class PostBoard extends Component {
                 'street': post.address.split(",")[0],
                 'city': post.address.split(",")[1],
             }
-            posts.push(<PostsGallery name={post.name} 
-                             address={postAddress}
-                             date={post.date}
-                             description={post.note}
-                             editable={post.editable}
-                             images ={post.images}
-                             key={post.name}
-                             id={post.id}
-                             />)
+            const postComponent = (<PostsGallery name={post.name} 
+                                    address={postAddress}
+                                    date={post.date}
+                                    description={post.note}
+                                    editable={post.editable}
+                                    images ={post.images}
+                                    key={post.name}
+                                    id={post.id}
+                                    />);
+            if(this.props.showUserPosts) {
+                if (post.userID === this.props.userInfo['userID']) {
+                    posts.push(postComponent)
+                }
+            } else {
+                posts.push(postComponent)
+            }
         }
         return posts;
     }
@@ -33,15 +40,22 @@ class PostBoard extends Component {
                 'street': post.address.split(",")[0],
                 'city': post.address.split(",")[1],
             }
-            posts.push(<PostsList name={post.name} 
-                             address={postAddress}
-                             date={post.date}
-                             description={post.note}
-                             editable={post.editable}
-                             images ={post.images}
-                             key={post.name}
-                             id={post.id}
-                             />)
+            const postComponent = (<PostsList name={post.name} 
+                                        address={postAddress}
+                                        date={post.date}
+                                        description={post.note}
+                                        editable={post.editable}
+                                        images ={post.images}
+                                        key={post.name}
+                                        id={post.id}
+                                        />);
+            if(this.props.showUserPosts) {
+                if (post.userID === this.props.userInfo['userID']) {
+                    posts.push(postComponent)
+                }
+            } else {
+                posts.push(postComponent)
+            }
         }
         return posts;
     }
@@ -68,8 +82,10 @@ class PostBoard extends Component {
 
 function mapStateToProps(state){
     return{
+        userInfo: Utils.getUserInfo(state),
         posts: Utils.getPosts(state),
         displayStyle: Utils.getDisplayStyle(state),
+        showUserPosts: Utils.shouldShowUserPosts(state),
     }
   }
 

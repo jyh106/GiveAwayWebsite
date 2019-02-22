@@ -84,7 +84,12 @@ function isSignInSuccessful(state) {
     return state.Modal.get('isSignInSuccessful');
 }
 
+function shouldShowUserPosts(state) {
+    return state.PostBoard.get('showUserPosts')
+}
+
 export default {
+    shouldShowUserPosts,
     isSignInSuccessful,
     getUsernameValidation,
     getCurrentCity,

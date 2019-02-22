@@ -12,6 +12,8 @@ library.add(faUserCircle)
 class User extends Component {
     onSignOutClick() {
         localStorage.removeItem("username");
+        localStorage.removeItem("userPosts");
+        localStorage.removeItem("userID");
         this.props.userSignedOut();
         window.location.reload();
     }

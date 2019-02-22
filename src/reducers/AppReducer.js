@@ -5,7 +5,7 @@ const INITIAL_STATE = Map({
   'user': {
       'isSignedIn': !!localStorage.username,
       'username': localStorage.username || "",
-      'userID': "",
+      'userID': localStorage.userID || "",
       'userPosts': localStorage.userPosts
     },
 });
@@ -23,8 +23,8 @@ function AppReducer(state = INITIAL_STATE, action) {
 
 function signIn(state, action) {
     localStorage.username = action.data.username;
-    localStorage.userID = action.data.userID;
-    localStorage.setItem('userPosts', JSON.stringify( action.data.userPosts));
+    localStorage.setItem('userID', JSON.stringify(action.data.userID));
+    localStorage.setItem('userPosts', action.data.userPosts);
     return state.merge({
         'user': {
             'isSignedIn': true,

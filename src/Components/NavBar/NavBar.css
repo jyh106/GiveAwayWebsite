@@ -95,7 +95,7 @@ a {
     border-color: rgb(242, 142, 102);
 }
 
-.userPostsButton {
+.userPostsButton, .userPostsButtonActive {
     width: 100px;
     float: left;
     margin-left: 20px;
@@ -107,10 +107,28 @@ a {
     font-weight: bold;
 }
 
+.userPostsButtonActive {
+    width: 100px;
+    float: left;
+    margin-left: 20px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    border: 2px solid rgb(199, 198, 198);
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    color: rgb(242, 144, 106);
+    border-color: rgb(242, 142, 102);
+}
+
+.userPostsButtonActive:hover {
+    cursor: pointer;
+}
+
 .userPostsButton:hover {
     box-shadow: 0px 0px 5px 0px lightgray;
     cursor: pointer;
 }
+
 
 .icon_userPosts {
     font-size: 20px;

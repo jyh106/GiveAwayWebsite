@@ -169,8 +169,25 @@ export function* watchFetchCurrentPostData() {
   }
 }
 
+function* handleDeletePost(postID) {
+  yield call(axios, {
+    method: 'POST',
+    data: postID,
+    url : `${Constants.HOSTNAME}deletepost`,
+    config: { headers: {'Content-Type':'application/json'}}
+  })
+}
+
+function* watchDeletePost() {
+  while (true) {
+    const action = yield take('DELETE_POST');
+    yield call(handleDeletePost, action.data)
+  }
+}
+
 export default function* rootSaga() {
   yield all([
+    watchDeletePost(),
     watchSubmitPost(),
     watchOnSignUpClick(),
     watchSelectCity(),

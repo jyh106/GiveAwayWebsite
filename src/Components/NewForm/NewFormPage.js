@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import "./NewFormPage.css";
 import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
+import NewForm from "../NewForm/NewForm.js";
+import { BrowserRouter } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Constants from '../../constants';
 library.add(faArrowLeft)
 
-class NewForm extends Component {
+class NewFormPage extends Component {
     constructor() {
         super();
         this.homeRef = React.createRef();
@@ -259,10 +262,21 @@ class NewForm extends Component {
 
     render() {
         return(
-            <div className="newPost_FormContainer">
-                {this.renderQuestions()}
-                {this.renderButtons()}
+        <BrowserRouter>
+        <div className="newForm_PageContainer">
+
+            <div className="newForm_header">
+                {this.renderHeader()}
+                <div className="button_home" ref={div => this.homeReference = div}>
+                    <a href="/" ref={this.homeRef} className="button_home_label">
+                        <FontAwesomeIcon icon="arrow-left" className="icon_leftArrow" />
+                        Dashboard
+                    </a>
+                </div>
             </div>
+            <NewForm />
+        </div>
+        </BrowserRouter>
         )
     }
 }
@@ -283,4 +297,6 @@ function mapDispatchToProps(dispatch) {
   export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(NewForm)
+  )(NewFormPage)
+
+

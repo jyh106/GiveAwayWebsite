@@ -169,7 +169,23 @@ function userSignedOut() {
     }
 }
 
+function shouldShowUserPosts(toggle) {
+    return {
+        type: 'SHOW_USER_POSTS',
+        data: toggle
+    }
+}
+
+function deletePost(postID) {
+    return {
+        type: "DELETE_POST",
+        data: {postID}
+    }
+}
+
 export default {
+    deletePost,
+    shouldShowUserPosts,
     userSignedOut,
     isSignInSuccessful,
     validateUsernameBackend,

@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BrowserRouter } from 'react-router-dom';
 import { faMapMarkerAlt, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import Constants from '../../constants';
+import  Utils  from '../../utils.js';
 library.add(faMapMarkerAlt, faAngleLeft, faAngleRight) 
 
 class PostGallery extends Component {
@@ -110,10 +111,24 @@ class PostGallery extends Component {
         )
     }
 
+
+    renderDeleteButton() {
+        if (!this.props.showUserPosts) {
+            return null
+        }
+        return (
+            <div className="postDeleteButton"
+                onClick={()=>this.props.deletePost(this.props.id)}>
+                x
+            </div>
+        )
+    }
+
     render(){
         return(
         <BrowserRouter>
             <div className="post_gallery">
+                {this.renderDeleteButton()}
                 {this.renderImages()}
                 {this.renderNameSection()}
                 <div className="post_details post_address_gallery">
@@ -133,10 +148,11 @@ class PostGallery extends Component {
 
 function mapStateToProps(state) {
     return {
+        showUserPosts: Utils.shouldShowUserPosts(state),
     }
   }
 
-const mapDispatchToProps = dispatch => {
+function mapDispatchToProps(dispatch) {
     return {
         updateClickedPost: (postInfo)=> {
             dispatch(Actions.updateClickedPost(postInfo))
@@ -146,6 +162,9 @@ const mapDispatchToProps = dispatch => {
         },
         handleClickedImage: ({currentViewingImage, postImages}) => {
             dispatch(Actions.handleClickedImage({currentViewingImage, postImages}))
+        },
+        deletePost: (postID) => {
+            dispatch(Actions.deletePost(postID))
         }
     }
   }
