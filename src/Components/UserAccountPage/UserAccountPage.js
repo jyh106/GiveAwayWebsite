@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Utils from '../../utils';
 import Header from "../Header/Header.js";
 import Actions from '../../Actions/actions.js';
-import NewForm from "../../Components/NewForm/NewForm.js";
 import { BrowserRouter } from 'react-router-dom';
 import PostsGallery from "../Post/Post-Gallery.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -97,7 +96,6 @@ class UserAccountPage extends Component {
     renderEditPostForm() {
         return(
             <div className="userAccount-editForm">
-                <NewForm />
             </div>
         )
     }

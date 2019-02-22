@@ -5,7 +5,7 @@ import Actions from './Actions/actions.js'
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import UserPage from './UserPage/UserPage';
-import NewGiveAway from './Components/NewForm/NewFormPage.js';
+import NewGiveAway from './Components/NewFormPage/NewFormPage.js';
 import PostPage from './Components/PostPage/PostPage.js';
 import AboutPage from "./Components/About/About.js";
 import Settings from "./Components/Settings/Settings.js";
