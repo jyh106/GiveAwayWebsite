@@ -5,8 +5,8 @@ import Actions from '../../Actions/actions.js';
 import Utils from "../../utils.js";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faTh, faThList, faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons'
-library.add(faHeart, faTh, faThList, faMapMarkedAlt);
+import { faHeart, faTh, faThList, faMapMarkedAlt, faBook } from '@fortawesome/free-solid-svg-icons'
+library.add(faHeart, faTh, faThList, faMapMarkedAlt, faBook);
 
 class NavBar extends Component {
     constructor() {
@@ -48,6 +48,21 @@ class NavBar extends Component {
         return ""
     }
 
+    renderUserPostsButton() {
+        if (!this.props.isUserSignedIn) {
+            return null
+        }
+        return( 
+        <a href="/account">
+            <div className="userPostsButton">
+                <FontAwesomeIcon icon="book" className="icon_userPosts"/>
+                My posts
+            </div>
+        </a>
+        )
+    }
+
+
     renderStyleButtons() {
         return (
             <div className="styleBar">
@@ -63,9 +78,11 @@ class NavBar extends Component {
                     onClick = {()=>{this.props.changeDisplayStyle('Gallery')}}>
                     <FontAwesomeIcon icon="th" className="icon_gallery"></FontAwesomeIcon>
                 </div>
+                {this.renderUserPostsButton()}
             </div>
         )
     }
+
     render() {
         return(
             <div className="navBar">
@@ -78,7 +95,9 @@ class NavBar extends Component {
 
 function mapStateToProps(state) {
     return{
-        currentStyle: Utils.getDisplayStyle(state)
+        currentStyle: Utils.getDisplayStyle(state),
+        isUserSignedIn: Utils.getUserInfo(state)['isSignedIn']
+
     }
   }
 

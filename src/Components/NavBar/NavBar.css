@@ -93,3 +93,18 @@ a {
     border-color: rgb(242, 142, 102);
 }
 
+.userPostsButton {
+    width: 100px;
+    float: left;
+    margin-left: 20px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    border: 2px solid rgb(156, 156, 156);
+    color: gray
+}
+
+.icon_userPosts {
+    font-size: 20px;
+    padding-right: 5px;
+   
+}

@@ -79,6 +79,7 @@ class StyleMenu extends Component {
     render() {
         return (
                 <div className="styleMenu">
+                    {this.renderUserPostsButton()}
                     {this.renderMenu()}
                 </div>
         )
@@ -87,7 +88,7 @@ class StyleMenu extends Component {
 
 function mapStateToProps(state){
     return{
-        currentStyle: Utils.getDisplayStyle(state)
+        currentStyle: Utils.getDisplayStyle(state),
     }
   }
   
