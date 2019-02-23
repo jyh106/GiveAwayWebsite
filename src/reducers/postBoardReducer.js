@@ -20,9 +20,14 @@ function PostBoardReducer (state = INITIAL_STATE, action) {
             return state.set('posts', List(action.data));
         case('SHOW_USER_POSTS'):
             return state.set('showUserPosts', action.data)
+        case("DELETE_POST"):
+            const postIndex = state.get('posts').findIndex((post)=>post.id === action.data['postID']);
+            const updatedPosts = state.get('posts').delete(postIndex);
+            return state.set('posts', updatedPosts)
         default:
             return state
     }
 }
+
 
 export default PostBoardReducer;
