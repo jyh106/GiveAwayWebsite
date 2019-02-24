@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Utils from '../../utils';
 import Header from "../Header/Header.js";
 import Actions from '../../Actions/actions.js';
-import { BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PostsGallery from "../Post/Post-Gallery.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faUserCircle, faCopy 
@@ -20,12 +20,12 @@ class UserAccountPage extends Component {
     renderAccountPageNav() {
         return (
             <div className="accountPageNav">
-                <a href="/"className="userAccount-homeButton">
+                <Link to="/"className="userAccount-homeButton">
                     <div className="account-home">
                         <FontAwesomeIcon icon="arrow-left" className="icon_leftArrow" />
                         <FontAwesomeIcon icon="home" className="accountIcon-home" />
                     </div>
-                </a>
+                </Link>
                 <div className="accountPageNav-user">
                     <FontAwesomeIcon icon="user-circle" className="accountPageIcon-userCircle" />
                     <div className="accountPageNav-username">
@@ -102,7 +102,6 @@ class UserAccountPage extends Component {
 
     render() {
         return (
-            <BrowserRouter>
             <div className="userAccountWrapper">
                 <div className="userAccountPage-headerWrapper">
                     <Header />
@@ -111,7 +110,6 @@ class UserAccountPage extends Component {
                 {this.renderPostBoard()}
                 {this.renderEditPostForm()}
             </div>
-            </BrowserRouter>
         )
     }
 }

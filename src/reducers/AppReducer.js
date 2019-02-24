@@ -1,7 +1,6 @@
 import { Map, List} from 'immutable';
 
 const INITIAL_STATE = Map({
-  'searchBoxOnFocus': false,
   'user': {
       'isSignedIn': !!localStorage.username,
       'username': localStorage.username || "",
@@ -12,8 +11,6 @@ const INITIAL_STATE = Map({
 
 function AppReducer(state = INITIAL_STATE, action) {
   switch(action.type){
-    case('SEARCH_BOX_FOCUS'): 
-        return state.set('searchBoxOnFocus', action.data);
     case('SIGNIN'):
         return signIn(state, action);
     default:

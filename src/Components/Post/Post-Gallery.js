@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import "./Post-Gallery.css";
 import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
+import { Link } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { BrowserRouter } from 'react-router-dom';
 import { faMapMarkerAlt, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import Constants from '../../constants';
 import  Utils  from '../../utils.js';
@@ -104,9 +104,9 @@ class PostGallery extends Component {
     renderNameSection() {
         return(
             <div className="post_details post_name_gallery">
-                <a href={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
+                <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
                     {this.props.name}
-                </a>
+                </Link>
             </div>
         )
     }
@@ -126,7 +126,6 @@ class PostGallery extends Component {
 
     render(){
         return(
-        <BrowserRouter>
             <div className="post_gallery">
                 {this.renderDeleteButton()}
                 {this.renderImages()}
@@ -141,7 +140,6 @@ class PostGallery extends Component {
                 <div className="divider"></div>
                 {this.renderCommentSection()}
             </div>
-        </BrowserRouter>
         )
     }
 }

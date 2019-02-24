@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./NavBar.css";
 import { connect } from 'react-redux';
 import Actions from '../../Actions/actions.js';
+import { Link, withRouter } from 'react-router-dom';
 import Utils from "../../utils.js";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -34,9 +35,9 @@ class NavBar extends Component {
             <div className="addNewFormButton"
                 onMouseEnter={()=>this.toggleDisplayHeartOnButton()}
                 onMouseLeave={()=>this.toggleDisplayHeartOnButton()}>
-                <a href="/newGiveAway" className="navBar_giveButton">
+                <Link to="/newGiveAway" className="navBar_giveButton">
                     Give {this.newFormButtonLabel()}
-                </a>
+                </Link>
             </div>
         )
     }
@@ -114,7 +115,7 @@ const mapDispatchToProps = dispatch => {
   }
   
   
-  export default connect(
+  export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-  )(NavBar)
+  )(NavBar))

@@ -7,6 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Constants from '../../constants';
+import { Link, withRouter } from 'react-router-dom';
 library.add(faArrowLeft)
 
 class NewFormPage extends Component {
@@ -264,22 +265,19 @@ class NewFormPage extends Component {
 
     render() {
         return(
-        <BrowserRouter>
         <div className="newForm_PageContainer">
-
             <div className="newForm_header">
                 {this.renderHeader()}
                 <div className="newFormButton_home" ref={div => this.homeReference = div}>
-                    <a href="/" ref={this.homeRef} className="newFormButton_home_label">
+                    <Link to="/" ref={this.homeRef} className="newFormButton_home_label">
                         <FontAwesomeIcon icon="arrow-left" className="newForm_icon_leftArrow" />
                         Dashboard
-                    </a>
+                    </Link>
                 </div>
             </div>
             {this.renderQuestions()}
             {this.renderButtons()}
         </div>
-        </BrowserRouter>
         )
     }
 }
@@ -297,9 +295,9 @@ function mapDispatchToProps(dispatch) {
   }
   
   
-  export default connect(
+  export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-  )(NewFormPage)
+  )(NewFormPage))
 
 

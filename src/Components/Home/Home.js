@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Header from "../Header/Header.js";
 import NavBar from "../NavBar/NavBar.js";
+import { withRouter } from 'react-router-dom';
 import SideBar from '../SideBar/SideBar.js';
 import PostBoard from '../PostBoard/PostBoard.js';
 import ModalContainer from '../Modals/ModalContainer';
@@ -30,6 +31,6 @@ function mapStateToProps(state){
   }
   
   
-  export default connect(
+  export default withRouter(connect(
     mapStateToProps
-  )(Home)
+  )(Home))

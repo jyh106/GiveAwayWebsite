@@ -3,10 +3,10 @@ import "./PostPage.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
 import Utils from '../../utils';
+import { Link } from "react-router-dom";
 import Actions from '../../Actions/actions.js';
 import Constants from '../../constants.js';
 import ModalContainer from "../../Components/Modals/ModalContainer";
-import { BrowserRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt,faAngleLeft, faAngleRight,
          faCalendarAlt, faStickyNote, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
@@ -54,14 +54,13 @@ class PostPage extends Component {
 
     render() {
         return (
-        <BrowserRouter>
         <div>
             <div className="postPageWrapper">
                 <div className="postPageNavigation">
-                    <a href="/" className="postPageBackButtonLabel">    
+                    <Link to="/" className="postPageBackButtonLabel">    
                         <FontAwesomeIcon icon="arrow-left" className="postPageBackButton" />
                         Main
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="postName postDetail">  
@@ -91,7 +90,6 @@ class PostPage extends Component {
                 </div>
             </div>
         </div>
-        </BrowserRouter>
         )
     }
 }

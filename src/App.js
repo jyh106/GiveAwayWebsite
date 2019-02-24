@@ -4,6 +4,7 @@ import Home from './Components/Home/Home';
 import Actions from './Actions/actions.js'
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { Switch } from 'react-router';
 import UserPage from './UserPage/UserPage';
 import NewGiveAway from './Components/NewFormPage/NewFormPage.js';
 import PostPage from './Components/PostPage/PostPage.js';
@@ -16,13 +17,15 @@ class App extends Component {
     return (
         <BrowserRouter>
           <div>
-            <Route exact path="/" component={Home}></Route>
-            <Route exact path="/about" component={AboutPage}></Route>
-            <Route exact path="/myPage" component={UserPage}></Route>
-            <Route exact path="/newGiveAway" component={NewGiveAway}></Route>
-            <Route path="/post/:postID" component={PostPage}></Route>
-            <Route path="/settings" component={Settings}></Route>
-            <Route exact path="/account" component={UserAccount}></Route>
+            <Switch>
+              <Route exact path="/" component={Home}></Route>
+              <Route exact path="/about" component={AboutPage}></Route>
+              <Route exact path="/myPage" component={UserPage}></Route>
+              <Route exact path="/newGiveAway" component={NewGiveAway}></Route>
+              <Route path="/post/:postID" component={PostPage}></Route>
+              <Route path="/settings" component={Settings}></Route>
+              <Route exact path="/account" component={UserAccount}></Route>
+            </Switch>
           </div>
         </BrowserRouter>
     );

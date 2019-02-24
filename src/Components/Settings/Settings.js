@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "./Settings.css";
 import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
-import { BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -84,13 +84,12 @@ class Settings extends Component {
     }
     render() {
         return (
-            <BrowserRouter>
             <div className="settingPage">
                 <div className="settingPage-navigationBar">
-                    <a href="/" className="settingPage-dashboardButton">
+                    <Link to="/" className="settingPage-dashboardButton">
                         <FontAwesomeIcon icon="arrow-left" className="icon_leftArrow" />
                         Dashboard
-                    </a>
+                    </Link>
                 </div>
                 <div className="settingPage-header">
                     Settings
@@ -105,7 +104,6 @@ class Settings extends Component {
                     </div>
                 </div>
             </div>
-            </BrowserRouter>
         )
     }
 }
