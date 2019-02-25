@@ -68,15 +68,15 @@ class NavBar extends Component {
             <div className="styleBar">
                 <div className={`display_map styleIcon ${this.getActiveClassName('Map')}`}
                     onClick = {()=>{this.props.changeDisplayStyle('Map')}}>
-                    <FontAwesomeIcon icon="map-marked-alt" className="icon_map"></FontAwesomeIcon>
+                    <FontAwesomeIcon icon="map-marked-alt" className="icon_map"/>
                 </div>
                 <div className= {`display_list styleIcon ${this.getActiveClassName('List')}`}
                     onClick = {()=>{this.props.changeDisplayStyle('List')}}>
-                    <FontAwesomeIcon icon="th-list" className="icon_list"></FontAwesomeIcon>
+                    <FontAwesomeIcon icon="th-list" className="icon_list"/>
                 </div>
                 <div className={`display_gallery styleIcon ${this.getActiveClassName('Gallery')}`}
                     onClick = {()=>{this.props.changeDisplayStyle('Gallery')}}>
-                    <FontAwesomeIcon icon="th" className="icon_gallery"></FontAwesomeIcon>
+                    <FontAwesomeIcon icon="th" className="icon_gallery"/>
                 </div>
                 {this.renderUserPostsButton()}
             </div>

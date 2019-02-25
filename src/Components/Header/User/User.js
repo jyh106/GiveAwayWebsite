@@ -5,26 +5,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import Actions from "../../../Actions/actions.js";
-import { BrowserRouter } from 'react-router-dom';
 import Utils from '../../../utils.js';
 library.add(faUserCircle)
 
 class User extends Component {
     onSignOutClick() {
-        localStorage.removeItem("username");
-        localStorage.removeItem("userPosts");
-        localStorage.removeItem("userID");
+        let userInfoToRemove = ["username", "userPosts", "userID"];
+
+        for (let userInfo of userInfoToRemove) {
+            localStorage.removeItem(userInfo);
+        }
+
         this.props.userSignedOut();
         window.location.reload();
     }
-
-
-
-    handleClick(modalName) {
-        this.props.toggleModal(modalName, true);
-    }
-
-
 
     renderUserIcon() {
         if (this.props.userInfo['isSignedIn']) {
@@ -53,7 +47,7 @@ class User extends Component {
         }
         return (
             <div className="userSignIn"
-            onClick={()=> this.handleClick('signIn')}>
+                onClick={()=> this.props.toggleModal('signIn', true)}>
                 Sign in
             </div>
         )

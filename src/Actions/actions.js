@@ -1,9 +1,3 @@
-function isSearchBoxOnFocus(toggle) {
-    return {
-        type: 'SEARCH_BOX_FOCUS',
-        data: toggle,
-    }
-}
 
 function changeDisplayStyle(style) {
     return {
@@ -191,7 +185,6 @@ export default {
     validateUsernameBackend,
     validateUsername,
     onSignInClick,
-    isSearchBoxOnFocus,
     signIn,
     changeDisplayStyle,
     toggleModal,

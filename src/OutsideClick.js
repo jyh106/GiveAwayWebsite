@@ -19,16 +19,10 @@ class OutsideAlerter extends Component {
     document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
-  /**
-   * Set the wrapper ref
-   */
   setWrapperRef(node) {
     this.wrapperRef = node;
   }
 
-  /**
-   * Alert if clicked on outside of element
-   */
   handleClickOutside(event) {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       if(event.target.className === 'page-mask'){
@@ -36,7 +30,6 @@ class OutsideAlerter extends Component {
           this.props.toggleModal(Constants.MODAL_TYPES[key], false)
         }
       }
-      this.props.isSearchBoxOnFocus(false);
     }
   }
 
@@ -51,9 +44,6 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    isSearchBoxOnFocus: () => {
-      dispatch(Actions.isSearchBoxOnFocus())
-    },
     toggleModal: (type, toggle) => {
       dispatch(Actions.toggleModal(type, toggle))
     }
