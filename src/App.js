@@ -8,7 +8,6 @@ import { Switch } from 'react-router';
 import UserPage from './UserPage/UserPage';
 import NewGiveAway from './Components/NewFormPage/NewFormPage.js';
 import PostPage from './Components/PostPage/PostPage.js';
-import AboutPage from "./Components/About/About.js";
 import Settings from "./Components/Settings/Settings.js";
 import UserAccount from './Components/UserAccountPage/UserAccountPage.js';
 
