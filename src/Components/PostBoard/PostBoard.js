@@ -4,6 +4,7 @@ import PostsList from '../Post/Post-List/Post-List.js';
 import PostsGallery from '../Post/Post-Gallery.js';
 import { connect } from 'react-redux';
 import Utils from '../../utils.js';
+import PostMap from "../../Components/Map/Map.js";
 
 class PostBoard extends Component {
     renderPostsGallery(){
@@ -66,7 +67,7 @@ class PostBoard extends Component {
         } else if (this.props.displayStyle === 'List') {
             return this.renderPostsList();
         }
-        return null;
+        return <PostMap />;
     }
 
     render() {
