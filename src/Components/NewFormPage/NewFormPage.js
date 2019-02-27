@@ -62,7 +62,8 @@ class NewFormPage extends Component {
            'address': this.formatAddress(),
            'note': this.state.note,
            'images': this.state.images,
-           'category': this.state.category
+           'category': this.state.category,
+           'userID': ""
        }
 
        if (this.props.isUserSignedIn) {
