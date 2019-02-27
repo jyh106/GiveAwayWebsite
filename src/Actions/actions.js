@@ -177,7 +177,16 @@ function deletePost(postID) {
     }
 }
 
+function updateUserLocation(userLocation) {
+    console.log('here', userLocation)
+    return {
+        type: "UPDATE_USER_LOCATION",
+        data: userLocation
+    }
+}
+
 export default {
+    updateUserLocation,
     deletePost,
     shouldShowUserPosts,
     userSignedOut,

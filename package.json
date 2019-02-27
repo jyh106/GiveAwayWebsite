@@ -13,6 +13,7 @@
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-form-with-constraints": "^0.10.0",
+    "react-geolocated": "^2.4.1",
     "react-leaflet": "^2.2.1",
     "react-redux": "^5.1.0",
     "react-router": "^4.3.1",

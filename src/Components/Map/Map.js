@@ -12,25 +12,28 @@ const position = [37.5775225, -122.3481093];
 class Map extends Component {
     renderMarkers() {
         const markerList = [];
-        let i = 0;
         for (let post of this.props.posts) {
-            const position = Constants.MOCK_POST_POSITION[i];
-            markerList.push(
-                <Marker position={position} key={post.id}>
-                    <Popup>
-                        <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + post.id}`} key={post.id}>
-                            <div className="map-popUpMessage">
-                                Click to see details
-                            </div>
-                        </Link>
-                    </Popup>
-                    <Tooltip>
-                        {post.name}
-                    </Tooltip>
-                </Marker>
-            )
-            i++;
+            const marker = <Marker position={post.location} key={post.id}>
+                                <Popup>
+                                    <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + post.id}`} key={post.id}>
+                                        <div className="map-popUpMessage">
+                                            Click to see details
+                                        </div>
+                                    </Link>
+                                </Popup>
+                                <Tooltip>
+                                    {post.name}
+                                </Tooltip>
+                            </Marker>
+            if(this.props.showUserPosts) {
+                if (post.userID === this.props.userInfo['userID']) {
+                    markerList.push(marker)
+                }
+            } else {
+                markerList.push(marker)
+            }
         }
+
         return markerList
     }
     render() {
@@ -52,6 +55,7 @@ function mapStateToProps(state){
     return{
         userInfo: Utils.getUserInfo(state),
         posts: Utils.getPosts(state),
+        showUserPosts: Utils.shouldShowUserPosts(state),
     }
   }
 

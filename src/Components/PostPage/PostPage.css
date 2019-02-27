@@ -86,6 +86,7 @@
 
 .imageSectionContainer {
     position: relative;
+    width: 100%;
 }
 
 .imageSlider {
@@ -100,7 +101,7 @@
 }
 
 .imageInnerSlider{
-    width: 1000px;
+    width: 100%;
 }
 
 .postImage {

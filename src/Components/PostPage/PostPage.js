@@ -40,13 +40,11 @@ class PostPage extends Component {
             }
             return (
                 <div className="imageSectionContainer">
-                    <FontAwesomeIcon icon="angle-left" className="postPageArrow postPageLeftArrow"/>
                     <div className="imageSlider">
                         <div className="imageInnerSlider">
                             {images}
                         </div>
                     </div>
-                    <FontAwesomeIcon icon="angle-right" className="postPageArrow postPageRightArrow"/>
                 </div>
             )
         }

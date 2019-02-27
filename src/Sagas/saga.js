@@ -3,6 +3,7 @@ import axios from 'axios';
 import Actions from '../Actions/actions.js';
 import Constants from '../constants';
 import Utils from '../utils';
+import { yellow } from 'ansi-colors';
 
 function* sendPostToServer(action){
   yield call(axios, {
@@ -108,7 +109,7 @@ function* onSignInClick(action) {
     yield put(Actions.signIn({
       username: action.data.username,
       userID: response.data.userID,
-      userPosts: response.data.userPosts
+      // userPosts: response.data.userPosts,
     }));
     yield put(Actions.isSignInSuccessful(true))
     yield put(Actions.toggleModal('signIn', false))

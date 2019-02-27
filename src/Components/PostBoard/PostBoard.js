@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Utils from '../../utils.js';
 import PostMap from "../../Components/Map/Map.js";
 
+
 class PostBoard extends Component {
     renderPostsGallery(){
         let posts = [];
@@ -70,9 +71,28 @@ class PostBoard extends Component {
         return <PostMap />;
     }
 
+    success(position) {
+        console.log('success',position.coords)
+    }
+
+    error(er) {
+        console.log('fail',er)
+    }
+
+
+    getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(this.success, this.error, {timeout: 10000})
+        } else {
+         console.log("Geolocation is not supported by this browser.");
+        }
+      }
+      
+
     render() {
         return(
         <div className="postBoardWrapper" key="postBoardWrapper">
+            {/* {this.getLocation()} */}
             <div className="PostBoard" key="postBoard">
                 {this.renderPosts()}
             </div>
@@ -92,4 +112,4 @@ function mapStateToProps(state){
 
   export default connect(
     mapStateToProps
-  )(PostBoard)
+  )(PostBoard);
