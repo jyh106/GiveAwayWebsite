@@ -139,23 +139,24 @@
 
 .photoModalCloseButton {
     z-index: 15;
-    color: red;
-    font-weight: bolder;
+    color: rgba(255, 0, 0, 0.502);
     font-family: 'Jaldi', sans-serif;
     font-size: 40px;
     margin-right: 150px;
     width: 32px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.79);
     line-height: 28px;
     text-align: center;
     padding-bottom: 4px;
-    border-radius: 50%;
+    border-radius: 5px;
     box-shadow: 0px 0px 15px 0px white;
     float: right;
 }
 
 .photoModalCloseButton:hover {
     cursor: pointer;
+    color: red;
+    background-color: white;
 }
 
 

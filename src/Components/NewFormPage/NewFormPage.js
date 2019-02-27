@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "./NewFormPage.css";
 import { connect } from 'react-redux';
 import Actions from "../../Actions/actions";
-import { BrowserRouter } from 'react-router-dom';
+import Utils from "../../utils";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -63,6 +63,10 @@ class NewFormPage extends Component {
            'note': this.state.note,
            'images': this.state.images,
            'category': this.state.category
+       }
+
+       if (this.props.isUserSignedIn) {
+           postInfo['userID'] = this.props.userInfo['userID']
        }
         this.props.addNewPost(postInfo);
     }
@@ -283,7 +287,10 @@ class NewFormPage extends Component {
 }
 
 function mapStateToProps(state) {
-    return state
+    return {
+        userInfo: Utils.getUserInfo(state),
+        isUserSignedIn: Utils.getUserInfo(state)['isSignedIn'],
+    }
   }
 
 function mapDispatchToProps(dispatch) {
