@@ -21,13 +21,12 @@ function AppReducer(state = INITIAL_STATE, action) {
 function signIn(state, action) {
     localStorage.username = action.data.username;
     localStorage.setItem('userID', action.data.userID);
-    
+
     return state.merge({
         'user': {
             'isSignedIn': true,
             'username': action.data.username,
             'userID': action.data.userID,
-            'userPosts': action.data.userPosts,
         }
     });
 }
