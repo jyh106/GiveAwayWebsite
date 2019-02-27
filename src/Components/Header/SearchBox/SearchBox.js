@@ -9,8 +9,12 @@ library.add(faSearch);
 
 class SearchBox extends Component {
     handleSearch(searchInput) {
-        this.props.handleSearch(searchInput)
-        this.props.searchBarActive(true)
+        if (searchInput) {
+            this.props.handleSearch(searchInput)
+            this.props.searchBarActive(true)
+        } else { // if theres no search input then just display all posts
+            this.props.searchBarActive(false)
+        }
     }
 
     render() {
