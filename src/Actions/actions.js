@@ -170,6 +170,13 @@ function shouldShowUserPosts(toggle) {
     }
 }
 
+function getUserPosts(userID) {
+    return {
+        type: 'GET_USER_POSTS',
+        data: userID
+    }
+}
+
 function deletePost(postID) {
     return {
         type: "DELETE_POST",
@@ -184,9 +191,42 @@ function updateUserLocation(userLocation) {
     }
 }
 
+function searchForReleventPosts(searchInput) {
+    return {
+        type: "SEARCH_POSTS",
+        data: searchInput
+    }
+}
+
+function updateSearchOutput(searchOutput) {
+    return {
+        type: 'UPDATE_SEARCH_OUTPUT',
+        data: searchOutput
+    }
+}
+
+function searchBarStatus(isActive) {
+    return {
+        type: "SEARCH_STATUS",
+        data: isActive
+    }
+}
+
+function updateUserPosts(posts) {
+    return {
+        type: 'UPDATE_USER_POSTS',
+        data: posts
+    }
+}
+
 export default {
+    updateUserPosts,
+    searchBarStatus,
+    updateSearchOutput,
+    searchForReleventPosts,
     updateUserLocation,
     deletePost,
+    getUserPosts,
     shouldShowUserPosts,
     userSignedOut,
     isSignInSuccessful,

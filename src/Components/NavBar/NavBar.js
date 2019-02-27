@@ -49,13 +49,18 @@ class NavBar extends Component {
         return ""
     }
 
+    onMyPostClick() {
+        this.props.showUserPosts(!this.props.shouldShowUserPosts)
+        this.props.getUserPosts(this.props.userInfo['userID']);
+    }
+
     renderUserPostsButton() {
         if (!this.props.isUserSignedIn) {
             return null
         }
         return( 
             <div className={` ${(this.props.shouldShowUserPosts) ? 'userPostsButtonActive' : "userPostsButton"}`}
-                onClick={()=>this.props.showUserPosts(!this.props.shouldShowUserPosts)}>
+                onClick={()=>this.onMyPostClick()}>
                 <FontAwesomeIcon icon="book" className="icon_userPosts"/>
                 My posts
             </div>
@@ -95,6 +100,7 @@ class NavBar extends Component {
 
 function mapStateToProps(state) {
     return{
+        userInfo: Utils.getUserInfo(state),
         currentStyle: Utils.getDisplayStyle(state),
         isUserSignedIn: Utils.getUserInfo(state)['isSignedIn'],
         shouldShowUserPosts: Utils.shouldShowUserPosts(state)
@@ -102,14 +108,19 @@ function mapStateToProps(state) {
     }
   }
 
-const mapDispatchToProps = dispatch => {
+function mapDispatchToProps(dispatch) {
     return {
         toggleModal: (type, toggle) => {
             dispatch(Actions.toggleModal(type, toggle));
         },
-        changeDisplayStyle: (style)=> dispatch(Actions.changeDisplayStyle(style)),
+        changeDisplayStyle: (style) => {
+            dispatch(Actions.changeDisplayStyle(style));
+        },
         showUserPosts: (toggle) => {
             dispatch(Actions.shouldShowUserPosts(toggle));
+        },
+        getUserPosts: (userID) => {
+            dispatch(Actions.getUserPosts(userID))
         }
     }
   }

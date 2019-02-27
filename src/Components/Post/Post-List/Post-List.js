@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./Post-List.css";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faComment, faImages} from '@fortawesome/free-solid-svg-icons';
 import Actions from '../../../Actions/actions.js';
@@ -14,7 +15,7 @@ class PostList extends Component {
             'name': this.props.name,
             'date': this.props.date,
             'address': this.props.address,
-            'note': this.props.description,
+            'note': this.props.note,
             'images': this.props.images,
             'id': this.props.id
         })
@@ -46,7 +47,7 @@ class PostList extends Component {
 
     render(){
         return(
-        <a href={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
+        <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
             <div className="postList postElement">
                 <div className="postList_name postList_label">
                     {this.props.name} 
@@ -61,7 +62,7 @@ class PostList extends Component {
                 {this.renderNote()}
                 {this.renderImageMark()}
             </div>
-        </a>
+        </Link>
         )
     }
 }

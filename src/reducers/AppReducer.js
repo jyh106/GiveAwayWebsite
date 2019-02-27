@@ -5,7 +5,6 @@ const INITIAL_STATE = Map({
       'isSignedIn': !!localStorage.username,
       'username': localStorage.username || "",
       'userID': localStorage.userID || "",
-      'userPosts': localStorage.userPosts,
     },
 });
 

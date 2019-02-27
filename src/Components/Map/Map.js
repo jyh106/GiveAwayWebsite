@@ -12,7 +12,17 @@ const position = [37.5775225, -122.3481093];
 class Map extends Component {
     renderMarkers() {
         const markerList = [];
-        for (let post of this.props.posts) {
+
+        let displayPosts = [];
+        if (this.props.searchBarStatus) { //display search results
+            displayPosts = this.props.searchResult;
+        } else if (this.props.showUserPosts) { //display user posts
+            displayPosts = this.props.userPosts;
+        } else {
+            displayPosts = this.props.posts //display all posts
+        }
+
+        for (let post of displayPosts) {
             const marker = <Marker position={post.location} key={post.id}>
                                 <Popup>
                                     <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + post.id}`} key={post.id}>
@@ -25,13 +35,7 @@ class Map extends Component {
                                     {post.name}
                                 </Tooltip>
                             </Marker>
-            if(this.props.showUserPosts) {
-                if (post.userID === this.props.userInfo['userID']) {
-                    markerList.push(marker)
-                }
-            } else {
-                markerList.push(marker)
-            }
+            markerList.push(marker)
         }
 
         return markerList
@@ -56,6 +60,8 @@ function mapStateToProps(state){
         userInfo: Utils.getUserInfo(state),
         posts: Utils.getPosts(state),
         showUserPosts: Utils.shouldShowUserPosts(state),
+        searchResult: Utils.getSearchResults(state),
+        userPosts: Utils.getUserPosts(state)
     }
   }
 

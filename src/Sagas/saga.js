@@ -109,7 +109,6 @@ function* onSignInClick(action) {
     yield put(Actions.signIn({
       username: action.data.username,
       userID: response.data.userID,
-      // userPosts: response.data.userPosts,
     }));
     yield put(Actions.isSignInSuccessful(true))
     yield put(Actions.toggleModal('signIn', false))
@@ -186,8 +185,50 @@ function* watchDeletePost() {
   }
 }
 
+function* handleSearch(searchInput) {
+  try {
+      const response = yield call(axios, {
+      method: 'GET',
+      url: `${Constants.HOSTNAME}search/${searchInput}`,
+      config: { headers: {'Content-Type':'application/json'}}
+    });
+    yield put(Actions.updateSearchOutput(response.data));
+  } catch(err) {
+    console.log('failed to search: ', err)
+  }
+}
+
+function* watchSearchActive() {
+  while (true) {
+    const action = yield take("SEARCH_POSTS");
+    yield call(handleSearch, action.data)
+  }
+}
+
+function* getUserPosts(userID) {
+  try {
+      const response = yield call(axios, {
+      method: 'GET',
+      url: `${Constants.HOSTNAME}getuserposts/${userID}`,
+      config: { headers: {'Content-Type':'application/json'}}
+    });
+    yield put(Actions.updateUserPosts(response.data));
+  } catch(err) {
+    console.log('failed to get user posts: ', err)
+  }
+}
+
+function* watchShowUserPosts() {
+  while (true) {
+    const action = yield take("GET_USER_POSTS");
+    yield call(getUserPosts, action.data)
+  }
+}
+
 export default function* rootSaga() {
   yield all([
+    watchShowUserPosts(),
+    watchSearchActive(),
     watchDeletePost(),
     watchSubmitPost(),
     watchOnSignUpClick(),

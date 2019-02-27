@@ -88,7 +88,22 @@ function shouldShowUserPosts(state) {
     return state.PostBoard.get('showUserPosts')
 }
 
+function getSearchResults(state) {
+    return state.PostBoard.get('searchOutput');
+}
+
+function getSearchBarStatus(state) {
+    return state.NavBar.get("isSearchActive");
+}
+
+function getUserPosts(state) {
+    return state.PostBoard.get("userPosts");
+}
+
 export default {
+    getUserPosts,
+    getSearchBarStatus,
+    getSearchResults,
     shouldShowUserPosts,
     isSignInSuccessful,
     getUsernameValidation,

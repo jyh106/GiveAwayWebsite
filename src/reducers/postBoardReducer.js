@@ -4,7 +4,9 @@ const INITIAL_STATE = Map({
     posts: List([]),
     displayStyle: 'Gallery',
     clickedListPost: {},
-    showUserPosts: false
+    showUserPosts: false,
+    userPosts: [],
+    searchOutput: []
 })
 
 
@@ -24,6 +26,10 @@ function PostBoardReducer (state = INITIAL_STATE, action) {
             const postIndex = state.get('posts').findIndex((post)=>post.id === action.data['postID']);
             const updatedPosts = state.get('posts').delete(postIndex);
             return state.set('posts', updatedPosts)
+        case('UPDATE_SEARCH_OUTPUT'):
+            return state.set('searchOutput', action.data)
+        case('UPDATE_USER_POSTS'):
+            return state.set('userPosts', action.data)
         default:
             return state
     }

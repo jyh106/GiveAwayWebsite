@@ -8,67 +8,72 @@ import PostMap from "../../Components/Map/Map.js";
 
 
 class PostBoard extends Component {
-    renderPostsGallery(){
-        let posts = [];
-        for(let post of this.props.posts){
-            const postAddress = {
-                'street': post.address.split(",")[0],
-                'city': post.address.split(",")[1],
-            }
-            const postComponent = (<PostsGallery name={post.name} 
-                                    address={postAddress}
-                                    date={post.date}
-                                    description={post.note}
-                                    editable={post.editable}
-                                    images ={post.images}
-                                    key={post.name}
-                                    id={post.id}
-                                    />);
-            if(this.props.showUserPosts) {
-                if (post.userID === this.props.userInfo['userID']) {
-                    posts.push(postComponent)
-                }
-            } else {
-                posts.push(postComponent)
-            }
+
+    changeAddressFormat(post){
+        return {
+            'street': post.address.split(",")[0],
+            'city': post.address.split(",")[1],
         }
-        return posts;
     }
 
-    renderPostsList(){
-        let posts = [];
-        for(let post of this.props.posts){
-            const postAddress = {
-                'street': post.address.split(",")[0],
-                'city': post.address.split(",")[1],
-            }
-            const postComponent = (<PostsList name={post.name} 
-                                        address={postAddress}
-                                        date={post.date}
-                                        description={post.note}
-                                        editable={post.editable}
-                                        images ={post.images}
-                                        key={post.name}
-                                        id={post.id}
-                                        />);
-            if(this.props.showUserPosts) {
-                if (post.userID === this.props.userInfo['userID']) {
-                    posts.push(postComponent)
-                }
-            } else {
-                posts.push(postComponent)
-            }
-        }
-        return posts;
+    producePostGalleryComponent(post) {
+        const postAddress = this.changeAddressFormat(post);
+        return (
+            <PostsGallery name={post.name} 
+                        address={postAddress}
+                        date={post.date}
+                        note={post.note}
+                        editable={post.editable}
+                        images ={post.images}
+                        key={post.name}
+                        id={post.id}
+                        />
+        )
     }
 
-    renderPosts(){
-        if(this.props.displayStyle === 'Gallery'){
-            return this.renderPostsGallery()
+    producePostListComponent(post) {
+        const postAddress = this.changeAddressFormat(post);
+        return (
+            <PostsList name={post.name} 
+                        address={postAddress}
+                        date={post.date}
+                        note={post.note}
+                        editable={post.editable}
+                        images ={post.images}
+                        key={post.name}
+                        id={post.id}
+                        />
+        )
+    }
+
+
+    renderPosts() {
+        if (this.props.displayStyle === 'Map') {
+            return <PostMap />;
+        } 
+
+        let posts = [];
+        let displayPosts = [];
+
+        if (this.props.searchBarStatus) { //display search results
+            displayPosts = this.props.searchResult;
+        } else if (this.props.showUserPosts) { //display user posts
+            displayPosts = this.props.userPosts;
+        } else {
+            displayPosts = this.props.posts //display all posts
+        }
+
+        if (this.props.displayStyle === 'Gallery') {
+            for (let post of displayPosts) {
+                posts.push(this.producePostGalleryComponent(post))
+            }
         } else if (this.props.displayStyle === 'List') {
-            return this.renderPostsList();
+            for (let post of displayPosts) {
+                posts.push(this.producePostListComponent(post))
+            }
         }
-        return <PostMap />;
+
+        return posts
     }
 
     success(position) {
@@ -107,6 +112,9 @@ function mapStateToProps(state){
         posts: Utils.getPosts(state),
         displayStyle: Utils.getDisplayStyle(state),
         showUserPosts: Utils.shouldShowUserPosts(state),
+        searchResult: Utils.getSearchResults(state),
+        searchBarStatus: Utils.getSearchBarStatus(state),
+        userPosts: Utils.getUserPosts(state)
     }
   }
 
