@@ -1,4 +1,4 @@
-import { Map, List} from 'immutable';
+import { Map } from 'immutable';
 
 const INITIAL_STATE = Map({
   'user': {

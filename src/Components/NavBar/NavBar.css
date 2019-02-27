@@ -59,7 +59,7 @@ a {
 }
 
 .styleBar {
-    width: 86%;
+    width: calc(100% - 270px);
     margin-top: 10px;
     background-color: white;
     float: right;

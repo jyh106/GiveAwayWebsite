@@ -3,7 +3,6 @@ import axios from 'axios';
 import Actions from '../Actions/actions.js';
 import Constants from '../constants';
 import Utils from '../utils';
-import { yellow } from 'ansi-colors';
 
 function* sendPostToServer(action){
   yield call(axios, {
