@@ -169,12 +169,17 @@ export function* watchFetchCurrentPostData() {
 }
 
 function* handleDeletePost(postID) {
-  yield call(axios, {
+  try {
+    yield call(axios, {
     method: 'POST',
     data: postID,
     url : `${Constants.HOSTNAME}deletepost`,
     config: { headers: {'Content-Type':'application/json'}}
   })
+    yield put(Actions.shouldShowUserPosts(true));
+  } catch (err) {
+    console.log('error in trying to delete post: ', err)
+  }
 }
 
 function* watchDeletePost() {
@@ -211,6 +216,7 @@ function* getUserPosts(userID) {
       url: `${Constants.HOSTNAME}getuserposts/${userID}`,
       config: { headers: {'Content-Type':'application/json'}}
     });
+    console.log(response.data);
     yield put(Actions.updateUserPosts(response.data));
   } catch(err) {
     console.log('failed to get user posts: ', err)
@@ -219,8 +225,11 @@ function* getUserPosts(userID) {
 
 function* watchShowUserPosts() {
   while (true) {
-    const action = yield take("GET_USER_POSTS");
-    yield call(getUserPosts, action.data)
+    const action = yield take("SHOW_USER_POSTS");
+    if (action.data) {
+      const userInfo = yield select(Utils.getUserInfo);
+      yield call(getUserPosts, userInfo['userID'])
+    }
   }
 }
 

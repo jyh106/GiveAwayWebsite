@@ -35,7 +35,7 @@ class PostGallery extends Component {
         this.props.handleClickedImage({currentViewingImage, postImages});
 }
 
-    onThumbnailButtonsClicked(isLeft) {
+    onThumbnailButtonsClicked() {
         const currentIndex = this.props.images.indexOf(this.state.currentDisplayImageSrc);
         let nextIndex = (currentIndex + 1) % this.props.images.length;
         this.setState({
@@ -111,6 +111,11 @@ class PostGallery extends Component {
         )
     }
 
+    handleDeletePost() {
+        this.props.deletePost(this.props.id);
+        this.forceUpdate()
+    }
+
 
     renderDeleteButton() {
         if (!this.props.showUserPosts) {
@@ -118,7 +123,7 @@ class PostGallery extends Component {
         }
         return (
             <div className="postDeleteButton"
-                onClick={()=>this.props.deletePost(this.props.id)}>
+                onClick={()=>this.handleDeletePost()}>
                 x
             </div>
         )

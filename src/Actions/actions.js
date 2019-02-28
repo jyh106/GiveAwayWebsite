@@ -170,14 +170,6 @@ function shouldShowUserPosts(toggle) {
     }
 }
 
-function getUserPosts(userID) {
-    console.log(userID)
-    return {
-        type: 'GET_USER_POSTS',
-        data: userID
-    }
-}
-
 function deletePost(postID) {
     return {
         type: "DELETE_POST",
@@ -227,7 +219,6 @@ export default {
     searchForReleventPosts,
     updateUserLocation,
     deletePost,
-    getUserPosts,
     shouldShowUserPosts,
     userSignedOut,
     isSignInSuccessful,
