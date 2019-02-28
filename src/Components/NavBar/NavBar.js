@@ -51,7 +51,10 @@ class NavBar extends Component {
 
     onMyPostClick() {
         this.props.showUserPosts(!this.props.shouldShowUserPosts)
-        this.props.getUserPosts(this.props.userInfo['userID']);
+        if (this.props.shouldShowUserPosts) {
+            console.log('here', this.props.userInfo['userID'])
+            this.props.getUserPosts(this.props.userInfo['userID']);
+        }
     }
 
     renderUserPostsButton() {

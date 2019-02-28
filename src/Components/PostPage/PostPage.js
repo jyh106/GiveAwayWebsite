@@ -24,30 +24,40 @@ class PostPage extends Component {
         this.props.handleClickedImage({currentViewingImage, postImages});
     } 
 
-    renderImageSection() {
+    imageList() {
         if (!this.props.post.images) {
             return null
-        } else {
-            const images = [];
-            for (let image of this.props.post.images) {
-                images.push(
-                    <img src={Constants.UPLOADS_HOSTNAME + image} 
-                        className="postImage" key={image}
-                        height="150" width="150" alt=""
-                        onClick={(e)=> this.handleClickedImage(e.target.src, this.props.post.images)}>
-                    </img>
-                )
-            }
-            return (
-                <div className="imageSectionContainer">
-                    <div className="imageSlider">
-                        <div className="imageInnerSlider">
-                            {images}
-                        </div>
-                    </div>
-                </div>
+        } 
+        const images = [];
+        for (let image of this.props.post.images) {
+            images.push(
+                <img src={Constants.UPLOADS_HOSTNAME + image} 
+                    className="postImage" key={image}
+                    height="150" width="150" alt=""
+                    onClick={(e)=> this.handleClickedImage(e.target.src, this.props.post.images)}>
+                </img>
             )
         }
+        return images
+    }
+
+    giveImageSectionClassName() {
+        if (!this.props.post.images || (this.props.post.images.length === 0)) {
+            return "imageSliderNotActive"
+        }
+        return "imageSlider"
+    }
+
+    renderImageSection() {
+        return (
+            <div className="imageSectionContainer">
+                <div className={`${this.giveImageSectionClassName()}`}>
+                    <div className="imageInnerSlider">
+                        {this.imageList()}
+                    </div>
+                </div>
+            </div>
+        )
     }
 
     render() {

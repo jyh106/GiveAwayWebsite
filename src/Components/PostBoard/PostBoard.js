@@ -4,6 +4,7 @@ import PostsList from '../Post/Post-List/Post-List.js';
 import PostsGallery from '../Post/Post-Gallery.js';
 import { connect } from 'react-redux';
 import Utils from '../../utils.js';
+import Actions from "../../Actions/actions";
 import PostMap from "../../Components/Map/Map.js";
 
 
@@ -27,7 +28,7 @@ class PostBoard extends Component {
                         images ={post.images}
                         key={post.name}
                         id={post.id}
-                        />
+                    />
         )
     }
 
@@ -75,29 +76,11 @@ class PostBoard extends Component {
 
         return posts
     }
-
-    success(position) {
-        console.log('success',position.coords)
-    }
-
-    error(er) {
-        console.log('fail',er)
-    }
-
-
-    getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.success, this.error, {timeout: 10000})
-        } else {
-         console.log("Geolocation is not supported by this browser.");
-        }
-      }
       
 
     render() {
         return(
         <div className="postBoardWrapper" key="postBoardWrapper">
-            {/* {this.getLocation()} */}
             <div className="PostBoard" key="postBoard">
                 {this.renderPosts()}
             </div>
@@ -118,6 +101,15 @@ function mapStateToProps(state){
     }
   }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        updateUserLocation: (userLocation) => {
+            dispatch(Actions.updateUserLocation(userLocation));
+        }
+    }
+}
+
   export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
   )(PostBoard);

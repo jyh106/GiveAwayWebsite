@@ -171,6 +171,7 @@ function shouldShowUserPosts(toggle) {
 }
 
 function getUserPosts(userID) {
+    console.log(userID)
     return {
         type: 'GET_USER_POSTS',
         data: userID

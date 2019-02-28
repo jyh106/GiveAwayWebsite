@@ -6,12 +6,15 @@ const INITIAL_STATE = Map({
       'username': localStorage.username || "",
       'userID': localStorage.userID || "",
     },
+    userLocation: [],
 });
 
 function AppReducer(state = INITIAL_STATE, action) {
   switch(action.type){
     case('SIGNIN'):
         return signIn(state, action);
+    case('UPDATE_USER_LOCATION'):
+        return state.set('userLocation', action.data);
     default:
         return state
     }
