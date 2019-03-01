@@ -113,7 +113,6 @@ class PostGallery extends Component {
 
     handleDeletePost() {
         this.props.deletePost(this.props.id);
-        this.forceUpdate()
     }
 
 

@@ -5,10 +5,10 @@ import Actions from "../../Actions/actions";
 import Utils from "../../utils";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faQuoteLeft, faQuoteRight} from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faQuoteLeft, faQuoteRight, faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
 import Constants from '../../constants';
 import { Link, withRouter } from 'react-router-dom';
-library.add(faArrowLeft, faQuoteLeft, faQuoteRight)
+library.add(faArrowLeft, faQuoteLeft, faQuoteRight, faCaretDown, faCaretUp)
 
 class NewFormPage extends Component {
     constructor() {
@@ -20,7 +20,9 @@ class NewFormPage extends Component {
             'address_city': '',
             'note': '',
             'images': [],
-            'category': ''
+            'category': '',
+            isCategoryOptionClicked: false,
+            isCityOptionClicked: false,
         }
     }
 
@@ -82,7 +84,7 @@ class NewFormPage extends Component {
         return (
             <div className="newForm_question question_name question-itemName">
                 <div className="questionLabel">
-                    Item(s):
+                    Item(s): 
                 </div>
                 <input type="form_name" className={`input_title newFormInput ${this.getErrorMessage(this.state.name)}`} 
                         onChange={(e)=>this.onInputChange('name', e.target.value)}
@@ -93,10 +95,17 @@ class NewFormPage extends Component {
         )
     }
 
+    renderSelectionArrow(selectionType) {
+        const arrowClassName= (selectionType === "category" ? "category-arrow" : "city-arrow" )
+        return <FontAwesomeIcon icon='caret-down' className={arrowClassName} />
+    }
+
     renderQuestion_category() {
         const categories = [];
         categories.push(
-            <option value="" key="default value">Select category</option>
+            <option value="" key="default value">
+                Select category 
+            </option>
         )
         for (let category of Constants.CATEGORY_LIST) {
             categories.push(
@@ -104,14 +113,15 @@ class NewFormPage extends Component {
             )
         }
         return (
-            <div className="newForm_question question_name">
+            <div className="newForm_question question_name question_category">
                 <div className="questionLabel">
-                    Item category:
+                    Item category: 
                 </div>
                 <select className={`categorySelection ${this.getErrorMessage(this.state.category)} `} 
                         onChange={(e)=>this.onInputChange('category', e.target.value)}>
                     {categories}
                 </select>
+                {this.renderSelectionArrow('category')}
             </div>
         )
     }
@@ -159,6 +169,7 @@ class NewFormPage extends Component {
                         onChange={(e)=>this.onInputChange('address_city', e.target.value)}>
                     {cityOptions}
                 </select>
+                {this.renderSelectionArrow('city')}
             </div>
         )
     }
@@ -179,8 +190,10 @@ class NewFormPage extends Component {
                 </div>
             )
         }
+
+        const sectionClassName = (fileNameList.length === 0) ? "displayFileName-None" : "displayFileNameWrapper";
         return (
-            <div className="displayFileNameWrapper">
+            <div className={sectionClassName}>
                 {fileNameList}
             </div>
         )
@@ -198,8 +211,9 @@ class NewFormPage extends Component {
                     Images: 
                 </div>
                 <label htmlFor="post-images-upload" className="questionLabel select_button_label">
-                    Select images
+                    Select images 
                 </label>
+                <FontAwesomeIcon icon="caret-down" className="selectImage-arrow"/>
                 <input id="post-images-upload" 
                         type="file" 
                         accept="image/png, image/jpeg, image/jpg" 
