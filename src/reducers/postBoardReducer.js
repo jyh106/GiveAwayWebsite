@@ -6,7 +6,8 @@ const INITIAL_STATE = Map({
     clickedListPost: {},
     showUserPosts: false,
     userPosts: [],
-    searchOutput: []
+    searchOutput: [],
+    showPostOnMap: {}
 })
 
 
@@ -30,6 +31,9 @@ function PostBoardReducer (state = INITIAL_STATE, action) {
             return state.set('searchOutput', action.data)
         case('UPDATE_USER_POSTS'):
             return state.set('userPosts', action.data)
+        case('SHOW_POST_ON_MAP'):
+            console.log('here')
+            return state.set('showPostOnMap', action.data)
         default:
             return state
     }

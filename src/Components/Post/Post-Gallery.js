@@ -128,16 +128,28 @@ class PostGallery extends Component {
         )
     }
 
+    onPostAddressClick() {
+    //    this.props.changeDisplayStyle("Map");
+       this.props.showPostOnMap(this.props);
+    }
+
+    renderPostAddress() {
+        return (
+            <div className="post_details post_address_gallery"
+                onClick={()=> this.onPostAddressClick()}>
+                <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
+                {this.props.address.city}
+            </div>
+        )
+    }
+
     render(){
         return(
             <div className="post_gallery">
                 {this.renderDeleteButton()}
                 {this.renderImages()}
                 {this.renderNameSection()}
-                <div className="post_details post_address_gallery">
-                   <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
-                   {this.props.address.city}
-                </div>
+                {this.renderPostAddress()}
                 <div className="post_details post_date_gallery">
                     {this.props.date}
                 </div>
@@ -167,6 +179,12 @@ function mapDispatchToProps(dispatch) {
         },
         deletePost: (postID) => {
             dispatch(Actions.deletePost(postID))
+        },
+        changeDisplayStyle: (style) => {
+            dispatch(Actions.changeDisplayStyle(style));
+        },
+        showPostOnMap: (post) => {
+            dispatch(Actions.showPostOnMap(post));
         }
     }
   }

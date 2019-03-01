@@ -100,7 +100,12 @@ function getUserPosts(state) {
     return state.PostBoard.get("userPosts");
 }
 
+function getShowPostOnMapStatus(state) {
+    return state.PostBoard.get("showPostOnMap")
+}
+
 export default {
+    getShowPostOnMapStatus,
     getUserPosts,
     getSearchBarStatus,
     getSearchResults,

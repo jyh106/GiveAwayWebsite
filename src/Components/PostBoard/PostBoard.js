@@ -28,6 +28,7 @@ class PostBoard extends Component {
                         images ={post.images}
                         key={post.name}
                         id={post.id}
+                        location={post.location}
                     />
         )
     }
@@ -43,6 +44,7 @@ class PostBoard extends Component {
                         images ={post.images}
                         key={post.name}
                         id={post.id}
+                        location={post.location}
                         />
         )
     }

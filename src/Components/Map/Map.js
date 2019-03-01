@@ -18,7 +18,7 @@ class Map extends Component {
             displayPosts = this.props.searchResult;
         } else if (this.props.showUserPosts) { //display user posts
             displayPosts = this.props.userPosts;
-        } else {
+        }  else {
             displayPosts = this.props.posts //display all posts
         }
 
@@ -61,7 +61,8 @@ function mapStateToProps(state){
         posts: Utils.getPosts(state),
         showUserPosts: Utils.shouldShowUserPosts(state),
         searchResult: Utils.getSearchResults(state),
-        userPosts: Utils.getUserPosts(state)
+        userPosts: Utils.getUserPosts(state),
+        showPostOnMap: Utils.getShowPostOnMapStatus(state),
     }
   }
 

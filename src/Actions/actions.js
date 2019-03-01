@@ -212,7 +212,15 @@ function updateUserPosts(posts) {
     }
 }
 
+function showPostOnMap(post) {
+    return {
+        type: 'SHOW_POST_ON_MAP',
+        data: post,
+    }
+}
+
 export default {
+    showPostOnMap,
     updateUserPosts,
     searchBarStatus,
     updateSearchOutput,
