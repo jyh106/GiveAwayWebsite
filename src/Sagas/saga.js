@@ -35,24 +35,6 @@ export function* watchAppMounted() {
   }
 }
 
-// handle update city and refresh the page with filtered posts
-function* sendSelectedCityToServer(action) {
-  const response = yield call(axios, {
-      method: 'POST',
-      url: `${Constants.HOSTNAME}city`,
-      data: {"city": action.data},
-      config: { headers: {'Content-Type':'application/json'}}
-    })
-   yield put(Actions.getPosts(response.data))
-}
-
-export function* watchSelectCity() {
-  while (true) {
-    const action = yield take('UPDATE_CITY');
-    yield call(sendSelectedCityToServer, action)
-  }
-}
-
 function* watchOnSignUpClick() {
   while (true) {
     const action = yield take('ON_SIGNUP_CLICK');
@@ -135,9 +117,9 @@ function* filterPosts(requirements) {
 }
 
 
-export function* watchSelectCategoryAndImages() {
+export function* watchSideBarSelection() {
   while (true) {
-    yield take(['UPDATE_CATEGORY', 'TOGGLE_HAS_IMAGES','RESET_SELECTIONS', 'TOGGLE_NEWEST']);
+    yield take(['UPDATE_CATEGORY', 'TOGGLE_HAS_IMAGES','RESET_SELECTIONS', 'TOGGLE_NEWEST', 'UPDATE_CITY']);
     const selectedCity = yield select(Utils.getSideBarItems, 'currentSelectedCity');
     const selectedCategories = yield select(Utils.getSideBarItems, 'currentSelectedCategories');
     const newestPreference = yield select(Utils.getSideBarItems, 'newest');
@@ -240,9 +222,8 @@ export default function* rootSaga() {
     watchDeletePost(),
     watchSubmitPost(),
     watchOnSignUpClick(),
-    watchSelectCity(),
     watchAppMounted(),
-    watchSelectCategoryAndImages(),
+    watchSideBarSelection(),
     watchFetchCurrentPostData(),
     watchOnSignInClick(),
     watchValidateUsername(),
