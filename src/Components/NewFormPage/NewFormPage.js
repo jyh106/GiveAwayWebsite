@@ -312,17 +312,20 @@ class NewFormPage extends Component {
 
     render() {
         return(
-        <div className="newForm_PageContainer">
+           <div>
             <div className="newForm_nav">
                 <div className="newFormButton_home">
+            
                     <Link to="/" ref={this.homeRef} className="newFormButton_home_label">
                         <FontAwesomeIcon icon="arrow-left" className="newForm_icon_leftArrow" />
                         Dashboard
                     </Link>
                 </div>
             </div>
-            {this.renderQuestions()}
-            {this.renderQuotation()}
+            <div className="newForm_PageContainer">
+                {this.renderQuestions()}
+                {this.renderQuotation()}
+            </div>
         </div>
         )
     }

@@ -103,7 +103,7 @@ class PostGallery extends Component {
 
     renderNameSection() {
         return(
-            <div className="post_details post_name_gallery">
+            <div className="post_details post_name_gallery" onClick={()=> this.props.showPostOnMap(this.props)}>
                 <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
                     {this.props.name}
                 </Link>

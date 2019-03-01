@@ -198,7 +198,6 @@ function* getUserPosts(userID) {
       url: `${Constants.HOSTNAME}getuserposts/${userID}`,
       config: { headers: {'Content-Type':'application/json'}}
     });
-    console.log(response.data);
     yield put(Actions.updateUserPosts(response.data));
   } catch(err) {
     console.log('failed to get user posts: ', err)

@@ -36,6 +36,8 @@ function PostBoardReducer (state = INITIAL_STATE, action) {
             return state.set('userPosts', action.data)
         case('SHOW_POST_ON_MAP'):
             return state.set('showPostOnMap', action.data)
+        case('RESET_MAP_POSTS'):
+            return state.set('showPostOnMap', {})
         default:
             return state
     }

@@ -52,7 +52,7 @@ class PostBoard extends Component {
 
     renderPosts() {
         if (this.props.displayStyle === 'Map') {
-            return <PostMap />;
+            return <PostMap mapClassName = "postBoard-map"/>;
         } 
 
         let posts = [];

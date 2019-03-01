@@ -61,6 +61,20 @@ class PostPage extends Component {
         )
     }
 
+    renderNoteSection() {
+        if (!this.props.post.note) {
+            return null
+        }
+        return (
+            <div className="postNote postDetail">
+                <FontAwesomeIcon icon="sticky-note" className="iconNote icons"/>
+                <div className="postNoteText">
+                    {this.props.post.note}  
+                </div>
+            </div>
+        )
+    }
+
     onPostAddressClick() {
         this.props.showPostOnMap(this.props);
         
@@ -70,7 +84,8 @@ class PostPage extends Component {
         return (
         <div>
             <div className="postPageWrapper">
-                <div className="postPageNavigation">
+                <div className="postPageNavigation" 
+                    onClick={()=> this.props.resetMapPosts()}>
                     <Link to="/" className="postPageBackButtonLabel">    
                         <FontAwesomeIcon icon="arrow-left" className="postPageBackButton" />
                         Main
@@ -86,23 +101,19 @@ class PostPage extends Component {
                     {this.props.post.date}
                 </div>
 
+                {this.renderNoteSection()}
+                {this.renderImageSection()}
+                {Utils.renderPageMask(this.props.isPageMaskShown)}
+
+                <div className="photoModal">
+                    <ModalContainer modalStyle='postPageStyle' />
+                </div>
+
                 <div className="postAddress postDetail" onClick={()=>this.onPostAddressClick()}>
                     <FontAwesomeIcon icon="map-marker-alt" className="iconAddress icons"/>
                     {this.props.post.address}
                 </div>
-
-                <div className="postNote postDetail">
-                    <FontAwesomeIcon icon="sticky-note" className="iconNote icons"/>
-                    <div className="postNoteText">
-                        {this.props.post.note}  
-                    </div>
-                </div>
-                {this.renderImageSection()}
-                {Utils.renderPageMask(this.props.isPageMaskShown)}
-                <div className="photoModal">
-                    <ModalContainer modalStyle='postPageStyle' />
-                </div>
-                <postMap />
+                <PostMap mapClassName = "postPage-map"/>
             </div>
         </div>
         )
@@ -129,6 +140,9 @@ function mapDispatchToProps(dispatch) {
         },
         showPostOnMap: (post) => {
             dispatch(Actions.showPostOnMap(post));
+        },
+        resetMapPosts: () => {
+            dispatch(Actions.resetMapPosts());
         }
     }
 }

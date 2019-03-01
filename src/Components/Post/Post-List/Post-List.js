@@ -46,14 +46,13 @@ class PostList extends Component {
     }
 
     onPostAddressClick() {
-        console.log('here');
         this.props.showPostOnMap(this.props);
         this.props.changeDisplayStyle("Map");
      }
 
     render(){
         return(
-            <div className="postList postElement">
+            <div className="postList postElement" onClick={()=> this.props.showPostOnMap(this.props)}>
              <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
                 <div className="postList_name postList_label">
                     {this.props.name} 

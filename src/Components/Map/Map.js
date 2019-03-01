@@ -57,15 +57,13 @@ class Map extends Component {
     }
     render() {
         return (
-             <div className="Map">
-                <LeafletMap center={position} zoom={14}>
-                    <TileLayer
-                    attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    {this.renderMarkers()}
-                </LeafletMap>
-             </div>
+            <LeafletMap center={position} zoom={14} className={this.props.mapClassName}>
+                <TileLayer
+                attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {this.renderMarkers()}
+            </LeafletMap>
         )
     }
 }
