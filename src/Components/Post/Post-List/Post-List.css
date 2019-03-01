@@ -45,6 +45,10 @@
     margin-right: 10px;
 }
 
+.postList_address:hover {
+    cursor: pointer;
+}
+
 .icon_address{
     color: rgb(167, 187, 204);
     padding-right: 4px;

@@ -109,6 +109,10 @@
     height: 25px;
 }
 
+.post_address_gallery:hover {
+    cursor: pointer;
+}
+
 .post_address_icon{
     font-size: 15px;
     color: darkgray;

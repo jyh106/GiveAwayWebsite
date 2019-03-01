@@ -45,24 +45,31 @@ class PostList extends Component {
         )
     }
 
+    onPostAddressClick() {
+        console.log('here');
+        this.props.showPostOnMap(this.props);
+        this.props.changeDisplayStyle("Map");
+     }
+
     render(){
         return(
-        <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
             <div className="postList postElement">
+             <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
                 <div className="postList_name postList_label">
                     {this.props.name} 
                 </div>
+            </Link>
                 <div className="postList_date postList_label">
                     ({this.props.date})
                 </div>
-                <div className="postList_address postList_label">
+                <div className="postList_address postList_label"
+                        onClick={()=> this.onPostAddressClick()}>
                     <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
                     {this.props.address.city}
                 </div>
                 {this.renderNote()}
                 {this.renderImageMark()}
             </div>
-        </Link>
         )
     }
 }
@@ -79,6 +86,12 @@ function mapStateToProps(state){
         },
         toggleDisplay: (type, toggle) => {
             dispatch(Actions.toggleModal(type, toggle))
+        },
+        changeDisplayStyle: (style) => {
+            dispatch(Actions.changeDisplayStyle(style));
+        },
+        showPostOnMap: (post) => {
+            dispatch(Actions.showPostOnMap(post));
         }
     }
   }

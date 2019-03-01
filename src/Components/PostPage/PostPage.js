@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Actions from '../../Actions/actions.js';
 import Constants from '../../constants.js';
 import ModalContainer from "../../Components/Modals/ModalContainer";
+import PostMap from "../../Components/Map/Map.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt,faAngleLeft, faAngleRight,
          faCalendarAlt, faStickyNote, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
@@ -60,6 +61,11 @@ class PostPage extends Component {
         )
     }
 
+    onPostAddressClick() {
+        this.props.showPostOnMap(this.props);
+        
+     }
+
     render() {
         return (
         <div>
@@ -80,7 +86,7 @@ class PostPage extends Component {
                     {this.props.post.date}
                 </div>
 
-                <div className="postAddress postDetail">
+                <div className="postAddress postDetail" onClick={()=>this.onPostAddressClick()}>
                     <FontAwesomeIcon icon="map-marker-alt" className="iconAddress icons"/>
                     {this.props.post.address}
                 </div>
@@ -96,6 +102,7 @@ class PostPage extends Component {
                 <div className="photoModal">
                     <ModalContainer modalStyle='postPageStyle' />
                 </div>
+                <postMap />
             </div>
         </div>
         )
@@ -119,6 +126,9 @@ function mapDispatchToProps(dispatch) {
         },
         handleClickedImage: ({currentViewingImage, postImages}) => {
             dispatch(Actions.handleClickedImage({currentViewingImage, postImages}))
+        },
+        showPostOnMap: (post) => {
+            dispatch(Actions.showPostOnMap(post));
         }
     }
 }
