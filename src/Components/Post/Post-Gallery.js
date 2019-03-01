@@ -129,8 +129,8 @@ class PostGallery extends Component {
     }
 
     onPostAddressClick() {
-    //    this.props.changeDisplayStyle("Map");
        this.props.showPostOnMap(this.props);
+       this.props.changeDisplayStyle("Map");
     }
 
     renderPostAddress() {

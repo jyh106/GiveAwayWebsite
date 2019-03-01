@@ -18,7 +18,22 @@ class Map extends Component {
             displayPosts = this.props.searchResult;
         } else if (this.props.showUserPosts) { //display user posts
             displayPosts = this.props.userPosts;
-        }  else {
+        }  else if (Object.keys(this.props.showPostOnMap).length > 0) { // if individual post address was clicked
+            return (
+                <Marker position={this.props.showPostOnMap.location} key="individualPostOnMap">
+                    <Popup>
+                        <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.showPostOnMap.id}`}>
+                            <div className="map-popUpMessage">
+                                Click to see details
+                            </div>
+                        </Link>
+                    </Popup>
+                    <Tooltip>
+                        {this.props.showPostOnMap.name}
+                    </Tooltip>
+                </Marker>
+            )
+        } else {
             displayPosts = this.props.posts //display all posts
         }
 
