@@ -27,10 +27,11 @@ class PostList extends Component {
             return null
         }
         return (
-            <div className="postList_note postList_label" 
-                        onClick={()=>{this.renderPostDetailModal()}}>
+            <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
+            <div className="postList_note postList_label">
                 <FontAwesomeIcon icon="comment" className="postList_note"></FontAwesomeIcon> 
             </div>
+            </Link>
         )
     }
 
@@ -39,23 +40,43 @@ class PostList extends Component {
             return null
         }
         return (
+            <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
             <div className="postList_image postList_label">
                 <FontAwesomeIcon icon="images" className="postList_image"></FontAwesomeIcon>
             </div>
+            </Link>
         )
     }
 
     onPostAddressClick() {
         this.props.showPostOnMap(this.props);
         this.props.changeDisplayStyle("Map");
-     }
+    }
+
+    handleDeletePost() {
+        this.props.deletePost(this.props.id);
+    }
+
+    renderDeleteButton() {
+        if (!this.props.showUserPosts) {
+            return null
+        }
+        return (
+            <div className="postList-DeleteButton"
+                onClick={()=>this.handleDeletePost()}>
+                x
+            </div>
+        )
+    }
 
     render(){
+        const postName = (this.props.name.length > 23) ? `${(this.props.name).substring(0, 20)}...` : this.props.name;
         return(
             <div className="postList postElement" onClick={()=> this.props.showPostOnMap(this.props)}>
+            {this.renderDeleteButton()}
              <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
                 <div className="postList_name postList_label">
-                    {this.props.name} 
+                    {postName} 
                 </div>
             </Link>
                 <div className="postList_date postList_label">
@@ -91,6 +112,9 @@ function mapStateToProps(state){
         },
         showPostOnMap: (post) => {
             dispatch(Actions.showPostOnMap(post));
+        },
+        deletePost: (postID) => {
+            dispatch(Actions.deletePost(postID))
         }
     }
   }

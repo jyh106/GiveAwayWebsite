@@ -13,10 +13,14 @@
     position: relative;
 }
 
-.postList:hover {
-    background-color: rgba(244, 165, 96, 0.205);
-    cursor: pointer;
+.postList-DeleteButton {
+    padding: 10px 10px;
+    background-color: red;
+    position: absolute;
+    top: 3px;
+    left: 0;
 }
+
 
 
 .postList_name{
