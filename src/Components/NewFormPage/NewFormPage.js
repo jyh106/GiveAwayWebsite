@@ -21,8 +21,6 @@ class NewFormPage extends Component {
             'note': '',
             'images': [],
             'category': '',
-            isCategoryOptionClicked: false,
-            isCityOptionClicked: false,
         }
     }
 
@@ -88,15 +86,15 @@ class NewFormPage extends Component {
                 </div>
                 <input type="form_name" className={`input_title newFormInput ${this.getErrorMessage(this.state.name)}`} 
                         onChange={(e)=>this.onInputChange('name', e.target.value)}
-                        maxLength='25'>
+                        maxLength='30'>
                 </input>
-                <p className="maxCharacterLabel">max characters: {13 - this.state.name.length}</p>
+                <p className="maxCharacterLabel">max characters: {30 - this.state.name.length}</p>
             </div>
         )
     }
 
     renderSelectionArrow(selectionType) {
-        const arrowClassName= (selectionType === "category" ? "category-arrow" : "city-arrow" )
+        const arrowClassName = (selectionType === "category") ?  "category-arrow" : "city-arrow";
         return <FontAwesomeIcon icon='caret-down' className={arrowClassName} />
     }
 
@@ -117,7 +115,7 @@ class NewFormPage extends Component {
                 <div className="questionLabel">
                     Item category: 
                 </div>
-                <select className={`categorySelection ${this.getErrorMessage(this.state.category)} `} 
+                <select  ref={this.categorySelectionRef} className={`categorySelection ${this.getErrorMessage(this.state.category)} `} 
                         onChange={(e)=>this.onInputChange('category', e.target.value)}>
                     {categories}
                 </select>
