@@ -102,10 +102,11 @@ class PostGallery extends Component {
     }
 
     renderNameSection() {
+        const postName = (this.props.name.length > 23) ? `${(this.props.name).substring(0, 15)}...` : this.props.name;
         return(
             <div className="post_details post_name_gallery" onClick={()=> this.props.showPostOnMap(this.props)}>
                 <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
-                    {this.props.name}
+                    {postName}
                 </Link>
             </div>
         )
