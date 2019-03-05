@@ -5,30 +5,32 @@
 
 
 .sideBarWrapper {
-    height: 100vh;
+    height: calc(100vh - 128px);
     position: absolute;
     top: 128px;
-    float: left;
     width: 230px;
     border-bottom-right-radius: 8px;
     border-top-right-radius: 8px;
+    display: inline-block;
+    background-color: white;
 }
 
 .sideBarContainer {
     position: relative;
     background: white;
     float: left;
-    width: 240px;
+    width: 220px;
     height: 90%;
+    padding-left: 8px;
     overflow: scroll;
 }
 
 .resetButton {
     display: inline-block;
-    margin-top: 15px;
-    margin-bottom: 3px;
-    margin-left: 60px;
-    width: 100px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    margin-right: 40px;
+    width: 110px;
     font-family: 'Jaldi', sans-serif;
     font-size: 15px;
     padding-left: 5px;

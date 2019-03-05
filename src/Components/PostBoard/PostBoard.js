@@ -9,7 +9,6 @@ import PostMap from "../../Components/Map/Map.js";
 
 
 class PostBoard extends Component {
-
     changeAddressFormat(post){
         return {
             'street': post.address.split(",")[0],
@@ -48,6 +47,7 @@ class PostBoard extends Component {
                         id={post.id}
                         location={post.location}
                         userID={post.userID}
+                        username={post.username}
                         />
         )
     }
@@ -77,6 +77,10 @@ class PostBoard extends Component {
             for (let post of displayPosts) {
                 posts.push(this.producePostListComponent(post))
             }
+        }
+
+        if (posts.length === 0) {
+            return <div className="no-results-found">No results found.</div>
         }
 
         return posts

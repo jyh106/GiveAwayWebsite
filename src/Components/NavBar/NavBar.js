@@ -36,7 +36,7 @@ class NavBar extends Component {
                 onMouseEnter={()=>this.toggleDisplayHeartOnButton()}
                 onMouseLeave={()=>this.toggleDisplayHeartOnButton()}>
                 <Link to="/newGiveAway" className="navBar_giveButton">
-                    Give {this.newFormButtonLabel()}
+                    <p className="giveButtonLabel">Give</p> {this.newFormButtonLabel()}
                 </Link>
             </div>
         )

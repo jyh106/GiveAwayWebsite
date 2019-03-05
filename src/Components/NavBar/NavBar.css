@@ -19,13 +19,19 @@
     margin-top: 10px;
     font-size: 18px;
     font-family: 'Pacifico', cursive;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    height: 43px;
     width: 115px;
     border-radius: 3px;
     color: darkblue;
     border: 2px dashed rgb(225, 130, 130);
     box-shadow: 0px 0px 5px 0px lightcoral;
+    position: relative;
+}
+
+.giveButtonLabel {
+    position: absolute;
+    top: 5px;
+    left: 37px;
 }
 
 a {
@@ -54,8 +60,8 @@ a {
     -webkit-animation-duration: 5s;
     animation-duration: 5s;
     color: rgb(240, 8, 85);
-    padding-left: 5px;
-    padding-top: 6px;
+    padding-left: 53px;
+    padding-top: 14px;
 }
 
 .styleBar {

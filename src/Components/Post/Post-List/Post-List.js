@@ -78,6 +78,16 @@ class PostList extends Component {
         )
     }
 
+    renderAuthorSection() {
+        const username = (this.props.username.length === 0) ? "anonymous" : this.props.username;
+        return (
+            <div className="post_list_author">
+                <p className="post_list_author-label">Given by: </p>
+                {username}
+            </div>
+        )
+    }
+
     render(){
         const postName = (this.props.name.length > 23) ? `${(this.props.name).substring(0, 20)}...` : this.props.name;
         return(
@@ -89,8 +99,9 @@ class PostList extends Component {
                 </div>
             </Link>
                 <div className="postList_date postList_label">
-                    ({this.props.date})
+                    Post on: ({this.props.date})
                 </div>
+                {this.renderAuthorSection()}
                 {this.renderAddressSection()}
                 {this.renderNote()}
                 {this.renderImageMark()}

@@ -95,9 +95,11 @@ class PostGallery extends Component {
     }
 
     renderAuthorSection() {
+        const username = (this.props.username.length === 0) ? "anonymous" : this.props.username;
         return (
             <div className="post_author">
-                Post by: {this.props.username}
+                <p className="author-label">Given by: </p>
+                {username}
             </div>
         )
     }
@@ -105,11 +107,11 @@ class PostGallery extends Component {
     renderNameSection() {
         const postName = (this.props.name.length > 23) ? `${(this.props.name).substring(0, 15)}...` : this.props.name;
         return(
-            <div className="post_details post_name_gallery" onClick={()=> this.props.showPostOnMap(this.props)}>
-                <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
+            <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
+                <div className="post_details post_name_gallery" onClick={()=> this.props.showPostOnMap(this.props)}>
                     {postName}
-                </Link>
-            </div>
+                </div>
+            </Link>
         )
     }
 
@@ -141,6 +143,17 @@ class PostGallery extends Component {
         )
     }
 
+    renderDateSection() {
+        return (
+            <div className="post_details post_date_gallery">
+                <p className="date-label">
+                    Post on:
+                </p>
+                {this.props.date}
+            </div>
+        )
+    }
+
     render(){
         return(
             <div className="post_gallery">
@@ -148,9 +161,7 @@ class PostGallery extends Component {
                 {this.renderImages()}
                 {this.renderNameSection()}
                 {this.renderPostAddress()}
-                <div className="post_details post_date_gallery">
-                    post on: {this.props.date}
-                </div>
+                {this.renderDateSection()}
                 <div className="divider"></div>
                 {this.renderAuthorSection()}
             </div>
