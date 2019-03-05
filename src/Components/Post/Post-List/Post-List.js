@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faComment, faImages} from '@fortawesome/free-solid-svg-icons';
 import Actions from '../../../Actions/actions.js';
 import Constants from '../../../constants.js';
+import  Utils  from '../../../utils';
 library.add(faMapMarkerAlt, faComment, faImages) 
 
 class PostList extends Component {
@@ -96,6 +97,7 @@ class PostList extends Component {
 
 function mapStateToProps(state){
     return{
+        showUserPosts: Utils.shouldShowUserPosts(state),
     }
   }
   
