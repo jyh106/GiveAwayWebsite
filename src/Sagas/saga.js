@@ -4,7 +4,7 @@ import Actions from '../Actions/actions.js';
 import Constants from '../constants';
 import Utils from '../utils';
 
-function* sendPostToServer(action){
+function* sendPostToServer(action){  
   yield call(axios, {
     method: 'POST',
     url: `${Constants.HOSTNAME}posts`,
@@ -44,14 +44,15 @@ function* watchOnSignUpClick() {
 
 function* onSignUpClick(action) {
   try {
-     yield call(axios, {
+     const response = yield call(axios, {
       method: 'POST',
       url: `${Constants.HOSTNAME}signup`,
       data: action.data,
       config: { headers: {'Content-Type':'application/json'}}
     });
     yield put(Actions.signIn({
-      username: action.data.username
+      username: action.data.username,
+      userID: response.data.userID
     }));
   } catch (err) {
     console.log('sign up unsuccessful')

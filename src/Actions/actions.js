@@ -214,8 +214,15 @@ function showPostOnMap(post) {
     }
 }
 
+function resetMapPosts() {	
+    return {	
+        type: 'RESET_MAP_POSTS'	
+    }	
+}
+
 
 export default {
+    resetMapPosts,
     showPostOnMap,
     updateUserPosts,
     searchBarStatus,

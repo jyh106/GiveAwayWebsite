@@ -57,16 +57,23 @@ class ModalPhotoDisplay extends Component {
         return (
             <div className={`${this.props.modalStyle}-photoSection`}>
                 <div className={`modalPhotos ${this.props.modalStyle}-modalPhotos`}>
-                    <div className={`arrowIcons photoDisplay_iconAngleLeft ${this.props.modalStyle}-photoDisplay_iconAngleLeft`}>
+                    <div className={`arrowIcons photoDisplay_iconAngleLeft 
+                                    ${this.props.modalStyle}-photoDisplay_iconAngleLeft`}>
                         <FontAwesomeIcon icon="angle-left" 
-                                    onClick={()=> this.handleClickedArrow()}/>
+                            onClick={()=> this.handleClickedArrow()}
+                        />
                     </div>
                     <div className="imageHolder">
-                        <img src={this.props.currentClickedImage} alt="" className="currentClickedImage"/>
+                        <img src={this.props.currentClickedImage} 
+                            alt="" 
+                            className="currentClickedImage"
+                        />
                     </div>
-                    <div className={`arrowIcons photoDisplay_iconAngleRight ${this.props.modalStyle}-photoDisplay_iconAngleRight`}>
+                    <div className={`arrowIcons photoDisplay_iconAngleRight 
+                                    ${this.props.modalStyle}-photoDisplay_iconAngleRight`}>
                         <FontAwesomeIcon icon="angle-right" 
-                                    onClick={()=> this.handleClickedArrow()}/>
+                            onClick={()=> this.handleClickedArrow()}
+                        />
                     </div>
                 </div>
             </div>
