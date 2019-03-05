@@ -16,13 +16,16 @@ class ModalPhotoDisplay extends Component {
 
     renderThumbs() {
         const images = [];
+
         for (let image of this.props.images) {
             const imgFullSrc = Constants.UPLOADS_HOSTNAME + image;
+            const imgClassName = `thumbs ${(this.isCurrentClickedImage(imgFullSrc)) ? 'currentClickedImageThumb' : ''}`;
+
             images.push(
                 <img src={imgFullSrc} 
                         alt="" key={image} 
-                        className={`thumbs ${(this.isCurrentClickedImage(imgFullSrc)) ? 'currentClickedImageThumb' : ''}`}
-                        onClick={ ()=> this.props.updateCurrentImage(imgFullSrc)}>
+                        className={imgClassName}
+                        onClick={()=> this.props.updateCurrentImage(imgFullSrc)}>
                 </img>
             )
         }
@@ -39,34 +42,46 @@ class ModalPhotoDisplay extends Component {
         const newIndex = (currentImageIndex + 1) % this.props.images.length;
         const nextImageSrc = Constants.UPLOADS_HOSTNAME + this.props.images[newIndex]
         return this.props.updateCurrentImage(nextImageSrc)
-    }   
+    }
+    
+    renderPhotoModal_deleteButton() {
+        return (
+            <div className={`${this.props.modalStyle}-photoModalCloseButton photoModalCloseButton`}
+                onClick={()=>this.props.toggleModal('photos', false)}>
+                x
+            </div>
+        )
+    }
+
+    renderPhotoSection() {
+        return (
+            <div className={`${this.props.modalStyle}-photoSection`}>
+                <div className={`modalPhotos ${this.props.modalStyle}-modalPhotos`}>
+                    <div className={`arrowIcons photoDisplay_iconAngleLeft ${this.props.modalStyle}-photoDisplay_iconAngleLeft`}>
+                        <FontAwesomeIcon icon="angle-left" 
+                                    onClick={()=> this.handleClickedArrow()}/>
+                    </div>
+                    <div className="imageHolder">
+                        <img src={this.props.currentClickedImage} alt="" className="currentClickedImage"/>
+                    </div>
+                    <div className={`arrowIcons photoDisplay_iconAngleRight ${this.props.modalStyle}-photoDisplay_iconAngleRight`}>
+                        <FontAwesomeIcon icon="angle-right" 
+                                    onClick={()=> this.handleClickedArrow()}/>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 
 
     render() {
         return (
             <div className={`modalPhotoHolder ${this.props.modalStyle}`}>
-                <div className={`${this.props.modalStyle}-photoModalCloseButton photoModalCloseButton`}
-                    onClick={()=>this.props.toggleModal('photos', false)}>
-                    x
-                </div>
+                {this.renderPhotoModal_deleteButton()}
                 <div className={`thumbParentHolder ${this.props.modalStyle}-thumbParentHolder`}>
                     {this.renderThumbs()}
                 </div> 
-                <div className={`${this.props.modalStyle}-photoSection`}>
-                    <div className={`modalPhotos ${this.props.modalStyle}-modalPhotos`}>
-                        <div className={`arrowIcons photoDisplay_iconAngleLeft ${this.props.modalStyle}-photoDisplay_iconAngleLeft`}>
-                            <FontAwesomeIcon icon="angle-left" 
-                                        onClick={()=> this.handleClickedArrow()}/>
-                        </div>
-                        <div className="imageHolder">
-                            <img src={this.props.currentClickedImage} alt="" className="currentClickedImage"/>
-                        </div>
-                        <div className={`arrowIcons photoDisplay_iconAngleRight ${this.props.modalStyle}-photoDisplay_iconAngleRight`}>
-                            <FontAwesomeIcon icon="angle-right" 
-                                        onClick={()=> this.handleClickedArrow()}/>
-                        </div>
-                    </div>
-                </div>
+                {this.renderPhotoSection()}
             </div>
         )
     }
@@ -80,7 +95,7 @@ function mapStateToProps(state) {
     }
   }
 
-const mapDispatchToProps = dispatch => {
+function mapDispatchToProps (dispatch) {
     return {
         toggleModal: (type, toggle) => {
             dispatch(Actions.toggleModal(type, toggle));

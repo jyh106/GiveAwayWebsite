@@ -10,9 +10,10 @@ library.add(faSearch);
 class SearchBox extends Component {
     handleSearch(searchInput) {
         if (searchInput) {
-            this.props.handleSearch(searchInput)
-            this.props.searchBarActive(true)
-        } else { // if theres no search input then just display all posts
+            this.props.handleSearch(searchInput);
+            this.props.searchBarActive(true);
+        } else { 
+            // if theres no search input then just display all posts
             this.props.searchBarActive(false)
         }
     }
@@ -20,7 +21,7 @@ class SearchBox extends Component {
     render() {
         return(
                 <div className={"searchBox"}>
-                    <input className="searchBox_input" onChange={(e)=> this.handleSearch(e.target.value)}></input>
+                    <input className="searchBox_input" onChange={(e)=> this.handleSearch(e.target.value)} />
                     <FontAwesomeIcon className="searchBox_icon" icon="search" />
                 </div>
         )

@@ -75,11 +75,6 @@ function appMounted() {
     }
   }
 
-function appWillMount() {
-    return {
-        type: 'APP_WILL_MOUNT'
-    }
-}
 
 function getPosts(posts) {
     return {
@@ -219,14 +214,8 @@ function showPostOnMap(post) {
     }
 }
 
-function resetMapPosts() {
-    return {
-        type: 'RESET_MAP_POSTS'
-    }
-}
 
 export default {
-    resetMapPosts,
     showPostOnMap,
     updateUserPosts,
     searchBarStatus,
@@ -248,7 +237,6 @@ export default {
     addNewPost,
     appMounted,
     getPosts,
-    appWillMount, 
     handleClickedImage,
     updateClickedImage,
     toggleSideBar,

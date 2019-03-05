@@ -1,7 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Alegreya');
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed');
-@import url('https://fonts.googleapis.com/css?family=Charmonman');
-
 
 .header {
     width: 100%;
@@ -17,12 +14,8 @@
     padding-top: 15px;
 }
 
-.header_label{
-    color: #F4A460;
-}
-
-.header_label:hover {
-    cursor: pointer;
+.header_name:hover {
+    cursor: default;
 }
 
 

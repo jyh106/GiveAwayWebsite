@@ -7,22 +7,6 @@
     width: 110px;
 }
 
-.accountDropDownMenu_button{
-    display: inline-block;
-}
-
-.accountMenuButton {
-    padding-left: 18px;
-    padding-bottom: 3px;
-    font-size: 20px;
-    color: gray;
-}
-
-.accountMenuButton:hover{
-    cursor: pointer;
-    color: blue;
-}
-
 .icon_user{
     margin-top: 9px;
     margin-right: 95px;
@@ -59,40 +43,6 @@
     cursor: pointer;
     color: #F4A460;
     text-decoration: underline;
-}
-
-.signedInMenu{
-    height: 131px;
-    width: 170px;
-}
-
-.notSignedInMenu {
-    height: 120px;
-    width: 170px;
-}
-
-.accountDropDownMenu {
-    position: absolute;
-    z-index: 20;
-    top: 55px;
-    right: 35px;
-    background-color: white;
-    box-shadow: 0px 7px 17px 0px rgb(147, 147, 147);
-    border-radius: 5px;
-}
-
-.accountMenuItem {
-    font-family: 'Fira Sans Extra Condensed', sans-serif;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 17px;
-    color: rgb(96, 95, 95);
-    text-align: left;
-}
-
-.accountMenuItem:hover {
-    background-color: rgba(255, 160, 122, 0.694);
-    cursor: pointer;
 }
 
 .account_header {
