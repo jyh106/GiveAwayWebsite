@@ -4,7 +4,6 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
 import Utils from '../../utils';
 import Header from "../Header/Header.js";
-import Actions from '../../Actions/actions.js';
 import { Link } from 'react-router-dom';
 import PostsGallery from "../Post/Post-Gallery.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Signika');
 @import url('https://fonts.googleapis.com/css?family=Alegreya');
 @import url('https://fonts.googleapis.com/css?family=Hind');
-@import url('https://fonts.googleapis.com/css?family=Satisfy');
+@import url('https://fonts.googleapis.com/css?family=Srisakdi');
+
 
 
 .newForm_PageContainer {
@@ -288,11 +289,11 @@ select {
     border-bottom-right-radius: 40px;
     background-color: rgba(36, 201, 193, 0.242);
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 60px;
     padding-left: 20px;
-    font-family: 'Satisfy', cursive;
+    font-family: 'Srisakdi', cursive;
     font-size: 28px;
-    margin-top: 8%;
+    margin-top: 8.5%;
     margin-left: 10%;
 }
 
@@ -317,6 +318,7 @@ select {
 
 .quotation2 {
     background-color: rgba(159, 214, 249, 0.242);
+    padding-bottom: 100px;
 }
 
 .quotation3 {
