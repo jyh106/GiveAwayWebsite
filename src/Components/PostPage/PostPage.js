@@ -75,22 +75,17 @@ class PostPage extends Component {
         )
     }
 
-    onPostAddressClick() {
-        this.props.showPostOnMap(this.props);
-        
-     }
-
     render() {
         return (
         <div>
             <div className="postPageWrapper">
+                <Link to="/" className="postPageBackButtonLabel">    
                 <div className="postPageNavigation" 
                     onClick={()=> this.props.resetMapPosts()}>
-                    <Link to="/" className="postPageBackButtonLabel">    
-                        <FontAwesomeIcon icon="arrow-left" className="postPageBackButton" />
-                        Main
-                    </Link>
+                    <FontAwesomeIcon icon="arrow-left" className="postPageBackButton" />
+                    Main
                 </div>
+                </Link>
 
                 <div className="postName postDetail">  
                     {this.props.post.name}
@@ -109,11 +104,11 @@ class PostPage extends Component {
                     <ModalContainer modalStyle='postPageStyle' />
                 </div>
 
-                <div className="postAddress postDetail" onClick={()=>this.onPostAddressClick()}>
+                <div className="postAddress postDetail">
                     <FontAwesomeIcon icon="map-marker-alt" className="iconAddress icons"/>
                     {this.props.post.address}
                 </div>
-                <PostMap mapClassName = "postPage-map"/>
+                <PostMap mapClassName="postPage-map"/>
             </div>
         </div>
         )
