@@ -97,7 +97,7 @@ class PostGallery extends Component {
     renderAuthorSection() {
         return (
             <div className="post_author">
-                {this.props.author}
+                Post by: {this.props.username}
             </div>
         )
     }

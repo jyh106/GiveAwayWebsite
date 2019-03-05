@@ -30,7 +30,7 @@ class PostBoard extends Component {
                         id={post.id}
                         location={post.location}
                         userID={post.userID}
-                        author={post.author}
+                        username={post.username}
                     />
         )
     }
