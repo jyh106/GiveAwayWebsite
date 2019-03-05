@@ -29,6 +29,8 @@ class PostBoard extends Component {
                         key={post.name}
                         id={post.id}
                         location={post.location}
+                        userID={post.userID}
+                        author={post.author}
                     />
         )
     }
@@ -45,6 +47,7 @@ class PostBoard extends Component {
                         key={post.name}
                         id={post.id}
                         location={post.location}
+                        userID={post.userID}
                         />
         )
     }
@@ -107,7 +110,7 @@ function mapDispatchToProps(dispatch) {
     return {
         updateUserLocation: (userLocation) => {
             dispatch(Actions.updateUserLocation(userLocation));
-        }
+        },
     }
 }
 

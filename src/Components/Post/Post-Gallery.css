@@ -89,6 +89,7 @@
     font-size:18px;
     text-align: left;
     padding-top: 5px;
+    color: rgb(46, 46, 46);
 }
 
 .post_name_gallery:hover {
@@ -107,6 +108,7 @@
     margin-right: 22px;
     padding-top: 5px;
     height: 25px;
+    color: rgb(46, 46, 46);
 }
 
 .post_address_gallery:hover {
@@ -139,7 +141,7 @@
     border-bottom: 1px solid lightgray;
 }
 
-.post_comment {
+.post_author {
     float: right;
     font-size: 12px;
     height: 25px;
@@ -148,7 +150,6 @@
     color: rgb(79, 79, 79);
 }
 
-.post_comment:hover {
-    color: rgb(0, 136, 255);
-    cursor: pointer;
+.post_author:hover {
+    cursor: default;
 }

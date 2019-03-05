@@ -94,10 +94,10 @@ class PostGallery extends Component {
         )
     }
 
-    renderCommentSection() {
+    renderAuthorSection() {
         return (
-            <div className="post_comment">
-                Comments
+            <div className="post_author">
+                {this.props.author}
             </div>
         )
     }
@@ -149,10 +149,10 @@ class PostGallery extends Component {
                 {this.renderNameSection()}
                 {this.renderPostAddress()}
                 <div className="post_details post_date_gallery">
-                    {this.props.date}
+                    post on: {this.props.date}
                 </div>
                 <div className="divider"></div>
-                {this.renderCommentSection()}
+                {this.renderAuthorSection()}
             </div>
         )
     }

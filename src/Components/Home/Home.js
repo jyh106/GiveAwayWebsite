@@ -10,36 +10,9 @@ import './Home.css';
 import Utils from '../../utils.js';
 
 class Home extends Component {
-    success(position) {
-        this.props.updateUserLocation([position.coords.latitude, position.coords.longitude])
-        console.log('success',position.coords)
-    }
-    
-    error(er) {
-        console.log('fail to access user location',er.code)
-    }
-
-    getLocation() {
-        if (!this.props.userInfo['isSignedIn']) {
-            return null
-        }
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.success, this.error, 
-                {
-                enableHighAccuracy: false, 
-                maximumAge        : 0, 
-                timeout           : 60000
-              }
-              )
-        } else {
-            console.log("Geolocation is not supported by this browser.");
-        }
-    }
-    
     render() {
         return (
              <div className="App">
-                {this.getLocation()}
                 <Header />
                 <NavBar />
                 <PostBoard />
@@ -53,7 +26,6 @@ class Home extends Component {
 
 function mapStateToProps(state){
     return{
-        userInfo: Utils.getUserInfo(state),
         isPageMaskShown: Utils.getPageMaskShown(state),
     }
   }

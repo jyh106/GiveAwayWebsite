@@ -224,6 +224,7 @@ function resetMapPosts() {
         type: 'RESET_MAP_POSTS'
     }
 }
+
 export default {
     resetMapPosts,
     showPostOnMap,
