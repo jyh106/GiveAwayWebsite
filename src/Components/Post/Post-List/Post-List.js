@@ -49,9 +49,17 @@ class PostList extends Component {
         )
     }
 
-    onPostAddressClick() {
-        this.props.showPostOnMap(this.props);
-        this.props.changeDisplayStyle("Map");
+
+    renderAddressSection() {
+        return (
+            <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
+                <div className="postList_address postList_label"
+                        onClick={()=> this.props.showPostOnMap(this.props)}>
+                    <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
+                    {this.props.address.city}
+                </div>
+            </Link>
+        )
     }
 
     handleDeletePost() {
@@ -83,11 +91,7 @@ class PostList extends Component {
                 <div className="postList_date postList_label">
                     ({this.props.date})
                 </div>
-                <div className="postList_address postList_label"
-                        onClick={()=> this.onPostAddressClick()}>
-                    <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
-                    {this.props.address.city}
-                </div>
+                {this.renderAddressSection()}
                 {this.renderNote()}
                 {this.renderImageMark()}
             </div>

@@ -67,12 +67,13 @@ class PostGallery extends Component {
     renderFirstThumbnail() {
         const imagePath = `${Constants.UPLOADS_HOSTNAME}${this.state.currentDisplayImageSrc}`;
         return (
+            <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
                 <img className="postGallery-thumb" 
                     src={imagePath}
                     height="180" width="230"
-                    alt=" "
-                    onClick={(e)=> this.handleClickedImage(e.target.src, this.props.images)}>
+                    alt=" ">
                 </img>        
+            </Link>
         )
     }
 
@@ -129,18 +130,14 @@ class PostGallery extends Component {
         )
     }
 
-    onPostAddressClick() {
-       this.props.showPostOnMap(this.props);
-       this.props.changeDisplayStyle("Map");
-    }
-
     renderPostAddress() {
         return (
-            <div className="post_details post_address_gallery"
-                onClick={()=> this.onPostAddressClick()}>
-                <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
-                {this.props.address.city}
-            </div>
+            <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
+                <div className="post_details post_address_gallery" onClick={()=> this.props.showPostOnMap(this.props)}>
+                    <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
+                    {this.props.address.city}
+                </div>
+            </Link>
         )
     }
 
@@ -180,9 +177,6 @@ function mapDispatchToProps(dispatch) {
         },
         deletePost: (postID) => {
             dispatch(Actions.deletePost(postID))
-        },
-        changeDisplayStyle: (style) => {
-            dispatch(Actions.changeDisplayStyle(style));
         },
         showPostOnMap: (post) => {
             dispatch(Actions.showPostOnMap(post));
