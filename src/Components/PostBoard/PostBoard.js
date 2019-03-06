@@ -79,8 +79,13 @@ class PostBoard extends Component {
             }
         }
 
+        let noResultMessage = "No results found.";
+        if (posts.length === 0 && this.props.showUserPosts){
+            noResultMessage = "You don't have any posts yet.";
+        }
+        
         if (posts.length === 0) {
-            return <div className="no-results-found">No results found.</div>
+            return <div className="no-results-found">{noResultMessage}</div>
         }
 
         return posts

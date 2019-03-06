@@ -75,17 +75,23 @@ class PostPage extends Component {
         )
     }
 
-    render() {
+    renderPostPageNav() {
         return (
-        <div>
-            <div className="postPageWrapper">
-                <Link to="/" className="postPageBackButtonLabel">    
+            <Link to="/" className="postPageBackButtonLabel">    
                 <div className="postPageNavigation" 
                     onClick={()=> this.props.resetMapPosts()}>
                     <FontAwesomeIcon icon="arrow-left" className="postPageBackButton" />
                     Main
                 </div>
-                </Link>
+            </Link>
+        )
+    }
+
+    render() {
+        return (
+        <div>
+            <div className="postPageWrapper">
+                {this.renderPostPageNav()}
 
                 <div className="postName postDetail">  
                     {this.props.post.name}

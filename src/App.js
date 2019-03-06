@@ -7,7 +7,6 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 import NewGiveAway from './Components/NewFormPage/NewFormPage.js';
 import PostPage from './Components/PostPage/PostPage.js';
-import UserAccount from './Components/UserAccountPage/UserAccountPage.js';
 
 class App extends Component {
   render() {
@@ -18,7 +17,6 @@ class App extends Component {
               <Route exact path="/" component={Home}></Route>
               <Route exact path="/newGiveAway" component={NewGiveAway}></Route>
               <Route path="/post/:postID" component={PostPage}></Route>
-              <Route exact path="/account" component={UserAccount}></Route>
             </Switch>
           </div>
         </BrowserRouter>
@@ -35,7 +33,7 @@ function mapStateToProps(state) {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+function mapDispatchToProps(dispatch) {
   return {
     appMounted: () => dispatch(Actions.appMounted())
   }

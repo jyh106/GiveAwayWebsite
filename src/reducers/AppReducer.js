@@ -5,8 +5,7 @@ const INITIAL_STATE = Map({
       'isSignedIn': !!localStorage.username,
       'username': localStorage.username || "",
       'userID': localStorage.userID || "",
-    },
-    userLocation: [],
+    }
 });
 
 function AppReducer(state = INITIAL_STATE, action) {

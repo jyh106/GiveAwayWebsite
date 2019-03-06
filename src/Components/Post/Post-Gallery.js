@@ -27,14 +27,6 @@ class PostGallery extends Component {
         }
     }
 
-    handleClickedImage(currentViewingImage, postImages){
-        if (currentViewingImage === (Constants.UPLOADS_HOSTNAME + Constants.DEFAULT_IMG_SRC)) {
-             return null
-        }
-        this.props.toggleModal('photos', true);
-        this.props.handleClickedImage({currentViewingImage, postImages});
-}
-
     onThumbnailButtonsClicked() {
         const currentIndex = this.props.images.indexOf(this.state.currentDisplayImageSrc);
         let nextIndex = (currentIndex + 1) % this.props.images.length;
@@ -53,11 +45,11 @@ class PostGallery extends Component {
                 onMouseOver={()=> this.showImageNavigationButtons(true)}
                 onMouseLeave={()=> this.showImageNavigationButtons(true)}>
                 <div className="thumbnailNavigationButton thumbnailNavigationButton_left"
-                    onClick={()=> this.onThumbnailButtonsClicked(true)}>
+                    onClick={()=> this.onThumbnailButtonsClicked()}>
                     <FontAwesomeIcon icon="angle-left" />
                 </div>
                 <div className="thumbnailNavigationButton thumbnailNavigationButton_right" 
-                    onClick={()=> this.onThumbnailButtonsClicked(false)}>
+                    onClick={()=> this.onThumbnailButtonsClicked()}>
                     <FontAwesomeIcon icon="angle-right"/>   
                 </div>
             </div>
@@ -115,18 +107,13 @@ class PostGallery extends Component {
         )
     }
 
-    handleDeletePost() {
-        this.props.deletePost(this.props.id);
-    }
-
-
     renderDeleteButton() {
         if (!this.props.showUserPosts) {
             return null
         }
         return (
             <div className="postDeleteButton"
-                onClick={()=>this.handleDeletePost()}>
+                onClick={()=>this.props.deletePost(this.props.id)}>
                 x
             </div>
         )
