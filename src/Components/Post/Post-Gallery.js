@@ -28,7 +28,7 @@ class PostGallery extends Component {
     }
 
     handleClickedImage(currentViewingImage, postImages){
-        if (currentViewingImage === (Constants.UPLOADS_HOSTNAME + Constants.DEFAULT_IMG_SRC)) {
+        if (currentViewingImage === Constants.DEFAULT_IMG_SRC) {
              return null
         }
         this.props.toggleModal('photos', true);
@@ -65,7 +65,7 @@ class PostGallery extends Component {
     }
 
     renderFirstThumbnail() {
-        const imagePath = `${Constants.UPLOADS_HOSTNAME}${this.state.currentDisplayImageSrc}`;
+        const imagePath = this.state.currentDisplayImageSrc;
         return (
                 <img className="postGallery-thumb" 
                     src={imagePath}

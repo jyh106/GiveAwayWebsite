@@ -17,7 +17,7 @@ class ModalPhotoDisplay extends Component {
     renderThumbs() {
         const images = [];
         for (let image of this.props.images) {
-            const imgFullSrc = Constants.UPLOADS_HOSTNAME + image;
+            const imgFullSrc = image;
             images.push(
                 <img src={imgFullSrc} 
                         alt="" key={image} 
@@ -37,7 +37,7 @@ class ModalPhotoDisplay extends Component {
         const currentImageSrc = this.props.currentClickedImage.split("/")[Constants.INDEX_FILE_SRC_AFTER_ROUTE_SPLIT];
         const currentImageIndex = this.props.images.indexOf(currentImageSrc);
         const newIndex = (currentImageIndex + 1) % this.props.images.length;
-        const nextImageSrc = Constants.UPLOADS_HOSTNAME + this.props.images[newIndex]
+        const nextImageSrc = this.props.images[newIndex]
         return this.props.updateCurrentImage(nextImageSrc)
     }   
 
