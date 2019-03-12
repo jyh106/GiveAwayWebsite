@@ -35,12 +35,12 @@
     color: rgb(66, 66, 66);
 }
 
-.newForm_questionContainer {
+/* .newForm_questionContainer {
     width: 60%;
     margin: 0 auto;
     height: 100vh;
     padding-bottom: 30px;
-}
+} */
 
 .newForm_questionWrapper {
     width: 35%;
@@ -79,7 +79,7 @@
 }
 
 .newFormInput {
-    width: 400px;
+    width: 80%;
     padding: 6px;
     outline: none;
     font-size: 15px;
@@ -116,9 +116,10 @@
     margin-right: 50px;
     position: absolute;
     bottom: 5px;
-    left: 300px;
+    left: 53%;
     font-size: 13px;
     color: rgb(88, 87, 87);
+    font-weight: normal;
 }
 
 .input_title {
@@ -193,10 +194,6 @@ input[type="file"] {
     background-color: none;
 }
 
-.question_name {
-    width: 700px;
-}
-
 .post_date {
     float: right;
     font-size: 15px;
@@ -238,7 +235,7 @@ select {
 }
 
 .newFormButton_submit {
-    margin-right: 30%;
+    margin-right: 10%;
     float: right;
 }
 

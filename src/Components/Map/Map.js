@@ -47,7 +47,7 @@ class Map extends Component {
         } else if (this.props.showUserPosts) { //display user posts
             displayPosts = this.props.userPosts;
         }  else if (Object.keys(this.props.showPostOnMap).length > 0) { // if individual post address was clicked
-                const postLocation = this.props.showPostOnMap.location;
+                const postLocation = [this.props.showPostOnMap.location_lat, this.props.showPostOnMap.location_long];
                 const postID = this.props.showPostOnMap.id;
                 const postName = this.props.showPostOnMap.name;
             return this.renderMarker(postLocation, postID, postName)
@@ -56,8 +56,9 @@ class Map extends Component {
         }
 
         for (let post of displayPosts) {
+            const postLocation = [post.location_lat, post.location_long];
             markerList.push(
-                this.renderMarker(post.location, post.id, post.name)
+                this.renderMarker(postLocation, post.id, post.name)
             )
         }
 
