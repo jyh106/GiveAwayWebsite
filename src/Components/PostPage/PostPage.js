@@ -32,7 +32,7 @@ class PostPage extends Component {
         const images = [];
         for (let image of this.props.post.images) {
             images.push(
-                <img src={Constants.UPLOADS_HOSTNAME + image} 
+                <img src={image} 
                     className="postImage" key={image}
                     height="150" width="150" alt=""
                     onClick={(e)=> this.handleClickedImage(e.target.src, this.props.post.images)}>
