@@ -11,7 +11,7 @@ function* sendPostToServer(action){
     data: action.data,
     config: { headers: {'Content-Type':'application/json'}}
   })
-  window.location.href = '/';
+  // window.location.href = '/';
 }
 
 export function* watchSubmitPost() {

@@ -54,22 +54,23 @@ class NewFormPage extends Component {
         return `${this.state.address_street} ${this.state.address_apt},${this.state.address_city}`
     }
 
-    handleSubmit(e){
-        e.stopPropagation();
-        const postInfo = {
-           'name': this.state.name,
-           'address': this.formatAddress(),
-           'note': this.state.note,
-           'images': this.state.images,
-           'category': this.state.category,
-           'userID': ""
-       }
-
-       if (this.props.isUserSignedIn) {
-           postInfo['userID'] = this.props.userInfo['userID']
-       }
-        this.props.addNewPost(postInfo);
+  handleSubmit(e){
+    e.stopPropagation();
+    const postInfo = {
+      'name': this.state.name,
+      'address': this.formatAddress(),
+      'note': this.state.note,
+      'images': this.state.images,
+      'category': this.state.category,
+      'userID': ""
     }
+
+    if (this.props.isUserSignedIn) {
+      postInfo['userID'] = this.props.userInfo['userID']
+    }
+    this.props.addNewPost(postInfo);
+    window.location.href = "/";
+  }
 
     getErrorMessage(value){
         if (value.length > 0) {
@@ -181,7 +182,7 @@ class NewFormPage extends Component {
     handleDisplayFileNames() {
         const fileNameList = [];
         for (let i = 0; i < this.state.images.length; i++) {
-            const fileName = this.state.images[i];
+            const fileName = this.state.images[i].name;
             fileNameList.push(
                 <div className="displayFileName" key={i}>
                     {fileName}
@@ -198,8 +199,18 @@ class NewFormPage extends Component {
     }
 
     createNewImagesList(e) {
-        // adding new image filename into the current image file list
-        return this.state.images.slice(0).concat(this.getFileName(e))
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          this.setState({
+            images: this.state.images.concat([{
+              name: file.name,
+              type: file.type,
+              data: reader.result.split(',')[1]
+            }])
+          });
+        }
+        reader.readAsDataURL(file);
     }
 
     renderQuestion_images() {
@@ -215,7 +226,7 @@ class NewFormPage extends Component {
                 <input id="post-images-upload" 
                         type="file" 
                         accept="image/png, image/jpeg, image/jpg" 
-                        onChange={(e)=>this.onInputChange('images', this.createNewImagesList(e))}/>
+                        onChange={(e)=>this.createNewImagesList(e)}/>
                 {this.handleDisplayFileNames()}
             </div>
         )

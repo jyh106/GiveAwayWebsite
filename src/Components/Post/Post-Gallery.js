@@ -57,7 +57,7 @@ class PostGallery extends Component {
     }
 
     renderFirstThumbnail() {
-        const imagePath = `${Constants.UPLOADS_HOSTNAME}${this.state.currentDisplayImageSrc}`;
+        const imagePath = this.state.currentDisplayImageSrc;
         return (
             <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
                 <img className="postGallery-thumb" 
