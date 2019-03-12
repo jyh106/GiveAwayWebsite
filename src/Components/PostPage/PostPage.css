@@ -20,7 +20,6 @@
 }
 
 .postPageBackButton:hover, .postPageBackButtonLabel:hover {
-    color: blue;
     cursor: pointer;
 }
 
@@ -32,6 +31,20 @@
     margin: 0 auto;
     padding-top: 20px;
     border-bottom: 3px solid rgb(245, 168, 101);
+}
+
+.post_page_author {
+    font-size: 15px;
+    float: right;
+    color: gray;
+    display: inline;
+    margin-right: 100px;
+    margin-top: 20px;
+}
+
+.post_page_author-label {
+    display: inline-block;
+    padding-right: 10px;
 }
 
 .postDetail {

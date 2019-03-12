@@ -59,13 +59,16 @@ class PostGallery extends Component {
     renderFirstThumbnail() {
         const imagePath = this.state.currentDisplayImageSrc;
         return (
+            <div onClick={()=> this.props.showPostOnMap(this.props)}>
             <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
                 <img className="postGallery-thumb" 
                     src={imagePath}
                     height="180" width="230"
-                    alt=" ">
+                    alt=" "
+                    >
                 </img>        
             </Link>
+            </div>
         )
     }
 
@@ -79,7 +82,8 @@ class PostGallery extends Component {
         return (
             <div className="thumbnailContainer"
                 onMouseOver={()=> this.showImageNavigationButtons(true)}
-                onMouseLeave={()=> this.showImageNavigationButtons(false)}>
+                onMouseLeave={()=> this.showImageNavigationButtons(false)}
+                onClick={()=> this.props.showPostOnMap(this.props)}>
                 {this.renderFirstThumbnail()}
                 {this.renderThumbnailNagivationButtons()}
             </div>
@@ -100,9 +104,9 @@ class PostGallery extends Component {
         const postName = (this.props.name.length > 23) ? `${(this.props.name).substring(0, 15)}...` : this.props.name;
         return(
             <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
-                <div className="post_details post_name_gallery" onClick={()=> this.props.showPostOnMap(this.props)}>
-                    {postName}
-                </div>
+            <div className="post_details post_name_gallery" onClick={()=> this.props.showPostOnMap(this.props)}>
+                {postName}
+            </div>
             </Link>
         )
     }
@@ -122,10 +126,10 @@ class PostGallery extends Component {
     renderPostAddress() {
         return (
             <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
-                <div className="post_details post_address_gallery" onClick={()=> this.props.showPostOnMap(this.props)}>
-                    <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
-                    {this.props.address.city}
-                </div>
+            <div className="post_details post_address_gallery" onClick={()=> this.props.showPostOnMap(this.props)}>
+                <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
+                {this.props.address.city}
+            </div>
             </Link>
         )
     }

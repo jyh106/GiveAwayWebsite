@@ -41,7 +41,6 @@ class Map extends Component {
     renderMarkers() {
         const markerList = [];
         let displayPosts = [];
-
         if (this.props.searchBarStatus) { //display search results
             displayPosts = this.props.searchResult;
         } else if (this.props.showUserPosts) { //display user posts
@@ -56,7 +55,7 @@ class Map extends Component {
         }
 
         for (let post of displayPosts) {
-            const postLocation = [post.location_lat, post.location_long];
+            const postLocation = [post.address_lat, post.address_long];
             markerList.push(
                 this.renderMarker(postLocation, post.id, post.name)
             )

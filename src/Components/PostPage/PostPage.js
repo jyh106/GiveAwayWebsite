@@ -78,16 +78,27 @@ class PostPage extends Component {
     renderPostPageNav() {
         return (
             <Link to="/" className="postPageBackButtonLabel">    
-                <div className="postPageNavigation" 
-                    onClick={()=> this.props.resetMapPosts()}>
-                    <FontAwesomeIcon icon="arrow-left" className="postPageBackButton" />
-                    Main
-                </div>
+            <div className="postPageNavigation" 
+                onClick={()=> this.props.resetMapPosts()}>
+                <FontAwesomeIcon icon="arrow-left" className="postPageBackButton" />
+                Main
+            </div>
             </Link>
         )
     }
 
+    renderAuthorSection() {
+        const username = this.props.post.username;
+        return (
+            <div className="post_page_author">
+                <p className="post_page_author-label">Given by: </p>
+                {(!username) ? "anonymous" : username}
+            </div>
+        )
+    }
+
     render() {
+        console.log(this.props.post)
         return (
         <div>
             <div className="postPageWrapper">
@@ -95,6 +106,7 @@ class PostPage extends Component {
 
                 <div className="postName postDetail">  
                     {this.props.post.name}
+                    {this.renderAuthorSection()}
                 </div>
 
                 <div className="postDate postDetail">

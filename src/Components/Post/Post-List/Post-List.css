@@ -23,6 +23,8 @@
     position: absolute;
     top: 0px;
     left: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .postList-DeleteButton:hover {
