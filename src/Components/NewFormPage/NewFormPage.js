@@ -70,7 +70,6 @@ class NewFormPage extends Component {
       postInfo['userID'] = this.props.userInfo['userID']
     }
     this.props.addNewPost(postInfo);
-    window.location.href = "/";
   }
 
     getErrorMessage(value){

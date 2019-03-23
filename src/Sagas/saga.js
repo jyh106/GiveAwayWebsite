@@ -6,14 +6,13 @@ import Utils from '../utils';
 import { yellow } from 'ansi-colors';
 
 function* sendPostToServer(action){
-  console.log(action.data);
   yield call(axios, {
     method: 'POST',
     url: `${Constants.HOSTNAME}posts`,
     data: action.data,
     config: { headers: {'Content-Type':'application/json'}}
   })
-  // window.location.href = '/';
+  window.location.href = '/';
 }
 
 export function* watchSubmitPost() {
@@ -25,7 +24,7 @@ export function* watchSubmitPost() {
 }
 
 function* getPosts(){
-  const response = yield call(axios.get, `${Constants.HOSTNAME}posts?city=All cities`)
+  const response = yield call(axios.get, `${Constants.HOSTNAME}posts?city=All cities`, {withCredentials: true})
   yield put(Actions.getPosts(response.data))
 }
 
