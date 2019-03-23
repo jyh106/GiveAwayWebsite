@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Actions from '../../Actions/actions.js';
 import Constants from '../../constants.js';
 import ModalContainer from "../../Components/Modals/ModalContainer";
+import PostMap from "../../Components/Map/Map.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt,faAngleLeft, faAngleRight,
          faCalendarAlt, faStickyNote, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
@@ -24,45 +25,87 @@ class PostPage extends Component {
         this.props.handleClickedImage({currentViewingImage, postImages});
     } 
 
-    renderImageSection() {
+    imageList() {
         if (!this.props.post.images) {
             return null
-        } else {
-            const images = [];
-            for (let image of this.props.post.images) {
-                images.push(
-                    <img src={image} 
-                        className="postImage" key={image}
-                        height="150" width="150" alt=""
-                        onClick={(e)=> this.handleClickedImage(e.target.src, this.props.post.images)}>
-                    </img>
-                )
-            }
-            return (
-                <div className="imageSectionContainer">
-                    <div className="imageSlider">
-                        <div className="imageInnerSlider">
-                            {images}
-                        </div>
-                    </div>
-                </div>
+        } 
+        const images = [];
+        for (let image of this.props.post.images) {
+            images.push(
+                <img src={image} 
+                    className="postImage" key={image}
+                    height="150" width="150" alt=""
+                    onClick={(e)=> this.handleClickedImage(e.target.src, this.props.post.images)}>
+                </img>
             )
         }
+        return images
+    }
+
+    giveImageSectionClassName() {
+        if (!this.props.post.images || (this.props.post.images.length === 0)) {
+            return "imageSliderNotActive"
+        }
+        return "imageSlider"
+    }
+
+    renderImageSection() {
+        return (
+            <div className="imageSectionContainer">
+                <div className={`${this.giveImageSectionClassName()}`}>
+                    <div className="imageInnerSlider">
+                        {this.imageList()}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    renderNoteSection() {
+        if (!this.props.post.note) {
+            return null
+        }
+        return (
+            <div className="postNote postDetail">
+                <FontAwesomeIcon icon="sticky-note" className="iconNote icons"/>
+                <div className="postNoteText">
+                    {this.props.post.note}  
+                </div>
+            </div>
+        )
+    }
+
+    renderPostPageNav() {
+        return (
+            <Link to="/" className="postPageBackButtonLabel">    
+            <div className="postPageNavigation" 
+                onClick={()=> this.props.resetMapPosts()}>
+                <FontAwesomeIcon icon="arrow-left" className="postPageBackButton" />
+                Main
+            </div>
+            </Link>
+        )
+    }
+
+    renderAuthorSection() {
+        const username = this.props.post.username;
+        return (
+            <div className="post_page_author">
+                <p className="post_page_author-label">Given by: </p>
+                {(!username) ? "anonymous" : username}
+            </div>
+        )
     }
 
     render() {
         return (
         <div>
             <div className="postPageWrapper">
-                <div className="postPageNavigation">
-                    <Link to="/" className="postPageBackButtonLabel">    
-                        <FontAwesomeIcon icon="arrow-left" className="postPageBackButton" />
-                        Main
-                    </Link>
-                </div>
+                {this.renderPostPageNav()}
 
                 <div className="postName postDetail">  
                     {this.props.post.name}
+                    {this.renderAuthorSection()}
                 </div>
 
                 <div className="postDate postDetail">
@@ -70,22 +113,19 @@ class PostPage extends Component {
                     {this.props.post.date}
                 </div>
 
+                {this.renderNoteSection()}
+                {this.renderImageSection()}
+                {Utils.renderPageMask(this.props.isPageMaskShown)}
+
+                <div className="photoModal">
+                    <ModalContainer modalStyle='postPageStyle' />
+                </div>
+
                 <div className="postAddress postDetail">
                     <FontAwesomeIcon icon="map-marker-alt" className="iconAddress icons"/>
                     {this.props.post.address}
                 </div>
-
-                <div className="postNote postDetail">
-                    <FontAwesomeIcon icon="sticky-note" className="iconNote icons"/>
-                    <div className="postNoteText">
-                        {this.props.post.note}  
-                    </div>
-                </div>
-                {this.renderImageSection()}
-                {Utils.renderPageMask(this.props.isPageMaskShown)}
-                <div className="photoModal">
-                    <ModalContainer modalStyle='postPageStyle' />
-                </div>
+                <PostMap mapClassName="postPage-map"/>
             </div>
         </div>
         )
@@ -109,6 +149,12 @@ function mapDispatchToProps(dispatch) {
         },
         handleClickedImage: ({currentViewingImage, postImages}) => {
             dispatch(Actions.handleClickedImage({currentViewingImage, postImages}))
+        },
+        showPostOnMap: (post) => {
+            dispatch(Actions.showPostOnMap(post));
+        },
+        resetMapPosts: () => {
+            dispatch(Actions.resetMapPosts());
         }
     }
 }

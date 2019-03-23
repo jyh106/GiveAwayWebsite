@@ -1,20 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 .PostBoard{
     position: absolute;
-    top: 0;
-    left: 10px;
-    width: 100%;
-    float: right;
+    top: 15px;
+    left: 0;
+    width: 97.5%;
     background: white;
+    height: 90%;
+    float: left;
+    padding-bottom: 40px;
+    overflow: scroll;
+    display: inline-block;
 }
 
 .postBoardWrapper {
     position: relative;
-    top: 60px;
-    left: 10px;
-    overflow: scroll;
-    width: 81.5%;
-    height: 100vh;
+    top: 10px;
+    left: 20px;
+    width: calc(100% - 235px);
+    height: calc(100vh - 100px);
     margin-right: 15px;
     float: right;
     background: white;
+}
+
+.no-results-found {
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    color: rgb(120, 120, 120);
+    padding-top: 10%;
+    margin: 0 auto;
 }

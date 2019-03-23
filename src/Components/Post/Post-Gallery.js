@@ -27,15 +27,7 @@ class PostGallery extends Component {
         }
     }
 
-    handleClickedImage(currentViewingImage, postImages){
-        if (currentViewingImage === Constants.DEFAULT_IMG_SRC) {
-             return null
-        }
-        this.props.toggleModal('photos', true);
-        this.props.handleClickedImage({currentViewingImage, postImages});
-}
-
-    onThumbnailButtonsClicked(isLeft) {
+    onThumbnailButtonsClicked() {
         const currentIndex = this.props.images.indexOf(this.state.currentDisplayImageSrc);
         let nextIndex = (currentIndex + 1) % this.props.images.length;
         this.setState({
@@ -53,11 +45,11 @@ class PostGallery extends Component {
                 onMouseOver={()=> this.showImageNavigationButtons(true)}
                 onMouseLeave={()=> this.showImageNavigationButtons(true)}>
                 <div className="thumbnailNavigationButton thumbnailNavigationButton_left"
-                    onClick={()=> this.onThumbnailButtonsClicked(true)}>
+                    onClick={()=> this.onThumbnailButtonsClicked()}>
                     <FontAwesomeIcon icon="angle-left" />
                 </div>
                 <div className="thumbnailNavigationButton thumbnailNavigationButton_right" 
-                    onClick={()=> this.onThumbnailButtonsClicked(false)}>
+                    onClick={()=> this.onThumbnailButtonsClicked()}>
                     <FontAwesomeIcon icon="angle-right"/>   
                 </div>
             </div>
@@ -67,12 +59,16 @@ class PostGallery extends Component {
     renderFirstThumbnail() {
         const imagePath = this.state.currentDisplayImageSrc;
         return (
+            <div onClick={()=> this.props.showPostOnMap(this.props)}>
+            <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
                 <img className="postGallery-thumb" 
                     src={imagePath}
                     height="180" width="230"
                     alt=" "
-                    onClick={(e)=> this.handleClickedImage(e.target.src, this.props.images)}>
+                    >
                 </img>        
+            </Link>
+            </div>
         )
     }
 
@@ -86,31 +82,34 @@ class PostGallery extends Component {
         return (
             <div className="thumbnailContainer"
                 onMouseOver={()=> this.showImageNavigationButtons(true)}
-                onMouseLeave={()=> this.showImageNavigationButtons(false)}>
+                onMouseLeave={()=> this.showImageNavigationButtons(false)}
+                onClick={()=> this.props.showPostOnMap(this.props)}>
                 {this.renderFirstThumbnail()}
                 {this.renderThumbnailNagivationButtons()}
             </div>
         )
     }
 
-    renderCommentSection() {
+    renderAuthorSection() {
+        const username = (this.props.username.length === 0) ? "anonymous" : this.props.username;
         return (
-            <div className="post_comment">
-                Comments
+            <div className="post_author">
+                <p className="author-label">Given by: </p>
+                {username}
             </div>
         )
     }
 
     renderNameSection() {
+        const postName = (this.props.name.length > 23) ? `${(this.props.name).substring(0, 15)}...` : this.props.name;
         return(
-            <div className="post_details post_name_gallery">
-                <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
-                    {this.props.name}
-                </Link>
+            <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
+            <div className="post_details post_name_gallery" onClick={()=> this.props.showPostOnMap(this.props)}>
+                {postName}
             </div>
+            </Link>
         )
     }
-
 
     renderDeleteButton() {
         if (!this.props.showUserPosts) {
@@ -124,21 +123,38 @@ class PostGallery extends Component {
         )
     }
 
+    renderPostAddress() {
+        return (
+            <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
+            <div className="post_details post_address_gallery" onClick={()=> this.props.showPostOnMap(this.props)}>
+                <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
+                {this.props.address.city}
+            </div>
+            </Link>
+        )
+    }
+
+    renderDateSection() {
+        return (
+            <div className="post_details post_date_gallery">
+                <p className="date-label">
+                    Post on:
+                </p>
+                {this.props.date}
+            </div>
+        )
+    }
+
     render(){
         return(
             <div className="post_gallery">
                 {this.renderDeleteButton()}
                 {this.renderImages()}
                 {this.renderNameSection()}
-                <div className="post_details post_address_gallery">
-                   <FontAwesomeIcon icon="map-marker-alt" className="post_address_icon"/> 
-                   {this.props.address.city}
-                </div>
-                <div className="post_details post_date_gallery">
-                    {this.props.date}
-                </div>
+                {this.renderPostAddress()}
+                {this.renderDateSection()}
                 <div className="divider"></div>
-                {this.renderCommentSection()}
+                {this.renderAuthorSection()}
             </div>
         )
     }
@@ -163,6 +179,9 @@ function mapDispatchToProps(dispatch) {
         },
         deletePost: (postID) => {
             dispatch(Actions.deletePost(postID))
+        },
+        showPostOnMap: (post) => {
+            dispatch(Actions.showPostOnMap(post));
         }
     }
   }

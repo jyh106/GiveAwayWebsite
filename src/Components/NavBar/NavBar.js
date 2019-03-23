@@ -32,13 +32,13 @@ class NavBar extends Component {
 
     renderNewFormButton() {
         return (
+            <Link to="/newGiveAway" className="navBar_giveButton">
             <div className="addNewFormButton"
                 onMouseEnter={()=>this.toggleDisplayHeartOnButton()}
                 onMouseLeave={()=>this.toggleDisplayHeartOnButton()}>
-                <Link to="/newGiveAway" className="navBar_giveButton">
-                    Give {this.newFormButtonLabel()}
-                </Link>
+                    <p className="giveButtonLabel">Give</p> {this.newFormButtonLabel()}
             </div>
+            </Link>
         )
     }
 
@@ -51,7 +51,6 @@ class NavBar extends Component {
 
     onMyPostClick() {
         this.props.showUserPosts(!this.props.shouldShowUserPosts)
-        this.props.getUserPosts(this.props.userInfo['userID']);
     }
 
     renderUserPostsButton() {

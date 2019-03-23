@@ -9,7 +9,10 @@
     background: white;
     border-radius: 5px;
     box-shadow: 0px 0px 7px 0px rgb(197, 197, 197);
-    margin: 9px 10px;
+    margin-right: 10.7px;
+    margin-left: 10.7px;
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 .postDeleteButton {
@@ -89,6 +92,7 @@
     font-size:18px;
     text-align: left;
     padding-top: 5px;
+    color: rgb(63, 63, 63);
 }
 
 .post_name_gallery:hover {
@@ -107,6 +111,11 @@
     margin-right: 22px;
     padding-top: 5px;
     height: 25px;
+    color: rgb(36, 36, 36);
+}
+
+.post_address_gallery:hover {
+    cursor: pointer;
 }
 
 .post_address_icon{
@@ -135,16 +144,22 @@
     border-bottom: 1px solid lightgray;
 }
 
-.post_comment {
+.post_author {
     float: right;
-    font-size: 12px;
+    font-size: 13px;
     height: 25px;
     margin-top: 10px;
     margin-right: 22px;
-    color: rgb(79, 79, 79);
+    color: rgb(69, 69, 69);
 }
 
-.post_comment:hover {
-    color: rgb(0, 136, 255);
-    cursor: pointer;
+.author-label, .date-label {
+    display: inline-block;
+    font-size: 11px;
+    padding-right: 4px;
+    color: rgb(94, 94, 94);
+}
+
+.post_author:hover {
+    cursor: default;
 }

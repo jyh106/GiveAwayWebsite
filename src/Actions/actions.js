@@ -75,11 +75,6 @@ function appMounted() {
     }
   }
 
-function appWillMount() {
-    return {
-        type: 'APP_WILL_MOUNT'
-    }
-}
 
 function getPosts(posts) {
     return {
@@ -170,13 +165,6 @@ function shouldShowUserPosts(toggle) {
     }
 }
 
-function getUserPosts(userID) {
-    return {
-        type: 'GET_USER_POSTS',
-        data: userID
-    }
-}
-
 function deletePost(postID) {
     return {
         type: "DELETE_POST",
@@ -219,14 +207,29 @@ function updateUserPosts(posts) {
     }
 }
 
+function showPostOnMap(post) {
+    return {
+        type: 'SHOW_POST_ON_MAP',
+        data: post,
+    }
+}
+
+function resetMapPosts() {	
+    return {	
+        type: 'RESET_MAP_POSTS'	
+    }	
+}
+
+
 export default {
+    resetMapPosts,
+    showPostOnMap,
     updateUserPosts,
     searchBarStatus,
     updateSearchOutput,
     searchForReleventPosts,
     updateUserLocation,
     deletePost,
-    getUserPosts,
     shouldShowUserPosts,
     userSignedOut,
     isSignInSuccessful,
@@ -241,7 +244,6 @@ export default {
     addNewPost,
     appMounted,
     getPosts,
-    appWillMount, 
     handleClickedImage,
     updateClickedImage,
     toggleSideBar,

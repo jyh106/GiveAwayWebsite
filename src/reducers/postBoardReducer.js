@@ -6,13 +6,17 @@ const INITIAL_STATE = Map({
     clickedListPost: {},
     showUserPosts: false,
     userPosts: [],
-    searchOutput: []
+    searchOutput: [],
+    showPostOnMap: {}
 })
 
 
 function PostBoardReducer (state = INITIAL_STATE, action) {
     switch(action.type){
         case('CHANGE_DISPLAY_STYLE'):
+            if (action.data !== "Map") {
+                return state.set('displayStyle', action.data).set('showPostOnMap', {})
+            }
             return state.set('displayStyle', action.data)
         case('UPDATE_CLICKED_POST'):
             return state.set('clickedListPost', action.data)
@@ -30,6 +34,10 @@ function PostBoardReducer (state = INITIAL_STATE, action) {
             return state.set('searchOutput', action.data)
         case('UPDATE_USER_POSTS'):
             return state.set('userPosts', action.data)
+        case('SHOW_POST_ON_MAP'):
+            return state.set('showPostOnMap', action.data)
+        case('RESET_MAP_POSTS'):
+            return state.set('showPostOnMap', {})
         default:
             return state
     }

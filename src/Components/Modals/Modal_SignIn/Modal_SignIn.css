@@ -2,9 +2,12 @@
 
 .signInModal{
     z-index: 11;
+    margin: auto;
     position: absolute;
-    top: 22%;
-    left: 33%;
+    top: 0;
+    left: 0; 
+    bottom: 0; 
+    right: 0;
     width: 400px;
     height: 400px;
     background: white;

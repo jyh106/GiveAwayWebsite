@@ -22,21 +22,21 @@ class User extends Component {
 
     renderUserIcon() {
         if (this.props.userInfo['isSignedIn']) {
+            const firstLetterOfUsername = this.props.userInfo['username'][0];
             return (
                 <div className="user userActive"> 
-                    {this.props.userInfo['username'][0]}
+                    {firstLetterOfUsername}
                 </div>
             )
         } 
         return (
             <div className="user">
-                <FontAwesomeIcon icon="user-circle" 
-                    className="icon_user" /> 
+                <FontAwesomeIcon icon="user-circle" className="icon_user" /> 
             </div>
         )
     }
 
-    renderSignInAndOut() {
+    renderSignInOrOut() {
         if (this.props.userInfo['isSignedIn']) {
             return (
                 <div className="userSignOut"
@@ -57,7 +57,7 @@ class User extends Component {
         return (
             <div>
                 {this.renderUserIcon()}
-                {this.renderSignInAndOut()}
+                {this.renderSignInOrOut()}
             </div>
         )
     }
@@ -66,7 +66,6 @@ class User extends Component {
 function mapStateToProps(state) {
     return{
         userInfo: Utils.getUserInfo(state),
-        isSignInSuccessful: Utils.isSignInSuccessful(state)
     }
 }
   

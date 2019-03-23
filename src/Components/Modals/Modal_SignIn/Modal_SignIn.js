@@ -47,33 +47,51 @@ class ModalSignIn extends Component {
         }
     }
 
+    renderForm_UserName() {
+        return (
+            <div className="signInForm-element signInForm-username">
+                <div className="form_label">
+                    Username:
+                </div> 
+                <input className="signInInput signInFormInput-username" 
+                    placeholder="user ID" 
+                    onChange={(e)=> this.setState({username: e.target.value})}/>
+            </div>
+        )
+    }
+
+    renderForm_Password() {
+        return (
+            <div className="signInForm-element signInForm-password">
+                <div className="form_label">
+                    Password:
+                </div> 
+                <input className="signInInput signInFormInput-password" type="password" 
+                    onChange = {(e)=> this.setState({password : e.target.value})}
+                    onKeyPress={(e)=>this.handlePassword(e)}/>
+            </div>
+        )
+    }
+
+    renderForm_LogIn() {
+        return (
+            <div className="signInForm-submit signInForm-element">
+                <button className= "signInForm-submitLabel"
+                    onClick={()=> this.onSignInClicked()}
+                    disable={this.props.isSignInSuccessful ? 'false' : 'true'}>
+                    Log in
+                </button>
+            </div>
+        )
+    }
+
     renderForm() {
         return (
             <div className="signInForm-elementContainer">
-                <div className="signInForm-element signInForm-username">
-                    <div className="form_label">
-                        Username:
-                    </div> 
-                    <input className="signInInput signInFormInput-username" 
-                        placeholder="user ID" 
-                        onChange={(e)=> this.setState({username: e.target.value})}/>
-                </div>
-                <div className="signInForm-element signInForm-password">
-                    <div className="form_label">
-                        Password:
-                    </div> 
-                    <input className="signInInput signInFormInput-password" type="password" 
-                        onChange = {(e)=> this.setState({password : e.target.value})}
-                        onKeyPress={(e)=>this.handlePassword(e)}/>
-                </div>
+                {this.renderForm_UserName()}
+                {this.renderForm_Password()}
                 {this.renderSignInErrorMsg()}
-                <div className="signInForm-submit signInForm-element">
-                    <button className= "signInForm-submitLabel"
-                        onClick={()=> this.onSignInClicked()}
-                        disable={this.props.isSignInSuccessful ? 'false' : 'true'}>
-                        Log in
-                    </button>
-                </div>
+                {this.renderForm_LogIn()}
             </div>
         )
     }
@@ -104,7 +122,7 @@ function mapStateToProps(state) {
     }
 }
   
-  const mapDispatchToProps = dispatch => {
+function mapDispatchToProps(dispatch) {
     return {
         toggleModal: (type, toggle)=>{
             dispatch(Actions.toggleModal(type, toggle))

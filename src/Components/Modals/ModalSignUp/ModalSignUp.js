@@ -20,43 +20,20 @@ class ModalSignUp extends Component {
     }
 
     renderUsernameErrorMessage() {
-        if (!this.props.isUsernameValid) {
-            return (
-                <div className="usernameErrorMsg signUpErrorMsg">
-                    <FontAwesomeIcon icon="exclamation-circle" className="signUp-exclamation-icon"/>
-                    username already taken, please choose another
-                </div>
-            )
-        } else if (!this.state.username) {
-            return (
-                <div className="usernameErrorMsg signUpErrorMsg">
-                    <FontAwesomeIcon icon="exclamation-circle" className="signUp-exclamation-icon"/>
-                    must fill out username
-                </div>
-            )
+        if (this.props.isUsernameValid) {
+            return null
         }
+        return (
+            <div className="usernameErrorMsg signUpErrorMsg">
+                <FontAwesomeIcon icon="exclamation-circle" className="signUp-exclamation-icon"/>
+                username already taken, please choose another
+            </div>
+        )
     }
 
-    renderPasswordErrorMessage() {
-        if (!this.state.password) {
-            return (
-                <div className="passwordErrorMsg signUpErrorMsg">
-                    <FontAwesomeIcon icon="exclamation-circle" className="signUp-exclamation-icon"/>
-                    must fill out password
-                </div>
-            )
-        }
-    }
 
     renderUnmatchPasswordErrorMessage() {
-        if (!this.state.confirmPassword) {
-            return (
-                <div className="unmatchPasswordErrorMsg signUpErrorMsg">
-                    <FontAwesomeIcon icon="exclamation-circle" className="signUp-exclamation-icon"/>
-                   must confirm password
-                </div>
-            )
-        } else if (this.state.password !== this.state.confirmPassword) {
+        if (this.state.password !== this.state.confirmPassword) {
             return (
                 <div className="unmatchPasswordErrorMsg signUpErrorMsg">
                     <FontAwesomeIcon icon="exclamation-circle" className="signUp-exclamation-icon"/>
@@ -114,7 +91,6 @@ class ModalSignUp extends Component {
                         placeholder="password">
                     </input>
                 </div>
-                {this.renderPasswordErrorMessage()}
                 <div className="signUpForm-element signUpForm-password-confirm">
                     <FontAwesomeIcon className="signUpForm-icon" icon="lock" />
                     <input className="signUpForm-input signUpForm-password-confirm-input"

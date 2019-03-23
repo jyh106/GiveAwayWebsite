@@ -3,9 +3,8 @@ import axios from 'axios';
 import Actions from '../Actions/actions.js';
 import Constants from '../constants';
 import Utils from '../utils';
-import { yellow } from 'ansi-colors';
 
-function* sendPostToServer(action){
+function* sendPostToServer(action){  
   yield call(axios, {
     method: 'POST',
     url: `${Constants.HOSTNAME}posts`,
@@ -36,24 +35,6 @@ export function* watchAppMounted() {
   }
 }
 
-// handle update city and refresh the page with filtered posts
-function* sendSelectedCityToServer(action) {
-  const response = yield call(axios, {
-      method: 'POST',
-      url: `${Constants.HOSTNAME}city`,
-      data: {"city": action.data},
-      config: { headers: {'Content-Type':'application/json'}}
-    })
-   yield put(Actions.getPosts(response.data))
-}
-
-export function* watchSelectCity() {
-  while (true) {
-    const action = yield take('UPDATE_CITY');
-    yield call(sendSelectedCityToServer, action)
-  }
-}
-
 function* watchOnSignUpClick() {
   while (true) {
     const action = yield take('ON_SIGNUP_CLICK');
@@ -63,14 +44,15 @@ function* watchOnSignUpClick() {
 
 function* onSignUpClick(action) {
   try {
-     yield call(axios, {
+     const response = yield call(axios, {
       method: 'POST',
       url: `${Constants.HOSTNAME}signup`,
       data: action.data,
       config: { headers: {'Content-Type':'application/json'}}
     });
     yield put(Actions.signIn({
-      username: action.data.username
+      username: action.data.username,
+      userID: response.data.userID
     }));
   } catch (err) {
     console.log('sign up unsuccessful')
@@ -136,9 +118,9 @@ function* filterPosts(requirements) {
 }
 
 
-export function* watchSelectCategoryAndImages() {
+export function* watchSideBarSelection() {
   while (true) {
-    yield take(['UPDATE_CATEGORY', 'TOGGLE_HAS_IMAGES','RESET_SELECTIONS', 'TOGGLE_NEWEST']);
+    yield take(['UPDATE_CATEGORY', 'TOGGLE_HAS_IMAGES','RESET_SELECTIONS', 'TOGGLE_NEWEST', 'UPDATE_CITY']);
     const selectedCity = yield select(Utils.getSideBarItems, 'currentSelectedCity');
     const selectedCategories = yield select(Utils.getSideBarItems, 'currentSelectedCategories');
     const newestPreference = yield select(Utils.getSideBarItems, 'newest');
@@ -170,12 +152,17 @@ export function* watchFetchCurrentPostData() {
 }
 
 function* handleDeletePost(postID) {
-  yield call(axios, {
+  try {
+    yield call(axios, {
     method: 'POST',
     data: postID,
     url : `${Constants.HOSTNAME}deletepost`,
     config: { headers: {'Content-Type':'application/json'}}
   })
+    yield put(Actions.shouldShowUserPosts(true));
+  } catch (err) {
+    console.log('error in trying to delete post: ', err)
+  }
 }
 
 function* watchDeletePost() {
@@ -220,8 +207,11 @@ function* getUserPosts(userID) {
 
 function* watchShowUserPosts() {
   while (true) {
-    const action = yield take("GET_USER_POSTS");
-    yield call(getUserPosts, action.data)
+    const action = yield take("SHOW_USER_POSTS");
+    if (action.data) {
+      const userInfo = yield select(Utils.getUserInfo);
+      yield call(getUserPosts, userInfo['userID'])
+    }
   }
 }
 
@@ -232,9 +222,8 @@ export default function* rootSaga() {
     watchDeletePost(),
     watchSubmitPost(),
     watchOnSignUpClick(),
-    watchSelectCity(),
     watchAppMounted(),
-    watchSelectCategoryAndImages(),
+    watchSideBarSelection(),
     watchFetchCurrentPostData(),
     watchOnSignInClick(),
     watchValidateUsername(),

@@ -7,30 +7,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faComment, faImages} from '@fortawesome/free-solid-svg-icons';
 import Actions from '../../../Actions/actions.js';
 import Constants from '../../../constants.js';
+import  Utils  from '../../../utils';
 library.add(faMapMarkerAlt, faComment, faImages) 
 
 class PostList extends Component {
-    handlePostClcicked(){
-        this.props.updateClickedPost({
-            'name': this.props.name,
-            'date': this.props.date,
-            'address': this.props.address,
-            'note': this.props.note,
-            'images': this.props.images,
-            'id': this.props.id
-        })
-        this.props.toggleDisplay('post', true);
-    }
-
     renderNote() {
-        if(this.props.description === ''){
+        if(this.props.note === ''){
             return null
         }
         return (
-            <div className="postList_note postList_label" 
-                        onClick={()=>{this.renderPostDetailModal()}}>
+            <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
+            <div className="postList_note postList_label">
                 <FontAwesomeIcon icon="comment" className="postList_note"></FontAwesomeIcon> 
             </div>
+            </Link>
         )
     }
 
@@ -39,46 +29,88 @@ class PostList extends Component {
             return null
         }
         return (
+            <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
             <div className="postList_image postList_label">
                 <FontAwesomeIcon icon="images" className="postList_image"></FontAwesomeIcon>
+            </div>
+            </Link>
+        )
+    }
+
+
+    renderAddressSection() {
+        return (
+            <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
+                <div className="postList_address postList_label"
+                        onClick={()=> this.props.showPostOnMap(this.props)}>
+                    <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
+                    {this.props.address.city}
+                </div>
+            </Link>
+        )
+    }
+
+    handleDeletePost() {
+        this.props.deletePost(this.props.id);
+    }
+
+    renderDeleteButton() {
+        if (!this.props.showUserPosts) {
+            return null
+        }
+        return (
+            <div className="postList-DeleteButton"
+                onClick={()=>this.handleDeletePost()}>
+                x
+            </div>
+        )
+    }
+
+    renderAuthorSection() {
+        const username = (this.props.username.length === 0) ? "anonymous" : this.props.username;
+        return (
+            <div className="post_list_author">
+                <p className="post_list_author-label">Given by: </p>
+                {username}
             </div>
         )
     }
 
     render(){
+        const postName = (this.props.name.length > 23) ? `${(this.props.name).substring(0, 20)}...` : this.props.name;
         return(
-        <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
-            <div className="postList postElement">
+            <div className="postList postElement" onClick={()=> this.props.showPostOnMap(this.props)}>
+            {this.renderDeleteButton()}
+             <Link to={`${Constants.SINGULAR_POST_PAGE_ROUTE + this.props.id}`}>
                 <div className="postList_name postList_label">
-                    {this.props.name} 
+                    {postName} 
                 </div>
+            </Link>
                 <div className="postList_date postList_label">
-                    ({this.props.date})
+                    Post on: ({this.props.date})
                 </div>
-                <div className="postList_address postList_label">
-                    <FontAwesomeIcon icon="map-marker-alt" className="icon_address" /> 
-                    {this.props.address.city}
-                </div>
+                {this.renderAuthorSection()}
+                {this.renderAddressSection()}
                 {this.renderNote()}
                 {this.renderImageMark()}
             </div>
-        </Link>
         )
     }
 }
 
 function mapStateToProps(state){
     return{
+        showUserPosts: Utils.shouldShowUserPosts(state),
     }
   }
   
   const mapDispatchToProps = dispatch => {
     return {
-        updateClickedPost: (postInfo)=> {
-            dispatch(Actions.updateClickedPost(postInfo))
+        showPostOnMap: (post) => {
+            dispatch(Actions.showPostOnMap(post));
         },
-        toggleDisplay: (type, toggle) => {
-            dispatch(Actions.toggleModal(type, toggle))
+        deletePost: (postID) => {
+            dispatch(Actions.deletePost(postID))
         }
     }
   }

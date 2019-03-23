@@ -4,11 +4,11 @@ import PostsList from '../Post/Post-List/Post-List.js';
 import PostsGallery from '../Post/Post-Gallery.js';
 import { connect } from 'react-redux';
 import Utils from '../../utils.js';
+import Actions from "../../Actions/actions";
 import PostMap from "../../Components/Map/Map.js";
 
 
 class PostBoard extends Component {
-
     changeAddressFormat(post){
         return {
             'street': post.address.split(",")[0],
@@ -27,7 +27,11 @@ class PostBoard extends Component {
                         images ={post.images}
                         key={post.name}
                         id={post.id}
-                        />
+                        location_long={post.address_long}
+                        location_lat={post.address_lat}
+                        userID={post.userID}
+                        username={post.username}
+                    />
         )
     }
 
@@ -42,6 +46,10 @@ class PostBoard extends Component {
                         images ={post.images}
                         key={post.name}
                         id={post.id}
+                        location_long={post.address_long}
+                        location_lat={post.address_lat}
+                        userID={post.userID}
+                        username={post.username}
                         />
         )
     }
@@ -49,7 +57,7 @@ class PostBoard extends Component {
 
     renderPosts() {
         if (this.props.displayStyle === 'Map') {
-            return <PostMap />;
+            return <PostMap mapClassName = "postBoard-map"/>;
         } 
 
         let posts = [];
@@ -73,31 +81,22 @@ class PostBoard extends Component {
             }
         }
 
+        let noResultMessage = "No results found.";
+        if (posts.length === 0 && this.props.showUserPosts){
+            noResultMessage = "You don't have any posts yet.";
+        }
+        
+        if (posts.length === 0) {
+            return <div className="no-results-found">{noResultMessage}</div>
+        }
+
         return posts
     }
-
-    success(position) {
-        console.log('success',position.coords)
-    }
-
-    error(er) {
-        console.log('fail',er)
-    }
-
-
-    getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.success, this.error, {timeout: 10000})
-        } else {
-         console.log("Geolocation is not supported by this browser.");
-        }
-      }
       
 
     render() {
         return(
         <div className="postBoardWrapper" key="postBoardWrapper">
-            {/* {this.getLocation()} */}
             <div className="PostBoard" key="postBoard">
                 {this.renderPosts()}
             </div>
@@ -118,6 +117,15 @@ function mapStateToProps(state){
     }
   }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        updateUserLocation: (userLocation) => {
+            dispatch(Actions.updateUserLocation(userLocation));
+        },
+    }
+}
+
   export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
   )(PostBoard);

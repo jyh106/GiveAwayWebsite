@@ -1,17 +1,19 @@
-import { Map, List} from 'immutable';
+import { Map } from 'immutable';
 
 const INITIAL_STATE = Map({
   'user': {
       'isSignedIn': !!localStorage.username,
       'username': localStorage.username || "",
       'userID': localStorage.userID || "",
-    },
+    }
 });
 
 function AppReducer(state = INITIAL_STATE, action) {
   switch(action.type){
     case('SIGNIN'):
         return signIn(state, action);
+    case('UPDATE_USER_LOCATION'):
+        return state.set('userLocation', action.data);
     default:
         return state
     }
@@ -19,7 +21,7 @@ function AppReducer(state = INITIAL_STATE, action) {
 
 function signIn(state, action) {
     localStorage.username = action.data.username;
-    localStorage.setItem('userID', action.data.userID);
+    localStorage.userID = action.data.userID;
 
     return state.merge({
         'user': {

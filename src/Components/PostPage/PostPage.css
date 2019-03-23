@@ -20,7 +20,6 @@
 }
 
 .postPageBackButton:hover, .postPageBackButtonLabel:hover {
-    color: blue;
     cursor: pointer;
 }
 
@@ -32,6 +31,20 @@
     margin: 0 auto;
     padding-top: 20px;
     border-bottom: 3px solid rgb(245, 168, 101);
+}
+
+.post_page_author {
+    font-size: 15px;
+    float: right;
+    color: gray;
+    display: inline;
+    margin-right: 100px;
+    margin-top: 20px;
+}
+
+.post_page_author-label {
+    display: inline-block;
+    padding-right: 10px;
 }
 
 .postDetail {
@@ -64,20 +77,19 @@
 
 .postAddress {
     height: 30px;
-    padding-top: 10px;
+    padding-top: 30px;
 }
 
 .postNote {
-    height: 150px;
+    margin-bottom: 20px;
 }
 
 .postNoteText {
     text-align: left;
     width: 80%;
-    height: 80px;
     padding: 8px;
     border: 2px dotted rgba(244, 165, 96, 0.5);;
-    margin-left: 28px;
+    margin-left: 30px;
     overflow: scroll;
     font-family: 'Lato', sans-serif;
     font-size: 13px;
@@ -92,12 +104,18 @@
 .imageSlider {
     width: 71%;
     background-color: rgb(243, 243, 243);
-    margin: 0 auto;
+    margin-left: 13%;
     height: 180px;
     border-radius: 10px;
     overflow: scroll;
     padding-left: 20px;
     padding-right: 20px;
+    border: 1px solid lightgray;
+    overflow-y: scroll;
+}
+
+.imageSliderNotActive {
+    background-color: none;
 }
 
 .imageInnerSlider{
@@ -140,5 +158,6 @@
     padding-right: 9px;
     padding-left: 13px;
 }
+
 
 

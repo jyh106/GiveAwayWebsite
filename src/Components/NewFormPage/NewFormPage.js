@@ -5,15 +5,14 @@ import Actions from "../../Actions/actions";
 import Utils from "../../utils";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faQuoteLeft, faQuoteRight, faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
 import Constants from '../../constants';
 import { Link, withRouter } from 'react-router-dom';
-library.add(faArrowLeft)
+library.add(faArrowLeft, faQuoteLeft, faQuoteRight, faCaretDown, faCaretUp)
 
 class NewFormPage extends Component {
     constructor() {
         super();
-        this.homeRef = React.createRef();
         this.state = {
             'name': '',
             'address_street': '',
@@ -21,7 +20,7 @@ class NewFormPage extends Component {
             'address_city': '',
             'note': '',
             'images': [],
-            'category': ''
+            'category': '',
         }
     }
 
@@ -79,33 +78,32 @@ class NewFormPage extends Component {
         return "value_invalid"
     }
 
-    renderHeader(){
+    renderQuestion_name() {
         return (
-            <div className="newFormHeader_label">
-                I Want To Give Away: 
+            <div className="newForm_question question_name question-itemName">
+                <div className="questionLabel">
+                    Item(s): 
+                </div>
+                <input type="form_name" className={`input_title newFormInput ${this.getErrorMessage(this.state.name)}`} 
+                        onChange={(e)=>this.onInputChange('name', e.target.value)}
+                        maxLength='30'>
+                </input>
+                <p className="maxCharacterLabel">max characters: {30 - this.state.name.length}</p>
             </div>
         )
     }
 
-    renderQuestion_name() {
-        return (
-            <div className="newForm_question question_name">
-                <div className="questionLabel">
-                    Item(s):
-                </div>
-                <input type="form_name" className={`input_title newFormInput ${this.getErrorMessage(this.state.name)}`} 
-                        onChange={(e)=>this.onInputChange('name', e.target.value)}
-                        maxLength='25'>
-                </input>
-                <p className="maxCharacterLabel">max characters: {13 - this.state.name.length}</p>
-            </div>
-        )
+    renderSelectionArrow(selectionType) {
+        const arrowClassName = (selectionType === "category") ?  "category-arrow" : "city-arrow";
+        return <FontAwesomeIcon icon='caret-down' className={arrowClassName} />
     }
 
     renderQuestion_category() {
         const categories = [];
         categories.push(
-            <option value="" key="default value">Select category</option>
+            <option value="" key="default value">
+                Select category 
+            </option>
         )
         for (let category of Constants.CATEGORY_LIST) {
             categories.push(
@@ -113,14 +111,15 @@ class NewFormPage extends Component {
             )
         }
         return (
-            <div className="newForm_question question_name">
+            <div className="newForm_question question_name question_category">
                 <div className="questionLabel">
-                    Item category:
+                    Item category: 
                 </div>
-                <select className={`categorySelection ${this.getErrorMessage(this.state.category)} `} 
+                <select  ref={this.categorySelectionRef} className={`categorySelection ${this.getErrorMessage(this.state.category)} `} 
                         onChange={(e)=>this.onInputChange('category', e.target.value)}>
                     {categories}
                 </select>
+                {this.renderSelectionArrow('category')}
             </div>
         )
     }
@@ -168,6 +167,7 @@ class NewFormPage extends Component {
                         onChange={(e)=>this.onInputChange('address_city', e.target.value)}>
                     {cityOptions}
                 </select>
+                {this.renderSelectionArrow('city')}
             </div>
         )
     }
@@ -188,8 +188,10 @@ class NewFormPage extends Component {
                 </div>
             )
         }
+
+        const sectionClassName = (fileNameList.length === 0) ? "displayFileName-None" : "displayFileNameWrapper";
         return (
-            <div className="displayFileNameWrapper">
+            <div className={sectionClassName}>
                 {fileNameList}
             </div>
         )
@@ -217,8 +219,9 @@ class NewFormPage extends Component {
                     Images: 
                 </div>
                 <label htmlFor="post-images-upload" className="questionLabel select_button_label">
-                    Select images
+                    Select images 
                 </label>
+                <FontAwesomeIcon icon="caret-down" className="selectImage-arrow"/>
                 <input id="post-images-upload" 
                         type="file" 
                         accept="image/png, image/jpeg, image/jpg" 
@@ -243,8 +246,10 @@ class NewFormPage extends Component {
 
     renderQuestions() {
         return(
-            <div className="newForm_questionContainer">
                 <div className="newForm_questionWrapper">
+                    <div className="questionForm-title">
+                        I want to give away: 
+                    </div>
                     {this.renderQuestion_name()}
                     {this.renderQuestion_category()}
                     {this.renderQuestion_street()}
@@ -252,8 +257,8 @@ class NewFormPage extends Component {
                     {this.renderQuestion_city()}
                     {this.renderQuestion_images()}
                     {this.renderQuestion_note()}
+                    {this.renderButtons()}
                 </div>
-            </div>
         )
     }
 
@@ -263,12 +268,13 @@ class NewFormPage extends Component {
                                     ${(this.isSubmitButtonEnable()) ? "submit_enable" : "submit_disable"}`;
         return(
             <div>
-                <button className="newForm_buttons newFormButton_cancel"
-                        onClick={()=> this.homeRef.current.click()}>
+                <Link to="/" >
+                <button className="newForm_buttons newFormButton_cancel">
                     Cancel
                 </button>
+                </Link>
 
-                <button className= {submitButtonClassName}
+                <button className= {`${submitButtonClassName}`}
                         onClick={(e)=> this.handleSubmit(e)}
                         disabled={!this.isSubmitButtonEnable()}>
                     Submit
@@ -277,21 +283,57 @@ class NewFormPage extends Component {
         )
     }
 
+    renderQuotation() {
+        return (
+            <div className="quotationContainer">
+                <div className="quotation">
+                    <FontAwesomeIcon icon="quote-left" className="quote-left" />
+                    A kind gesture can reach a wound that only compassion can heal.
+                    <FontAwesomeIcon icon="quote-right" className="quote-right"/>
+                    <div className="quote-autor">
+                        ― Steve Maraboli
+                    </div>
+                </div>
+
+                <div className="quotation quotation2">
+                    <FontAwesomeIcon icon="quote-left" className="quote-left" />
+                    For it is in giving that we receive.
+                    <FontAwesomeIcon icon="quote-right" className="quote-right"/>
+                    <div className="quote-autor">
+                        ―  St. Francis of Assisi
+                    </div>
+                </div>
+
+                <div className="quotation quotation3">
+                    <FontAwesomeIcon icon="quote-left" className="quote-left" />
+                    A random act of kindness, no matter how small, 
+                    can make a tremendous impact on someone else's life.
+                    <FontAwesomeIcon icon="quote-right" className="quote-right"/>
+                    <div className="quote-autor">
+                        ―  Roy T. Bennett
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
 
     render() {
         return(
-        <div className="newForm_PageContainer">
-            <div className="newForm_header">
-                {this.renderHeader()}
-                <div className="newFormButton_home" ref={div => this.homeReference = div}>
+           <div>
+            <div className="newForm_nav">
+                <div className="newFormButton_home">
+            
                     <Link to="/" ref={this.homeRef} className="newFormButton_home_label">
                         <FontAwesomeIcon icon="arrow-left" className="newForm_icon_leftArrow" />
                         Dashboard
                     </Link>
                 </div>
             </div>
-            {this.renderQuestions()}
-            {this.renderButtons()}
+            <div className="newForm_PageContainer">
+                {this.renderQuestions()}
+                {this.renderQuotation()}
+            </div>
         </div>
         )
     }

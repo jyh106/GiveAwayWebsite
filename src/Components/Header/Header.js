@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import "./Header.css";
-import { connect } from 'react-redux';
 import SearchBox from './SearchBox/SearchBox.js';
-import { Link } from 'react-router-dom';
-
 import User from "./User/User.js";
 
 class Header extends Component {
+    renderPageTitle() {
+        return (
+            <div className="header_name"> 
+                GiveAway
+            </div>
+        )
+    }
     render() {
         return(
             <div className="header">
-                <div className="header_name"> 
-                    <Link to="/" className="header_label">
-                        GiveAway
-                    </Link>
-                </div>
+                {this.renderPageTitle()}
                 <SearchBox />
                 <User />
             </div>
@@ -22,17 +22,4 @@ class Header extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return{
-    }
-}
-  
-function mapDispatchToProps(dispatch) {
-    return {
-    }
-}
-
-  export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Header)
+  export default Header;
