@@ -2,9 +2,9 @@ import { Map } from 'immutable';
 
 const INITIAL_STATE = Map({
   'user': {
-      'isSignedIn': !!localStorage.username,
-      'username': localStorage.username || "",
-      'userID': localStorage.userID || "",
+      'isSignedIn': false,
+      'username': "",
+      'userID': "",
     }
 });
 

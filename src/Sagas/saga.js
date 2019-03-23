@@ -23,6 +23,7 @@ export function* watchSubmitPost() {
 }
 
 function* getPosts(){
+  axios.defaults.withCredentials = true;
   const response = yield call(axios.get, `${Constants.HOSTNAME}posts?city=All cities`, {withCredentials: true})
   yield put(Actions.getPosts(response.data))
 }
