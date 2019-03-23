@@ -11,20 +11,8 @@ import  Utils  from '../../../utils';
 library.add(faMapMarkerAlt, faComment, faImages) 
 
 class PostList extends Component {
-    handlePostClcicked(){
-        this.props.updateClickedPost({
-            'name': this.props.name,
-            'date': this.props.date,
-            'address': this.props.address,
-            'note': this.props.note,
-            'images': this.props.images,
-            'id': this.props.id
-        })
-        this.props.toggleDisplay('post', true);
-    }
-
     renderNote() {
-        if(this.props.description === ''){
+        if(this.props.note === ''){
             return null
         }
         return (
@@ -118,15 +106,6 @@ function mapStateToProps(state){
   
   const mapDispatchToProps = dispatch => {
     return {
-        updateClickedPost: (postInfo)=> {
-            dispatch(Actions.updateClickedPost(postInfo))
-        },
-        toggleDisplay: (type, toggle) => {
-            dispatch(Actions.toggleModal(type, toggle))
-        },
-        changeDisplayStyle: (style) => {
-            dispatch(Actions.changeDisplayStyle(style));
-        },
         showPostOnMap: (post) => {
             dispatch(Actions.showPostOnMap(post));
         },

@@ -56,6 +56,10 @@
     padding-right: 25px;
 }
 
+.postList_date:hover {
+    cursor: default;
+}
+
 .postList_address{
     padding-top: 10px;
     font-style: italic;
@@ -108,8 +112,4 @@
     font-size: 12px;
     padding-top: 2px;
     color: rgb(167, 187, 204);
-}
-
-.postList_label:hover {
-    cursor: pointer;
 }

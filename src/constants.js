@@ -1,7 +1,8 @@
 const HOSTNAME = "http://127.0.0.1:5000/";
 const UPLOADS_HOSTNAME = "http://127.0.0.1:5000/uploads/";
 
-const DEFAULT_IMG_SRC = 'default.png';
+const DEFAULT_IMG_SRC = 'https://s3.us-east-2.amazonaws.com/giveandseek.com/default.png';
+
 
 const MODAL_TYPES = {
     'MODAL_SIGNIN':'signIn', 
@@ -118,7 +119,7 @@ const CATEGORY_LIST_LENGTH = CATEGORY_LIST.length;
 
 const NONE_SCROLLABLE_THUMBS = 5;
 
-const POST_GALLERY_DEFAULT_IMAGE = "default.png";
+const POST_GALLERY_DEFAULT_IMAGE = "https://s3.us-east-2.amazonaws.com/giveandseek.com/default.png";
 
 const INDEX_FILE_SRC_AFTER_ROUTE_SPLIT = 4;
 

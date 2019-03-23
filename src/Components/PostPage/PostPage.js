@@ -98,7 +98,6 @@ class PostPage extends Component {
     }
 
     render() {
-        console.log(this.props.post)
         return (
         <div>
             <div className="postPageWrapper">
