@@ -10,12 +10,6 @@ library.add(faUserCircle)
 
 class User extends Component {
     onSignOutClick() {
-        let userInfoToRemove = ["username", "userPosts", "userID"];
-
-        for (let userInfo of userInfoToRemove) {
-            localStorage.removeItem(userInfo);
-        }
-
         this.props.userSignedOut();
         window.location.reload();
     }
@@ -75,7 +69,7 @@ function mapStateToProps(state) {
             dispatch( Actions.toggleModal(type, toggle) )
         },
         userSignedOut: () => {
-            dispatch( Actions.userSignedOut());
+            dispatch(Actions.userSignedOut());
         }
     }
   }

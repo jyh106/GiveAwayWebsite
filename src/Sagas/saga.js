@@ -28,11 +28,33 @@ function* getPosts(){
   yield put(Actions.getPosts(response.data))
 }
 
+function* signInWithCredential() {
+  axios.defaults.withCredentials = true;
+  try {
+    const response = yield call(axios, {
+      method: 'POST',
+      url: `${Constants.HOSTNAME}signin`,
+      config: { headers: {'Content-Type':'application/json'}},
+      withCredentials: true
+    });
+    yield put(Actions.signIn({
+      username: response.data.username,
+      userID: response.data.userID,
+    }));
+    yield put(Actions.isSignInSuccessful(true))
+    // yield put(Actions.toggleModal('signIn', false))
+  } catch (err) {
+    yield put(Actions.isSignInSuccessful(false))
+  }
+
+}
+
 // handle sending posts from server to frontehd when app mounts
 export function* watchAppMounted() {
   while (true) {
       yield take('APP_MOUNTED');
       yield call(getPosts);
+      yield call(signInWithCredential);
   }
 }
 
@@ -105,6 +127,34 @@ function* watchOnSignInClick() {
   while(true) {
     const action = yield take('ON_SIGNIN_CLICK');
     yield call(onSignInClick, action)
+  }
+}
+
+function* signOutWithCredential() {
+  axios.defaults.withCredentials = true;
+  try {
+    const response = yield call(axios, {
+      method: 'POST',
+      url: `${Constants.HOSTNAME}signout`,
+      config: { headers: {'Content-Type':'application/json'}},
+      withCredentials: true
+    });
+    // yield put(Actions.signIn({
+    //   username: response.data.username,
+    //   userID: response.data.userID,
+    // }));
+    // yield put(Actions.isSignInSuccessful(true))
+    // yield put(Actions.toggleModal('signIn', false))
+  } catch (err) {
+    console.log('cannot sign out')
+  }
+
+}
+
+function* watchSignOutClick() {
+  while(true) {
+    yield take('SIGN_OUT');
+    yield call(signOutWithCredential);
   }
 }
 
@@ -218,6 +268,7 @@ function* watchShowUserPosts() {
 
 export default function* rootSaga() {
   yield all([
+    watchSignOutClick(),
     watchShowUserPosts(),
     watchSearchActive(),
     watchDeletePost(),
