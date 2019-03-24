@@ -139,16 +139,9 @@ function* signOutWithCredential() {
       config: { headers: {'Content-Type':'application/json'}},
       withCredentials: true
     });
-    // yield put(Actions.signIn({
-    //   username: response.data.username,
-    //   userID: response.data.userID,
-    // }));
-    // yield put(Actions.isSignInSuccessful(true))
-    // yield put(Actions.toggleModal('signIn', false))
   } catch (err) {
     console.log('cannot sign out')
   }
-
 }
 
 function* watchSignOutClick() {
