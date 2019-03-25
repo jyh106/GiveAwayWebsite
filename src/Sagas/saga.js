@@ -41,12 +41,9 @@ function* signInWithCredential() {
       username: response.data.username,
       userID: response.data.userID,
     }));
-    yield put(Actions.isSignInSuccessful(true))
-    // yield put(Actions.toggleModal('signIn', false))
   } catch (err) {
-    yield put(Actions.isSignInSuccessful(false))
+    console.log('cannot sign in with credential', err);
   }
-
 }
 
 // handle sending posts from server to frontehd when app mounts
@@ -112,7 +109,7 @@ function* onSignInClick(action) {
       config: { headers: {'Content-Type':'application/json'}}
     });
     yield put(Actions.signIn({
-      username: action.data.username,
+      username: response.data.username,
       userID: response.data.userID,
     }));
     yield put(Actions.isSignInSuccessful(true))

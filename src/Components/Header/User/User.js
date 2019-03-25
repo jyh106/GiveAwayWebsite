@@ -15,7 +15,7 @@ class User extends Component {
     }
 
     renderUserIcon() {
-        if (this.props.userInfo['isSignedIn']) {
+        if (this.props.userInfo['username']) {
             const firstLetterOfUsername = this.props.userInfo['username'][0];
             return (
                 <div className="user userActive"> 

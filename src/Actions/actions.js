@@ -220,8 +220,15 @@ function resetMapPosts() {
     }	
 }
 
+function appWillMount() {
+    return {
+        type: 'APP_WILL_MOUNT',
+    }
+}
+
 
 export default {
+    appWillMount,
     resetMapPosts,
     showPostOnMap,
     updateUserPosts,
