@@ -1,5 +1,7 @@
-const HOSTNAME = "http://127.0.0.1:5000/";
-const UPLOADS_HOSTNAME = "http://127.0.0.1:5000/uploads/";
+// WHEN TESTING
+// const HOSTNAME = "http://127.0.0.1:5000/";
+
+const HOSTNAME = "/";
 
 const DEFAULT_IMG_SRC = 'https://s3.us-east-2.amazonaws.com/giveandseek.com/default.png';
 
@@ -175,7 +177,6 @@ export default {
     ACCOUNT_PAGE_ROUTE,
     CITIES,
     HOSTNAME,
-    UPLOADS_HOSTNAME,
     MODAL_TYPES,
     CATEGORIES,
     NONE_SCROLLABLE_THUMBS,
