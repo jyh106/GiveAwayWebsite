@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { config } from '@fortawesome/fontawesome-svg-core'
 import rootReducer from './reducers/reducers.js';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -9,6 +10,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './Sagas/saga';
 
+config.autoAddCss = true;
 const sagaMiddleware = createSagaMiddleware();
 
 // WITH TESTING
