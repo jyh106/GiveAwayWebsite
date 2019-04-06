@@ -35,13 +35,6 @@
     color: rgb(66, 66, 66);
 }
 
-/* .newForm_questionContainer {
-    width: 60%;
-    margin: 0 auto;
-    height: 100vh;
-    padding-bottom: 30px;
-} */
-
 .newForm_questionWrapper {
     width: 35%;
     display: inline-block;
@@ -183,7 +176,7 @@ input[type="file"] {
     background-color: rgba(240, 240, 240, 0.795);
     margin-top: 15px;
     margin-left: 10px;
-    width: 410px;
+    width: 345px;
     height: 55px;
     overflow: scroll;
     border-radius: 4px;
