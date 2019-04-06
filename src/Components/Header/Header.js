@@ -7,7 +7,7 @@ class Header extends Component {
     renderPageTitle() {
         return (
             <div className="header_name"> 
-                GiveAway
+                Give&Seek
             </div>
         )
     }

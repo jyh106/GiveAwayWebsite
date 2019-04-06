@@ -21,7 +21,7 @@ class SearchBox extends Component {
     render() {
         return(
                 <div className={"searchBox"}>
-                    <input className="searchBox_input" onChange={(e)=> this.handleSearch(e.target.value)} />
+                    <input className="searchBox_input" onChange={(e)=> this.handleSearch(e.target.value)} placeholder="seeking.."/>
                     <FontAwesomeIcon className="searchBox_icon" icon="search" />
                 </div>
         )
