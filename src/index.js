@@ -24,7 +24,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   rootReducer, /* preloadedState, */
-  // applyMiddleware(sagaMiddleware),
+  applyMiddleware(sagaMiddleware),
 );
  
  sagaMiddleware.run(rootSaga);
