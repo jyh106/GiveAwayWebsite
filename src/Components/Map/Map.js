@@ -6,7 +6,6 @@ import Utils from "../../utils";
 import './Map.css';
 import { Map as LeafletMap, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet';
 
-const position = [37.5775225, -122.3481093];
 
 class Map extends Component {
     renderMarker(postLocation, postID, postName){
@@ -66,8 +65,13 @@ class Map extends Component {
 
 
     render() {
+        let mapPosition =  Constants.CITY_POSITIONS["All"];
+        if (Object.keys(this.props.showPostOnMap).length > 0) {
+            const postCity = this.props.showPostOnMap.address.city;
+            mapPosition = Constants.CITY_POSITIONS[postCity];
+        }
         return (
-            <LeafletMap center={position} zoom={14} className={this.props.mapClassName}>
+            <LeafletMap center={mapPosition} zoom={12} className={this.props.mapClassName}>
                 <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -1,7 +1,7 @@
 // WHEN TESTING
-// const HOSTNAME = "http://127.0.0.1:5000/";
+const HOSTNAME = "http://127.0.0.1:5000/";
 
-const HOSTNAME = "/";
+// const HOSTNAME = "/";
 
 const DEFAULT_IMG_SRC = 'https://s3.us-east-2.amazonaws.com/giveandseek.com/default.png';
 
@@ -172,7 +172,17 @@ const MOCK_POST_POSITION = [
      [37.6001059, -122.3870218]
 ]
 
+const CITY_POSITIONS = {
+    'All': [37.6536465,-122.4680756],
+    'San Francisco': [37.751048,-122.4897148],
+    'Burlingame': [37.5870098, -122.3740478],
+    'San Bruno': [37.6250405,-122.4552606],
+    'Berkeley': [37.8769624,-122.2920435],
+    'Oakland': [37.8042869,-122.277411],
+}
+
 export default {
+    CITY_POSITIONS,
     MOCK_POST_POSITION,
     ACCOUNT_PAGE_ROUTE,
     CITIES,
